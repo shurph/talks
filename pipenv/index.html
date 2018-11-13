@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Справляемся с зависимостями в 2018-м: Pipenv</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="dist/styles/screen-16x10.css">
+    <link rel="stylesheet" href="dist/vendors/highlight/styles/github.css">
+</head>
+
+<body class="shower list">
+    <header class="caption">
+        <h1>Справляемся с зависимостями в 2018-м: Pipenv</h1>
+        <p>
+            <a href="https://twitter.com/shurph">Николай Сасковец</a>,
+            инженер-программист,
+            iTechArt
+        </p>
+    </header>
+
+    <section class="slide title-humble">
+        <h2 style="font-size: 3.6rem">
+            Справляемся с зависимостями в 2018-м<br>&nbsp;
+    </section>
+
+    <section class="slide title">
+        <h2 style="font-size: 3.6rem">
+            Справляемся с зависимостями в 2018-м: Pipenv
+        </h2>
+        <div class="imprint">
+            <span class="date">2018-11-13</span>,
+            <a href="https://twitter.com/shurph">Николай Сасковец</a>,
+            инженер-программист,
+            iTechArt
+        </div>
+    </section>
+
+    <section class="slide half-black clear">
+        <div>
+            <h3>Николай Сасковец</h3>
+            <h4>Инженер-программист</h4>
+            <h5><img src="images/itechart-white.svg" alt="" width="50%"></h5>
+
+            <img src="pictures/ava-tmp.png" alt="" width="100%">
+
+        </div>
+        <div>
+            <ul>
+                <li class="next">Full Stack Web Developer</li>
+                <li class="next">Devops-энтузиаст</li>
+                <li class="next">N лет играю с питоном
+                    <img
+                        src="pictures/python-django-gimped.png"
+                        alt=""
+                        class="cover place right"
+                        style="right: -99px;"
+                    >
+                </li>
+            
+                <li class="next">~ 4 месяца трогаю Pipenv</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="slide black clear">
+        <h2 class="shout no-bg">
+            <del class="strike">Pipenv = pip + env</del>
+        </h2>
+    </section>
+    
+    
+    <section class="slide black clear">
+        <h2 class="shout no-bg">
+            Кто пользуется или использовал Pipenv?
+            <br>
+            🙋🏻‍♂️
+            🙋🏼‍♀️
+        </h2>
+    </section>
+
+
+    <section class="slide black clear">
+        <h2 class="shout no-bg">
+            Кто пользуется или использовал <span class="label">Pip</span>?
+            <br>
+            🙋🏼‍♂️
+            🙋🏻‍♂️
+            🙋🏼‍♀️
+            🙋🏻‍♀️
+        </h2>
+    </section>
+
+
+    <section class="slide black clear">
+        <h2 class="shout no-bg">
+            🤖
+        </h2>
+    </section>
+    
+    
+    <section class="slide no-heading">
+        <h2 class="shout">
+        <span class="label">Pipenv</span> — инструмент, который привносит в python всё то лучшее, что есть в системах пакетирования для других языков 
+        </h2>
+        <div class="slide-footer huge">
+            <a href="https://github.com/kennethreitz"><strong>Kenneth Reitz</strong></a>,
+            создатель библиотеки
+            <a href="https://github.com/requests"><strong>requests</strong></a>.
+        </div>
+    </section>
+    
+    
+    <section class="slide">
+        <h2>Что такое Pipenv на самом деле?</h2>
+        Инструмент для <mark>приложений</mark>, не библиотек, который может:
+        <ul>
+            <li class="next">Управлять окружениями
+                <strong class="next">(env)</strong>
+            </li>
+            <li class="next">Управлять пакетами: устанавливать и удалять
+                <strong class="next">(pip)</strong>
+            </li>
+            <li class="next">Устанавливать <strong>детерминированный</strong> набор пакетов
+                <strong>(Pipfile.lock)</strong>
+            </li>
+        </ul>
+    </section>
+    
+    
+    <section class="slide">
+        <h2>Управление окружениями</h2>
+        <ul>
+        
+        <li>Используется virtualenv под капотом.
+		</li>
+        <li>Все виртуальные окружения, по умолчанию, хранятся в каталоге <code>~/.venvs</code>.
+			<ul>
+				<li>Это можно изменить:
+					<br>
+					<code>export WORKON_HOME=~/.venvs</code>
+				</li>
+				<li>Или даже так:
+					<br>
+					<code>export PIPENV_VENV_IN_PROJECT=True</code>
+					<br>
+					(окружение будет в каталоге <code>.venv</code> внутри каталога проекта)
+				</li>
+			</ul>
+        </li>
+        </ul>
+    </section>
+    
+    <section class="slide">
+        <h2>Работа внутри виртуального окружения</h2>
+        <ul>
+			<li>Запустить скрипт с нужным виртуальным окружением <b>единоразово</b>:
+				<br>
+				<code>pipenv run script-name</code>
+			</li>
+			<li>Активировать виртуальное окружение для выполнения команд в интерактивном режиме:
+				<br>
+				<code>pipenv shell</code>
+			</li>
+        </ul>
+    </section>
+    
+    <section class="slide">
+        <h2>Возможные проблемы с virtualenv + Pipenv</h2>
+        
+	        <ul>
+			<li>В <mark>shell</mark> режиме у некоторых людей появлялись проблемы с башем
+			</li>
+			<li>В <mark>run</mark> режиме не устанавливается переменная <code>$VIRTUAL_ENV</code>, соответствующая пути к виртуальному окружению</li>
+        </ul>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2>Управление пакетами</h2>
+        
+        Можно устанавливать пакеты:
+        
+        <p><code>pipenv install Flask</code></p>
+        
+        Можно удалять пакеты:
+        
+        <p><code>pipenv uninstall Flask</code></p>
+        
+        А ещё можно посмотреть граф зависимостей:
+        
+        <p><code>pipenv graph</code></p>
+    </section>
+    
+    
+    <section class="slide">
+        <h2>Управление пакетами: pipenv graph</h2>
+        
+        <pre>
+			<code>flower==0.9.2</code>
+			<code>  - babel [required: >=1.0, installed: 2.6.0]</code>
+			<code>    - pytz [required: >=0a, installed: 2018.7]</code>
+			<code>  - celery [required: >=3.1.0, installed: 4.2.1]</code>
+			<code>    - billiard [required: >=3.5.0.2,<3.6.0, installed: 3.5.0.4]</code>
+			<code>    - kombu [required: >=4.2.0,<5.0, installed: 4.2.1]</code>
+			<code>      - amqp [required: >=2.1.4,<3.0, installed: 2.3.2]</code>
+			<code>        - vine [required: >=1.1.3, installed: 1.1.4]</code>
+		</pre>
+    
+    </section>
+    
+    
+    <section class="slide">
+        <h2>Управление пакетами: pipenv install</h2>
+        Два варианта.
+        
+		<ol>        
+			<li>Указываем пакет, который нужно установить:
+				<code>pipenv install Flask</code>
+				<ul>
+					<li>добавляет Flask в <code>Pipfile</code></li>
+					<li>устанавливает Flask</li>
+					<li>обновляет <code>Pipfile.lock</code></li>
+				</ul>
+			
+			<li>Не указываем пакет:
+				<code>pipenv install</code>
+				<ul>
+					<li>устанавливает всё из <code>Pipfile</code></li>
+					<li>обновляет <code>Pipfile.lock</code></li>
+				</ul>
+			</li>
+        </ol>
+    
+    </section>
+    <section class="slide">
+        <h2>Управление пакетами: Pipfile</h2>
+        
+        <p>Список необходимых для установки пакетов декларируется в файле <mark>Pipfile</mark>, вместо привычного всем <code>requirements.txt</code>.</p>
+        
+        <p>Pipfile:</p>
+        <ul>
+			<li>Использует TOML для простоты чтения и написание</li>
+			<li>Позволяет указать два списка пакетов: packages и dev-packages (для окружения разработчика)</li>
+			<li>Стремится стать новым стандартом, заменой requirements.txt</li>
+        </ul>
+    </section>
+    
+    <section class="slide">
+        <h2>Управление пакетами: Pipfile, пример</h2>
+        <pre style="font-size: 1.3rem">
+<code>[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+[packages]
+django = "*"
+celery = "*"
+[dev-packages]
+"flake8" = "*"
+moto = "==1.3.4"
+[requires]
+python_version = "3.6"
+</code>
+        </pre>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2>Управление пакетами: Pipfile, пример 2</h2>
+        <pre>
+<code>...
+[packages]
+elasticsearch-dsl = "<6.0.0,>=5.0.0"
+elasticsearch = "<6.0.0,>=5.0.0"
+...
+api_client = {git =
+	"ssh://git@gitlab.com/something/api-client.git",
+	ref = "v1.0.2"}
+...
+</code>
+        </pre>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2>Детерминированность: Pipfile.lock</h2>
+        <ul>
+			<li><code>pipenv lock</code> — генерация Pipfile.lock</li>
+			
+			<li><code>pipenv sync</code> — установка пакетов, указанных в Pipfile.lock</li>
+			
+			<li><code>pipenv clean</code> — удаление из виртуального окружения всех пакетов, которые не указаны в Pipfile.lock</li>
+        </ul>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2>Детерминированность: Pipfile.lock, что внутри?</h2>
+        <ul>
+			<li>Внутри Pipfile.lock находится список всех установленных пакетов, указанных в Pipfile, с запинеными версиями.</li>
+			<li>А также указаны все зависимости этих пакетов, также с запинеными версиями.</li>
+			<li>А также указаны хэш-суммы всех перечисленных пакетов</li>
+        </ul>
+    </section>
+    
+    
+    <section class="slide">
+        <h2>Неужели всё так хорошо?</h2>
+        <h2 class="shout next">
+            Не очень
+        </h2>
+    </section>
+    
+    
+    <section class="slide">
+        <h2>Неужели всё так хорошо?</h2>
+            <img
+                src="pictures/utochka.jpg"
+                alt=""
+                class="cover place center "
+            >
+    </section>
+    
+    
+    
+    
+    <section class="slide">
+        <h2>Неужели всё так хорошо?</h2>
+        <ul>
+			<li>Pipenv very slow. Takes an hour to install and lock. <a href="https://github.com/pypa/pipenv/issues/2873">[#2873]</a></li>
+			<li>Pipenv ignores explicitly specified index for package <a href="https://github.com/pypa/pipenv/issues/2730">[#2730] (closed)</a></li>
+			<li>Pipenv is installing things without executing setup.py in the target environment <a href="https://github.com/tornadoweb/tornado/issues/2433">[Tornado #2433]</a></li>
+        </ul>
+    </section>
+    
+    
+    <section class="slide black no-heading">
+        <h2 class="shout">
+            Что, если не Pipenv?
+        </h2>
+    </section>
+    
+    
+    <section class="slide red no-heading">
+        <h2 class="shout">
+            pip-tools?
+        </h2>
+    </section>
+
+
+    <section class="slide no-heading">
+        <h2 class="shout">
+            Your tool of choice these days should be <a href="">Pipenv</a>
+        </h2>
+        <div class="slide-footer huge">
+            <a href="https://github.com/nvie"><strong>Vincent Driessen</strong></a>,
+            создатель
+            <a href="https://github.com/jazzband/pip-tools/"><strong>pip-tools</strong></a>.
+        </div>
+    </section>
+    
+    
+    <section class="slide black no-heading">
+        <h2 class="shout">
+            poetry?
+        </h2>
+    </section>
+
+
+    <section class="slide black no-heading">
+        <h2 class="shout">
+            ¯\_(ツ)_/¯
+        </h2>
+    </section>
+    
+    
+    
+    
+    <section class="slide half-red clear">
+        <div>
+            <h3 style="text-align: right;">
+                <span>shurph</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>@</span>  
+            </h3>
+        </div>
+        <div>
+            <img
+                src="pictures/bracket.svg"
+                alt=""
+                class="cover place center"
+            >
+            <ul style="padding-left: 70px;" class="no-bullets">
+                <br>    
+                <li>
+                    <a href="https://twitter.com/shurph" class="link link-twitter">Twitter</a>
+                </li>
+                <li>
+                    <a href="https://github.com/shurph" class="link link-github">GitHub</a>
+                </li>
+                <li>
+                    <a href="https://gitlab.com/shurph" class="link link-gitlab">GitLab</a>
+                </li>
+                <li>
+                    <a href="mailto:shurph@gmail.com" class="link link-gmail">GMail</a>
+                </li>
+                <li>
+                    <a href="https://untappd.com/user/shurph" class="link link-untappd">Untappd</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    
+    
+    <section class="slide white clear">
+        <span class="shout" >
+            <span style="
+                background: white;
+                color: gray;
+                font-size: 2rem;
+                font-weight: bold;
+                padding: 0 10px 5px 10px;
+                border-radius: 20px;
+                line-height: 1;
+            ">
+                исправленный QR
+			</span>
+			<br>
+            <span style="
+                background: white;
+                color: gray;
+                font-size: 2rem;
+                font-weight: bold;
+                padding: 0 10px 5px 10px;
+                border-radius: 20px;
+                line-height: 1;
+            ">
+				<a href="https://shurph.github.io/talks/pipenv/">shurph.github.io/talks/pipenv/</a>
+            </span>
+        </span>
+        <figure>
+            <img src="pictures/qr.png" alt="" class="cover">
+            <figcaption>
+                <a href="https://shurph.github.io/talks/pipenv/">shurph.github.io/talks/pipenv/</a>
+                <span>&nbsp;by Mikalai Saskavets</span>
+            </figcaption>
+        </figure>
+    </section>
+    
+    
+    
+    
+    
+    
+
+    <div class="progress"></div>
+
+    <footer class="badge">
+        <a href="https://github.com/shurph/talks">Fork me on GitHub!</a>
+    </footer>
+
+    <script src="dist/scripts/shower.min.js"></script>
+    
+    <script src="dist/vendors/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
