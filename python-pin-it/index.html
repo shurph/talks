@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Зачем «пинить» пакеты в requitements.txt</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="dist/styles/screen-16x10.css">
+    <link rel="stylesheet" href="dist/vendors/highlight/styles/github.css">
+</head>
+
+<body class="shower list">
+    <header class="caption">
+        <h1>Зачем «пинить» пакеты в requitements.txt</h1>
+        <p>
+            <a href="https://twitter.com/shurph">Николай Сасковец</a>,
+            инженер-программист,
+            iTechArt
+        </p>
+    </header>
+
+    <section class="slide black clear">
+        <h2 class="shout no-bg">Пинь!</h2>
+    </section>
+
+    <section class="slide title-humble">
+        <h2 style="font-size: 3.6rem">
+            Зачем «пинить» пакеты в requitements.txt
+        </h2>
+        <div class="imprint">
+            <span class="date">2018-12-12</span>,
+            <a href="https://twitter.com/shurph">Николай Сасковец</a>,
+            инженер-программист,
+            <span style="color:red">iTechArt</span>
+        </div>
+    </section>
+	
+	
+	
+	
+
+    <section class="slide black clear">
+        <h2 class="shout no-bg">
+            1. Предсказуемость
+        </h2>
+    </section>
+	
+	
+	
+	
+
+    <section class="slide black clear">
+        <h2 class="shout no-bg">
+            2. Детерминированность
+        </h2>
+    </section>
+
+
+
+    <section class="slide red clear">
+        <div class="terminal" data-content="requirements.txt">
+<br>celery
+<br>django>=2.0.0
+<br>djangorestframework>=3.8.0,<3.9.5
+        </div>
+        <h2 class="shout no-bg">Плохо</h2>
+    </section>
+
+
+
+    <section class="slide clear">
+        <div class="terminal" data-content="requirements.txt">
+<br>celery==4.2.1
+<br>django==2.1.4
+<br>djangorestframework==3.9.0
+        </div>
+        <h2 class="shout no-bg">Хорошо</h2>
+    </section>
+
+
+
+
+    <section class="slide clear">
+        <h2 class="shout no-bg">
+            ==
+        </h2>
+    </section>
+
+
+
+
+    <section class="slide black clear">
+        <h2 class="shout no-bg" style="font-size: 55px">
+            Если вы так не делаете, то вы <span style="color:red">никогда не сможете знать</span>, что у вас будет установлено при следующем деплое
+        </h2>
+    </section>
+
+
+
+
+    <section class="slide black clear">
+        <h2 class="shout no-bg" style="font-size: 55px">
+            Даже при сборке окружения «с нуля» вы можете получить эти проблемы
+        </h2>
+    </section>
+
+
+
+
+    <section class="slide">
+        <h2 style="font-size: 45px">
+           Результат <code>pip install</code> без <code>==</code> зависит от:
+        </h2>
+        <ul>
+			<li>того, какие пакеты установлены в данный момент</li>
+			<li>того, какие версии пакетов есть в PyPI в данный момент</li>
+        </ul>
+    </section>
+
+
+
+
+    <section class="slide black clear">
+        <h2 class="shout no-bg" style="font-size: 55px">
+            «Пинить» нужно и ваши непосредственные зависимости, и зависимости зависимостей<span style="color:transparent">,</span>
+            <br> &nbsp;
+        </h2>
+    </section>
+
+
+
+
+    <section class="slide black clear">
+        <h2 class="shout no-bg" style="font-size: 55px">
+            «Пинить» нужно и ваши непосредственные зависимости, и зависимости зависимостей<span>,</span>
+            <br> и зависимости зависимостей зависимостей…
+        </h2>
+    </section>
+
+
+
+
+    <section class="slide">
+        <h2 style="font-size: 45px">
+           Минусы «запинивания»
+        </h2>
+        <ul style="font-size: 35px">
+			<li>Вы не получаете обновления используемых библиотек (патчи и новые фичи)</li>
+			<li>Файл <code>requirements.txt</code> огромен</li>
+			<li>Непонятно, какой пакет нужен проекту, а какой — просто зависимость зависимости</li>
+        </ul>
+    </section>
+
+
+
+
+    <section class="slide">
+        <h2 style="font-size: 45px">
+           Workaround для минусов
+        </h2>
+        <ul style="font-size: 35px">
+			<li>Использовать два файла:</li>
+			<ul>
+				<li><code>requirements.in</code><br>содержит зависимости проекта</li>
+				<li><code>requirements.txt</code><br>содержит «запиненные», <mark>все</mark> зависимости</li>
+			</ul>
+			<li>Периодически обновлять «запиненный» файл</li>
+        </ul>
+    </section>
+    
+    
+    
+    
+    
+    <section class="slide clear">
+        <div class="terminal" data-content="requirements.in">
+<br>celery
+<br>django>=2.0.0
+<br>djangorestframework>=3.8.0,<3.9.5
+        </div> 
+        <h2 class="shout no-bg" style="font-size: 55px">
+			Хорошо<br>
+			<sub>
+				( потому что requirements.<span style="color:red">in</span> )
+			</sub>
+		</h2>
+    </section>
+
+
+
+
+    
+    
+    <section class="slide half-black clear">
+        <div>
+            <h3>Инструменты</h3>
+        </div>
+        <div>
+            <ul style="font-size: 175%">  
+                <li><a href="https://github.com/jazzband/pip-tools/">pip-tools</a></li>
+                <li><a href="https://github.com/pypa/pipenv">Pipenv</a></li>
+                <li><a href="https://github.com/sdispater/poetry">Poetry</a></li>
+            </ul>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    <section class="slide half-red clear">
+        <div>
+            <h3>Links</h3>
+        </div>
+        <div>
+            <ul style="font-size: 85%">  
+                <li>
+                    <a href="https://nvie.com/posts/pin-your-packages/" class="">Pin Your Packages</a>
+                    <span>by</span>
+                    <span>Vincent Driessen</span>
+                    <br>
+                    <sup><code style="font-size: 95%">https://nvie.com/posts/pin-your-packages/</code></sup>
+				</li>
+                <li>
+                    <a href="https://nvie.com/posts/better-package-management/" class="">Better Package Management</a>
+                    <span>by</span>
+                    <span>Vincent Driessen</span>
+                    <br>
+                    <sup><code style="font-size: 95%">https://nvie.com/posts/better-package-management/</code></sup>
+				</li>
+            </ul>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    <section class="slide white clear">
+        <span class="shout" >
+			<br>
+            <span style="
+                background: white;
+                color: gray;
+                font-size: 2rem;
+                font-weight: bold;
+                padding: 0 10px 5px 10px;
+                border-radius: 20px;
+                line-height: 1;
+            ">
+				<a href="https://shurph.github.io/talks/python-pin-it/">shurph.github.io/talks/python-pin-it/</a>
+            </span>
+        </span>
+        <figure>
+            <img src="pictures/qr.png" alt="" class="cover">
+            <figcaption>
+                <a href="https://shurph.github.io/talks/python-pin-it/">shurph.github.io/talks/python-pin-it/</a>
+                <span>&nbsp;by Mikalai Saskavets</span>
+            </figcaption>
+        </figure>
+    </section>
+
+
+
+
+    
+    <div class="progress"></div>
+
+    <footer class="badge">
+        <a href="https://github.com/shurph/talks">Fork me on GitHub!</a>
+    </footer>
+
+    <script src="dist/scripts/shower.min.js"></script>
+    
+    <script src="dist/vendors/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
