@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Зачем «пинить» пакеты в requitements.txt</title>
+    <title>Зачем «пинить» пакеты в requirements.txt</title>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,7 +12,7 @@
 
 <body class="shower list">
     <header class="caption">
-        <h1>Зачем «пинить» пакеты в requitements.txt</h1>
+        <h1>Зачем «пинить» пакеты в requirements.txt</h1>
         <p>
             <a href="https://twitter.com/shurph">Николай Сасковец</a>,
             инженер-программист,
@@ -26,7 +26,7 @@
 
     <section class="slide title-humble">
         <h2 style="font-size: 3.6rem">
-            Зачем «пинить» пакеты в requitements.txt
+            Зачем «пинить» пакеты в requirements.txt
         </h2>
         <div class="imprint">
             <span class="date">2018-12-12</span>,
@@ -149,6 +149,7 @@
 			<li>Вы не получаете обновления используемых библиотек (патчи и новые фичи)</li>
 			<li>Файл <code>requirements.txt</code> огромен</li>
 			<li>Непонятно, какой пакет нужен проекту, а какой — просто зависимость зависимости</li>
+			<li>«Запиненная» минорная версия может исчезнуть из PyPi</li>
         </ul>
     </section>
 
@@ -166,6 +167,7 @@
 				<li><code>requirements.txt</code><br>содержит «запиненные», <mark>все</mark> зависимости</li>
 			</ul>
 			<li>Периодически обновлять «запиненный» файл</li>
+			<li>Использовать кеширующие PyPi сервера</li>
         </ul>
     </section>
     
