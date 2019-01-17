@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Python + Pipenv: Берём зависимости под контроль!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="dist/styles/screen-16x10.css">
+    <link rel="stylesheet" href="dist/vendors/highlight/styles/github.css">
+</head>
+
+<body class="shower list">
+    <header class="caption">
+        <h1>Python + Pipenv: Берём зависимости под контроль!</h1>
+        <p>
+            <a href="https://twitter.com/shurph">Николай Сасковец</a>,
+            инженер-программист,
+            iTechArt
+        </p>
+    </header>
+
+<!--
+--
+-- СЛАЙДЫ
+--
+-->
+
+
+<!--
+--
+-- ТИТУЛЬНИК
+--
+-->
+    <section class="slide title">
+        <h2 style="font-size: 4.2rem">
+            Python + Pipenv:<br> Берём зависимости под контроль!
+        </h2>
+        
+        <div style="text-align: right">        
+            <p class="author" >Николай Сасковец</p>
+            <p class="date">Feb ??, 2019</p>
+        </div>
+    </section>
+    
+    <section class="slide">
+        <h2>Как мы это делаем сейчас?</h2>
+        
+        <br>
+        <div class="terminal" data-content="Terminal">
+            <p>echo celery > requirements.txt
+            <p>pip install -r requirements.txt
+            <p>
+        </div>
+    </section>
+    
+    <section class="slide">
+        <h2>Зависимости тянут за собой свои зависимости</h2>
+        
+        <br>
+        <div class="terminal" data-content="Terminal">
+            <p>echo celery > requirements.txt
+            <p>pip install -r requirements.txt
+            <p>
+            <p>pip freeze
+            
+                <br>amqp==2.4.0
+                <br>billiard==3.5.0.5
+                <br>celery==4.2.1
+                <br>kombu==4.2.2.post1
+                <br>pytz==2018.9
+                <br>vine==1.2.0
+        </div>
+    </section>
+    
+    <section class="slide">
+        <h2>Концептуальные проблемы текущего подхода</h2>
+        
+        <br>
+        <div class="terminal" data-content="Terminal">
+            <p>echo celery > requirements.txt
+            <p>pip install -r requirements.txt
+            <p>
+        </div>
+        
+        <ul>
+            <li>Нет детерминированности. Всё зависит от того,
+                <ul>
+                    <li>какие версии пакетов у вас <b>уже</b> стоят в окружении,</li>
+                    <li>какие версии пакетов есть сейчас в репозитории (PyPI)</li>
+                </ul>
+            </li>
+            <li>Нет предсказуемости: 
+                <ul>
+                    <li>содержание репозитория (PyPI) может измениться в любой момент</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    
+    <section class="slide">
+        <h2>Практические проблемы текущего подхода</h2>
+        
+        <br>
+        <div class="terminal" data-content="Terminal">
+            <p>echo celery > requirements.txt
+            <p>pip install -r requirements.txt
+            <p>
+        </div>
+        
+        <ul>
+            <li>У разработчика, пришедшего позже, будут стоять другие версии пакетов</li>
+            <li>На staging/prod всегда свежайшие пакеты, а у вас локально — нет (если Docker)</li>
+            <li>Если же долгоживущие инстансы с долгоживущим venv...
+                <ul>
+                    <li>На staging и prod будут разные пакеты</li>
+                    <li>На разных инстансах prod будут разные пакеты</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    
+    
+    <section class="slide">
+        <h2>«Решение» (↼_↼)    </h2>
+        
+        <p>Пихаем выхлоп <code>pip freeze</code> в <code>requirement.txt</code>!</p>
+        
+        <div class="terminal" data-content="requirements.txt">
+            <p>pip install celery
+            <p>pip freeze > requirement.txt
+            <p> ...
+            <p>pip install -r requirement.txt
+        </div>
+        <p>Назовём это <b style="color: red">pip-freeze решения</b>.
+    </section>
+    
+    <section class="slide">
+        <h2>Плюсы <b style="color: red">pip-freeze решения</b></h2>
+        
+        <h2 class="shout no-bg">
+            Предсказуемость<b style="color: red">*</b><br>
+            Детерминированность<b style="color: red">*</b>
+        </h2>
+    </section>
+    
+    <section class="slide">
+        <h2>Минусы <b style="color: red">pip-freeze решения</b></h2>
+        
+        <ul>
+            <li>
+                <mark>Проблемы</mark> при обновлении:
+                <ul>
+                    <li>Что — зависимости проекта, а что — зависимости зависимостей?</li>
+                    <li>Пакет «запинен» потому что с ним проблемы, или можно обновлять до последнего?</li>
+                    <li>И requirements.txt сильно разрастается</li>
+                </ul>
+            </li>
+            <li>
+                Предсказуемость и детерминированность не на высоте:
+                <ul>
+                    <li>мэйнтейнер пакета может:
+                        <ul>
+                            <li>перезалить пакет <b>с той же версией</b> </li>
+                            <li>удалить пакет</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    
+    
+
+    
+    <section class="slide">
+        <h2>Workaround для некоторых минусов<br> или ещё одно «Решение» (↼_↼)</h2>
+        <ul>
+            <li>Использовать два файла:</li>
+            <ul>
+                <li><code>requirements.in</code><br>содержит только зависимости проекта</li>
+                <li><code>requirements.txt</code><br>содержит «запиненные», <mark>все</mark> зависимости</li>
+            </ul>
+            <li>Периодически обновлять «запиненный» файл</li>
+        </ul>
+        <p>Назовём это <b style="color:red">Решение requirement.in</b>.</p>
+    </section>
+            
+    
+    
+
+    
+    <section class="slide">
+        <h2><b style="color:red">Решение requirement.in</b> на практике</h2>
+        
+        <br>
+        <div class="terminal" data-content="Terminal">
+            <p>echo 'celery<b style="color:Yellow">>=4.2.1,<4.3</b>' > requirements.in
+            <p>pip install -r requirements.in
+            <p>pip freeze > requirement.txt
+            <p>
+            <p>sleep 8h
+            <p>
+            <p>pip install -r requirements.txt
+            <p>
+            <p>pip freeze
+            
+                <br>amqp==2.4.0
+                <br>billiard==3.5.0.5
+                <br>celery==4.2.1
+                <br>kombu==4.2.2.post1
+                <br>pytz==2018.9
+                <br>vine==1.2.0
+        </div>
+    </section>
+    
+    
+    <section class="slide">
+        <h2>Минусы <b style="color: red">решения requirement.in</b></h2>
+        Как и у <b style="color: red">pip-freeze решения</b>:
+        <ul>
+            <li>
+                Предсказуемость и детерминированность не на высоте:
+                <ul>
+                    <li>мэйнтейнер пакета может:
+                        <ul>
+                            <li>перезалить пакет <b>с той же версией</b> </li>
+                            <li>удалить пакет</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        
+        <br>
+        
+        А также: 
+        <ul>
+            <li>Во freeze могут попасть «случайные» пакеты</li>
+            <li>Много ручной работы</li>
+        </ul>
+    </section>
+    
+    
+    
+    
+    
+    
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+
+
+    
+    <section class="slide half-black clear">
+        <div>
+            <h3>Инструменты</h3>
+        </div>
+        <div>
+            <ul style="font-size: 175%">  
+                <li><a href="https://github.com/jazzband/pip-tools/">pip-tools</a></li>
+                <li><a href="https://github.com/pypa/pipenv">Pipenv</a></li>
+                <li><a href="https://github.com/sdispater/poetry">Poetry</a></li>
+            </ul>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    <section class="slide half-red clear">
+        <div>
+            <h3>Links</h3>
+        </div>
+        <div>
+            <ul style="font-size: 85%">  
+                <li>
+                    <a href="https://nvie.com/posts/pin-your-packages/" class="">Pin Your Packages</a>
+                    <span>by</span>
+                    <span>Vincent Driessen</span>
+                    <br>
+                    <sup><code style="font-size: 95%">https://nvie.com/posts/pin-your-packages/</code></sup>
+                </li>
+                <li>
+                    <a href="https://nvie.com/posts/better-package-management/" class="">Better Package Management</a>
+                    <span>by</span>
+                    <span>Vincent Driessen</span>
+                    <br>
+                    <sup><code style="font-size: 95%">https://nvie.com/posts/better-package-management/</code></sup>
+                </li>
+            </ul>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+
+
+
+    
+    <div class="progress"></div>
+
+    <footer class="badge">
+        <a href="https://github.com/shurph/talks">Fork me on GitHub!</a>
+    </footer>
+
+    <script src="dist/scripts/shower.min.js"></script>
+    
+    <script src="dist/vendors/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
+</li>
