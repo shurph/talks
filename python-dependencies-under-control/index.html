@@ -123,14 +123,14 @@
     
     <section class="slide">
         <h2>«Решение» (↼_↼)    </h2>
-        
-        <p>Пихаем выхлоп <code>pip freeze</code> в <code>requirement.txt</code>!</p>
-        
+
+        <p>Пихаем выхлоп <code>pip freeze</code> в <code>requirements.txt</code>!</p>
+
         <div class="terminal" data-content="requirements.txt">
             <p>pip install celery
-            <p>pip freeze > requirement.txt
+            <p>pip freeze > requirements.txt
             <p> ...
-            <p>pip install -r requirement.txt
+            <p>pip install -r requirements.txt
         </div>
         <p>Назовём это <b style="color: red">pip-freeze решения</b>.
     </section>
@@ -158,17 +158,6 @@
                     <li>Что — зависимости проекта, а что — зависимости зависимостей?</li>
                     <li>Пакет «запинен» потому что с ним проблемы, или можно обновлять до последнего?</li>
                     <li>И requirements.txt сильно разрастается</li>
-                </ul>
-            </li>
-            <li>
-                Предсказуемость и детерминированность не на высоте:
-                <ul>
-                    <li>мэйнтейнер пакета может:
-                        <ul>
-                            <li>перезалить пакет <b>с той же версией</b> </li>
-                            <li>удалить пакет</li>
-                        </ul>
-                    </li>
                 </ul>
             </li>
         </ul>
@@ -201,7 +190,7 @@
         <div class="terminal" data-content="Terminal">
             <p>echo 'celery<b style="color:Yellow">>=4.2.1,<4.3</b>' > requirements.in
             <p>pip install -r requirements.in
-            <p>pip freeze > requirement.txt
+            <p>pip freeze > requirements.txt
             <p>
             <p>sleep 8h
             <p>
@@ -220,51 +209,32 @@
     
     
     <section class="slide">
-        <h2>Минусы <b style="color: red">решения requirement.in</b></h2>
-        Как и у <b style="color: red">pip-freeze решения</b>:
+        <h2>Всё ещё есть минусы</h2>
+        Недостатки таких «ручных» подходов, как «<b style="color: red">решение requirement.in</b>»
+        и «<b style="color: red; white-space: nowrap">pip-freeze решение</b>»:
         <ul>
             <li>
                 Предсказуемость и детерминированность не на высоте:
                 <ul>
+                    <li><mark>Версия установленного пакета всё ещё может отличаться от той, что «запинена» вами в requirements.txt (из-за последовательности установки)</mark></li>
                     <li>мэйнтейнер пакета может:
                         <ul>
-                            <li>перезалить пакет <b>с той же версией</b> </li>
-                            <li>удалить пакет</li>
+                            <li>перезалить пакет <b>с той же версией</b>, и мы этого даже <b>не заметим</b></li>
+                            <li>удалить пакет (но мы хотя-бы об этом узнаем)</li>
                         </ul>
                     </li>
                 </ul>
             </li>
-        </ul>
-        
-        <br>
-        
-        А также: 
-        <ul>
             <li>Во freeze могут попасть «случайные» пакеты</li>
             <li>Много ручной работы</li>
         </ul>
     </section>
-    
-    
-    
-    
-    
-    
-    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
-    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
-    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
-    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
-    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
-    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
-    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
-    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
-    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
 
 
     
     <section class="slide half-black clear">
         <div>
-            <h3>Инструменты</h3>
+            <h3>Существующие «промышленные» решения</h3>
         </div>
         <div>
             <ul style="font-size: 175%">  
@@ -274,11 +244,122 @@
             </ul>
         </div>
     </section>
-    
-    
-    
-    
-    
+
+
+
+
+
+    <section class="slide">
+        <h2>pip-tools</h2>
+        <p>
+            pip-tools — это набор консольных утилит, которые автоматизируют ваш процесс управления установленными с помощью pip пакетов:
+            <ul style="padding-left: 4rem">
+                <li>pip-compile — генерирует requirements.txt на базе requirements.in или используя данные из setup.py</li>
+                <li>pip-sync — устанавливает из сгенерированного с помощью pip-compile файла requirements.txt ровно те пакеты, которые там указаны</li>
+            </ul>
+        </p>
+
+    </section>
+
+
+    <section class="slide">
+        <h2>pip-tools, установка</h2>
+        <br>
+        <div class="terminal" data-content="Terminal">
+            <p>source /path/to/venv/bin/activate</p>
+
+            <p>pip install pip-tools</p>
+            <p></p>
+            <p>pip freeze</p>
+            <br>Click==7.0
+            <br>pip-tools==3.2.0
+            <br>six==1.12.0
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>pip-compile, requirements.in → requirements.txt</h2>
+        <br>
+        <div class="terminal" data-content="Terminal">
+            <p>echo celery > requirements.in</p>
+            <p>pip-compile requirements.in <span style="color:yellow">--generate-hashes</span> --output-file requirements.txt</p>
+        </div>
+
+        <p>Параметр <mark>--generate-hashes</mark> указывает pip-compile добавить в requirements.txt хэши, которые будут использоваться в дальнейшем алгоритмом проверки хэшей, встроенным в pip (>=8.0) на этапе pip-sync.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Содержимое requirements.txt (by pip-compile)</h2>
+        <div class="terminal" data-content="requirements.txt" style="width: 100%">
+            <pre style="overflow:hidden; font-size: 22px; line-height: 22px;">
+amqp==2.4.0 \
+    --hash=sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464 \
+    --hash=sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b \
+    # via kombu
+billiard==3.5.0.5 \
+    --hash=sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e \
+    # via celery
+celery==4.2.1 \
+    --hash=sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678 \
+    --hash=sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13
+kombu==4.2.2.post1 \
+    --hash=sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d \
+    --hash=sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78 \
+    # via celery
+pytz==2018.9 \
+    --hash=sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9 \
+    --hash=sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c \
+    # via celery
+vine==1.2.0 \
+    --hash=sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1 \
+    --hash=sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76 \
+    # via amqp
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>pip-compile, setup.py → requirements.txt</h2>
+        <br>
+        <div class="terminal" data-content="Terminal">
+            # ... create some python.py with <span style="color:yellow">install_requires=['celery']</span>
+            <p>pip-compile --generate-hashes --output-file requirements.txt</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>pip-sync, установка из requirements.txt</h2>
+        <p>Путём процесса установки, удаленеия и обновления пакетов в виртуальном окружении доводит состояние пакетов до точно того состояния, которое описано в requirements.txt, если это возможно.</p>
+        <br>
+        <div class="terminal" data-content="Terminal">
+            <p>pip-sync</p>
+        </div>
+        <p><center>или</center></p>
+        <div class="terminal" data-content="Terminal">
+            <p>pip-sync custom-requirements.txt <span style="color:yellow">another-one.txt</span></p>
+        </div>
+        <p style="font-size: 22px">* pyp-sync не трогает пакеты инструментов пакетирования (setuptools, pip, pip-tools).</p>
+    </section>
+
+
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+    <section class="slide black clear"><h2 class="shout no-bg"></h2></section>
+
+
+
+
+
+
+
     <section class="slide half-red clear">
         <div>
             <h3>Links</h3>
@@ -310,7 +391,28 @@
 
 
 
-    
+
+
+    <section class="slide">
+        <h2>Всё ещё есть недостатки</h2>
+        <ul>
+            <li>
+                Предсказуемость и детерминированность всё ещё не на высоте:
+                <ul>
+                    <li>мэйнтейнер пакета может:
+                        <ul>
+                            <li>перезалить пакет <b>с той же версией</b> (но мы хотя-бы об этом узнаем)</li>
+                            <li>удалить пакет (и об этом — тоже)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+
+
+
     <div class="progress"></div>
 
     <footer class="badge">
