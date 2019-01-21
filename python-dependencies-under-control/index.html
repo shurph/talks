@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="dist/vendors/highlight/styles/github.css">
 </head>
 
+<style>
+    .slide .terminal.venv p::before {
+        content: '(venv) ~$ ';
+    }
+</style>
+
 <body class="shower list">
     <header class="caption">
         <h1>Python + Pipenv: Берём зависимости под контроль!</h1>
@@ -58,7 +64,7 @@
         <h2>Зависимости тянут за собой свои зависимости</h2>
         
         <br>
-        <div class="terminal" data-content="Terminal">
+        <div class="terminal venv" data-content="Terminal">
             <p>echo celery > requirements.txt
             <p>pip install -r requirements.txt
             <p>
@@ -77,7 +83,7 @@
         <h2>Концептуальные проблемы текущего подхода</h2>
         
         <br>
-        <div class="terminal" data-content="Terminal">
+        <div class="terminal venv" data-content="Terminal">
             <p>echo celery > requirements.txt
             <p>pip install -r requirements.txt
             <p>
@@ -102,7 +108,7 @@
         <h2>Практические проблемы текущего подхода</h2>
         
         <br>
-        <div class="terminal" data-content="Terminal">
+        <div class="terminal venv" data-content="Terminal">
             <p>echo celery > requirements.txt
             <p>pip install -r requirements.txt
             <p>
@@ -125,8 +131,8 @@
         <h2>«Решение» (↼_↼)    </h2>
 
         <p>Пихаем выхлоп <code>pip freeze</code> в <code>requirements.txt</code>!</p>
-
-        <div class="terminal" data-content="requirements.txt">
+       
+        <div class="terminal venv" data-content="requirements.txt">
             <p>pip install celery
             <p>pip freeze > requirements.txt
             <p> ...
@@ -187,7 +193,7 @@
         <h2><b style="color:red">Решение requirement.in</b> на практике</h2>
         
         <br>
-        <div class="terminal" data-content="Terminal">
+        <div class="terminal venv" data-content="Terminal">
             <p>echo 'celery<b style="color:Yellow">>=4.2.1,<4.3</b>' > requirements.in
             <p>pip install -r requirements.in
             <p>pip freeze > requirements.txt
