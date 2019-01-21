@@ -14,6 +14,9 @@
     .slide .terminal.venv p::before {
         content: '(venv) ~$ ';
     }
+    .slide .terminal pre {
+        white-space: pre;
+    }
 </style>
 
 <body class="shower list">
@@ -126,6 +129,62 @@
         </ul>
     </section>
     
+    <section class="slide">
+        <h2>Всё может сильно измениться за месяц-два</h2>
+        <center>Celery [ноябрь 2018 : январь 2019]</center>
+        <br>
+        <div class="terminal venv" data-content="DIFF">
+            <pre>
+        amqp==2.3.2             |       amqp==2.4.0
+        billiard==3.5.0.5       |       billiard==3.5.0.5
+        celery==4.2.1           |       celery==4.2.1
+        kombu==4.2.2            |       kombu==4.2.2.post1
+        pytz==2018.7            |       pytz==2018.9
+        vine==1.1.4             |       vine==1.2.0
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Всё может сильно измениться за месяц-два</h2>
+        <center>Celery [ноябрь 2018 : январь 2019]</center>
+        <br>
+        <div class="terminal venv" data-content="DIFF">
+            <pre>
+        amqp==2.3.2             |       amqp==<span style="color:yellow">2.4.0</span>
+        billiard==3.5.0.5       |       billiard==3.5.0.5
+        celery==4.2.1           |       celery==4.2.1
+        kombu==4.2.2            |       kombu==<span style="color:yellow">4.2.2.post1</span>
+        pytz==2018.7            |       pytz==<span style="color:yellow">2018.9</span>
+        vine==1.1.4             |       vine==<span style="color:yellow">1.2.0</span>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Всё может сильно измениться и за <span style="color:red">день-два</span></h2>
+        <center><b>aiohttp</b> [23.01.2019 : 24.01.2019]</center>
+        <br>
+        <div class="terminal venv" data-content="DIFF">
+            <pre>
+    aiohttp==3.5.4
+    async-timeout==3.0.1
+    attrs==18.2.0
+    chardet==3.0.4
+    idna==2.8
+    idna-ssl==1.1.0
+    multidict==4.5.2
+    typing-extensions==3.7.2
+    yarl==1.3.0
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide red clear">
+        <h2 class="shout no-bg">
+            История про сломанный aiohttp
+        </h2>
+    </section>
     
     <section class="slide">
         <h2>«Решение» (↼_↼)    </h2>
