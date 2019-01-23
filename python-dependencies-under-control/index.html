@@ -163,7 +163,7 @@
 
     <section class="slide">
         <h2>Всё может сильно измениться и за <span style="color:red">день-два</span></h2>
-        <center><b>aiohttp</b> [23.01.2019 : 24.01.2019]</center>
+        <center><b>aiohttp</b> [24.01.2019 : 25.01.2019]</center>
         <br>
         <div class="terminal venv" data-content="DIFF">
             <pre>
@@ -331,6 +331,9 @@
         <br>
         <div class="terminal" data-content="Terminal">
             <p>source /path/to/venv/bin/activate</p>
+        </div>
+        <br>
+        <div class="terminal venv" data-content="Terminal">
 
             <p>pip install pip-tools</p>
             <p></p>
@@ -345,7 +348,7 @@
     <section class="slide">
         <h2>pip-compile, requirements.in → requirements.txt</h2>
         <br>
-        <div class="terminal" data-content="Terminal">
+        <div class="terminal venv" data-content="Terminal">
             <p>echo celery > requirements.in</p>
             <p>pip-compile requirements.in <span style="color:yellow">--generate-hashes</span> --output-file requirements.txt</p>
         </div>
@@ -387,7 +390,7 @@ vine==1.2.0 \
     <section class="slide">
         <h2>pip-compile, setup.py → requirements.txt</h2>
         <br>
-        <div class="terminal" data-content="Terminal">
+        <div class="terminal venv" data-content="Terminal">
             # ... create some python.py with <span style="color:yellow">install_requires=['celery']</span>
             <p>pip-compile --generate-hashes --output-file requirements.txt</p>
         </div>
@@ -397,11 +400,11 @@ vine==1.2.0 \
         <h2>pip-sync, установка из requirements.txt</h2>
         <p>Путём процесса установки, удаленеия и обновления пакетов в виртуальном окружении доводит состояние пакетов до точно того состояния, которое описано в requirements.txt, если это возможно.</p>
         <br>
-        <div class="terminal" data-content="Terminal">
+        <div class="terminal venv" data-content="Terminal">
             <p>pip-sync</p>
         </div>
         <p><center>или</center></p>
-        <div class="terminal" data-content="Terminal">
+        <div class="terminal venv" data-content="Terminal">
             <p>pip-sync custom-requirements.txt <span style="color:yellow">another-one.txt</span></p>
         </div>
         <p style="font-size: 22px">* pyp-sync не трогает пакеты инструментов пакетирования (setuptools, pip, pip-tools).</p>
@@ -412,7 +415,7 @@ vine==1.2.0 \
     <section class="slide">
         <h2>Pipenv, почему?</h2>
         <blockquote>
-            Pipenv — инструмент, который привносит в python всё то лучшее, что есть в системах пакетирования для других языков.
+            Pipenv is a tool that aims to bring the best of all packaging worlds to the Python world.
             <div style="text-align: right; font-size: 24px">
                 <a href="https://github.com/kennethreitz"><strong>Kenneth Reitz</strong></a>,
                 создатель библиотеки
@@ -456,20 +459,20 @@ vine==1.2.0 \
         <ul>
         
         <li>Используется virtualenv под капотом.
-		</li>
+        </li>
         <li>Все виртуальные окружения, по умолчанию, хранятся в каталоге <code>~/.venvs</code>.
-			<ul>
-				<li>Это можно изменить:
-					<br>
-					<code>export WORKON_HOME=~/.venvs</code>
-				</li>
-				<li>Или даже так:
-					<br>
-					<code>export PIPENV_VENV_IN_PROJECT=True</code>
-					<br>
-					(окружение будет в каталоге <code>.venv</code> внутри каталога проекта)
-				</li>
-			</ul>
+            <ul>
+                <li>Это можно изменить:
+                    <br>
+                    <code>export WORKON_HOME=~/.venvs</code>
+                </li>
+                <li>Или даже так:
+                    <br>
+                    <code>export PIPENV_VENV_IN_PROJECT=True</code>
+                    <br>
+                    (окружение будет в каталоге <code>.venv</code> внутри каталога проекта)
+                </li>
+            </ul>
         </li>
         </ul>
     </section>
@@ -477,24 +480,24 @@ vine==1.2.0 \
     <section class="slide">
         <h2>Работа внутри виртуального окружения</h2>
         <ul>
-			<li>Запустить скрипт с нужным виртуальным окружением <b>единоразово</b>:
-				<br>
-				<code>pipenv run script-name</code>
-			</li>
-			<li>Активировать виртуальное окружение для выполнения команд в интерактивном режиме:
-				<br>
-				<code>pipenv shell</code>
-			</li>
+            <li>Запустить скрипт с нужным виртуальным окружением <b>единоразово</b>:
+                <br>
+                <code>pipenv run script-name.py</code>
+            </li>
+            <li>Активировать виртуальное окружение для выполнения команд в интерактивном режиме:
+                <br>
+                <code>pipenv shell</code>
+            </li>
         </ul>
     </section>
     
     <section class="slide">
         <h2>Возможные проблемы с virtualenv + Pipenv</h2>
         
-	        <ul>
-			<li>В <mark>shell</mark> режиме у некоторых людей появлялись проблемы с башем
-			</li>
-			<li>В <mark>run</mark> режиме не устанавливается переменная <code>$VIRTUAL_ENV</code>, соответствующая пути к виртуальному окружению</li>
+            <ul>
+            <li>В <mark>shell</mark> режиме у некоторых людей появлялись проблемы с башем
+            </li>
+            <li>В <mark>run</mark> режиме не устанавливается переменная <code>$VIRTUAL_ENV</code>, соответствующая пути к виртуальному окружению</li>
         </ul>
     </section>
     
@@ -503,34 +506,47 @@ vine==1.2.0 \
     <section class="slide">
         <h2>Управление пакетами</h2>
         
-        Можно устанавливать пакеты:
+        <p>Можно устанавливать пакеты:</p>
         
-        <p><code>pipenv install Flask</code></p>
+        <div class="terminal" data-content="Terminal">
+            <p>pipenv install celery</p>
+            <pre>
+...
+Installing celery…
+...
+Updated Pipfile.lock (c07081)!
+Installing dependencies from Pipfile.lock (c07081)…</pre>
+        </div>
         
-        Можно удалять пакеты:
+        <p>Можно удалять пакеты:</p>
         
-        <p><code>pipenv uninstall Flask</code></p>
-        
-        А ещё можно посмотреть граф зависимостей:
-        
-        <p><code>pipenv graph</code></p>
+        <div class="terminal" data-content="Terminal">
+            <p>pipenv uninstall celery</p>
+            <pre>Uninstalling celery…
+Uninstalling celery-4.2.1:
+  Successfully uninstalled celery-4.2.1</pre>
+        </div>
     </section>
     
     
     <section class="slide">
         <h2>Управление пакетами: pipenv graph</h2>
         
-        <pre>
-			<code>flower==0.9.2</code>
-			<code>  - babel [required: >=1.0, installed: 2.6.0]</code>
-			<code>    - pytz [required: >=0a, installed: 2018.7]</code>
-			<code>  - celery [required: >=3.1.0, installed: 4.2.1]</code>
-			<code>    - billiard [required: >=3.5.0.2,<3.6.0, installed: 3.5.0.4]</code>
-			<code>    - kombu [required: >=4.2.0,<5.0, installed: 4.2.1]</code>
-			<code>      - amqp [required: >=2.1.4,<3.0, installed: 2.3.2]</code>
-			<code>        - vine [required: >=1.1.3, installed: 1.1.4]</code>
-		</pre>
-    
+        <br>
+        
+        <div class="terminal" data-content="Terminal">
+            <p>pipenv graph</p>
+            <pre>
+celery==4.2.1
+  - billiard [required: >=3.5.0.2,<3.6.0, installed: 3.5.0.5]
+  - kombu [required: >=4.2.0,<5.0, installed: 4.2.2.post1]
+    - amqp [required: >=2.1.4,<3.0, installed: 2.4.0]
+      - vine [required: >=1.1.3, installed: 1.2.0]
+  - pytz [required: >dev, installed: 2018.9]
+
+            </pre>
+        </div>
+        
     </section>
     
     
@@ -538,22 +554,22 @@ vine==1.2.0 \
         <h2>Управление пакетами: pipenv install</h2>
         Два варианта.
         
-		<ol>        
-			<li>Указываем пакет, который нужно установить:
-				<code>pipenv install Flask</code>
-				<ul>
-					<li>добавляет Flask в <code>Pipfile</code></li>
-					<li>устанавливает Flask</li>
-					<li>обновляет <code>Pipfile.lock</code></li>
-				</ul>
-			
-			<li>Не указываем пакет:
-				<code>pipenv install</code>
-				<ul>
-					<li>устанавливает всё из <code>Pipfile</code></li>
-					<li>обновляет <code>Pipfile.lock</code></li>
-				</ul>
-			</li>
+        <ol>        
+            <li>Указываем пакет, который нужно установить:
+                <code>pipenv install Flask</code>
+                <ul>
+                    <li>добавляет Flask в <code>Pipfile</code></li>
+                    <li>устанавливает Flask</li>
+                    <li>обновляет <code>Pipfile.lock</code></li>
+                </ul>
+            
+            <li>Не указываем пакет:
+                <code>pipenv install</code>
+                <ul>
+                    <li>устанавливает всё из <code>Pipfile</code></li>
+                    <li>обновляет <code>Pipfile.lock</code></li>
+                </ul>
+            </li>
         </ol>
     
     </section>
@@ -564,9 +580,9 @@ vine==1.2.0 \
         
         <p>Pipfile:</p>
         <ul>
-			<li>Использует TOML для простоты чтения и написание</li>
-			<li>Позволяет указать два списка пакетов: packages и dev-packages (для окружения разработчика)</li>
-			<li>Стремится стать новым стандартом, заменой requirements.txt</li>
+            <li>Использует TOML для простоты чтения и написание</li>
+            <li>Позволяет указать два списка пакетов: packages и dev-packages (для окружения разработчика)</li>
+            <li>Стремится стать новым стандартом, заменой requirements.txt</li>
         </ul>
     </section>
     
@@ -600,8 +616,8 @@ elasticsearch-dsl = "<6.0.0,>=5.0.0"
 elasticsearch = "<6.0.0,>=5.0.0"
 ...
 api_client = {git =
-	"ssh://git@gitlab.com/something/api-client.git",
-	ref = "v1.0.2"}
+    "ssh://git@gitlab.com/something/api-client.git",
+    ref = "v1.0.2"}
 ...
 </code>
         </pre>
@@ -612,11 +628,9 @@ api_client = {git =
     <section class="slide">
         <h2>Детерминированность: Pipfile.lock</h2>
         <ul>
-			<li><code>pipenv lock</code> — генерация Pipfile.lock</li>
-			
-			<li><code>pipenv sync</code> — установка пакетов, указанных в Pipfile.lock</li>
-			
-			<li><code>pipenv clean</code> — удаление из виртуального окружения всех пакетов, которые не указаны в Pipfile.lock</li>
+            <li><code>pipenv lock</code> — генерация Pipfile.lock</li>
+            
+            <li><code>pipenv sync</code> — установка пакетов, указанных в Pipfile.lock</li>
         </ul>
     </section>
     
@@ -625,9 +639,9 @@ api_client = {git =
     <section class="slide">
         <h2>Детерминированность: Pipfile.lock, что внутри?</h2>
         <ul>
-			<li>Внутри Pipfile.lock находится список всех установленных пакетов, указанных в Pipfile, с запинеными версиями.</li>
-			<li>А также указаны все зависимости этих пакетов, также с запинеными версиями.</li>
-			<li>А также указаны хэш-суммы всех перечисленных пакетов</li>
+            <li>Внутри Pipfile.lock находится список всех установленных пакетов, указанных в Pipfile, с запинеными версиями.</li>
+            <li>А также указаны все зависимости этих пакетов, также с запинеными версиями.</li>
+            <li>А также указаны хэш-суммы всех перечисленных пакетов</li>
         </ul>
     </section>
     
@@ -637,33 +651,12 @@ api_client = {git =
     </section>
     
     
-    
-    <section class="slide">
-        <h2>Неужели всё так хорошо?</h2>
-        <h2 class="shout">
-            Не очень
-        </h2>
-    </section>
-    
-    
-    <section class="slide">
-        <h2>Неужели всё так хорошо?</h2>
-            <img
-                src="pictures/utochka.jpg"
-                alt=""
-                class="cover place center "
-            >
-    </section>
-    
-    
-    
-    
     <section class="slide">
         <h2>Неужели всё так хорошо?</h2>
         <ul>
-			<li>Pipenv very slow. Takes an hour to install and lock. <a href="https://github.com/pypa/pipenv/issues/2873">[#2873]</a></li>
-			<li>Pipenv ignores explicitly specified index for package <a href="https://github.com/pypa/pipenv/issues/2730">[#2730] (closed)</a></li>
-			<li>Pipenv is installing things without executing setup.py in the target environment <a href="https://github.com/tornadoweb/tornado/issues/2433">[Tornado #2433]</a></li>
+            <li>Pipenv very slow. Takes an hour to install and lock. <a href="https://github.com/pypa/pipenv/issues/2873">[#2873]</a></li>
+            <li>Pipenv ignores explicitly specified index for package <a href="https://github.com/pypa/pipenv/issues/2730">[#2730] (closed)</a></li>
+            <li>Pipenv is installing things without executing setup.py in the target environment <a href="https://github.com/tornadoweb/tornado/issues/2433">[Tornado #2433]</a></li>
         </ul>
     </section>
 
@@ -696,6 +689,8 @@ api_client = {git =
             <a href="https://www.python.org/dev/peps/pep-0516/">PEP 516</a>,
             <a href="https://www.python.org/dev/peps/pep-0517/">PEP 517</a>,
             <a href="https://www.python.org/dev/peps/pep-0518/">PEP 518</a>
+            <br><br>
+            <a href="https://snarky.ca/clarifying-pep-518/">CLARIFYING PEP 518</a>
         </h2>
     </section>
 
@@ -711,6 +706,28 @@ api_client = {git =
         <p>Не собираются тратить на это время:
             <a href="https://github.com/python/mypy/issues/5205">mypy</a>.
     </section>
+
+
+
+    <section class="slide">
+        <h2>Общие недостатки</h2>
+        <ul>
+            <li>
+                Предсказуемость и детерминированность всё-таки не на высоте:
+                <ul>
+                    <li>мэйнтейнер пакета может:
+                        <ul>
+                            <li>перезалить пакет <b>с той же версией</b> (но мы хотя-бы об этом узнаем)</li>
+                            <li>удалить пакет (и об этом — тоже)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <b>Как решать:</b> свой кэширующий PyPI сервер.
+    </section>
+
+
 
 
 
@@ -744,25 +761,6 @@ api_client = {git =
     
 
 
-
-
-
-    <section class="slide">
-        <h2>Всё ещё есть недостатки</h2>
-        <ul>
-            <li>
-                Предсказуемость и детерминированность всё ещё не на высоте:
-                <ul>
-                    <li>мэйнтейнер пакета может:
-                        <ul>
-                            <li>перезалить пакет <b>с той же версией</b> (но мы хотя-бы об этом узнаем)</li>
-                            <li>удалить пакет (и об этом — тоже)</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </section>
 
 
 
