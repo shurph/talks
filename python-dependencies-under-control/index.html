@@ -58,7 +58,7 @@
         <br>
         <div class="terminal" data-content="Terminal">
             <p>echo celery > requirements.txt
-            <p><b style="color:Yellow">./.venv/bin/pip</b> install -r requirements.txt
+            <p><b style="color:Yellow">./.venv/bin/python -m pip</b> install -r requirements.txt
             <p>
         </div>
     </section>
@@ -101,7 +101,8 @@
             </li>
             <li>Нет предсказуемости: 
                 <ul>
-                    <li>содержание репозитория (PyPI) может измениться в любой момент</li>
+                    <li>содержание репозитория (PyPI) может измениться в любой момент<br>
+                    <b>и мы об этом даже не узнаем</b></li>
                 </ul>
             </li>
         </ul>
@@ -232,7 +233,8 @@
 
     
     <section class="slide">
-        <h2>Workaround для некоторых минусов<br> или ещё одно «Решение» (↼_↼)</h2>
+        <h2>Workaround для некоторых минусов</h2>
+        <h3>Или ещё одно «Решение» (↼_↼)</h3>
         <ul>
             <li>Использовать два файла:</li>
             <ul>
@@ -390,7 +392,7 @@ vine==1.2.0 \
     <section class="slide">
         <h2>pip-compile, setup.py → requirements.txt</h2>
         <br>
-        <div class="terminal venv" data-content="Terminal">
+        <div class="terminal venv" data-content="Terminal" style="width: 100%">
             # ... create some python.py with <span style="color:yellow">install_requires=['celery']</span>
             <p>pip-compile --generate-hashes --output-file requirements.txt</p>
         </div>
