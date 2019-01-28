@@ -16,6 +16,7 @@
     }
     .slide .terminal pre {
         white-space: pre;
+        margin: 0;
     }
 </style>
 
@@ -505,28 +506,113 @@ vine==1.2.0 \
     
     
     
+    
+    
+    
     <section class="slide">
         <h2>Управление пакетами</h2>
         
-        <p>Можно устанавливать пакеты:</p>
+        <p>Установка пакетов:</p>
         
-        <div class="terminal" data-content="Terminal">
+        <div class="terminal" data-content="Terminal" style="width:100%">
+            <p>pipenv install celery</p>
+            <pre>Installing celery…
+✔ Installation Succeeded 
+Pipfile.lock (c07081) out of date, updating to (ca72e7)…
+Locking [dev-packages] dependencies…
+Locking [packages] dependencies…
+✔ Success! 
+Updated Pipfile.lock (c07081)!
+Installing dependencies from Pipfile.lock (c07081)…
+  🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 6/6 — 00:00:01
+To activate this project's virtualenv, run pipenv shell.
+Alternatively, run a command inside the virtualenv with pipenv run.</pre>
+        </div>
+    </section>
+    
+    
+    <!--<section class="slide">
+    <h2>pipenv install, первый запуск</h2>
+    <div class="terminal" data-content="Terminal" style="width:100%">
             <p>pipenv install celery</p>
             <pre>
-...
+Creating a virtualenv for this project…
+Pipfile: /home/develop/tmp/pipenv-celery-v3/Pipfile
+Using /usr/bin/python3 (3.6.7) to create virtualenv…
+⠇ Creating virtual environment...Already using interpreter /usr/bin/python3
+Using base prefix '/usr'
+New python executable in /home/develop/.venvs/pipenv-celery-v3-kxjm_TGY/bin/python3
+Also creating executable in /home/develop/.venvs/pipenv-celery-v3-kxjm_TGY/bin/python
+Installing setuptools, pip, wheel...done.
+✔ Successfully created virtual environment! 
+Virtualenv location: /home/develop/.venvs/pipenv-celery-v3-kxjm_TGY
+Creating a Pipfile for this project…
+
 Installing celery…
-...
+✔ Installation Succeeded 
+Pipfile.lock (c07081) out of date, updating to (ca72e7)…
+Locking [dev-packages] dependencies…
+Locking [packages] dependencies…
+✔ Success! 
 Updated Pipfile.lock (c07081)!
-Installing dependencies from Pipfile.lock (c07081)…</pre>
+Installing dependencies from Pipfile.lock (c07081)…
+  🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 6/6 — 00:00:01
+To activate this project's virtualenv, run pipenv shell.
+Alternatively, run a command inside the virtualenv with pipenv run.
+
+
+
+</pre>
         </div>
+    </section><!-- -->
+    
+    
+    
+    <section class="slide">
+        <h2>Управление пакетами: pipenv install</h2>
+        Два варианта.
         
-        <p>Можно удалять пакеты:</p>
+        <ol>        
+            <li>Указываем пакет, который нужно установить:
+                <code>pipenv install celery</code>
+                <ul>
+                    <li>добавляет celery в <code>Pipfile</code></li>
+                    <li>устанавливает celery</li>
+                    <li>обновляет <code>Pipfile.lock</code></li>
+                </ul>
+            
+            <li>Не указываем пакет:
+                <code>pipenv install</code>
+                <ul>
+                    <li>устанавливает всё из <code>Pipfile</code></li>
+                    <li>обновляет <code>Pipfile.lock</code></li>
+                </ul>
+            </li>
+        </ol>
+    
+    </section>
         
-        <div class="terminal" data-content="Terminal">
-            <p>pipenv uninstall celery</p>
+        
+    <section class="slide">
+        <h2>Управление пакетами</h2>
+        <p>Удаление пакетов:</p>
+        <div class="terminal" data-content="Terminal" style="width: 100%">
+            <p><span style="color:yellow">pipenv uninstall celery</span></p>
             <pre>Uninstalling celery…
 Uninstalling celery-4.2.1:
   Successfully uninstalled celery-4.2.1</pre>
+            <p><span style="color:yellow">pip freeze</span></p>
+            <pre>amqp==2.4.0
+billiard==3.5.0.5
+kombu==4.2.2.post1
+pytz==2018.9
+vine==1.2.0</pre>
+            <p><span style="color:yellow">pipenv clean</span></p>
+            <pre>Uninstalling vine…
+Uninstalling pytz…
+Uninstalling kombu…
+Uninstalling billiard…
+Uninstalling amqp…</pre>
         </div>
     </section>
     
@@ -534,7 +620,7 @@ Uninstalling celery-4.2.1:
     <section class="slide">
         <h2>Управление пакетами: pipenv graph</h2>
         
-        <br>
+        <p>&nbsp;</p>
         
         <div class="terminal" data-content="Terminal">
             <p>pipenv graph</p>
@@ -551,30 +637,30 @@ celery==4.2.1
         
     </section>
     
-    
     <section class="slide">
-        <h2>Управление пакетами: pipenv install</h2>
-        Два варианта.
+        <h2>Управление пакетами: pipenv graph</h2>
         
-        <ol>        
-            <li>Указываем пакет, который нужно установить:
-                <code>pipenv install Flask</code>
-                <ul>
-                    <li>добавляет Flask в <code>Pipfile</code></li>
-                    <li>устанавливает Flask</li>
-                    <li>обновляет <code>Pipfile.lock</code></li>
-                </ul>
-            
-            <li>Не указываем пакет:
-                <code>pipenv install</code>
-                <ul>
-                    <li>устанавливает всё из <code>Pipfile</code></li>
-                    <li>обновляет <code>Pipfile.lock</code></li>
-                </ul>
-            </li>
-        </ol>
-    
+        <p>Решение проблем с недекларированными зависимостями в библиотеках</p>
+        
+        <div class="terminal" data-content="Terminal">
+            <p>pipenv install factory-boy python-slugify</span></p>
+            <p>pipenv graph | <span style="color:yellow">grep -iE 'unidecode|'</span></p>
+            <pre>
+factory-boy==2.11.1
+  - Faker [required: >=0.7.0, installed: 1.0.2]
+    - python-dateutil [required: >=2.4, installed: 2.7.5]
+      - six [required: >=1.5, installed: 1.12.0]
+    - six [required: >=1.10, installed: 1.12.0]
+    - text-<span style="color:yellow">unidecode</span> [required: ==1.2, installed: 1.2]
+python-slugify==2.0.1
+  - <span style="color:yellow">Unidecode</span> [required: >=0.04.16, installed: 1.0.23]
+            </pre>
+        </div>
+        
     </section>
+    
+    
+    
     <section class="slide">
         <h2>Управление пакетами: Pipfile</h2>
         
@@ -589,8 +675,9 @@ celery==4.2.1
     </section>
     
     <section class="slide">
-        <h2>Управление пакетами: Pipfile, пример</h2>
-        <div class="terminal" data-content="requirements.txt" style="width: 100%">
+        <h2>Pipfile: что внутри?</h2>
+        <br>
+        <div class="terminal" data-content="Pipfile" style="width: 100%">
             <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
 [[source]]
 url = "https://pypi.org/simple"
@@ -608,22 +695,120 @@ python_version = "3.6"
     </section>
     
     
+    <section class="slide">
+        <h2>Pipfile: можно указывать свой PyPI</h2>
+        <br>
+        <div class="terminal" data-content="Pipfile" style="width: 100%">
+            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
+[[source]]
+<span style="color:yellow">url = "https://pypi.org/simple"</span>
+verify_ssl = true
+name = "pypi"
+[packages]
+django = "*"
+celery = "*"
+[dev-packages]
+"flake8" = "*"
+moto = "==1.3.4"
+[requires]
+python_version = "3.6"
+        </pre></div>
+    </section>
     
     <section class="slide">
-        <h2>Управление пакетами: Pipfile, пример 2</h2>
-        <pre>
-<code>...
+        <h2>Pipfile: указывается версия питона для проекта</h2>
+        <br>
+        <div class="terminal" data-content="Pipfile" style="width: 100%">
+            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
 [packages]
-elasticsearch-dsl = "<6.0.0,>=5.0.0"
-elasticsearch = "<6.0.0,>=5.0.0"
-...
-api_client = {git =
-    "ssh://git@gitlab.com/something/api-client.git",
-    ref = "v1.0.2"}
-...
-</code>
-        </pre>
+django = "*"
+celery = "*"
+[dev-packages]
+"flake8" = "*"
+moto = "==1.3.4"
+[requires]
+<span style="color:yellow">python_version = "3.6"</span>
+        </pre></div>
     </section>
+    
+    <section class="slide">
+        <h2>Pipfile: диапазоны версий, как в requiements.txt</h2>
+        <br>
+        <div class="terminal" data-content="Pipfile" style="width: 100%">
+            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+[packages]
+django = <span style="color:yellow">"*"</span>
+celery = "*"
+elasticsearch = <span style="color:yellow">"<6.0.0,>=5.0.0"</span>
+[dev-packages]
+"flake8" = "*"
+moto = <span style="color:yellow">"==1.3.4"</span>
+[requires]
+python_version = "3.6"
+        </pre></div>
+    </section>
+    
+    <section class="slide">
+        <h2>Pipfile: свой синтаксис для Git-ссылок</h2>
+        <br>
+        <div class="terminal" data-content="Pipfile" style="width: 100%">
+            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+[packages]
+django = "*"
+celery = "*"
+elasticsearch = "<6.0.0,>=5.0.0"
+api_client = <span style="color:yellow">{git =
+    "ssh://git@gitlab.com/something/api-client.git",
+    ref = "v1.0.2"}</span>
+[dev-packages]
+"flake8" = "*"
+moto = "==1.3.4"
+[requires]
+python_version = "3.6"</pre></div>
+    </section>
+    
+    
+   
+    <section class="slide">
+        <h2>Pipfile: несколько PyPI репозиториев</h2>
+        <div class="terminal" data-content="Pipfile" style="width: 100%">
+            <pre style="overflow:hidden; ">
+[[source]]
+url = <span style="color:yellow">"https://pypi.org/simple"</span>
+verify_ssl = true
+name = "<span style="color:CYAN">pypi</span>"
+
+[[source]]
+url = <span style="color:yellow">"http://pypi.famous.org/simple"</span>
+verify_ssl = false
+
+name = "<span style="color:CYAN">famous</span>"
+[packages]
+django = <span style="color:yellow">"*"</span>
+celery = <span style="color:yellow">{version="*", index="<span style="color:CYAN">pypi</span>"}</span>
+api_base_client = <span style="color:yellow">{version="*", index="<span style="color:CYAN">famous</span>"}</span>
+api_client = {git="ssh://git@gitlab.com/something/api-client.git",ref = "v1.0.2"}
+[dev-packages]
+"flake8" = "*"
+moto = "==1.3.4"
+[requires]
+python_version = "3.6"</pre></div>
+    </section>
+     
+    
+    
     
     
     
@@ -645,6 +830,138 @@ api_client = {git =
             <li>А также указаны все зависимости этих пакетов, также с запинеными версиями.</li>
             <li>А также указаны хэш-суммы всех перечисленных пакетов</li>
         </ul>
+    </section>
+    
+    <section class="slide">
+        <h2>Pipfile.lock, что внутри? Пустой проект:</h2>
+        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
+            <pre style="overflow:hidden; ">{
+    "_meta": {
+        "hash": {
+            "sha256": "415dfdcb118dd9bdfef17671cb7dcd78dbd69b6ae7d4f39e8b44e71d60ca72e7"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.6"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {},
+    "develop": {}
+}</pre>
+        </div>
+    </section>
+    
+    
+        <section class="slide">
+        <h2>Pipfile.lock: Секция default для celery</h2>
+        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
+            <pre style="overflow:hidden; ">
+"default": {
+    "amqp": {
+        "hashes": [
+            "sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464",
+            "sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b"
+        ],
+        "version": "==2.4.0"
+    },
+    "billiard": {
+        "hashes": [
+            "sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e"
+        ],
+        "version": "==3.5.0.5"
+    },
+    "celery": {
+        "hashes": [
+            "sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678",
+            "sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13"
+        ],
+        "index": "pypi",
+        "version": "==4.2.1"
+    },
+    "kombu": {
+        "hashes": [
+            "sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d",
+            "sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78"
+        ],
+        "version": "==4.2.2.post1"
+    },
+    "pytz": {
+        "hashes": [
+            "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
+            "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
+        ],
+        "version": "==2018.9"
+    },
+    "vine": {
+        "hashes": [
+            "sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1",
+            "sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76"
+        ],
+        "version": "==1.2.0"
+    }
+},
+            </pre>
+        </div>
+    </section>
+    
+    
+    <section class="slide">
+        <h2>Pipfile.lock: Секция default для celery</h2>
+        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
+            <pre style="overflow:hidden;font-size: 14px; line-height: 11px ">
+"default": {
+    "amqp": {
+        "hashes": [
+            "sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464",
+            "sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b"
+        ],
+        "version": "==2.4.0"
+    },
+    "billiard": {
+        "hashes": [
+            "sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e"
+        ],
+        "version": "==3.5.0.5"
+    },
+    "celery": {
+        "hashes": [
+            "sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678",
+            "sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13"
+        ],
+        "index": "pypi",
+        "version": "==4.2.1"
+    },
+    "kombu": {
+        "hashes": [
+            "sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d",
+            "sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78"
+        ],
+        "version": "==4.2.2.post1"
+    },
+    "pytz": {
+        "hashes": [
+            "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
+            "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
+        ],
+        "version": "==2018.9"
+    },
+    "vine": {
+        "hashes": [
+            "sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1",
+            "sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76"
+        ],
+        "version": "==1.2.0"
+    }
+},
+            </pre>
+        </div>
     </section>
     
     
@@ -730,41 +1047,29 @@ api_client = {git =
     </section>
 
 
+    <section class="slide">
+        <h2>Сравниваем инструменты и подходы</h2>
+        <figure>
+            <img src="./pictures/comp-table.png" alt="" class="cover">
+        </figure>
+    </section>
 
 
 
     <section class="slide half-red clear">
         <div>
-            <h3>Links</h3>
+            <h3>Выводы</h3>
         </div>
         <div>
             <ul style="font-size: 85%">  
-                <li>
-                    <a href="https://nvie.com/posts/pin-your-packages/" class="">Pin Your Packages</a>
-                    <span>by</span>
-                    <span>Vincent Driessen</span>
-                    <br>
-                    <sup><code style="font-size: 95%">https://nvie.com/posts/pin-your-packages/</code></sup>
-                </li>
-                <li>
-                    <a href="https://nvie.com/posts/better-package-management/" class="">Better Package Management</a>
-                    <span>by</span>
-                    <span>Vincent Driessen</span>
-                    <br>
-                    <sup><code style="font-size: 95%">https://nvie.com/posts/better-package-management/</code></sup>
-                </li>
-            </ul>
+                <li>Мы живём в эпоху перемен</li>
+                <li>Если ваш подход уже отлажен, не стоит сейчас что-то менять</li>
+                
+                <li>Если стартуете новый проект, то смотрите в сторону pipenv — это амбициозный проект со всеми шансами стать стандартом в питон-мире в ближайшем будущем</li>
+                </ul>
         </div>
     </section>
     
-    
-    
-    
-    
-
-
-
-
 
 
     <div class="progress"></div>
