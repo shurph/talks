@@ -18,6 +18,20 @@
         white-space: pre;
         margin: 0;
     }
+    .slide .terminal.wide {
+        width: 100%;
+    }
+    .slide table.wide {
+        width: 100%;
+        margin:0;
+        
+    }
+    .slide table.wide td:first-child, .slide table.wide th:first-child {
+        padding-left: 0;
+    }
+    .slide table.wide td:last-child, .slide table.wide th:last-child {
+        padding-right: 0;
+    }
 </style>
 
 <body class="shower list">
@@ -1047,14 +1061,51 @@ python_version = "3.6"</pre></div>
     </section>
 
 
+
     <section class="slide">
         <h2>Сравниваем инструменты и подходы</h2>
-        <figure>
-            <img src="./pictures/comp-table.png" alt="" class="cover">
-        </figure>
+            <table class="wide" style="font-size:22px;">
+                <tr>
+                    <td></td>
+                    <td style="width: 20%">requirements.txt</td>
+                    <td style="width: 12%">pip-tools</td>
+                    <td style="width: 10%">pipenv</td>
+                    <td style="width: 10%">poetry</td>
+                </tr>
+                <tr>
+                    <td>проверка хэшей</td>
+                    <td>да</td><td>да</td><td>да</td><td>да</td>
+                </tr>
+                <tr>
+                    <td>генерация хэшей</td>
+                    <td>нет</td><td>да</td><td>да</td><td>да</td>
+                </tr>
+                <tr>
+                    <td>разные PyPI</td>
+                    <td>нет</td><td>нет</td><td>да</td><td>да</td>
+                </tr>
+                <tr>
+                    <td>разные версии Python</td>
+                    <td>нет</td><td>нет</td><td>нет</td><td>да</td>
+                </tr>
+                <tr>
+                    <td>встроенная работа с виртуальным окружением</td>
+                    <td>нет</td><td>нет</td><td>да</td><td>да</td>
+                </tr>
+                <tr>
+                    <td>подходит для управления зависимостями библиотек</td>
+                    <td>нет</td><td>нет</td><td>нет</td><td>да</td>
+                </tr>
+                <tr>
+                    <td>публикация вашего проекта на PyPI</td>
+                    <td>нет</td><td>нет</td><td>нет</td><td>да</td>
+                </tr>
+                <!--<tr>
+                    <td>встроенная проверка соответствия стайл-гайдам</td>
+                    <td>нет</td><td>нет</td><td>уже нет</td><td>нет</td>
+                </tr><!-- -->
+            </table>
     </section>
-
-
 
     <section class="slide half-red clear">
         <div>
