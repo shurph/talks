@@ -657,7 +657,7 @@ celery==4.2.1
         <p>Решение проблем с недекларированными зависимостями в библиотеках</p>
         
         <div class="terminal" data-content="Terminal">
-            <p>pipenv install factory-boy python-slugify</span></p>
+            <p>pipenv install factory-boy python-slugify==2.0.0</span></p>
             <p>pipenv graph | <span style="color:yellow">grep -iE 'unidecode|'</span></p>
             <pre>
 factory-boy==2.11.1
@@ -667,7 +667,6 @@ factory-boy==2.11.1
     - six [required: >=1.10, installed: 1.12.0]
     - text-<span style="color:yellow">unidecode</span> [required: ==1.2, installed: 1.2]
 python-slugify==2.0.1
-  - <span style="color:yellow">Unidecode</span> [required: >=0.04.16, installed: 1.0.23]
             </pre>
         </div>
         
