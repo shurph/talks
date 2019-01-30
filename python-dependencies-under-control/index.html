@@ -40,6 +40,25 @@
         color: #ed1c24;
         font-weight: bold;
     }
+    .slide .terminal mark {
+        color: yellow;    
+        
+        background: none;
+        z-index: auto;
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+    }
+    .slide .terminal mark.green {
+        color: #32fb2d;
+    }
+    .slide .terminal mark.blue {
+        color: #35eaff;
+    }
+    .slide .terminal mark.orange {
+        color: #ff941b;;
+    }
+    
 </style>
 
 <body class="shower list">
@@ -186,6 +205,60 @@
     </section>
 
     <section class="slide">
+        <h2>Всё становится сложнее, когда пакетов больше</h2>
+        <div class="terminal" data-content="vim &nbsp; diff &nbsp; freeze_09_01_2019.txt &nbsp; freeze_31_01_2019.txt">
+            <pre>
+ 1 +-- 15 lines: amqp==2.4.0    +   1 +-- 15 lines: amqp==2.4.0
+16 coreschema==0.0.4               16 coreschema==0.0.4
+17 coverage==4.5.2                 17 coverage==4.5.2
+18 cryptography==2.4.2             18 cryptography==2.5
+19 decorator==4.3.2                19 decorator==4.3.2
+20 Django==2.1.5                   20 Django==2.1.5
+21 +--  7 lines: django-bulk-up +  21 +--  7 lines: django-bulk-u
+28 django-timezone-field==3.0      28 django-timezone-field==3.0
+29 djangorestframework==3.9.1      29 djangorestframework==3.9.1
+30 docker==3.6.0                   30 docker==3.7.0
+31 docker-pycreds==0.4.0           31 docker-pycreds==0.4.0
+32 docutils==0.14                  32 docutils==0.14
+33 ecdsa==0.13                     33 ecdsa==0.13
+   ----------------------------    34 entrypoints==0.3
+34 factory-boy==2.11.1             35 factory-boy==2.11.1
+35 Faker==1.0.1                    36 Faker==1.0.2
+36 flake8==3.6.0                   37 flake8==3.7.3
+37 flake8-quotes==1.0.0            38 flake8-quotes==1.0.0
+38 +-- 12 lines: flower==0.9.2  +  39 +-- 12 lines: flower==0.9.2
+50 Jinja2==2.10                    51 Jinja2==2.10
+51 jmespath==0.9.3                 52 jmespath==0.9.3
+52 jsondiff==1.1.1                 53 jsondiff==1.1.1
+53 jsonpickle==1.0                 54 jsonpickle==1.1
+54 kombu==4.2.2.post1              55 kombu==4.2.2.post1
+55 MarkupSafe==1.1.0               56 MarkupSafe==1.1.0
+56 mccabe==0.6.1                   57 mccabe==0.6.1
+57 mock==2.0.0                     58 mock==2.0.0
+58 moto==1.3.7                     59 moto==1.3.7
+59 openapi-codec==1.3.2            60 openapi-codec==1.3.2
+60 opentracing==1.3.0              61 opentracing==1.3.0
+61 opentracing-instrumentation>    62 opentracing-instrumentatio>
+62 parameterized==0.6.3            63 parameterized==0.6.3
+63 parso==0.3.2                    64 parso==0.3.2
+64 pbr==5.1.1                      65 pbr==5.1.2
+65 pexpect==4.6.0                  66 pexpect==4.6.0
+66 pickleshare==0.7.5              67 pickleshare==0.7.5
+67 prompt-toolkit==2.0.8           68 prompt-toolkit==2.0.8
+68 psycopg2==2.7.7                 69 psycopg2==2.7.7
+69 ptyprocess==0.6.0               70 ptyprocess==0.6.0
+70 pyaml==18.11.0                  71 pyaml==18.11.0
+71 pycodestyle==2.4.0              72 pycodestyle==2.5.0
+72 pycountry==18.12.8              73 pycountry==18.12.8
+73 pycparser==2.19                 74 pycparser==2.19
+74 pycryptodome==3.7.2             75 pycryptodome==3.7.3
+75 pyflakes==2.0.0                 76 pyflakes==2.1.0
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="slide">
         <h2>Всё может сильно измениться и за <span style="color:red">день-два</span></h2>
         <center><b>aiohttp</b> [24.01.2019 : 25.01.2019]</center>
         <br>
@@ -204,14 +277,37 @@
         </div>
     </section>
 
-    <section class="slide red clear">
+    <!--<section class="slide red clear">
         <h2 class="shout no-bg">
             История про сломанный aiohttp
         </h2>
+    </section>-->
+    
+    
+    
+    
+    <section class="slide clear">
+        <h2 class="shout no-bg">
+            Какие есть решения?
+        </h2>
     </section>
     
+        <section class="slide clear">
+        <h2 class="shout no-bg">
+            Какие есть решения?
+            <br>
+            <small style="font-size: 40px;">
+            1. Наивное решение <br>
+            2. Менее наивное решение <br>
+            3. Специализированные инструменты <br>
+            
+            </small>
+        </h2>
+    </section>
+    
+    
     <section class="slide">
-        <h2>«Решение» (↼_↼)    </h2>
+        <h2>«Решение» (↼_↼). Наивное решение   </h2>
 
         <p>Пихаем выхлоп <code>pip freeze</code> в <code>requirements.txt</code>!</p>
        
@@ -257,7 +353,7 @@
     
     <section class="slide">
         <h2>Workaround для некоторых минусов</h2>
-        <h3>Или ещё одно «Решение» (↼_↼)</h3>
+        <h3 style="font-size: 32px;">Или ещё одно «Решение» (↼_↼). Менее наивное решение</h3>
         <ul>
             <li>Использовать два файла:</li>
             <ul>
@@ -336,6 +432,11 @@
 
 
 
+    <section class="slide black clear">
+        <h2 class="shout no-bg">
+            pip-tools
+        </h2>
+    </section>
 
 
     <section class="slide">
@@ -410,6 +511,38 @@ vine==1.2.0 \
             </pre>
         </div>
     </section>
+    
+    
+    <section class="slide">
+        <h2>Содержимое requirements.txt (by pip-compile)</h2>
+        <div class="terminal" data-content="requirements.txt" style="width: 100%">
+            <pre style="overflow:hidden; font-size: 22px; line-height: 22px;">
+amqp==2.4.0 \
+    --hash=sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464 \
+    --hash=sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b \
+    <mark class="blue"># via kombu</mark>
+billiard==3.5.0.5 \
+    --hash=sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e \
+    <mark># via celery</mark>
+celery==4.2.1 \
+    --hash=sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678 \
+    --hash=sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13
+kombu==4.2.2.post1 \
+    --hash=sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d \
+    --hash=sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78 \
+    <mark># via celery</mark>
+pytz==2018.9 \
+    --hash=sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9 \
+    --hash=sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c \
+    <mark># via celery</mark>
+vine==1.2.0 \
+    --hash=sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1 \
+    --hash=sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76 \
+    <mark class="green"># via amqp</mark>
+            </pre>
+        </div>
+    </section>
+
 
 
     <section class="slide">
@@ -437,9 +570,14 @@ vine==1.2.0 \
 
 
 
+    <section class="slide black clear">
+        <h2 class="shout no-bg">
+            Pipenv
+    </section>
+
     <section class="slide">
         <h2>Pipenv, почему?</h2>
-        <blockquote>
+        <blockquote style="font-size: 40px; padding-left: 20px;">
             Pipenv is a tool that aims to bring the best of all packaging worlds to the Python world.
             <div style="text-align: right; font-size: 24px">
                 <a href="https://github.com/kennethreitz"><strong>Kenneth Reitz</strong></a>,
@@ -448,7 +586,7 @@ vine==1.2.0 \
             </div>
         </blockquote>
         <br><br>
-        <blockquote>
+        <blockquote style="font-size: 40px; padding-left: 20px">
             Your tool of choice these days should be <a href="">Pipenv</a>.
             <div style="text-align: right; font-size: 24px">
                 <a href="https://github.com/nvie"><strong>Vincent Driessen</strong></a>,
@@ -838,8 +976,18 @@ python_version = "3.6"</pre></div>
         <ul>
             <li><code>pipenv lock</code> — генерация Pipfile.lock</li>
             
-            <li><code>pipenv sync</code> — установка пакетов, указанных в Pipfile.lock</li>
+            <li><code>pipenv sync</code> — установка пакетов, указанных в Pipfile.lock (для прода)</li>
         </ul>
+    </section>
+    
+    
+    <section class="slide">
+        <h2>pipenv sync</h2>
+        <div class="terminal wide" data-content="Pipfile">
+            <pre style="overflow:hidden; font-size: 32px;">
+                
+            </pre>
+        </div>
     </section>
     
     
@@ -1001,8 +1149,15 @@ python_version = "3.6"</pre></div>
     </section>
 
 
-    <section class="slide black clear">
+    <section class="slide red clear">
         <h2 class="shout no-bg">Ещё варианты?</h2>
+    </section>
+    
+    
+
+    <section class="slide black clear">
+        <h2 class="shout no-bg">
+            Poetry
     </section>
 
     <section class="slide">
@@ -1119,16 +1274,36 @@ python_version = "3.6"</pre></div>
             <h3>Выводы</h3>
         </div>
         <div>
-            <ul style="font-size: 85%">  
+            <ul>  
                 <li>Мы живём в эпоху перемен</li>
-                <li>Если ваш подход уже отлажен, не стоит сейчас что-то менять</li>
+                <li>Если ваш подход уже отлажен,<br> не стоит сейчас что-то менять</li>
                 
-                <li>Если стартуете новый проект, то смотрите в сторону pipenv — это амбициозный проект со всеми шансами стать стандартом в питон-мире в ближайшем будущем</li>
-                </ul>
+                <li>Если стартуете новый проект, то — Pipenv</li>
+            </ul>
         </div>
     </section>
     
 
+    <section class="slide half-black clear">
+        <div>
+            <h3>Links</h3>
+        </div>
+        <div>
+            <ul style="font-size: 66.6%">  
+                <li>
+                    <a href="https://nvie.com/posts/pin-your-packages/" class="">Pin Your Packages</a>
+                    <span>by</span>
+                    <span>Vincent Driessen</span>
+				</li>
+                <li>
+                    <a href="https://nvie.com/posts/better-package-management/" class="">Better Package Management</a>
+                    <span>by</span>
+                    <span>Vincent Driessen</span>
+				</li>
+            </ul>
+        </div>
+    </section>
+    
 
     <div class="progress"></div>
 
