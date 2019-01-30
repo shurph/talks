@@ -32,6 +32,14 @@
     .slide table.wide td:last-child, .slide table.wide th:last-child {
         padding-right: 0;
     }
+    .good {
+        color: #4cbb17;
+        font-weight: bold;
+    }
+    .bad {
+        color: #ed1c24;
+        font-weight: bold;
+    }
 </style>
 
 <body class="shower list">
@@ -1073,35 +1081,35 @@ python_version = "3.6"</pre></div>
                 </tr>
                 <tr>
                     <td>проверка хэшей</td>
-                    <td>да</td><td>да</td><td>да</td><td>да</td>
+                    <td class="good">да</td><td class="good">да</td><td class="good">да</td><td class="good">да</td>
                 </tr>
                 <tr>
                     <td>генерация хэшей</td>
-                    <td>нет</td><td>да</td><td>да</td><td>да</td>
+                    <td class="bad">нет</td><td class="good">да</td><td class="good">да</td><td class="good">да</td>
                 </tr>
                 <tr>
                     <td>разные PyPI</td>
-                    <td>нет</td><td>нет</td><td>да</td><td>да</td>
+                    <td class="bad">нет</td><td class="bad">нет</td><td class="good">да</td><td class="good">да</td>
                 </tr>
                 <tr>
                     <td>разные версии Python</td>
-                    <td>нет</td><td>нет</td><td>нет</td><td>да</td>
+                    <td class="bad">нет</td><td class="bad">нет</td><td class="bad">нет</td><td class="good">да</td>
                 </tr>
                 <tr>
                     <td>встроенная работа с виртуальным окружением</td>
-                    <td>нет</td><td>нет</td><td>да</td><td>да</td>
+                    <td class="bad">нет</td><td class="bad">нет</td><td class="good">да</td><td class="good">да</td>
                 </tr>
                 <tr>
                     <td>подходит для управления зависимостями библиотек</td>
-                    <td>нет</td><td>нет</td><td>нет</td><td>да</td>
+                    <td class="bad">нет</td><td class="bad">нет</td><td class="bad">нет</td><td class="good">да</td>
                 </tr>
                 <tr>
                     <td>публикация вашего проекта на PyPI</td>
-                    <td>нет</td><td>нет</td><td>нет</td><td>да</td>
+                    <td class="bad">нет</td><td class="bad">нет</td><td class="bad">нет</td><td class="good">да</td>
                 </tr>
                 <!--<tr>
                     <td>встроенная проверка соответствия стайл-гайдам</td>
-                    <td>нет</td><td>нет</td><td>уже нет</td><td>нет</td>
+                    <td class="bad">нет</td><td class="bad">нет</td><td style="color:orange">уже нет</td><td class="bad">нет</td>
                 </tr><!-- -->
             </table>
     </section>
