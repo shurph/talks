@@ -118,21 +118,14 @@
         <h2>Как мы это делаем сейчас?</h2>
         
         <br>
-        <div class="terminal" data-content="Terminal">
+        <div class="terminal wide" data-content="Terminal">
             <p>echo celery > requirements.txt
             <p><b style="color:Yellow">./.venv/bin/python -m pip</b> install -r requirements.txt
+            <p>source ./.venv/bin/activate
             <p>
         </div>
-    </section>
-    
-    <section class="slide">
-        <h2>Зависимости тянут за собой свои зависимости</h2>
-        
         <br>
-        <div class="terminal venv" data-content="Terminal">
-            <p>echo celery > requirements.txt
-            <p>pip install -r requirements.txt
-            <p>
+        <div class="terminal venv wide" data-content="Terminal">
             <p>pip freeze
             
                 <br>amqp==2.4.0
@@ -142,7 +135,9 @@
                 <br>pytz==2018.9
                 <br>vine==1.2.0
         </div>
+        <p style="font-size: 18px; text-align: right; margin: -20px 0 0 0; padding: 0;">↖ зависимости тянут за собой свои зависимости</p>
     </section>
+    
     
     <section class="slide">
         <h2>Концептуальные проблемы текущего подхода</h2>
@@ -151,7 +146,6 @@
         <div class="terminal venv" data-content="Terminal">
             <p>echo celery > requirements.txt
             <p>pip install -r requirements.txt
-            <p>
         </div>
         
         <ul>
@@ -177,7 +171,6 @@
         <div class="terminal venv" data-content="Terminal">
             <p>echo celery > requirements.txt
             <p>pip install -r requirements.txt
-            <p>
         </div>
         
         <ul>
@@ -333,7 +326,7 @@
        
         <div class="terminal venv" data-content="requirements.txt">
             <p>pip install celery
-            <p>pip freeze > requirements.txt
+            <p>pip <span style="color: yellow">freeze > requirements.txt</span>
             <p> ...
             <p>pip install -r requirements.txt
         </div>
@@ -347,7 +340,7 @@
             Предсказуемость<b style="color: red">*</b><br>
             Детерминированность<b style="color: red">*</b>
         </h2>
-        <div class="imprint" style="font-size: 6.66px; text-align: left;padding: 0 20px;">
+        <div class="imprint" style="font-size: 9.99px; text-align: left;padding: 0 20px;">
             <b style="color: red">*</b>
             На самом деле системы работы с пакетами в большинстве языков устроены так, что вы не можете обеспечить полную детерминированность и предсказуемость, используя public репозитории. И Python здесь — не исключение. Только свои зеркала позволяют хоть с каким-то спокойствием смотреть в будущее.
         </div>
@@ -436,6 +429,24 @@
     </section>
 
 
+
+
+    <section class="slide">
+        <h2>Минус: много ручной работы</h2>
+        <p>Последовательность команд для обновления «запиненных» зависимостей</p>
+        <div class="terminal wide" data-content="Terminal">
+            <p>cat requirements.in
+            <pre>celery>=4.2.1,<4.3</pre>
+            <p>virtualenv ./<span style="color:Yellow">temp-venv</span></p>
+            <p>./<span style="color:Yellow">temp-venv</span>/bin/python -m pip install -r requirements.in
+            <p>./<span style="color:Yellow">temp-venv</span>/bin/python -m pip freeze > requirements.txt
+            <p>rm -rf ./<span style="color:Yellow">temp-venv</span></p></p>
+            <p>./<span style="color:CYAN">.venv</span>/bin/python -m pip install -r requirements.txt</p>
+        </div>
+        <p>Можно, конечно, автоматизировать. Но зачем, когда это уже сделали за нас?</p>
+    </section>
+    
+        
     
     <section class="slide half-black clear">
         <div>
@@ -589,6 +600,20 @@ vine==1.2.0 \
     </section>
 
 
+    <section class="slide">
+        <h2>pip-tools: плюсы и минусы</h2>
+        <h4>Плюсы</h4>
+        <ul>
+            <li>Простой набор инструментов для автоматизации</li>
+            <li>Работает достаточно стабильно</li>
+        </ul>
+        <h4>Минусы</h4>
+        <ul>
+            <li>Простой набор инструментов</li>
+            <li>Слегка устарел</li>
+            <li>Не поспевает за изменениями в pip</li>
+        </ul>
+    </section>
 
     <section class="slide black clear">
         <h2 class="shout no-bg">
@@ -621,7 +646,7 @@ vine==1.2.0 \
 
 <section class="slide">
         <h2>Что такое Pipenv на самом деле?</h2>
-        Инструмент, <em>комбайн</em>, для <mark>приложений</mark>, не библиотек, который может:
+        Инструмент для <mark>приложений</mark>, не библиотек, который может:
         <ul>
             <li>Управлять окружениями
                 <strong>(env)</strong>
@@ -632,7 +657,7 @@ vine==1.2.0 \
             <li>Устанавливать <strong>детерминированный</strong> набор пакетов
                 <strong>(Pipfile.lock)</strong>
             </li>
-            <li>Проверять код на соответствие стайл-гайдам (flake8)</li>
+            <li><strike>Проверять код на соответствие стайл-гайдам (flake8)</strike></li>
         </ul>
     </section>
     
@@ -999,19 +1024,8 @@ python_version = "3.6"</pre></div>
             <li><code>pipenv sync</code> — установка пакетов, указанных в Pipfile.lock (для прода)</li>
         </ul>
     </section>
-    
-    
-    <section class="slide">
-        <h2>pipenv sync</h2>
-        <div class="terminal wide" data-content="Pipfile">
-            <pre style="overflow:hidden; font-size: 32px;">
-                
-            </pre>
-        </div>
-    </section>
-    
-    
-    
+
+
     <section class="slide">
         <h2>Детерминированность: Pipfile.lock, что внутри?</h2>
         <ul>
@@ -1289,7 +1303,7 @@ python_version = "3.6"</pre></div>
             </table>
     </section>
 
-    <section class="slide half-red clear">
+    <section class="slide half-red">
         <div>
             <h3>Выводы</h3>
         </div>
@@ -1304,7 +1318,7 @@ python_version = "3.6"</pre></div>
     </section>
     
 
-    <section class="slide half-black clear">
+    <section class="slide half-black">
         <div>
             <h3>Links</h3>
         </div>
