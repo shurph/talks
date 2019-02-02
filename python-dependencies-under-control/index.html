@@ -663,51 +663,435 @@ vine==1.2.0 \
     
     
     <section class="slide">
-        <h2>Управление окружениями</h2>
+        <h2>Pipenv: Pipfile + Pipfile.lock</h2>
         <ul>
+            <li><code>Pipfile.lock</code> — содержит «запиненные», <mark>все</mark> зависимости, необходимые для запуска и работы проекта. Генерируется на основе Pipfile.</li>
+            <li><code>Pipfile</code> — содержит только зависимости проекта и мета-информацию о зависимостях.</li>
+        </ul>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2>Pipenv: Pipfile</h2>
         
-        <li>Используется virtualenv под капотом.
-        </li>
-        <li>Все виртуальные окружения, по умолчанию, хранятся в каталоге <code>~/.virtualenvs/</code>.
-            <ul>
-                <li>Это можно изменить:
-                    <br>
-                    <code>export WORKON_HOME=~/.venvs</code>
-                </li>
-                <li>Или даже так:
-                    <br>
-                    <code>export PIPENV_VENV_IN_PROJECT=True</code>
-                    <br>
-                    (окружение будет в каталоге <code>.venv</code> внутри каталога проекта)
-                </li>
-            </ul>
-        </li>
+        <p>Список необходимых для установки пакетов декларируется в файле <mark>Pipfile</mark>, вместо привычного всем <code>requirements.txt</code>.</p>
+        
+        <p>Pipfile:</p>
+        <ul>
+            <li>Использует TOML для простоты чтения и написание</li>
+            <li>Позволяет указать два списка пакетов: packages и dev-packages (для окружения разработчика)</li>
+            <li>Стремится стать новым стандартом, заменой requirements.txt</li>
         </ul>
     </section>
     
     <section class="slide">
-        <h2>Работа внутри виртуального окружения</h2>
+        <h2>Pipfile: что внутри?</h2>
+        <br>
+        <div class="terminal" data-content="Pipfile" style="width: 100%">
+            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+[packages]
+django = "*"
+celery = "*"
+[dev-packages]
+"flake8" = "*"
+moto = "==1.3.4"
+[requires]
+python_version = "3.6"
+        </pre></div>
+    </section>
+    
+    
+    <section class="slide">
+        <h2>Pipfile: можно указывать свой PyPI</h2>
+        <br>
+        <div class="terminal" data-content="Pipfile" style="width: 100%">
+            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
+[[source]]
+<span style="color:yellow">url = "https://pypi.org/simple"</span>
+verify_ssl = true
+name = "pypi"
+[packages]
+django = "*"
+celery = "*"
+[dev-packages]
+"flake8" = "*"
+moto = "==1.3.4"
+[requires]
+python_version = "3.6"
+        </pre></div>
+    </section>
+    
+    <section class="slide">
+        <h2>Pipfile: указывается версия питона для проекта</h2>
+        <br>
+        <div class="terminal" data-content="Pipfile" style="width: 100%">
+            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+[packages]
+django = "*"
+celery = "*"
+[dev-packages]
+"flake8" = "*"
+moto = "==1.3.4"
+[requires]
+<span style="color:yellow">python_version = "3.6"</span>
+        </pre></div>
+    </section>
+    
+    <section class="slide">
+        <h2>Pipfile: диапазоны версий, как в requiements.txt</h2>
+        <br>
+        <div class="terminal" data-content="Pipfile" style="width: 100%">
+            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+[packages]
+django = <span style="color:yellow">"*"</span>
+celery = "*"
+elasticsearch = <span style="color:yellow">"<6.0.0,>=5.0.0"</span>
+[dev-packages]
+"flake8" = "*"
+moto = <span style="color:yellow">"==1.3.4"</span>
+[requires]
+python_version = "3.6"
+        </pre></div>
+    </section>
+    
+    
+    
+    
+    
+    <section class="slide">
+        <h2>Pipfile: свой синтаксис для Git-ссылок</h2>
+        <br>
+        <div class="terminal" data-content="Pipfile" style="width: 100%">
+            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+[packages]
+django = "*"
+celery = "*"
+elasticsearch = "<6.0.0,>=5.0.0"
+api_client = <span style="color:yellow">{git =
+    "ssh://git@gitlab.com/something/api-client.git",
+    ref = "v1.0.2"}</span>
+[dev-packages]
+"flake8" = "*"
+moto = "==1.3.4"
+[requires]
+python_version = "3.6"</pre></div>
+    </section>
+    
+    
+   
+    <section class="slide">
+        <h2>Pipfile: несколько PyPI репозиториев</h2>
+        <div class="terminal" data-content="Pipfile" style="width: 100%">
+            <pre style="overflow:hidden; ">
+[[source]]
+url = <span style="color:yellow">"https://pypi.org/simple"</span>
+verify_ssl = true
+name = "<span style="color:CYAN">pypi</span>"
+
+[[source]]
+url = <span style="color:yellow">"http://pypi.famous.org/simple"</span>
+verify_ssl = false
+
+name = "<span style="color:CYAN">famous</span>"
+[packages]
+django = <span style="color:yellow">"*"</span>
+celery = <span style="color:yellow">{version="*", index="<span style="color:CYAN">pypi</span>"}</span>
+api_base_client = <span style="color:yellow">{version="*", index="<span style="color:CYAN">famous</span>"}</span>
+api_client = {git="ssh://git@gitlab.com/something/api-client.git",ref = "v1.0.2"}
+[dev-packages]
+"flake8" = "*"
+moto = "==1.3.4"
+[requires]
+python_version = "3.6"</pre></div>
+    </section>
+     
+    
+    
+    
+    
+    
+
+
+    <section class="slide">
+        <h2>Pipfile<span style="color:#ed1c24">.lock</span>, что внутри?</h2>
         <ul>
-            <li>Запустить скрипт с нужным виртуальным окружением <b>единоразово</b>:
-                <br>
-                <code>pipenv run script-name.py</code>
-            </li>
-            <li>Активировать виртуальное окружение для выполнения команд в интерактивном режиме:
-                <br>
-                <code>pipenv shell</code>
-            </li>
+            <li>Все пакеты из  Pipfile, с запинеными версиями</li>
+            <li>Все зависимости этих пакетов, также с запинеными версиями</li>
+            <li>Хэш-суммы всех перечисленных пакетов</li>
+            <li>Хэш-сумма Pipfile</li>
+            <li>Meta</li>
         </ul>
     </section>
     
     <section class="slide">
-        <h2>Возможные проблемы с virtualenv + Pipenv</h2>
-        
-            <ul>
-            <li>В <mark>shell</mark> режиме у некоторых людей появлялись проблемы с башем
-            </li>
-            <li>В <mark>run</mark> режиме не устанавливается переменная <code>$VIRTUAL_ENV</code>, соответствующая пути к виртуальному окружению</li>
-        </ul>
+        <h2>Pipfile.lock, что внутри? Пустой проект:</h2>
+        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
+            <pre style="overflow:hidden; ">{
+    "_meta": {
+        "hash": {
+            "sha256": "415dfdcb118dd9bdfef17671cb7dcd78dbd69b6ae7d4f39e8b44e71d60ca72e7"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.6"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {},
+    "develop": {}
+}</pre>
+        </div>
     </section>
+    
+    
+    <section class="slide">
+        <h2>Pipfile.lock, что внутри? Пустой проект:</h2>
+        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
+            <pre style="overflow:hidden; ">{
+    "_meta": {
+        <span style="color: yellow">"hash": {
+            "sha256": "415dfdcb118dd9bdfef17671cb7dcd78dbd69b6ae7d4f39e8b44e71d60ca72e7"
+        },</span>
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.6"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {},
+    "develop": {}
+}</pre>
+        </div>
+    </section>
+    
+    
+    
+    
+    <section class="slide">
+        <h2>Pipfile.lock, что внутри? Пустой проект:</h2>
+        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
+            <pre style="overflow:hidden; ">{
+    "_meta": {
+        "hash": {
+            "sha256": "415dfdcb118dd9bdfef17671cb7dcd78dbd69b6ae7d4f39e8b44e71d60ca72e7"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.6"
+        },
+        <span style="color: yellow">"sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]</span>
+    },
+    "default": {},
+    "develop": {}
+}</pre>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    <section class="slide">
+        <h2>Pipfile.lock: Секция default для celery</h2>
+        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
+            <pre style="overflow:hidden; ">
+"default": {
+    "amqp": {
+        "hashes": [
+            "sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464",
+            "sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b"
+        ],
+        "version": "==2.4.0"
+    },
+    "billiard": {
+        "hashes": [
+            "sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e"
+        ],
+        "version": "==3.5.0.5"
+    },
+    "celery": {
+        "hashes": [
+            "sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678",
+            "sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13"
+        ],
+        "index": "pypi",
+        "version": "==4.2.1"
+    },
+    "kombu": {
+        "hashes": [
+            "sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d",
+            "sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78"
+        ],
+        "version": "==4.2.2.post1"
+    },
+    "pytz": {
+        "hashes": [
+            "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
+            "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
+        ],
+        "version": "==2018.9"
+    },
+    "vine": {
+        "hashes": [
+            "sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1",
+            "sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76"
+        ],
+        "version": "==1.2.0"
+    }
+},
+            </pre>
+        </div>
+    </section>
+    
+    
+    
+    
+    <section class="slide">
+        <h2>Pipfile.lock: Секция default для celery</h2>
+        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
+            <pre style="overflow:hidden; ">
+"default": {
+    "amqp": {
+        "hashes": [
+            "sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464",
+            "sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b"
+        ],
+        "version": "==2.4.0"
+    },
+    "billiard": {
+        "hashes": [
+            "sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e"
+        ],
+        "version": "==3.5.0.5"
+    },
+    "celery": {
+        "hashes": [
+            "sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678",
+            "sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13"
+        ],
+        <span style="color: yellow">"index": "pypi",</span>
+        "version": "==4.2.1"
+    },
+    "kombu": {
+        "hashes": [
+            "sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d",
+            "sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78"
+        ],
+        "version": "==4.2.2.post1"
+    },
+    "pytz": {
+        "hashes": [
+            "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
+            "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
+        ],
+        "version": "==2018.9"
+    },
+    "vine": {
+        "hashes": [
+            "sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1",
+            "sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76"
+        ],
+        "version": "==1.2.0"
+    }
+},
+            </pre>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    
+    <section class="slide">
+        <h2>Pipfile.lock: Секция default для celery</h2>
+        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
+            <pre style="overflow:hidden;font-size: 13px; line-height: 11.5px ">
+"default": {
+    "amqp": {
+        "hashes": [
+            "sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464",
+            "sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b"
+        ],
+        "version": "==2.4.0"
+    },
+    "billiard": {
+        "hashes": [
+            "sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e"
+        ],
+        "version": "==3.5.0.5"
+    },
+    "celery": {
+        "hashes": [
+            "sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678",
+            "sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13"
+        ],
+        "index": "pypi",
+        "version": "==4.2.1"
+    },
+    "kombu": {
+        "hashes": [
+            "sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d",
+            "sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78"
+        ],
+        "version": "==4.2.2.post1"
+    },
+    "pytz": {
+        "hashes": [
+            "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
+            "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
+        ],
+        "version": "==2018.9"
+    },
+    "vine": {
+        "hashes": [
+            "sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1",
+            "sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76"
+        ],
+        "version": "==1.2.0"
+    }
+},
+            </pre>
+        </div>
+    </section>
+    
     
     
     
@@ -866,306 +1250,74 @@ python-slugify==2.0.1
     
     
     <section class="slide">
-        <h2>Управление пакетами: Pipfile</h2>
-        
-        <p>Список необходимых для установки пакетов декларируется в файле <mark>Pipfile</mark>, вместо привычного всем <code>requirements.txt</code>.</p>
-        
-        <p>Pipfile:</p>
+        <h2>Управление пакетами: ещё немного CLI</h2>
         <ul>
-            <li>Использует TOML для простоты чтения и написание</li>
-            <li>Позволяет указать два списка пакетов: packages и dev-packages (для окружения разработчика)</li>
-            <li>Стремится стать новым стандартом, заменой requirements.txt</li>
-        </ul>
-    </section>
-    
-    <section class="slide">
-        <h2>Pipfile: что внутри?</h2>
-        <br>
-        <div class="terminal" data-content="Pipfile" style="width: 100%">
-            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
-[packages]
-django = "*"
-celery = "*"
-[dev-packages]
-"flake8" = "*"
-moto = "==1.3.4"
-[requires]
-python_version = "3.6"
-        </pre></div>
-    </section>
-    
-    
-    <section class="slide">
-        <h2>Pipfile: можно указывать свой PyPI</h2>
-        <br>
-        <div class="terminal" data-content="Pipfile" style="width: 100%">
-            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
-[[source]]
-<span style="color:yellow">url = "https://pypi.org/simple"</span>
-verify_ssl = true
-name = "pypi"
-[packages]
-django = "*"
-celery = "*"
-[dev-packages]
-"flake8" = "*"
-moto = "==1.3.4"
-[requires]
-python_version = "3.6"
-        </pre></div>
-    </section>
-    
-    <section class="slide">
-        <h2>Pipfile: указывается версия питона для проекта</h2>
-        <br>
-        <div class="terminal" data-content="Pipfile" style="width: 100%">
-            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
-[packages]
-django = "*"
-celery = "*"
-[dev-packages]
-"flake8" = "*"
-moto = "==1.3.4"
-[requires]
-<span style="color:yellow">python_version = "3.6"</span>
-        </pre></div>
-    </section>
-    
-    <section class="slide">
-        <h2>Pipfile: диапазоны версий, как в requiements.txt</h2>
-        <br>
-        <div class="terminal" data-content="Pipfile" style="width: 100%">
-            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
-[packages]
-django = <span style="color:yellow">"*"</span>
-celery = "*"
-elasticsearch = <span style="color:yellow">"<6.0.0,>=5.0.0"</span>
-[dev-packages]
-"flake8" = "*"
-moto = <span style="color:yellow">"==1.3.4"</span>
-[requires]
-python_version = "3.6"
-        </pre></div>
-    </section>
-    
-    <section class="slide">
-        <h2>Pipfile: свой синтаксис для Git-ссылок</h2>
-        <br>
-        <div class="terminal" data-content="Pipfile" style="width: 100%">
-            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
-[packages]
-django = "*"
-celery = "*"
-elasticsearch = "<6.0.0,>=5.0.0"
-api_client = <span style="color:yellow">{git =
-    "ssh://git@gitlab.com/something/api-client.git",
-    ref = "v1.0.2"}</span>
-[dev-packages]
-"flake8" = "*"
-moto = "==1.3.4"
-[requires]
-python_version = "3.6"</pre></div>
-    </section>
-    
-    
-   
-    <section class="slide">
-        <h2>Pipfile: несколько PyPI репозиториев</h2>
-        <div class="terminal" data-content="Pipfile" style="width: 100%">
-            <pre style="overflow:hidden; ">
-[[source]]
-url = <span style="color:yellow">"https://pypi.org/simple"</span>
-verify_ssl = true
-name = "<span style="color:CYAN">pypi</span>"
-
-[[source]]
-url = <span style="color:yellow">"http://pypi.famous.org/simple"</span>
-verify_ssl = false
-
-name = "<span style="color:CYAN">famous</span>"
-[packages]
-django = <span style="color:yellow">"*"</span>
-celery = <span style="color:yellow">{version="*", index="<span style="color:CYAN">pypi</span>"}</span>
-api_base_client = <span style="color:yellow">{version="*", index="<span style="color:CYAN">famous</span>"}</span>
-api_client = {git="ssh://git@gitlab.com/something/api-client.git",ref = "v1.0.2"}
-[dev-packages]
-"flake8" = "*"
-moto = "==1.3.4"
-[requires]
-python_version = "3.6"</pre></div>
-    </section>
-     
-    
-    
-    
-    
-    
-    <section class="slide">
-        <h2>Детерминированность: Pipfile.lock</h2>
-        <ul>
-            <li><code>pipenv lock</code> — генерация Pipfile.lock</li>
+            <li>
+                <code>pipenv lock</code> — генерация Pipfile.lock</li>
+            <li>
+                <code>pipenv update</code> — обновление версий запиненных пакетов в Pipfile.lock</li>
             
-            <li><code>pipenv sync</code> — установка пакетов, указанных в Pipfile.lock (для прода)</li>
+            <li>
+                <code>pipenv sync</code> — установка пакетов, указанных в Pipfile.lock
+                <br>
+                <span style="opacity:0"><code>pipenv sync</code> —&nbsp;</span>
+                (игнорирует Pipfile, может быть полезно для прода)</li>
         </ul>
     </section>
-
-
+    
+    
     <section class="slide">
-        <h2>Детерминированность: Pipfile.lock, что внутри?</h2>
+        <h2>Управление окружениями</h2>
         <ul>
-            <li>Внутри Pipfile.lock находится список всех установленных пакетов, указанных в Pipfile, с запинеными версиями.</li>
-            <li>А также указаны все зависимости этих пакетов, также с запинеными версиями.</li>
-            <li>А также указаны хэш-суммы всех перечисленных пакетов</li>
+        
+        <li>Используется virtualenv под капотом.
+        </li>
+        <li>Все виртуальные окружения, по умолчанию, хранятся в каталоге <code>~/.virtualenvs/</code>.
+            <ul>
+                <li>Это можно изменить:
+                    <br>
+                    <code>export WORKON_HOME=~/.venvs</code>
+                </li>
+                <li>Или даже так:
+                    <br>
+                    <code>export PIPENV_VENV_IN_PROJECT=True</code>
+                    <br>
+                    (окружение будет в каталоге <code>.venv</code> внутри каталога проекта)
+                </li>
+            </ul>
+        </li>
         </ul>
     </section>
     
     <section class="slide">
-        <h2>Pipfile.lock, что внутри? Пустой проект:</h2>
-        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
-            <pre style="overflow:hidden; ">{
-    "_meta": {
-        "hash": {
-            "sha256": "415dfdcb118dd9bdfef17671cb7dcd78dbd69b6ae7d4f39e8b44e71d60ca72e7"
-        },
-        "pipfile-spec": 6,
-        "requires": {
-            "python_version": "3.6"
-        },
-        "sources": [
-            {
-                "name": "pypi",
-                "url": "https://pypi.org/simple",
-                "verify_ssl": true
-            }
-        ]
-    },
-    "default": {},
-    "develop": {}
-}</pre>
-        </div>
+        <h2>Работа внутри виртуального окружения</h2>
+        <ul>
+            <li>Запустить скрипт с нужным виртуальным окружением <b>единоразово</b>:
+                <br>
+                <code>pipenv run script-name.py</code>
+            </li>
+            <li>Активировать виртуальное окружение для выполнения команд в интерактивном режиме:
+                <br>
+                <code>pipenv shell</code>
+            </li>
+        </ul>
     </section>
-    
-    
-        <section class="slide">
-        <h2>Pipfile.lock: Секция default для celery</h2>
-        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
-            <pre style="overflow:hidden; ">
-"default": {
-    "amqp": {
-        "hashes": [
-            "sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464",
-            "sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b"
-        ],
-        "version": "==2.4.0"
-    },
-    "billiard": {
-        "hashes": [
-            "sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e"
-        ],
-        "version": "==3.5.0.5"
-    },
-    "celery": {
-        "hashes": [
-            "sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678",
-            "sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13"
-        ],
-        "index": "pypi",
-        "version": "==4.2.1"
-    },
-    "kombu": {
-        "hashes": [
-            "sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d",
-            "sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78"
-        ],
-        "version": "==4.2.2.post1"
-    },
-    "pytz": {
-        "hashes": [
-            "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
-            "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
-        ],
-        "version": "==2018.9"
-    },
-    "vine": {
-        "hashes": [
-            "sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1",
-            "sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76"
-        ],
-        "version": "==1.2.0"
-    }
-},
-            </pre>
-        </div>
-    </section>
-    
     
     <section class="slide">
-        <h2>Pipfile.lock: Секция default для celery</h2>
-        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
-            <pre style="overflow:hidden;font-size: 14px; line-height: 11px ">
-"default": {
-    "amqp": {
-        "hashes": [
-            "sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464",
-            "sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b"
-        ],
-        "version": "==2.4.0"
-    },
-    "billiard": {
-        "hashes": [
-            "sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e"
-        ],
-        "version": "==3.5.0.5"
-    },
-    "celery": {
-        "hashes": [
-            "sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678",
-            "sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13"
-        ],
-        "index": "pypi",
-        "version": "==4.2.1"
-    },
-    "kombu": {
-        "hashes": [
-            "sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d",
-            "sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78"
-        ],
-        "version": "==4.2.2.post1"
-    },
-    "pytz": {
-        "hashes": [
-            "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
-            "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
-        ],
-        "version": "==2018.9"
-    },
-    "vine": {
-        "hashes": [
-            "sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1",
-            "sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76"
-        ],
-        "version": "==1.2.0"
-    }
-},
-            </pre>
-        </div>
+        <h2>Возможные проблемы с virtualenv + Pipenv</h2>
+        
+            <ul>
+            <li>В <mark>shell</mark> режиме у некоторых людей появлялись проблемы с башем
+            </li>
+            <li>В <mark>run</mark> режиме не устанавливается переменная <code>$VIRTUAL_ENV</code>, соответствующая пути к виртуальному окружению</li>
+        </ul>
     </section>
+    
+    
+    
+    
+    
+    
     
     
     <section class="slide">
