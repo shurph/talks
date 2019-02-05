@@ -239,12 +239,12 @@
         <br>
         
         <div class="terminal venv wide" data-content="celery requirements itself">
-			<p>cat ~/projects/celery/requirements/default.txt</p>
+            <p>cat ~/projects/celery/requirements/default.txt</p>
             <pre>
 pytz>dev
 billiard<span style="color:yellow">>=3.5.0.2,<3.6.0</span>
 kombu<span style="color:yellow">>=4.2.0,<5.0</span>
-				 </pre>
+                 </pre>
         </div>
     </section>
 
@@ -484,8 +484,8 @@ kombu<span style="color:yellow">>=4.2.0,<5.0</span>
     
         
     <section class="slide clear">
-		<h2 class="shout">«Промышленные» решения</h2>
-	</section>
+        <h2 class="shout">«Промышленные» решения</h2>
+    </section>
     
     <section class="slide half-black clear">
         <div>
@@ -644,17 +644,17 @@ vine==1.2.0 \
             <h3>pip-tools: плюсы и минусы</h3>
         </div>
         <div>
-			<h4>Плюсы</h4>
-			<ul>
-				<li>Простой набор инструментов для автоматизации</li>
-				<li>Работает достаточно стабильно</li>
-			</ul>
-			<h4>Минусы</h4>
-			<ul>
-				<li>Простой набор инструментов</li>
-				<li>Слегка устарел</li>
-				<li>Не поспевает за изменениями в pip</li>
-			</ul>
+            <h4>Плюсы</h4>
+            <ul>
+                <li>Простой набор инструментов для автоматизации</li>
+                <li>Работает достаточно стабильно</li>
+            </ul>
+            <h4>Минусы</h4>
+            <ul>
+                <li>Простой набор инструментов</li>
+                <li>Слегка устарел</li>
+                <li>Не поспевает за изменениями в pip</li>
+            </ul>
         </div>
     </section>
     
@@ -1381,12 +1381,12 @@ python-slugify==2.0.1
             <h3>Неужели всё так хорошо?</h3>
         </div>
         <div>
-			<ul>
-				<li>Pipenv very slow. Takes an hour to install and lock. <a href="https://github.com/pypa/pipenv/issues/2873">[#2873]</a></li>
-				<li>Pipenv ignores explicitly specified index for package <a href="https://github.com/pypa/pipenv/issues/2730">[#2730] (closed)</a></li>
-				<li>Pipenv is installing things without executing setup.py in the target environment <a href="https://github.com/tornadoweb/tornado/issues/2433">[Tornado #2433]</a></li>
-				<li><b>Принципиально</b> не поддерживает несколько версий питона для проекта</li>
-			</ul>
+            <ul>
+                <li>Pipenv very slow. Takes an hour to install and lock. <a href="https://github.com/pypa/pipenv/issues/2873">[#2873]</a></li>
+                <li>Pipenv ignores explicitly specified index for package <a href="https://github.com/pypa/pipenv/issues/2730">[#2730] (closed)</a></li>
+                <li>Pipenv is installing things without executing setup.py in the target environment <a href="https://github.com/tornadoweb/tornado/issues/2433">[Tornado #2433]</a></li>
+                <li><b>Принципиально</b> не поддерживает несколько версий питона для проекта</li>
+            </ul>
         </div>
     </section>
     
@@ -1398,26 +1398,61 @@ python-slugify==2.0.1
     </section>
 
     <section class="slide">
-        <h2>Poetry</h2>
-        <p>Инструмент для управления зависимостями, который покрывает не только «проекты», но и библиотеки.</p>
-        <p>В качестве конфигурационного файла используется <mark>pyproject.toml</mark></p>
+        <h2>Poetry, коротко</h2>
+        
+        
+        <ul>
+            <li>умеет не только в «проекты», но и в библиотеки</li>
+            <li>умеет работать с и под virtualenv</li>
+            <li>умеет публиковать библиотеки на PyPI</li>
+            <li>имеет много других «фич», упрощающих жизнь при пакетировании библиотек</li>
+            <li>быстрее и лучше разрешает граф зависимостей для проекта</li>
+            <li>конфигурационный файл — <b>стандартизированный</b> <code>pyproject.toml</code></li>
+        </ul>
 
-        <p>poetry uses <b>standardized</b> pyproject.toml to replace <code>setup.py</code>, <code>requirements.txt</code>, <code>setup.cfg</code>, <code>MANIFEST.in</code> and the newly added <code>Pipfile</code>.</p>
 
         <p>Подробнее о poetry:&nbsp; <a class="link link-github" href="https://github.com/sdispater/poetry/">https://github.com/sdispater/poetry/</a></p>
+    </section>
+    
+    
+    <section class="slide">
+        <h2>Poetry, что там на GitHub'е</h2>
+        <figure>
+            <img src="./pictures/poetry-github-insights.png" alt="" class="cover" style="margin-top: 100px">
+        </figure>
     </section>
 
 
 
 
+    <section class="slide half-black clear">
+        <div>
+            <h3>Минусы poetry</h3>
+        </div>
+        <div>
+            <ul>
+                <li>Малопопулярен</li>
+                <li>Игнорируется PyPA и многими core-разработчиками</li>
+                <li>Разрабатывается одним человеком</li>
+            </ul>
+        </div>
+    </section>
+    
+    
+
+
+    <section class="slide clear">
+        <h2 class="shout">Ситуация с пакетированием<br> в мире питона</h2>
+    </section>
+
+
+    <section class="slide clear">
+        <h2 class="shout"><a href="#">PyPA</a></h2>
+    </section>
+
+
     <section class="slide clear">
         <h2 class="shout no-bg" style="font-size: 4rem">
-            Больше про<br>
-            <code>pyproject.toml</code><br>
-            и около
-
-            <br>
-            <br>
             <a href="https://www.python.org/dev/peps/pep-0516/">PEP 516</a>,
             <a href="https://www.python.org/dev/peps/pep-0517/">PEP 517</a>,
             <a href="https://www.python.org/dev/peps/pep-0518/">PEP 518</a>
@@ -1427,6 +1462,10 @@ python-slugify==2.0.1
     </section>
 
 
+    <section class="slide">
+        <h2>pyproject.toml</h2>   
+        <p>pyproject.toml is created to replace <code>setup.py</code>, <code>requirements.txt</code>, <code>setup.cfg</code>, <code>MANIFEST.in</code></p>
+    </section>
 
     <section class="slide">
         <h2>Поддержка pyproject.toml</h2>
@@ -1437,6 +1476,13 @@ python-slugify==2.0.1
             <a href="https://bitbucket.org/ned/coveragepy/issues/664/allow-configuration-via-pyprojecttoml">coverage</a>.
         <p>Не собираются тратить на это время:
             <a href="https://github.com/python/mypy/issues/5205">mypy</a>.
+            
+    </section>
+
+
+
+    <section class="slide clear">
+        <h2 class="shout">Обратно к зависимостям</h2>
     </section>
 
 
@@ -1531,12 +1577,12 @@ python-slugify==2.0.1
                     <a href="https://nvie.com/posts/pin-your-packages/" class="">Pin Your Packages</a>
                     <span>by</span>
                     <span>Vincent Driessen</span>
-				</li>
+                </li>
                 <li>
                     <a href="https://nvie.com/posts/better-package-management/" class="">Better Package Management</a>
                     <span>by</span>
                     <span>Vincent Driessen</span>
-				</li>
+                </li>
             </ul>
         </div>
     </section>
