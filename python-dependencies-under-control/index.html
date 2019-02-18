@@ -11,8 +11,22 @@
 </head>
 
 <style>
+    .slide footer {
+        padding: 10px;
+        font-size: 38px;
+    }
+    .slide .terminal {
+        width: 100%;
+       /* font-size: 36px;  /* 39 symbols in line, 13 lines */
+        line-height: 1.08;
+    }
     .slide .terminal.venv p::before {
         content: '(venv) ~$ ';
+        color: magenta;
+    }
+    .slide .terminal.venv p.without-venv::before {
+        content: '~$ ';
+        color: rgb(94, 215, 255);;
     }
     .slide .terminal pre {
         white-space: pre;
@@ -20,6 +34,40 @@
     }
     .slide .terminal.wide {
         width: 100%;
+    }
+    .slide .terminal.super-wide {
+        width:1004px;  /* "view ares" is 1024 px */
+        margin-left: -60px;
+        font-size: 32px; /* 54 symbols in line, 16 lines */
+        line-height: 1;   
+    }
+    .slide .terminal.full-screen {
+        width: 1024px;
+        margin-left: -70px;
+        margin-top: -95px;
+        font-size: 28px; /* 62 symbols in line, 24 lines */
+        line-height: 0.9;
+    }
+    .slide .terminal.small-text {
+        font-size: 32px;
+    }
+    
+    .slide .terminal.nano-text {
+        font-size: 24px;
+    }
+    
+    
+    .slide .terminal.half {
+        width: 50%;
+        font-size: 32px;  /* 23 symbols */  
+    }
+    .slide .terminal.half.left {
+        float: left;
+        margin-left: -10px;
+    }
+    .slide .terminal.half.right {
+        float: right;
+        margin-right: -10px;
     }
     .slide table.wide {
         width: 100%;
@@ -40,6 +88,9 @@
         color: #ed1c24;
         font-weight: bold;
     }
+    .red {
+        color: #ed1c24;
+    }
     .slide .terminal mark {
         color: yellow;    
         
@@ -58,25 +109,33 @@
     .slide .terminal mark.orange {
         color: #ff941b;;
     }
+
+
+
+    .slide.title::before {
+        background-image: none;
+    }
+
+    .slide.title::after {
+        height: 12vh;        
+        background-image: url(images/logo_pycon.svg)
+    }
+    
+    
     small {
         font-size: 75%;
     }
-    
+
     .shout.stroked {
         -webkit-text-stroke-width: 3px;
         -webkit-text-stroke-color: black
     }
-    
-    .slide .cover + figcaption.credits {
-        margin: 0 -10px 20px 0;
-        opacity: 0.3
-    }
+
     .slide .cover + figcaption.credits a {
         color: white;
         font-size: 6px;
         padding: 0 5px;
     }
-    
 </style>
 
 <body class="shower list">
@@ -127,6 +186,9 @@
 
 
 
+
+
+
     <section class="slide">
         <h2>План</h2>
 
@@ -136,17 +198,43 @@
                 <ul>
                     <li>Наивные</li>
                     <li>Менее наивные</li>
-                    <li>«Промышленные»</li>
+                    <li>«Промышленные»
+                        <ul>
+                            <li>pip-tools</li>
+                            <li>Pipenv</li>
+                            <li>Poetry</li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li>Ситуация с пакетированием в питоне</li>
         </ul>
+
+        <footer>
+Действовать мы будем исходя их этого плана.
+
+Сначал поговорим о том, в чём же, всё-таки, проблема.
+Потом пройдёмся по решениям.
+Основательно остановимся на рассмотрении "промышленных" подходов.
+А в конце слегка затронем тему, куда сегодня катится питон-мир в плане пакетирования библиотек, управления зависимостями и всего такого.
+
+        </footer>
     </section>
 
 
     <section class="slide clear">
         <h2 class="shout">Проблематика</h2>
+
+        <footer>
+И так, проблематика...
+Очень мне нравится это слово. Очень академично!
+        </footer>
     </section>
+
+
+
+
+
 
     <section class="slide">
         <h2>Как это делается сейчас?</h2>
@@ -170,7 +258,21 @@
                 <br>vine==1.2.0
         </div>
         <p style="font-size: 18px; text-align: right; margin: -20px 0 0 0; padding: 0;">↖ зависимости тянут за собой свои зависимости</p>
+
+        <footer>
+Вот как многие из нас делают сейчас... И кто-то делал ранее:
+- добавляем celery в проект...
+- устанавливаем...
+- получаем какой-то результат...
+
+В общем, всё то, что обычно пишут в туториалах ;-)
+
+А теперь давайте посмотрим, к чему это может привести...
+        </footer>
     </section>
+    
+    
+    
     
     
     <section class="slide">
@@ -196,7 +298,17 @@
                 </ul>
             </li>
         </ul>
+
+        <footer>
+Если говорить концептуально, то у нас возникают проблемы с детерминированностью и предсказуемостью...
+
+Основноя проблема кроется в том, что результат выполнения команды установки сильно зависит от того, какие пакеты у вас уже установлены в системе, а так же от того, какие пакеты доступны в репозитории...
+
+        </footer>
     </section>
+    
+    
+    
     
     <section class="slide">
         <h2>Практические проблемы текущего подхода</h2>
@@ -217,7 +329,21 @@
                 </ul>
             </li>
         </ul>
+
+        <footer>
+Ну и на практие это может выливаться в то, что у разработчиков на их локальных машинах стоят разные версии библиотек, из-за того что они делали установку в разное время...
+
+Более того, разные версии могут также обнаруживаться и на staging окружениях... и в проде...
+
+Причем, РАЗНОЕ ВРЕМЯ — это может быть как месяц-два, так и день-два, так и минута-другая...
+        </footer>
     </section>
+    
+    
+    
+    
+    
+    
     
     <section class="slide">
         <h2>Всё может сильно измениться за месяц-два</h2>
@@ -233,7 +359,16 @@
         vine==1.1.4             |       vine==1.2.0
             </pre>
         </div>
+
+        <footer>
+Вот, например, проект, в котором установлен только лишь Celery...
+        </footer>
     </section>
+
+
+
+
+
 
     <section class="slide">
         <h2>Всё может сильно измениться за месяц-два</h2>
@@ -249,34 +384,42 @@
         vine==1.1.4             |       vine==<span style="color:yellow">1.2.0</span>
             </pre>
         </div>
+
+        <footer>
+Как видно, за два месяца поменялось 60% библиотек...
+Большие цифры звучат шокирующе, правда? ;-) ...
+Даже когда пакетов мало.
+        </footer>
     </section>
 
 
 
     <section class="slide">
-        <h2>При pip install зависимости не "апскейлятся"</h2>
-        <center>Celery [ноябрь 2018 : январь 2019]</center>
+        <h2>Новобранец будет рад СВЕЖАЙШИМ пакетам</h2>
+        <center>Celery [январь 2019 : февраль 2019]</center>
         <br>
-        <div class="terminal venv" data-content="DIFF">
+        <div class="terminal venv nano-text" data-content="DIFF">
             <pre>
-        amqp==2.3.2             |       amqp==<span style="color:yellow">2.4.0</span>
-        billiard==3.5.0.5       |       billiard==3.5.0.5
-        celery==4.2.1           |       celery==4.2.1
-        kombu==4.2.2            |       kombu==<span style="color:yellow">4.2.2.post1</span>
-        pytz==2018.7            |       pytz==<span style="color:yellow">2018.9</span>
-        vine==1.1.4             |       vine==<span style="color:yellow">1.2.0</span>
-            </pre>
+     amqp==2.4.0             |       amqp==2.4.1
+     billiard==3.5.0.5       |       <span style="color:yellow">billiard==3.5.0.5</span>
+     celery==4.2.1           |       celery==4.2.1
+     kombu==4.2.2.post1      |       <span style="color:yellow">kombu==4.3.0</span>
+     pytz==2018.9            |       pytz==2018.9
+     vine==1.2.0             |       vine==1.2.0</pre>
         </div>
         <br>
         
-        <div class="terminal venv wide" data-content="celery requirements itself">
-            <p>cat ~/projects/celery/requirements/default.txt</p>
+        <div class="terminal  nano-text " data-content="celery's requirements itself">
+            <p>cat ~/celery/requirements/default.txt</p>
             <pre>
 pytz>dev
 billiard<span style="color:yellow">>=3.5.0.2,<3.6.0</span>
-kombu<span style="color:yellow">>=4.2.0,<5.0</span>
-                 </pre>
+kombu<span style="color:yellow">>=4.2.0,<5.0</span></pre>
         </div>
+
+        <footer>
+И так как зависимости самого celery прописаны вот так, то у разработчика, установившего проект в январе будут те пакеты, что слева, а у февральского новичка те, что справа...
+        </footer>
     </section>
 
 
@@ -335,7 +478,18 @@ kombu<span style="color:yellow">>=4.2.0,<5.0</span>
 75 pyflakes==2.0.0                 76 pyflakes==2.1.0
             </pre>
         </div>
+
+        <footer>
+А вот чуть более реальный проект...
+Список зависимостей не влез в экран. Чуть менее чем за месяц апдейтнулось чуть более чем много библиотек.
+
+И любое обновление, даже, казалось бы, самое минорное, может вам поломать всё напрочь. Или, что хуже, внести еле уловимый баг, который будет возникать изредка, но изрядно портить вам жизнь.
+        </footer>
     </section>
+
+
+
+
 
 
     <section class="slide">
@@ -355,6 +509,20 @@ kombu<span style="color:yellow">>=4.2.0,<5.0</span>
     yarl==1.3.0
             </pre>
         </div>
+        
+        
+        <footer>
+Кстати, о "поломать всё напрочь".
+Вот aiohttp. Как видите, тоже изрядный список библиотек может обновиться в одночасье.
+
+И эти изменения могуть быть не такими уж и безопасными, как может показаться на первый взгляд.
+
+И если сейчас aiohttp - довольно стабильный продукт, то, например, полтора-два года назад, когда aiohttp находился в стадии активной разработки, ребята из aiohttp команды зарелизили одну из aio-библиотек, которая активно использовалась под капотом самого aiohttp. Причем, зарелизали эту библиотеку с увеличением _минорной_ цифры в версии библиотеки. А, как мы знаем, большинство библиотек стараются придерживаться SemVer при декларации своих релизов. Т.е., изменение в минорной версии не должно ломать ничего, или, хотя бы, не должно ломать API, обратную совместимость. Но в тот раз такого не получилось, и, опубликовав минорный редиз, ребята из aiohttp команды поломали совместимость своего же aiohttp с этой библиотекой.
+
+Это вызвало большие проблемы у тех, кто уже активно использовал aiohttp у себя в продакшене, но всё ещё не придерживался подхода запинивания билблиотек.
+
+Вот Гена говорит, что это многим поломало Итернет Вещей, хотя, лично я дымящихся чайников не видел.
+        </footer>
     </section>
 
     <!--<section class="slide red clear">
@@ -400,6 +568,8 @@ kombu<span style="color:yellow">>=4.2.0,<5.0</span>
     </section>
     
     
+    
+    
     <section class="slide">
         <h2>«Решение» (↼_↼). Наивное решение   </h2>
 
@@ -412,7 +582,21 @@ kombu<span style="color:yellow">>=4.2.0,<5.0</span>
             <p>pip install -r requirements.txt
         </div>
         <p>Назовём это <b style="color: red">pip-freeze решения</b>.
+
+
+        <footer>
+Мы можем попытаться это наивно порешать...
+Просто пихаем pip freeze в requirements...
+Думаю, многие приходили к такому решению рано или поздно...
+Многие его используют до сих пор...
+
+И это даёт некоторую предсказуемость и некоторую детерминированность.
+        </footer>
     </section>
+    
+    
+    
+    
     
     <section class="slide">
         <h2>Плюсы <b style="color: red">pip-freeze решения</b></h2>
@@ -436,11 +620,21 @@ kombu<span style="color:yellow">>=4.2.0,<5.0</span>
                 <ul>
                     <li>Что — зависимости проекта, а что — зависимости зависимостей?</li>
                     <li>Пакет «запинен» потому что с ним проблемы, или можно обновлять до последнего?</li>
-                    <li>И requirements.txt сильно разрастается</li>
+                    <li>requirements.txt ОГРОМЕН</li>
                 </ul>
             </li>
         </ul>
+
+        <footer>
+Мы получим огромную боль, когда мы захотим обновить библиотеки для нашего проекта.
+
+Хотябы даже потому, что мы не можем понять, что из этого всего мусора нужно нашему проекту, а что — подтянуто как зависимость какой-то библиотекой и, возможно, уже даже и не нужно, так как эта библиотека перестала использовать эту зависимость.
+
+А также у нас нет информации почему "запинена" именно эта версия?
+Это последняя доступная версия на момент фриза? Или же мы специально понизили версию когда-то, из-за каких-то проблем?
+        </footer>
     </section>
+    
     
     
 
@@ -464,28 +658,40 @@ kombu<span style="color:yellow">>=4.2.0,<5.0</span>
 
     
     <section class="slide">
-        <h2><b style="color:red">Решение requirement.in</b> на практике</h2>
+        <h2><b style="color:red">Решение requirement.in</b><!-- на практике--></h2>
         
         <br>
-        <div class="terminal venv" data-content="Terminal">
-            <p>echo 'celery<b style="color:Yellow">>=4.2.1,<4.3</b>' > requirements.in
-            <p>pip install -r requirements.in
-            <p>pip freeze > requirements.txt
-            <p>
-            <p>sleep 168h
-            <p>
-            <p>pip install -r requirements.txt
-            <p>
-            <p>pip freeze
-            
-                <br>amqp==2.4.0
-                <br>billiard==3.5.0.5
-                <br>celery==4.2.1
-                <br>kombu==4.2.2.post1
-                <br>pytz==2018.9
-                <br>vine==1.2.0
+        <div class="terminal venv small-text" data-content="John's Terminal">
+            <p>echo 'celery'>requirements<span style="color:Yellow">.in</span>
+            <p>pip install -U -r requirements<span style="color:Yellow">.in</span>
+            <p>pip freeze > requirements<span style="color:cyan">.txt</span>
         </div>
+        <br>
+        <div class="terminal venv nano-text super-wide" data-content="Jane's Terminal" style="background: #220022;">
+            <p>pip install -r requirements<span style="color:cyan">.txt</span>
+            <p>pip freeze | diff requirements<span style="color:cyan">.txt</span> - && echo 'Идентичны!'</p>
+            Идентичны!
+        </div>
+
+        <footer>
+Эти проблемы мы можем решить, используя менее наивное решение.
+
+Оно заключается в том, что у нас еть два файла.
+В одном — храним исходные, необходимые проекту зависимости.
+Во втором — результат фриза.
+
+Вот так это работает...
+
+Сначало разработчик Иван ставит пакеты из IN файла и помещает вывод pip freeze в TXT файл.
+
+Через какой-то промежуток времени разработчица Яна ставит всё  из TXT файла... и с помощью команды pip freeze, команды diff и некоторой уличной магии убеждается, что выхлоп pip freeze и содержимое TXT файла идентичны!...
+И это именно то, чего мы хотим!
+        </footer>
     </section>
+    
+    
+    
+    
     
     
     <section class="slide">
@@ -499,7 +705,7 @@ kombu<span style="color:yellow">>=4.2.0,<5.0</span>
                     <li>мэйнтейнер пакета может:
                         <ul>
                             <li>перезалить пакет <b>с той же версией</b>, и мы этого даже <b>не заметим</b></li>
-                            <li>удалить пакет (но мы хотя-бы об этом узнаем)</li>
+                            <!-- <li>удалить пакет (но мы хотя-бы об этом узнаем)</li> -->
                         </ul>
                     </li>
                 </ul>
@@ -507,6 +713,16 @@ kombu<span style="color:yellow">>=4.2.0,<5.0</span>
             <li>Во freeze могут попасть «случайные» пакеты</li>
             <li>Много ручной работы</li>
         </ul>
+
+        <footer>
+Но всё ещё есть недостатки.
+
+Например, мэйнтейнер пакета может подменить код в репозитории, а мы об этом и не узнаем. Это может вызвать много боли при отладке.
+
+Также во freeze могуть попасть пакеты, которые мы ставили вручную, временно. Не сильно страшно, но неприятно.
+
+А ещё такой подход трудозатратен... Посмотрите!
+        </footer>
     </section>
 
 
@@ -515,7 +731,7 @@ kombu<span style="color:yellow">>=4.2.0,<5.0</span>
     <section class="slide">
         <h2>Минус: много ручной работы</h2>
         <p>Последовательность команд для обновления «запиненных» зависимостей</p>
-        <div class="terminal wide" data-content="Terminal">
+        <div class="terminal nano-text super-wide" data-content="Terminal">
             <p>cat requirements.in
             <pre>celery>=4.2.1,<4.3</pre>
             <p>virtualenv ./<span style="color:Yellow">temp-venv</span></p>
@@ -524,13 +740,31 @@ kombu<span style="color:yellow">>=4.2.0,<5.0</span>
             <p>rm -rf ./<span style="color:Yellow">temp-venv</span></p></p>
             <p>./<span style="color:CYAN">.venv</span>/bin/python -m pip install -r requirements.txt</p>
         </div>
-        <p>Можно, конечно, автоматизировать. Но зачем, когда это уже сделали за нас?</p>
+
+        <footer>
+Вот такую чехарду с временными виртуальными окружениями придётся делать, чтобы обновить библиотеки в проекте...
+И это я ещё не упоминал то, что часто нам нужны отдельные зависимости для режима разработки, ещё два файла, считайте!...
+Можно, конечно, автоматизировать. Но зачем, когда это уже сделали за нас?
+        </footer>
     </section>
+    
+    
+    
     
         
     <section class="slide clear">
         <h2 class="shout">«Промышленные» решения</h2>
+        
+        
+        <footer>
+В общем, все эти наколеночные, наивные, подходы, может, и не плохи.
+Но стоит-таки посмотреть на  инструменты, которые могут упростить нам жизнь...
+        </footer>
     </section>
+    
+    
+    
+    
     
     <section class="slide half-black clear">
         <div>
@@ -714,17 +948,26 @@ vine==1.2.0 \
             Pipenv
     </section>
 
+
+
+
+
+
+
+
     <section class="slide">
         <h2>Pipenv, почему?</h2>
-        <blockquote style="font-size: 40px; padding-left: 20px;">
+        <blockquote style="font-size: 50px; padding-left: 20px;">
             Pipenv is a tool that aims to bring the best of all packaging worlds to the Python world.
-            <div style="text-align: right; font-size: 24px">
-                <a href="https://github.com/kennethreitz"><strong>Kenneth Reitz</strong></a>,
-                создатель библиотеки
-                <a href="https://github.com/requests"><strong>requests</strong></a>.
+            <div style="font-size: 30px; float: right">
+                <a href="https://github.com/kennethreitz">
+                    <strong>Kenneth Reitz</strong></a>,<br>
+                    создатель <b>Pipenv</b>,<br>
+                    а также библиотеки
+                    <a href="https://github.com/requests"><strong>requests</strong></a>.
             </div>
         </blockquote>
-        <br><br>
+        <!--<br><br>
         <blockquote style="font-size: 40px; padding-left: 20px">
             Your tool of choice these days should be <a href="">Pipenv</a>.
             <div style="text-align: right; font-size: 24px">
@@ -732,13 +975,18 @@ vine==1.2.0 \
                 создатель
                 <a href="https://github.com/jazzband/pip-tools/"><strong>pip-tools</strong></a>.
             </div>
-        </blockquote>
+        </blockquote><!-- -->
+        
+        <footer>
+Создатель Pipenv заявляет, что  Pipenv призван привнести в мир питона всё то лучшее для пакетирования и работы с зависимостями, что есть в мирах других языков.
+        </footer>
     </section>
 
 
 
 
-<section class="slide">
+
+    <section class="slide">
         <h2>Что такое Pipenv на самом деле?</h2>
         Инструмент для <mark>приложений</mark>, не библиотек, который может:
         <ul>
@@ -751,9 +999,18 @@ vine==1.2.0 \
             <li>Устанавливать <strong>детерминированный</strong> набор пакетов
                 <strong>(Pipfile.lock)</strong>
             </li>
-            <li><strike>Проверять код на соответствие стайл-гайдам (flake8)</strike></li>
         </ul>
+        
+        <footer>
+И так, что же такое pipenv?
+Это инструмент, который позволяет вам одновременно управлять виртуальным окружением вашего проекта, устанавливать и удалять пакеты, а также устанавливать ДЕТЕРМИНИРОВАННЫЙ набор пакетов за счёт Pipfile.lock.
+
+В общем, lock файл, на ряду с самим Pipfile, это именно то, ради чего, похоже, действительно стоило создавать pipenv.
+        </footer>
     </section>
+    
+    
+    
     
     
     <section class="slide">
@@ -762,7 +1019,18 @@ vine==1.2.0 \
             <li><code>Pipfile.lock</code> — содержит «запиненные», <mark>все</mark> зависимости, необходимые для запуска и работы проекта. Генерируется на основе Pipfile.</li>
             <li><code>Pipfile</code> — содержит только зависимости проекта и мета-информацию о зависимостях.</li>
         </ul>
+        
+        <footer>
+
+Pipfile.lock — это файл, который, по своей сути, выполняет роль "замороженного" requirementx.txt. ...
+
+Pipfile — это что-то слегка похожее на requiements.in , при этом содержит некоторую мета-информацию.
+        </footer>
     </section>
+    
+    
+    
+    
     
     
     
@@ -777,78 +1045,108 @@ vine==1.2.0 \
             <li>Позволяет указать два списка пакетов: packages и dev-packages (для окружения разработчика)</li>
             <li>Стремится стать новым стандартом, заменой requirements.txt</li>
         </ul>
+        
+        <footer>
+И так, Pipfile — это файл в формате TOML, который пророчат заменой старого доброго requirements.txt.
+<!-- Этот чем-то слегка напоминает package.json из мира javascript. По крайней мере, -->
+ позволяет указать два набора зависимостей: основной и второй для разработки.
+        </footer>
     </section>
+    
+    
+    
+    
+    
+    
     
     <section class="slide">
         <h2>Pipfile: что внутри?</h2>
         <br>
-        <div class="terminal" data-content="Pipfile" style="width: 100%">
-            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
+        <div class="terminal" data-content="Pipfile">
+            <pre style="overflow:hidden;">
 [[source]]
 url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 [packages]
-django = "*"
 celery = "*"
 [dev-packages]
 "flake8" = "*"
-moto = "==1.3.4"
 [requires]
-python_version = "3.6"
-        </pre></div>
+python_version = "3.6"</pre>
+        </div>
+        
+        <footer>
+Вот так он выглядит изнутри.
+
+Сразу бросаются некоторые вещи в глаза.
+        </footer>
     </section>
     
     
+    
+    
+    
+    
+    
+
     <section class="slide">
         <h2>Pipfile: можно указывать свой PyPI</h2>
         <br>
-        <div class="terminal" data-content="Pipfile" style="width: 100%">
-            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
+        <div class="terminal" data-content="Pipfile">
+            <pre>
 [[source]]
 <span style="color:yellow">url = "https://pypi.org/simple"</span>
 verify_ssl = true
 name = "pypi"
 [packages]
-django = "*"
 celery = "*"
 [dev-packages]
 "flake8" = "*"
-moto = "==1.3.4"
 [requires]
-python_version = "3.6"
-        </pre></div>
+python_version = "3.6"</pre></div>
+        
+        <footer>
+Можно ПРЯМО В ЭТОМ ФАЙЛЕ указать, какой PyPI будет использован.
+
+Кто раньше уже использовал кастомные PyPI сервера, думаю, понимает, на сколько это удобнее.
+Для тех, кто не использовал: просто поверьте, это ГОРАЗДО удобнее.  
+        </footer>
     </section>
-    
+
+
+
+
+
     <section class="slide">
         <h2>Pipfile: указывается версия питона для проекта</h2>
         <br>
-        <div class="terminal" data-content="Pipfile" style="width: 100%">
-            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
-[packages]
-django = "*"
-celery = "*"
+        <div class="terminal" data-content="Pipfile">
+            <pre>
+...
 [dev-packages]
 "flake8" = "*"
-moto = "==1.3.4"
 [requires]
 <span style="color:yellow">python_version = "3.6"</span>
         </pre></div>
+        
+        <footer>
+Ещё один интересный момент: в файле указывается версия питона. Соответственно, вы всегда знаете, с какой версией работает проект, не нужно гадать. ...
+А ещё с помощью этой информации pipenv может установить вам питон нужной версии, если у вас есть pyenv.
+
+        </footer>
     </section>
-    
+
+
+
+
+
     <section class="slide">
         <h2>Pipfile: диапазоны версий, как в requiements.txt</h2>
         <br>
-        <div class="terminal" data-content="Pipfile" style="width: 100%">
-            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
+        <div class="terminal" data-content="Pipfile">
+            <pre>
+...
 [packages]
 django = <span style="color:yellow">"*"</span>
 celery = "*"
@@ -857,23 +1155,24 @@ elasticsearch = <span style="color:yellow">"<6.0.0,>=5.0.0"</span>
 "flake8" = "*"
 moto = <span style="color:yellow">"==1.3.4"</span>
 [requires]
-python_version = "3.6"
-        </pre></div>
+python_version = "3.6"</pre>
+        </div>
+        
+        <footer>
+Ну и, конечно же, для самих зависимостей, как и в requirements.txt, можно указывать необходимые версии, диапазоны и так далее
+        </footer>
     </section>
-    
-    
-    
-    
-    
+
+
+
+
+
     <section class="slide">
         <h2>Pipfile: свой синтаксис для Git-ссылок</h2>
         <br>
-        <div class="terminal" data-content="Pipfile" style="width: 100%">
-            <pre style="overflow:hidden; font-size: 24px; line-height: 26px;">
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
+        <div class="terminal wide super-wide" data-content="Pipfile">
+            <pre>
+...
 [packages]
 django = "*"
 celery = "*"
@@ -883,16 +1182,47 @@ api_client = <span style="color:yellow">{git =
     ref = "v1.0.2"}</span>
 [dev-packages]
 "flake8" = "*"
-moto = "==1.3.4"
-[requires]
-python_version = "3.6"</pre></div>
+moto = "==1.3.4"</pre>
+        </div>
+        
+        <footer>
+Так же можно ставить библиотеки из Git'а. Синтаксис отличается, но он даже удобнее, как по  мне.
+        </footer>
     </section>
+
+
+
+
+    <section class="slide">
+        <h2>Pipfile: ещё раз структура файла</h2>
+        <br>
+        <div class="terminal" data-content="Pipfile">
+            <pre style="overflow:hidden;">
+<span style="color:yellow">[[source]]</span>
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+[packages]
+celery = "*"
+[dev-packages]
+"flake8" = "*"
+[requires]
+python_version = "3.6"</pre>
+        </div>
+        
+        <footer>
+Ещё раз приведу содержимое Pipfile.
+Обратите внимание на секцию source. Как я уже говорил, здесь можно указывать PyPI репозиторий, который будет использоваться для установки пакетов.
+        </footer>
+    </section>
+    
     
     
    
     <section class="slide">
         <h2>Pipfile: несколько PyPI репозиториев</h2>
-        <div class="terminal" data-content="Pipfile" style="width: 100%">
+        <br>
+        <div class="terminal wide" data-content="Pipfile">
             <pre style="overflow:hidden; ">
 [[source]]
 url = <span style="color:yellow">"https://pypi.org/simple"</span>
@@ -902,23 +1232,46 @@ name = "<span style="color:CYAN">pypi</span>"
 [[source]]
 url = <span style="color:yellow">"http://pypi.famous.org/simple"</span>
 verify_ssl = false
-
 name = "<span style="color:CYAN">famous</span>"
+</pre>
+        </div>
+        
+        <footer>
+И вот она — киллер-фича!
+Кроме того, что кастомный PyPI можно и нужно задать непосредственно в файле, также можно указать НЕСКОЛЬКО PyPI репозиториев. 
+        </footer>
+    </section>
+    
+    
+    
+    
+    <section class="slide">
+        <h2>Pipfile: несколько PyPI репозиториев</h2>
+        <br>
+        <div class="terminal wide" data-content="Pipfile">
+            <pre style="overflow:hidden; ">
 [packages]
-django = <span style="color:yellow">"*"</span>
-celery = <span style="color:yellow">{version="*", index="<span style="color:CYAN">pypi</span>"}</span>
-api_base_client = <span style="color:yellow">{version="*", index="<span style="color:CYAN">famous</span>"}</span>
-api_client = {git="ssh://git@gitlab.com/something/api-client.git",ref = "v1.0.2"}
-[dev-packages]
-"flake8" = "*"
-moto = "==1.3.4"
-[requires]
-python_version = "3.6"</pre></div>
+celery = <span style="color:yellow">{
+    version="*",
+    index="<span style="color:CYAN">pypi</span>"}</span>
+api_base_client = <span style="color:yellow">{
+    version="*",
+    index="<span style="color:CYAN">famous</span>"}</span>
+api_client = {
+    git="ssh://git@gitlab.com/something/api-client.git",
+    ref = "v1.0.2"}</pre>
+        </div>
+        
+        <footer>
+И далее для специфических пакетов указать, что их надо ставить из специфических репозиториев.
+        </footer>
     </section>
      
-    
-    
-    
+
+
+
+
+
     
     
 
@@ -932,199 +1285,238 @@ python_version = "3.6"</pre></div>
             <li>Хэш-сумма Pipfile</li>
             <li>Meta</li>
         </ul>
+        
+        <footer>
+С Pipfile с большего разобрались, давайте посмотрим на lock-файл.
+
+Он содержит в себе запиненные версии всех пакетов с хеш суммами пакетов и кое-какую дополнительую 
+мета-информацию...
+        </footer>
     </section>
-    
+
+
+
+
+
     <section class="slide">
         <h2>Pipfile.lock, что внутри? Пустой проект:</h2>
-        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
-            <pre style="overflow:hidden; ">{
-    "_meta": {
-        "hash": {
-            "sha256": "415dfdcb118dd9bdfef17671cb7dcd78dbd69b6ae7d4f39e8b44e71d60ca72e7"
-        },
-        "pipfile-spec": 6,
-        "requires": {
-            "python_version": "3.6"
-        },
-        "sources": [
-            {
-                "name": "pypi",
-                "url": "https://pypi.org/simple",
-                "verify_ssl": true
-            }
-        ]
-    },
-    "default": {},
-    "develop": {}
+        <div class="terminal super-wide" data-content="Pipfile.lock">
+            <pre style="overflow:hidden;">
+{ "_meta": {
+    "hash": { "sha256": "415dfdcb118dd9bdfef17671cb7dcd78dbd69b6ae7d4f39e8b44e71d60ca72e7" },
+    "pipfile-spec": 6,
+    "requires": { "python_version": "3.6" },
+    "sources": [
+      { "name": "pypi",
+        "url": "https://pypi.org/simple",
+        "verify_ssl": true
+      }
+    ]
+  },
+  "default": {},
+  "develop": {}
 }</pre>
         </div>
+        
+        <footer>
+Вот так выглядит этот файл, когда в вашем проекте нет ни одной зависимости.
+        </footer>
     </section>
-    
-    
+
+
     <section class="slide">
         <h2>Pipfile.lock, что внутри? Пустой проект:</h2>
-        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
-            <pre style="overflow:hidden; ">{
-    "_meta": {
-        <span style="color: yellow">"hash": {
-            "sha256": "415dfdcb118dd9bdfef17671cb7dcd78dbd69b6ae7d4f39e8b44e71d60ca72e7"
-        },</span>
-        "pipfile-spec": 6,
-        "requires": {
-            "python_version": "3.6"
-        },
-        "sources": [
-            {
-                "name": "pypi",
-                "url": "https://pypi.org/simple",
-                "verify_ssl": true
-            }
-        ]
-    },
-    "default": {},
-    "develop": {}
+        <div class="terminal super-wide" data-content="Pipfile.lock">
+            <pre style="overflow:hidden; ">
+{ "_meta": {
+    <span style="color: yellow">"hash": { "sha256": "415dfdcb118dd9bdfef17671cb7dcd78dbd69b6ae7d4f39e8b44e71d60ca72e7" },</span>
+    "pipfile-spec": 6,
+    "requires": { "python_version": "3.6" },
+    "sources": [
+      { "name": "pypi",
+        "url": "https://pypi.org/simple",
+        "verify_ssl": true
+      }
+    ]
+  },
+  "default": {},
+  "develop": {}
 }</pre>
         </div>
+        
+        <footer>
+Обратите внимание на этот хэш. Он позволяет контроллировать, что Pipfile и Pipfile.lock синхронизированы между собой.
+Это очень полезно, так как разработчики леняться обновлять lock файл после того, как обновили Pipfile.
+        </footer>
     </section>
-    
-    
-    
-    
+
+
+
+
     <section class="slide">
         <h2>Pipfile.lock, что внутри? Пустой проект:</h2>
-        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
-            <pre style="overflow:hidden; ">{
-    "_meta": {
-        "hash": {
-            "sha256": "415dfdcb118dd9bdfef17671cb7dcd78dbd69b6ae7d4f39e8b44e71d60ca72e7"
-        },
-        "pipfile-spec": 6,
-        "requires": {
-            "python_version": "3.6"
-        },
-        <span style="color: yellow">"sources": [
-            {
-                "name": "pypi",
-                "url": "https://pypi.org/simple",
-                "verify_ssl": true
-            }
-        ]</span>
-    },
-    "default": {},
-    "develop": {}
+        <div class="terminal super-wide" data-content="Pipfile.lock">
+            <pre style="overflow:hidden; ">
+{ "_meta": {
+    "hash": { "sha256": "415dfdcb118dd9bdfef17671cb7dcd78dbd69b6ae7d4f39e8b44e71d60ca72e7" },
+    "pipfile-spec": 6,
+    "requires": { "python_version": "3.6" },
+    <span style="color: yellow">"sources": [
+      { "name": "pypi",
+        "url": "https://pypi.org/simple",
+        "verify_ssl": true
+      }
+    ]</span>
+  },
+  "default": {},
+  "develop": {}
 }</pre>
         </div>
+        
+        <footer>
+lock файл также содержит в себе всю нужную мета-информацию, что есть в Pipfile. Это позволяет его использовать независимо от Pipfile.
+        </footer>
     </section>
-    
-    
-    
-    
-    
+
+
+
+
+    <section class="slide">
+        <h2>Pipfile.lock, что внутри? Пустой проект:</h2>
+        <div class="terminal super-wide" data-content="Pipfile.lock">
+            <pre style="overflow:hidden; ">
+{ "_meta": {
+    "hash": { "sha256": "415dfdcb118dd9bdfef17671cb7dcd78dbd69b6ae7d4f39e8b44e71d60ca72e7" },
+    "pipfile-spec": 6,
+    "requires": { "python_version": "3.6" },
+    "sources": [
+      { "name": "pypi",
+        "url": "https://pypi.org/simple",
+        "verify_ssl": true
+      }
+    ]
+  },
+  <span style="color: yellow">"default": {},
+  "develop": {}</span>
+}</pre>
+        </div>
+        
+        <footer>
+Возможно, вы обратили внимание, что лок файл на предыдущих слайдах содержал две пустых секции: default и develop...
+Эти секции отвечают за список запиненных пакетов.
+
+        </footer>
+    </section>
+
+
+
+
+
     <section class="slide">
         <h2>Pipfile.lock: Секция default для celery</h2>
-        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
+        <div class="terminal super-wide" data-content="Pipfile.lock">
             <pre style="overflow:hidden; ">
 "default": {
-    "amqp": {
-        "hashes": [
-            "sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464",
-            "sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b"
-        ],
-        "version": "==2.4.0"
-    },
-    "billiard": {
-        "hashes": [
-            "sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e"
-        ],
-        "version": "==3.5.0.5"
-    },
-    "celery": {
-        "hashes": [
-            "sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678",
-            "sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13"
-        ],
-        "index": "pypi",
-        "version": "==4.2.1"
-    },
-    "kombu": {
-        "hashes": [
-            "sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d",
-            "sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78"
-        ],
-        "version": "==4.2.2.post1"
-    },
-    "pytz": {
-        "hashes": [
-            "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
-            "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
-        ],
-        "version": "==2018.9"
-    },
-    "vine": {
-        "hashes": [
-            "sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1",
-            "sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76"
-        ],
-        "version": "==1.2.0"
-    }
-},
-            </pre>
+  "amqp": {
+    "hashes": [ "sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464",
+                "sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b"
+    ],
+    "version": "==2.4.0"
+  },
+  "billiard": {
+    "hashes": [ "sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e"
+    ],
+    "version": "==3.5.0.5"
+  },
+  "celery": {
+    "hashes": [ "sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678",
+                "sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13"
+    ],
+    "index": "pypi",
+    "version": "==4.2.1"
+  },
+  "kombu": {
+    "hashes": [
+      "sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d",
+      "sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78"
+    ],
+    "version": "==4.2.2.post1"
+  },
+  "pytz": {
+    "hashes": [
+      "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
+      "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
+    ],
+    "version": "==2018.9"
+  },
+  "vine": {
+    "hashes": [
+      "sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1",
+      "sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76"
+    ],
+    "version": "==1.2.0"
+  }
+},</pre>
         </div>
+        
+        <footer>
+Вот например секция default для проекта celery
+        </footer>
     </section>
-    
-    
-    
-    
+
+
+
+
     <section class="slide">
-        <h2>Pipfile.lock: Секция default для celery</h2>
-        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
-            <pre style="overflow:hidden; ">
+        <!-- <h2>Pipfile.lock: Секция default для celery</h2> -->
+        <div class="terminal full-screen" data-content="Pipfile.lock">
+            <pre style="overflow:hidden; font-size: 19px; line-height: 0.8">
+
 "default": {
-    "amqp": {
-        "hashes": [
-            "sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464",
-            "sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b"
-        ],
-        "version": "==2.4.0"
-    },
-    "billiard": {
-        "hashes": [
-            "sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e"
-        ],
-        "version": "==3.5.0.5"
-    },
-    "celery": {
-        "hashes": [
-            "sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678",
-            "sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13"
-        ],
-        <span style="color: yellow">"index": "pypi",</span>
-        "version": "==4.2.1"
-    },
-    "kombu": {
-        "hashes": [
-            "sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d",
-            "sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78"
-        ],
-        "version": "==4.2.2.post1"
-    },
-    "pytz": {
-        "hashes": [
-            "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
-            "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
-        ],
-        "version": "==2018.9"
-    },
-    "vine": {
-        "hashes": [
-            "sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1",
-            "sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76"
-        ],
-        "version": "==1.2.0"
-    }
+  "amqp": {
+    "hashes": [ "sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464",
+                "sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b"
+    ],
+    "version": "==2.4.0"
+  },
+  "billiard": {
+    "hashes": [ "sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e"
+    ],
+    "version": "==3.5.0.5"
+  },
+  "celery": {
+    "hashes": [ "sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678",
+                "sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13"
+    ],
+    "index": "pypi",
+    "version": "==4.2.1"
+  },
+  "kombu": {
+    "hashes": [ "sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d",
+                "sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78"
+    ],
+    "version": "==4.2.2.post1"
+  },
+  "pytz": {
+    "hashes": [ "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
+                "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
+    ],
+    "version": "==2018.9"
+  },
+  "vine": {
+    "hashes": [ "sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1",
+                "sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76"
+    ],
+    "version": "==1.2.0"
+  }
 },
-            </pre>
+
+</pre>
         </div>
+        
+        <footer>
+И вот вся секция default для проекта celery для тех, кто не любит, когда вырывают из контекста :-)
+        </footer>
     </section>
     
     
@@ -1134,72 +1526,52 @@ python_version = "3.6"</pre></div>
     
     
     
-    <section class="slide">
-        <h2>Pipfile.lock: Секция default для celery</h2>
-        <div class="terminal" data-content="Pipfile.lock" style="width: 100%">
-            <pre style="overflow:hidden;font-size: 13px; line-height: 11.5px ">
-"default": {
-    "amqp": {
-        "hashes": [
-            "sha256:9f181e4aef6562e6f9f45660578fc1556150ca06e836ecb9e733e6ea10b48464",
-            "sha256:c3d7126bfbc640d076a01f1f4f6e609c0e4348508150c1f61336b0d83c738d2b"
-        ],
-        "version": "==2.4.0"
-    },
-    "billiard": {
-        "hashes": [
-            "sha256:42d9a227401ac4fba892918bba0a0c409def5435c4b483267ebfe821afaaba0e"
-        ],
-        "version": "==3.5.0.5"
-    },
-    "celery": {
-        "hashes": [
-            "sha256:77dab4677e24dc654d42dfbdfed65fa760455b6bb563a0877ecc35f4cfcfc678",
-            "sha256:ad7a7411772b80a4d6c64f2f7f723200e39fb66cf614a7fdfab76d345acc7b13"
-        ],
-        "index": "pypi",
-        "version": "==4.2.1"
-    },
-    "kombu": {
-        "hashes": [
-            "sha256:1ef049243aa05f29e988ab33444ec7f514375540eaa8e0b2e1f5255e81c5e56d",
-            "sha256:3c9dca2338c5d893f30c151f5d29bfb81196748ab426d33c362ab51f1e8dbf78"
-        ],
-        "version": "==4.2.2.post1"
-    },
-    "pytz": {
-        "hashes": [
-            "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
-            "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
-        ],
-        "version": "==2018.9"
-    },
-    "vine": {
-        "hashes": [
-            "sha256:3cd505dcf980223cfaf13423d371f2e7ff99247e38d5985a01ec8264e4f2aca1",
-            "sha256:ee4813e915d0e1a54e5c1963fde0855337f82655678540a6bc5996bca4165f76"
-        ],
-        "version": "==1.2.0"
-    }
-},
-            </pre>
-        </div>
-    </section>
     
-    
-    
-    
-    
-    
-    
+
+
     <section class="slide">
         <h2>Управление пакетами</h2>
+        <br>
+        <!--
+        alias только-интересные=grep -E 'clean|^  graph|^  install|^  lock|^  sync|^  uninstall|^  update'
+        @TODO: добавить хитрый sort в alias :-)
+        -->
+        <div class="terminal" data-content="Terminal">
+            <p>pipenv --help | только-интересные</p>
+            <pre style="overflow: hidden">
+  <span style="color:yellow">install</span>    Installs provided packages and adds them to Pipfile, or (if none is given), installs all packages.
+  <span style="color:yellow">graph</span>      Displays currently-installed dependency graph information.
+  <span style="color:yellow">uninstall</span>  Un-installs a provided package and removes it from Pipfile.
+  <span style="color:yellow">clean</span>      Uninstalls all packages not specified in Pipfile.lock.
+  <span style="color:yellow">lock</span>       Generates Pipfile.lock.
+  <span style="color:yellow">update</span>     Runs lock, then sync.
+  <span style="color:yellow">sync</span>       Installs all packages specified in Pipfile.lock.
+            </pre>
+        </div>
         
-        <p>Установка пакетов:</p>
-        
-        <div class="terminal" data-content="Terminal" style="width:100%">
-            <p>pipenv install celery</p>
-            <pre>Installing celery…
+        <footer>
+С файлами, думаю, всё более-менее понятно.
+Давайте посмотрим, как мы всё же можем управлять пакетами.
+
+Я привел здесь не весь список команд, о которых рассказывает нам хелп, а только самые интересные для нас сейчас.
+        </footer>
+    </section>
+
+
+    
+    
+    
+    
+
+
+    <section class="slide">
+        <h2>Управление пакетами: установка</h2>
+        <br>
+        <div class="terminal" data-content="Terminal">
+            <p><span style="color:yellow">pipenv install celery</span></p>
+            <pre style="overflow:hidden;">
+...
+Installing celery…
 ✔ Installation Succeeded 
 Pipfile.lock (c07081) out of date, updating to (ca72e7)…
 Locking [dev-packages] dependencies…
@@ -1207,10 +1579,15 @@ Locking [packages] dependencies…
 ✔ Success! 
 Updated Pipfile.lock (c07081)!
 Installing dependencies from Pipfile.lock (c07081)…
-  🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 6/6 — 00:00:01
-To activate this project's virtualenv, run pipenv shell.
-Alternatively, run a command inside the virtualenv with pipenv run.</pre>
+  🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 6/6 — 00:00:01</pre>
         </div>
+        
+        
+        <footer>
+        
+        Всё просто:
+pipenv install "имя пакета"
+        </footer>
     </section>
     
     
@@ -1250,7 +1627,6 @@ Alternatively, run a command inside the virtualenv with pipenv run.
     </section><!-- -->
     
     
-    
     <section class="slide">
         <h2>Управление пакетами: pipenv install</h2>
         Два варианта.
@@ -1268,44 +1644,79 @@ Alternatively, run a command inside the virtualenv with pipenv run.
                 <code>pipenv install</code>
                 <ul>
                     <li>устанавливает всё из <code>Pipfile</code></li>
-                    <li>обновляет <code>Pipfile.lock</code></li>
+                    <li>обновляет/создаёт <code>Pipfile.lock</code></li>
                 </ul>
             </li>
         </ol>
-    
+        
+        <footer>
+pipenv install имеет два основных режима:
+<b>1.</b> ставить пакет, если указано имя пакета
+<b>2.</b> ставить все пакеты из Pipfile, если имя пакета не указано
+        </footer>
     </section>
+    
+    
+        
         
         
     <section class="slide">
-        <h2>Управление пакетами</h2>
-        <p>Удаление пакетов:</p>
+        <h2>Управление пакетами: удаление</h2>
         <div class="terminal" data-content="Terminal" style="width: 100%">
             <p><span style="color:yellow">pipenv uninstall celery</span></p>
             <pre>Uninstalling celery…
 Uninstalling celery-4.2.1:
   Successfully uninstalled celery-4.2.1</pre>
-            <p><span style="color:yellow">pip freeze</span></p>
+            <p>pipenv run <span style="color:yellow">pip freeze</span></p>
             <pre>amqp==2.4.0
 billiard==3.5.0.5
 kombu==4.2.2.post1
 pytz==2018.9
 vine==1.2.0</pre>
+        </div>
+        
+        <footer>
+У pipenv есть команда для удаления установленного пакета, но с ней нужно быть поосторожнее.
+
+Дело в том, что она удаляет пакет, но не удаляет его зависимости следом.
+
+Посмотрите, что нам показывает pip freeze
+        </footer>
+    </section>
+    
+    
+    
+    
+
+        
+    <section class="slide">
+        <h2>Управление пакетами: удаление, чистое</h2>
+        <div class="terminal" data-content="Terminal" style="width: 100%">
+            <p><span style="color:yellow">pipenv uninstall celery</span></p>
+            <pre>Uninstalling celery…
+Uninstalling celery-4.2.1:
+  Successfully uninstalled celery-4.2.1</pre>
             <p><span style="color:yellow">pipenv clean</span></p>
             <pre>Uninstalling vine…
 Uninstalling pytz…
 Uninstalling kombu…
 Uninstalling billiard…
 Uninstalling amqp…</pre>
+            <p>pipenv run <span style="color:yellow">pip freeze</span></p>
+            <p>
         </div>
+        
+        <footer>
+Нужно вызывать специальную команду pipenv clean после удаления.
+        </footer>
     </section>
     
     
+    
     <section class="slide">
-        <h2>Управление пакетами: pipenv graph</h2>
-        
-        <p>&nbsp;</p>
-        
-        <div class="terminal" data-content="Terminal">
+        <h2>Управление пакетами: pipenv graph</h2>        
+        <br>        
+        <div class="terminal super-wide" data-content="Terminal">
             <p>pipenv graph</p>
             <pre>
 celery==4.2.1
@@ -1318,14 +1729,55 @@ celery==4.2.1
             </pre>
         </div>
         
+        <footer>
+<!--
+(разбить на два слайда: не показывать терминал на первом)
+
+есть ещё очень одна, очень мощная команда.
+помните, когда мы рассматривали requiements.txt с комментами для pip-tools я говорил, что это очень похоже на граф?
+
+вот pipenv позволяет этот граф строить наглядно
+-->
+Есть ещё одна, очень мощная команда.
+Она строит наглядное дерево зависимостей.
+        </footer>
     </section>
     
+    
+    
+    
+        
     <section class="slide">
-        <h2>Управление пакетами: pipenv graph</h2>
+        <h2>Управление пакетами: pipenv graph 🕵 🔎</h2>
+        <br>
+        <div class="terminal super-wide" data-content="Terminal">
+            <p>pipenv install factory-boy python-slugify==2.0.0</span></p>
+        </div>
+    </section>
+    
+    
+    
+    <section class="slide black clear">
+        <figure>
         
-        <p>Решение проблем с недекларированными зависимостями в библиотеках</p>
         
-        <div class="terminal" data-content="Terminal">
+            <img src="https://farm6.staticflickr.com/5253/5462536336_a9710a3b83_b.jpg" class="cover">
+            
+            <figcaption class="credits">
+                <a href="https://flic.kr/p/9jGVJY">
+                    Author: Ben Raynal. Licensed under CC BY-NC 2.0
+
+                </a>
+            </figcaption>
+        </figure>
+    </section>
+    
+   
+    
+    <section class="slide">
+        <h2>Управление пакетами: pipenv graph 🕵 🔎</h2>
+        <br>
+        <div class="terminal super-wide" data-content="Terminal">
             <p>pipenv install factory-boy python-slugify==2.0.0</span></p>
             <p>pipenv graph | <span style="color:yellow">grep -iE 'unidecode|'</span></p>
             <pre>
@@ -1335,14 +1787,20 @@ factory-boy==2.11.1
       - six [required: >=1.5, installed: 1.12.0]
     - six [required: >=1.10, installed: 1.12.0]
     - text-<span style="color:yellow">unidecode</span> [required: ==1.2, installed: 1.2]
-python-slugify==2.0.1
+python-slugify==2.0.0
             </pre>
         </div>
         
+        <footer>
+И с помощью такого дерева вы можете, например, понять в ходе расследования, каким окольным путём в ваш проект подтянулась та или иная зависимость. ...
+
+Как видите, здесь пакет text-unidecode поставился за счёт  factory-boy...
+Хотя я ожидал, что его подтянет slugify.
+        </footer>
     </section>
     
     
-    
+
     <section class="slide">
         <h2>Управление пакетами: ещё немного CLI</h2>
         <ul>
@@ -1357,9 +1815,21 @@ python-slugify==2.0.1
                 <span style="opacity:0"><code>pipenv sync</code> —&nbsp;</span>
                 (игнорирует Pipfile, может быть полезно для прода)</li>
         </ul>
+        
+        <footer>
+Ещё немного полезных cli команд, которые нам даёт pipenv...
+
+Кстати, pipenv lock вы будете постоянно использовать, когда будете разрешать мерж-конфликты в гите. ...
+
+Иногда мне задают вопрос: как мержить Pipfile.lock?
+Мой ответ: никак! Просто удаляетет этот файл с конфликтами и запускаете pipenv lock. Как итог - у вас актуальный лок-файл без конфликтов!
+        </footer>
     </section>
     
     
+    
+
+
     <section class="slide">
         <h2>Управление окружениями</h2>
         <ul>
@@ -1367,6 +1837,7 @@ python-slugify==2.0.1
         <li>Используется virtualenv под капотом.
         </li>
         <li>Все виртуальные окружения, по умолчанию, хранятся в каталоге <code>~/.virtualenvs/</code>.
+            <!-- или `.local/share/virtualenvs/` -->
             <ul>
                 <li>Это можно изменить:
                     <br>
@@ -1381,21 +1852,110 @@ python-slugify==2.0.1
             </ul>
         </li>
         </ul>
+        
+        <footer>
+
+Как я уже говорил в начале, pipenv не только управляет пакетами, но и виртуальными окружениями. Он использует virtualenv для этого, поэтому, думаю, всё для вас будет знакомо и понятно если вы уже пользовались virtualenv... ...
+
+А ещё, как я говорил, pipenv вам и питон нужной версии может поставить, если очень нужно. И если есть pyenv у вас, конечно.
+
+<!-- Единственная особенность, по умолчанию он хранит все виртуальные окружения в глобально, в домашней папке пользователя, в специальной директориии. 
+
+Но это можно перенастроить. На слайде вы видите, как.-->
+            
+        </footer>
+    </section>
+
+
+
+
+    <section class="slide">
+        <h2>Работа в виртуальном окружении</h2>
+        <h3 class="shout">
+            <code>run</code>
+            &nbsp;
+            🤔
+            &nbsp;
+            <code>shell</code>
+        </h3>
+        
+        <footer>
+Для повседневной работы с виртуальными окружениями pipenv предоставляет две команды: run и shell.
+Сейчас посмотрим, какую из них следует использовать и в каком случае.
+        </footer>
     </section>
     
+    
+    
+    
+    
+    
+    
     <section class="slide">
-        <h2>Работа внутри виртуального окружения</h2>
-        <ul>
-            <li>Запустить скрипт с нужным виртуальным окружением <b>единоразово</b>:
-                <br>
-                <code>pipenv run script-name.py</code>
-            </li>
-            <li>Активировать виртуальное окружение для выполнения команд в интерактивном режиме:
-                <br>
-                <code>pipenv shell</code>
-            </li>
-        </ul>
+        <h2>Работа в виртуальном окружении: run</h2>
+        <p><b>Единоразовое</b> выполнение: <code>pipenv run %SOMETHING%</code></p>
+        <div class="terminal" data-content="Terminal">
+            <p>pipenv run какой-то--скрипт.py</p>
+            <p>pipenv run pip freeze</p>
+            <p>pipenv run env</p>
+        </div>
+        
+        <footer>
+Если вам нужно выполнить какой-то скрипт, один, из-под виртуального окружения, то run вам вполне подойдёт.
+Если же этих команд уже три, то можно смотреть в сторону shell
+        </footer>
     </section>
+    
+    
+    
+    
+    
+
+    <section class="slide">
+        <h2>Работа в виртуальном окружении: shell</h2>
+        <p>Интерактивный режим: <code>pipenv shell</code></p>
+        <div class="terminal venv" data-content="Terminal">
+            <p class="without-venv">pipenv shell</p>
+            <p>какой-то--скрипт.py</p>
+            <p>pip freeze</p>
+            <p>env</p>
+        </div>
+        
+        <footer>
+И в режиме shell вы можете вбивать сколько угодно много команд, без устали!
+        </footer>
+    </section>
+    
+  
+    
+    
+    <section class="hidden-slide" id="pipe" style="display: none">
+        <h2>run vs shell: что использовать?</h2>
+        <p>&nbsp;</p>
+        <div class="terminal venv super-wide" data-content="Terminal">
+            
+            <p class="without-venv">
+                <span style="color:yellow">pipenv run</span> one.sh |
+                <span style="color:yellow">pipenv run</span> two.py |
+                <span style="color:yellow">pipenv run</span> ./three.py</p>
+            <p class="without-venv"></p>
+            <p class="without-venv"></p>
+            <p class="without-venv">pipenv shell</p>
+            <p>one.sh | two.py | ./three.py </p>
+        </div>
+        
+        <footer>
+Вот ещё более показательный пример, когда shell будет сильно поудобнее.
+Пайпы в юниксовой консоли - штука удобная, но с run-командой вы можете в том числе и потерять контекст выполнения команд, если где-то при напитсании ещё одного уровня пайпа забудете добавить pipenv run.
+        </footer>
+    </section>
+    
+    
+    
+    
+    
+    
+    
     
     <section class="slide">
         <h2>Возможные проблемы с virtualenv + Pipenv</h2>
@@ -1404,6 +1964,7 @@ python-slugify==2.0.1
             <li>В <mark>shell</mark> режиме у некоторых людей появлялись проблемы с башем
             </li>
             <li>В <mark>run</mark> режиме не устанавливается переменная <code>$VIRTUAL_ENV</code>, соответствующая пути к виртуальному окружению</li>
+            <li>Возможно, проблемы с <code>virtualenvwrapper</code>, <code>autoenv</code> и т.д.</li>
         </ul>
     </section>
     
@@ -1441,6 +2002,17 @@ python-slugify==2.0.1
         <h2 class="shout no-bg">
             Poetry
     </section>
+    
+    
+    
+    <section class="slide black clear">
+        <h2 class="shout no-bg" style="opacity:0.25">Poetry</h2>
+        <div class="cover">
+            <!-- https://www.youtube.com/watch?v=OqRtm9TsaMg&t=95 <!-- -->
+            <iframe width="1024" height="768" src="https://www.youtube-nocookie.com/embed/OqRtm9TsaMg?controls=0&amp;start=95&amp;autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+    
 
     <section class="slide">
         <h2>Poetry, коротко</h2>
@@ -1526,9 +2098,14 @@ python-slugify==2.0.1
 
 
 
-    <section class="slide clear">
-        <h2 class="shout">Обратно к зависимостям</h2>
+
+    <section class="slide black clear">
+        <h2 class="shout ">Обратно к зависимостям</h2>
+        <figure>
+            <img src="https://coubsecure-s.akamaihd.net/get/b31/p/coub/simple/cw_timeline_pic/6762c307dc0/de22896a2c333f5ce1ce7/big_1454884539_image.jpg" alt="" class="cover">
+        </figure>
     </section>
+
 
 
 
@@ -1649,14 +2226,35 @@ python-slugify==2.0.1
                     <span>by</span>
                     <span>Vincent Driessen</span>
                 </li>
+                
+                
+                <li>
+                    <a href="https://nvie.com/posts/better-package-management/" class="">здесь будет ссылка на видеовыступление Никиты Гришко с PyCon Belarus 2019</a>
+                </li>
             </ul>
         </div>
     </section>
     
+    
+    
+    
+    
+    <section class="slide half-black">
+        
+        <h2 class="shout">
+            
+    <img src="https://memepedia.ru/wp-content/uploads/2017/03/657px-Trollface_HD.png" height="300px">        
+            <br>Questions?
+        </h2>
+    
+    
+    </section>
+    
+    
 
     <div class="progress"></div>
 
-    <footer class="badge">
+    <footer class="badge">https://www.flickr.com/photos/156204918@N08/35562725055/
         <a href="https://github.com/shurph/talks">Fork me on GitHub!</a>
     </footer>
 
