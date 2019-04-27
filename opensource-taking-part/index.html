@@ -8,11 +8,11 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="vendor/reveal/css/reset.css">
-        <link rel="stylesheet" href="vendor/reveal/css/reveal.css">
-        <link rel="stylesheet" href="vendor/reveal/css/theme/alien-blood.css" id="theme">
+        <link rel="stylesheet" href="../vendor/reveal/css/reset.css">
+        <link rel="stylesheet" href="../vendor/reveal/css/reveal.css">
+        <link rel="stylesheet" href="../vendor/reveal/css/theme/alien-blood.css" id="theme">
         <!-- Theme used for syntax highlighting of code -->
-        <link rel="stylesheet" href="vendor/reveal/lib/css/monokai.css">
+        <link rel="stylesheet" href="../vendor/reveal/lib/css/monokai.css">
         <!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -283,7 +283,7 @@
                 </section>
             </div>
         </div>
-        <script src="vendor/reveal/js/reveal.js"></script>
+        <script src="../vendor/reveal/js/reveal.js"></script>
         <script>
 
             // More info https://github.com/hakimel/reveal.js#configuration
@@ -302,9 +302,10 @@
 
                 // More info https://github.com/hakimel/reveal.js#dependencies
                 dependencies: [{
-                    src: 'vendor/reveal/plugin/highlight/highlight.js',
+                    src: '../vendor/reveal/plugin/highlight/highlight.js',
                     async: true
-                }]
+                },
+					{ src: '../vendor/reveal/plugin/notes/notes.js', async: true }]
             });
         </script>
     </body>
