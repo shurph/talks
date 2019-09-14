@@ -271,19 +271,247 @@
     </section>
 
     <section class="slide">
-        <h2>Microservices: Asynchronous Communication</h2>
+        <h2>Microservices: Async Communication (Celery)</h2>
         <img src="pictures/microservices-async-comm-celery-rabbit.svg" alt="" class="cover w" style="margin-top: 20px">  
     </section>
 
 
     <section class="slide">
-        <h2>Microservices: Asynchronous Communication</h2>
+        <h2>Microservices: Async Communication (Kafka)</h2>
         <img src="pictures/microservices-async-comm-kafka.svg" alt="" class="cover w" style="margin-top: 20px">  
     </section>
 
+
+
+    <section class="slide">
+        <h2>Kafka: Overview</h2>
+        <img src="pictures/kafka-architecture-overview-zookeeper.png" alt="" class="cover w" style="margin-top: 20px">  
+        <span class="slide-footer">
+        Fig. from <a href="https://dzone.com/articles/kafka-architecture">dzone.com</a>
+        </span>
+    </section>
+    
     
 
+    <section class="slide">
+        <h2>Kafka: Partitions</h2>
+        <img src="pictures/kafka-partitioning-0.png" alt="" class="cover h" style="margin-top: -30px">  
+        <span class="slide-footer">
+        Fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
+</a>
+        </span>
+    </section>
+    
 
+    <section class="slide">
+        <h2>Kafka: Partitions (P&lt;C)</h2>
+        <img src="pictures/kafka-partitioning-1-few-consumers.png" alt="" class="cover h" style="margin-top: -30px">  
+        <span class="slide-footer">
+        Fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
+</a>
+        </span>
+    </section>
+    <section class="slide">
+        <h2>Kafka: Partitions (P=C)</h2>
+        <img src="pictures/kafka-partitioning-2-one-to-one-consumers.png" alt="" class="cover h" style="margin-top: -30px">  
+        <span class="slide-footer">
+        Fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
+</a>
+        </span>
+    </section>
+    <section class="slide">
+        <h2>Kafka: Partitions (P&gt;C)</h2>
+        <img src="pictures/kafka-partitioning-3-too-many-consumers.png" alt="" class="cover h" style="margin-top: -30px">  
+        <span class="slide-footer">
+        Fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
+</a>
+        </span>
+    </section>
+    <section class="slide">
+        <h2>Kafka: Partitions: few consumer groups</h2>
+        <img src="pictures/kafka-partitioning-4-few-groups-of-consumers.png" alt="" class="cover h" style="margin-top: -30px">  
+        <span class="slide-footer">
+        Fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
+</a>
+        </span>
+    </section>
+    
+    
+
+    <section class="slide">
+        <h2>Kafka: Replication</h2>
+        <img src="pictures/kafka-architecture-replication.png" alt="" class="cover w" style="margin-top: 30px">  
+        <span class="slide-footer">
+        Fig. from <a href="
+https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dzone.com</a>
+        </span>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <section class="slide black">
+        <h2>Kafka: Schema</h2>
+        <h3 class="shout">key, value<br>byte[], byte[]</h3>
+    </section>
+    
+    
+    
+
+    <section class="slide">
+        <h2>Kafka: Replication</h2>
+        <img src="pictures/kafka-architecture-replication.png" alt="" class="cover w" style="margin-top: 30px">  
+        <span class="slide-footer">
+        Fig. from <a href="
+https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dzone.com</a>
+        </span>
+    </section>
+    
+    
+    
+    
+    <section class="slide">
+        <h2>Kafka: Schema</h2>
+        <h3 class="shout no-bg"><small style="font-size: 0.5em">Use Avro to define a data schema</small></span>
+    </section>
+    
+    <section class="slide">
+        <h2>Kafka: Schema: Avro</h2>
+        <pre><code>{   "namespace":"com.example.avroSample.model",
+    "type":"record",
+    "name":"Automobile",
+    "fields":[  {  "name":"modelName",
+                   "type":"string"},
+                {  "name":"modelYear",
+                   "type":"int"}
+             ]
+}
+        </code></pre>
+    </section>
+
+
+
+
+
+    <section class="slide">
+        <h2>Kafka: Schema: Avro: Schema Registry</h2>
+        <ul>
+            <li><b><a href="https://ondataengineering.net/technologies/confluent-open-source/">Confluent Schema Registry</a></b></li>
+            <li><a href="https://ondataengineering.net/technologies/schema-registry/">Hortonworks Schema Registry</a></li>
+            <li><a href="https://github.com/salsify/avro-schema-registry">Avro Schema Registry</a></li>
+        </ul>
+    </section>
+
+
+
+
+
+
+    <section class="slide">
+        <h2>Kafka: Consumers Offsets</h2>
+        <img src="pictures/kafka-consumers-offset.png" alt="" class="cover w" style="margin-top: 30px">  
+
+    </section>
+
+
+
+
+    <section class="slide black">
+        <h2 class="shout">Microservices?</h2>
+    </section>
+
+
+
+
+    <section class="slide">
+        <h2>Microservices: Async Communication (Kafka). Again</h2>
+        <img src="pictures/microservices-async-comm-kafka.svg" alt="" class="cover w" style="margin-top: 20px">  
+    </section>
+
+
+
+
+    <section class="slide">
+        <h2>Microservices: Async Communication. Few Details</h2>
+        <img src="pictures/microservices-async-comm-kafka-detailed.svg" alt="" class="cover w" style="margin-top: 20px">  
+    </section>
+    
+    
+    
+
+    <section class="slide black">
+        <h2>PostgreSQL → Kafka</h2>
+        <img src="pictures/logos/debezium.svg" alt="">
+    </section>
+
+    <section class="slide">
+        <h2>Stream data from PostgreSQL to Kafka</h2>
+        <img src="pictures/debezium-architecture.png" alt="" class="cover w" style="margin-top: 30px">  
+        <span class="slide-footer">
+        Fig. from <a href="
+https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</a>
+        </span>
+    </section>
+
+
+
+
+    <section class="slide">
+        <h2>Microservices: Async Communication. Few Details</h2>
+        <img src="pictures/microservices-async-comm-kafka-debezium.svg" alt="" class="cover w" style="margin-top: 20px">  
+    </section>
+
+
+
+
+
+    <section class="slide">
+        <h2>А как же питон?</h2>
+        <center><img src="pictures/emoji/thinking-face.svg"></center>
+    </section>
+    
+    
+    <section class="slide black">
+        <h2>Kafka-related libraries for Python</h2>
+        <div class="tags-baloons">
+            <span class="label">
+                confluent-kafka
+            </span>
+            <span class="label">
+                aiokafka
+            </span>
+            
+            <br>
+            <span class="label">
+                fastavro
+            </span>
+        </div>    
+    </section>
+
+
+    <section class="slide black">
+        <div class="tags-baloons shout">
+            <span class="label">
+                Thanks!
+            </span>
+        </div>    
+    </section>
+    
+    
+    <section class="slide black">
+        <div class="tags-baloons shout">
+            <span class="label">
+                Questions?
+            </span>
+        </div>    
+    </section>
 
     <div class="progress"></div>
 
