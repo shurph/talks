@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Python + Kafka = ?</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../vendor/shower/styles/bitnet-16x10.css">
+    <link rel="stylesheet" href="../vendor/shower/vendors/highlight/styles/github.css">
+    <style>
+    
+    .cards > div {
+        width: 33.33%;
+        float: left;
+        line-height: 1.6;
+    }
+    
+    .tags-baloons {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 40px;
+    }
+    .tags-baloons .label {
+        border-radius: 15px 20px;
+        margin-bottom: 15px;
+    }
+    </style>
+</head>
+
+<body class="shower list">
+    <header class="caption">
+        <h1><span class="emoji">Почему стоит выбрать Python</span></h1>
+        <p>
+            <a href="https://twitter.com/shurph">Николай Сасковец</a>
+        </p>
+    </header>
+
+
+
+    <section class="slide black clear"
+     style="
+        background: url(pictures/kafka-man-filtered.jpg) center center;
+        background-size: cover;">
+        <h2 class="shout no-bg">
+            <b class="emoji">
+                <img src="pictures/logos/kafka-logo-white.png" height="135px" style="margin-bottom: -40px"></b>
+            + <b class="emoji">🐍</b> = <b class="emoji">?</b>
+        </h2>
+        <span class="slide-footer" style="font-size: 20px; padding: 20px 40px;">
+            Николай Сасковец
+            <br><br>
+        </span>
+    
+    </section>
+
+
+    <!-- <section class="slide black">
+        
+        <h2>
+            План 
+        </h2>
+         
+         
+        <div class="tags-baloons">
+            <span class="label">
+                Что?
+            </span>
+            <span class="label">
+                Зачем?
+            </span>
+            <span class="label">
+                Почему?
+            </span>
+            <span class="label">
+                Как?
+            </span>
+        </div>
+    
+    </section> <!-- -->
+
+
+  
+    
+    <section class="slide">
+        <h2>
+            What is
+            <span style="display: inline-block;  height: 20px;">
+                <img src="pictures/logos/kafka-logo-black.png" height="90px" style="
+                    position: relative;
+                    float: left;
+                    margin-top: -45px;
+                    opacity: 0.75;">
+            </span>
+            Kafka?  
+        </h2>
+         
+         
+        <div class="tags-baloons">
+            <span class="label">
+                Distributed Streaming Platform 
+            </span>
+            <span class="label">
+                Распределённый брокер сообщений
+            </span>
+            <span class="label">
+                Распределенная система передачи сообщений
+            </span>
+        </div>
+
+
+    </section>
+    
+    
+    <section class="slide">
+        <h2>
+            What is
+            <span style="display: inline-block;  height: 20px;">
+                <img src="pictures/logos/kafka-logo-black.png" height="90px" style="
+                    position: relative;
+                    float: left;
+                    margin-top: -45px;
+                    opacity: 0.75;">
+            </span>
+            Kafka?
+        </h2>
+         
+         
+        <div class="tags-baloons">
+            <span class="label">
+                Distributed Streaming Platform 
+            </span>
+            <span class="label">
+                Распределённый брокер сообщений
+            </span>
+            <span class="label">
+                Распределённая система передачи сообщений
+            </span>
+        </div>
+
+        Apache Kafka — это распределенная система обмена сообщениями с высокой пропускной способностью, которую можно использовать для упрощения масштабируемого сбора данных. <sup><a href="https://www.ibm.com/support/knowledgecenter/ru/SSPFMY_1.3.5/com.ibm.scala.doc/config/iwa_cnf_scldc_apche_con_c.html" style="background: none">[↪]</a></sup>
+    </section> 
+
+    
+    <section class="slide">
+        <h2>
+            Alternatives for Kafka
+        </h2>
+        <div class="tags-baloons">
+            <span class="label">
+                RabbitMQ
+            </span>
+            <span class="label">
+                ActiveMQ
+            </span>
+            
+            <br>
+            
+            <span class="label">
+                NUTS
+            </span>
+            <span class="label">
+                Pulsar
+            </span>
+            <span class="label">
+                NSQ
+            </span>
+        </div>     
+    </section> 
+         
+         
+         
+    <section class="slide">
+        <h2>
+            Kafka for what???
+        </h2>
+        
+        <div class="tags-baloons">
+            <span class="label">
+        Messaging
+            </span>
+            <span class="label">
+        Metrics
+            </span>
+            <span class="label">
+        Website Activity Tracking
+            </span>
+            <span class="label">
+        Log Aggregation
+            </span>
+            <span class="label">
+        Stream Processing
+            </span>
+            <span class="label">
+        Event Sourcing
+            </span>
+            <span class="label">
+        Commit Log
+            </span>
+        </div>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2>
+            Kafka for what???
+        </h2>
+        
+        <div class="tags-baloons">
+            <span class="label">
+        Queue
+            </span>
+        </div>
+        <center><img src="pictures/emoji/thinking-face.svg"></center>
+    </section>
+
+
+
+    <section class="slide clear">
+        <h2 class="shout  no-bg"><del class="strike">Theory</del></h2>
+    </section>
+
+
+    <section class="slide clear">
+        <img src="pictures/karikatura-teoriya-i-praktika_daniil-kuznecov_28417.gif" alt="" class="cover">
+        <span class="slide-footer">
+            Карикатура «Теория и практика», <a href="https://caricatura.ru/art/kuznetsov_daniil/">Даниил Кузнецов</a>, 09.05.2017,
+
+            <a href="http://ccra.ru/Plxd">
+                 http://ccra.ru/Plxd</a>
+        </span>    
+    </section>
+    
+
+    <section class="slide clear black">
+        <img src="pictures/microservices-microservices-everywhere.jpeg
+" alt="" class="cover">
+
+                 
+                 
+    </section>
+    
+    <section class="slide">
+        <h2>Microservices: Synchronous Communication</h2>
+        <center>
+            ( REST / gRPC / HTTP )
+        </center>
+    </section>
+
+
+
+    <section class="slide">
+        <h2>Microservices: Coupling and Cohesion</del></h2>
+        <img src="pictures/reusable-services-and-coupling.png" alt="" class="cover">
+        <span class="slide-footer">
+            by Jeppe Cramon,
+
+            <a href="https://www.tigerteam.dk/2014/microservices-its-not-only-the-size-that-matters-its-also-how-you-use-them-part-3/">
+                 tigerteam.dk</a>
+        </span>    
+    </section>
+    
+
+
+
+    <div class="progress"></div>
+
+    <footer class="badge">
+        <a href="https://github.com/shurph/talks">Fork me on GitHub!</a>
+    </footer>
+
+    <script src="../vendor/shower/scripts/shower.min.js"></script>
+
+    <script src="../vendor/shower/vendors/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
