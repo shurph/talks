@@ -2,6 +2,7 @@
 
 ## Мои выступления
 
+- 2019-09-14 — Minsk Python Meetup — [Python + Kafka = ?](https://shurph.github.io/talks/python-kafka/)
 - 2019-04-24 — iTechArt — [Зачем и как вносить свой вклад в Opensource?](https://shurph.github.io/talks/opensource-taking-part/)
 - 2019-04-23 — Minsk Python Meetup —
     **[{ { video } }](https://www.youtube.com/watch?v=OBrN-gwz8ec&list=PLjiAaL1HtGPaMPlrZGCDzUCTsVAyTbHJ4)**,
