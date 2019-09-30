@@ -17,5 +17,5 @@
     **[{ { video } }](https://www.youtube.com/watch?v=4lW2iZz7WBc)**,
     [Справляемся с зависимостями в 2018-м: Pipenv](https://shurph.github.io/talks/pipenv/)
 - 2018-05-24 — iTechArt — Git: 8 омерзительных трюков
-- 2018-05-02 — iTechArt — Improve your security
-- 2018-03-31 — Minsk Linux Users Group Meetup (Линуксовка) — «Hugo — генератор статичных сайтов»
+- 2018-05-02 — iTechArt — _PDF:_ [Improve your security](https://www.slideshare.net/NikolaySaskovets/improve-your-security-2018)
+- 2018-03-31 — Minsk Linux Users Group Meetup (Линуксовка) — _PDF:_ [«Hugo — генератор статичных сайтов»](https://www.slideshare.net/NikolaySaskovets/hugo-hugo-static-site-generator)
