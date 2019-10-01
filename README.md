@@ -12,7 +12,6 @@
 - 2019-03-01 — iTechArt — [Python + Pipenv: Берём зависимости под контроль!](https://shurph.github.io/talks/python-dependencies-under-control/)
 - 2019-02-15 — **PyCon Belarus 2019** — [How to manage dependencies in your Python project  in a production-ready manner](https://shurph.github.io/talks/python-manage-dependencies/)
 - 2019-01-12 — Minsk Python Meetup — [Зачем «пинить» пакеты в requirements.txt](https://shurph.github.io/talks/python-pin-it/)
-
 - 2018-11-13 — Minsk Python Meetup — 
     **[{ { video } }](https://www.youtube.com/watch?v=4lW2iZz7WBc)**,
     [Справляемся с зависимостями в 2018-м: Pipenv](https://shurph.github.io/talks/pipenv/)
