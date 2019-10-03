@@ -25,7 +25,7 @@
   — [слайды](https://shurph.github.io/talks/python-choose-it/)
 - 2019-03-19
   — iTechArt
-  — Git: 8 омерзительных трюков
+  — Git: омерзительная восьмёрка трюков
 - 2019-03-01
   — iTechArt
   — Python + Pipenv: Берём зависимости под контроль!
@@ -45,7 +45,7 @@
   — [слайды](https://shurph.github.io/talks/pipenv/)
 - 2018-05-24
   — iTechArt
-  — Git: 8 омерзительных трюков
+  — Git: омерзительная восьмёрка трюков
 - 2018-05-02
   — iTechArt
   — Improve your security
