@@ -10,7 +10,7 @@
 - 2019-09-14
   — Minsk Python Meetup
   — _Пару слов_ о важности распространения знаний
-  — [🎥видео](https://youtu.be/kfVUE0QY7Jc?t=66)
+  — [🎥видео](https://www.youtube.com/watch?v=kfVUE0QY7Jc&list=PLjiAaL1HtGPaMPlrZGCDzUCTsVAyTbHJ4&index=6&t=66)
 - 2019-04-24
   — iTechArt
   — Зачем и как вносить свой вклад в Opensource?
