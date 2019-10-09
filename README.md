@@ -5,7 +5,7 @@
 - 2019-09-14
   — Minsk Python Meetup
   — Python + Kafka = ?
-  — **видео (soon)**
+  — [🎥видео](https://www.youtube.com/watch?v=4HFAM9u1wKk&list=PLjiAaL1HtGPaMPlrZGCDzUCTsVAyTbHJ4&index=13)
   — [слайды](https://shurph.github.io/talks/python-kafka/)
 - 2019-09-14
   — Minsk Python Meetup
