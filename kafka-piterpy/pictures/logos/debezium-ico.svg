@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 131 131">
+  <defs/>
+  <defs>
+    <linearGradient id="linear-gradient" x1="19.7" x2="114" y1="19.7" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#91d443"/>
+      <stop offset="1" stop-color="#48bfe0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="43.2" x2="137.5" y1="-3.7" y2="90.6" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="66.6" x2="160.8" y1="-27.1" y2="67.2" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="-3.7" x2="90.6" y1="43.2" y2="137.5" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-5" x1="-27.1" x2="67.2" y1="66.5" y2="160.8" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Layer_1" data-name="Layer 1">
+    <path fill="url(#linear-gradient)" d="M94 114a17 17 0 0016 17h21v-21a17 17 0 00-17-16h-4a26 26 0 01-26-27v-3a17 17 0 00-17-17h-3a26 26 0 01-27-26v-4A17 17 0 0021 0H0v21a17 17 0 0017 16h4a26 26 0 0126 27v3a17 17 0 0017 17h3a26 26 0 0127 26z"/>
+    <path fill="url(#linear-gradient-2)" d="M131 64a17 17 0 00-17-17h-4a26 26 0 01-26-26v-4A17 17 0 0067 0H47v21a17 17 0 0017 16h3a26 26 0 0127 27v3a17 17 0 0016 17h21z"/>
+    <path fill="url(#linear-gradient-3)" d="M131 16a17 17 0 00-16-16H93v21a17 17 0 0017 16h21z"/>
+    <path fill="url(#linear-gradient-4)" d="M0 67a17 17 0 0017 17h4a26 26 0 0126 26v4a17 17 0 0017 17h20v-21a17 17 0 00-17-16h-3a26 26 0 01-27-27v-3a17 17 0 00-16-17H0z"/>
+    <path fill="url(#linear-gradient-5)" d="M0 114a17 17 0 0016 17h21v-21a17 17 0 00-16-16H0z"/>
+  </g>
+</svg>
