@@ -51,28 +51,42 @@
             Mikalai Saskavets
             <br><br>
         </span>
-        <div  class="place top left" style="opacity: 0.35">
+        <div  class="place top left" style="opacity: 0.35; padding: 10px 0 0 10px">
             <center>
-            <img src="pictures/logos/piterpy.svg"style="width: 100px; opacity:0.6; margin-bottom: -25px; margin-top: 10px">
+            <img src="pictures/logos/piterpy.svg"style="width: 100px; opacity:0.6; margin-bottom: -25px;">
             <br>
             PiterPy 2019
             </center>
         </div>
-        <div  class="place top right" style="opacity: 0.35">
+        <div  class="place top right" style="opacity: 0.35; padding: 10px 10px 0 0">
             <center>
-            <img src="pictures/logos/kafka-drawio-logo-nobg.svg"style="width: 100px; opacity:0.6; margin-bottom: -25px; margin-top: 10px">
+            <img src="pictures/logos/kafka-drawio-logo-nobg.svg"style="width: 100px; opacity:0.6; margin-bottom: -25px;">
       
             </center>
         </div>
     </section>
 
 
-
+    <section class="slide clear black">
+        <img src="pictures/monolith_by_reneaigner.jpg" alt="" class="cover h" style="height: 110%; max-height: 110%">
+        <span class="slide-footer" style="font-size: 12px;" >
+            art by <a href="https://www.deviantart.com/reneaigner/art/Monolith-283096035">René Aigner</a> 
+        </span>
+    </section>
+    
+    <!--
+    <section class="slide clear black">
+        <img src="pictures/monolith_nature.jpg" alt="" class="cover w">
+        <span class="slide-footer" style="font-size: 12px;" >
+            photo by <a href="https://www.flickr.com/photos/zest-pk/924783502">Zest-pk</a> 
+        </span>
+    </section><!---->
+    
+    
     <section class="slide clear black">
         <img src="pictures/microservices-microservices-everywhere.jpeg" alt="" class="cover">          
     </section>
     
-
     
 
     <section class="slide ">
@@ -689,6 +703,244 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
     </section>
 
 
+    
+
+    <section class="slide black">
+        <h2 class="shout">What about Python?</h2>  
+    </section>
+    
+    
+    <section class="slide black">
+        <div class="tags-baloons ">
+            <span class="label">
+                kafka-python
+            </span>
+            <span class="label">
+                pykafka
+            </span>
+            <span class="label">
+                confluent-kafka-python
+            </span>
+            
+            <span class="label">
+                aiokafka
+            </span>
+            
+        </div>  
+        <!-- сравнение (2016 год) http://activisiongamescience.github.io/2016/06/15/Kafka-Client-Benchmarking/ -->
+        <!-- сравнение (2017 год) http://matthewrocklin.com/blog/work/2017/10/10/kafka-python -->
+        <!-- еще одно сравнение, без таблиц (2017 год) https://blog.datasyndrome.com/a-tale-of-two-kafka-clients-c613efab49df -->
+        <!-- код для бенчмаркинга: https://github.com/sucitw/benchmark-python-client-for-kafka -->
+        <!-- ^ доклад по этому бенчмарку и общий рассказ про Кафку https://speakerdeck.com/sucitw/connect-k-of-smack-pykafka-kafka-python-or?slide=25 -->  
+    </section>
+    
+    <section class="slide black">
+        <h2>What to choose?</h2>
+        <table>
+            <tr>
+                <td></td>
+                <td>kafka-python</td>
+                <td>pykafka</td>
+                <td>confluent-kafka</td>
+            </tr>
+            <tr>
+                <td>Stars</td>
+                <td>~ 3 400</td>
+                <td>~ 1 000</td>
+                <td>~ 1 500</td>
+            </tr>
+            <tr>
+                <td>Contributors*</td>
+                <td>0 / 4 / 13 / 186</td>
+                <td>1 / 5 / 10 / 77</td>
+                <td>0 / 1 / 6 / 57</td>
+            </tr>
+            <tr>
+                <td>Releases track</td>
+                <td>fine</td>
+                <td>hm… <sup>(2018???)</sup></td>
+                <td>fine</td>
+            </tr>
+            <tr>
+                <td>Development track</td>
+                <td>fine</td>
+                <td>hm…</td>
+                <td>fine</td>
+            </tr>
+        </table>
+    
+        <span class="slide-footer" style="font-size: 16px; padding: 10px 0px; text-align: left; opacity: 0.6">
+            <code>*<br>
+            a / b / c / d<br>
+            a — more 1k commits<br>
+            100 ≤ b &lt; 1000<br>
+             10 ≤ c &lt; 100<br>
+            d — all commits</code>
+        </span>
+    
+    </section>
+
+
+    <section class="slide black">
+        <h2>What about Throughput?</h2>
+        <!-- PRODUCER -->
+        <style>
+        
+        .slide table.striped tr:nth-child(even) { background: rgba(64, 64, 64, .35) }
+        .special-throughput tr td:last-child, .special-throughput td {
+             text-align: right ;
+                 font-family: PT Mono, monospace;
+
+             }
+         .special-throughput .a-right { text-align: right; }
+         .special-throughput .very-good { background: rgba(32, 64, 96, .5) }
+        </style>
+        <table class=" special-throughput" style="margin-top: -10px; font-size: 22px">
+              <thead>
+                <tr style="text-align: right;">
+                  <th></th>
+                  <th></th>
+                  <th class="a-right">time (seconds)</th>
+                  <th class="a-right">MBs/s</th>
+                  <th class="a-right">Msgs/s</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="very-good">
+                  <th>producer</th>
+                  <th>confluent_kafka_producer</th>
+                  <td>5.4</td>
+                  <td>17</td>
+                  <td>183 000</td>
+                </tr>
+                <tr>
+                  <th>producer</th>
+                  <th>pykafka_producer_rdkafka</th>
+                  <td>16</td>
+                  <td>6.1</td>
+                  <td>64 000</td>
+                </tr>
+                <tr>
+                  <th>producer</th>
+                  <th>pykafka_producer</th>
+                  <td>57</td>
+                  <td>1.7</td>
+                  <td>17 000</td>
+                </tr>
+                <tr>
+                  <th>producer</th>
+                  <th>python_kafka_producer</th>
+                  <td>68</td>
+                  <td>1.4</td>
+                  <td>15 000</td>
+                </tr>
+                <!-- CONSUMER -->
+                <tr class="very-good">
+                  <th>consumer</th>
+                  <th>confluent_kafka_producer</th>
+                  <td>5.4</td>
+                  <td>17</td>
+                  <td>183 000</td>
+                </tr>
+                <tr>
+                  <th>consumer</th>
+                  <th>pykafka_producer_rdkafka</th>
+                  <td>16</td>
+                  <td>6.1</td>
+                  <td>64 000</td>
+                </tr>
+                <tr>
+                  <th>consumer</th>
+                  <th>pykafka_producer</th>
+                  <td>57</td>
+                  <td>1.7</td>
+                  <td>17 000</td>
+                </tr>
+                <tr>
+                  <th>consumer</th>
+                  <th>python_kafka_producer</th>
+                  <td>68</td>
+                  <td>1.4</td>
+                  <td>15 000</td>
+                </tr>
+              </tbody>
+            </table>
+        </table>
+        
+        <div class="slide-footer">
+            benchmarking by <a href="http://matthewrocklin.com/blog/work/2017/10/10/kafka-python">Matthew Rocklin</a>
+        </div>
+ 
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2>Let's code!</h2>
+        <pre><code style="margin-top: -2rem; line-height: 1; font-size:20px">
+from confluent_kafka import Producer
+import sys
+if __name__ == '__main__':
+    broker = sys.argv[1]
+    topic = sys.argv[2]
+        
+    producer = Producer(**{'bootstrap.servers': broker})
+    delivery_callback = lambda err, msg: print(err or msg)
+
+    for something in range(1000):
+        try:
+            producer.produce(topic, str(something),
+                      callback=delivery_callback)
+        except BufferError:
+            print("Local producer queue is full, try again")
+        # Serve delivery callback queue.
+        producer.poll(0)
+        # Wait until all messages have been delivered
+        producer.flush()
+    </code></pre>
+        
+    </section>
+
+
+
+    <section class="slide">
+        <h2>Let's code!</h2>
+        <pre><code style="margin-top: -2rem; line-height: 1; font-size:20px">
+from confluent_kafka import Consumer, KafkaException
+import sys
+if __name__ == '__main__':
+    broker, group, topics = sys.argv[1], sys.argv[2], sys.argv[3:]
+    conf = {'bootstrap.servers': broker, 'group.id': group,
+            'auto.offset.reset': 'earliest'}
+    clb = lambda consumer, p: print('Assigned partition:', p)
+
+    consumer = Consumer(conf)
+    consumer.subscribe(topics, on_assign=clb)
+    try:
+        while True:
+            msg = c.poll(timeout=1.0)
+            if msg is None:
+                continue
+            if msg.error():
+                raise KafkaException(msg.error())
+            else:
+                print(msg.topic(), msg.partition(), msg.offset(),
+                      msg.key(), msg.value())
+    finally:
+        consumer.close() # ... to commit final offsets.
+            
+        </code></pre>
+        
+    </section>
+    
+    
+    <section class="slide black">
+        <div class="tags-baloons shout">
+            <span class="label">
+                Conclusion?
+            </span>
+        </div>    
+    </section>
     
 
 
