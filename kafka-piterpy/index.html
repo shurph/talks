@@ -116,23 +116,27 @@
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
     </section>
 
-
+    <style>
+       .cover.w.hotfix {
+           margin-top: 5%; width: 90%
+       }
+    </style>
     <section class="slide">
         <h2>Microservices: Synchronous Communication</h2>
-        <center>
-            ( HTTP / REST )
+        <center style="margin-top: -25px">
+            ( REST API )
         </center>
-        <img src="pictures/1-few.svg" alt="" class="cover w" style="margin-top: 70px">  
+        <img src="pictures/1-few.svg" alt="" class="cover w hotfix">  
     </section>
     
     
     
     <section class="slide">
         <h2>Microservices: Synchronous Communication</h2>
-        <center>
-            ( HTTP / REST )
+        <center style="margin-top: -25px">
+            ( REST API )
         </center>
-        <img src="pictures/1-many.svg" alt="" class="cover w" style="margin-top: 70px">  
+        <img src="pictures/1-many.svg" alt="" class="cover w hotfix">  
     </section>
 
 
@@ -160,13 +164,13 @@
 
     <section class="slide">
         <h2>Microservices: Async Communication (Celery)</h2>
-        <img src="pictures/2-celery-rabbit.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <img src="pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix">  
     </section>
 
 
     <section class="slide">
         <h2>Microservices: Async Communication (Celery)</h2>
-        <img src="pictures/2-celery-rabbit.svg" alt="" class="cover w" style="margin-top: 20px; opacity: 0.35"> 
+        <img src="pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix" style="opacity: 0.35"> 
         <h3 class="shout">
 
             <img src="pictures/emoji/thinking-face.svg">
@@ -330,7 +334,7 @@
 
     <section class="slide">
         <h2>Kafka: Overview</h2>
-        <img src="pictures/kafka-architecture-topics-producers-consumers.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <img src="pictures/kafka-architecture-topics-producers-consumers.svg" alt="" class="cover w hotfix">  
         <span class="slide-footer" style="font-size:12px">
         see some details on <a href="https://dzone.com/articles/kafka-architecture">dzone.com</a>
         </span>
@@ -472,13 +476,12 @@
             color: black!important;
           }
         </style>
-            <pre class="plain custom-sup-indexes"><code style="line-height: 1!important">
+            <pre class="plain custom-sup-indexes"><code style="line-height: 1!important; margin-top: -1.5em">
                         ┌───[<mark>CG</mark> 1 <span class="label">C</span> 1] 
                         │ <span style="color:darkred">
 Partition 1 >> 1<sup>1</sup>|4<sup>2</sup>|7<sup>3</sup>|10<sup>4</sup>|13<sup>5</sup>|16<sup>6</sup>|19<sup>7</sup>|22<sup>8</sup>|25<sup>9</sup></span>
-                  │
-                  └───[<mark>CG</mark> 2 <span class="label">C</span> 1]
-
+                     │
+                     └───[<mark>CG</mark> 2 <span class="label">C</span> 1]
 
                   ┌───[<mark>CG</mark> 1 <span class="label">C</span> 2] 
                   │ <span style="color:darkblue">
@@ -561,8 +564,8 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
 
 
     <section class="slide">
-        <h2>Kafka: Schema overhead</h2>
-        <img src="pictures/confluent_schema_registry-1.png" alt="" class="cover" style="margin-top: 20px">  
+        <h2 style="border: none">Kafka: Schema overhead</h2>
+        <img src="pictures/confluent_schema_registry-1.png" alt="" class="cover" style="margin-top: 30px">  
         <span class="slide-footer">
         Fig. from <a href="https://www.confluent.io/blog/schemas-contracts-compatibility">confluent.io</a>
 
@@ -602,17 +605,17 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
 
     <section class="slide">
         <h2>Microservices: Async Communication (Celery)</h2>
-        <img src="pictures/2-celery-rabbit.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <img src="pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix">  
     </section>
 
     <section class="slide">
         <h2>Microservices: Async Communication (Kafka)</h2>
-        <img src="pictures/2-kafka.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <img src="pictures/2-kafka.svg" alt="" class="cover w hotfix">  
     </section>
 
     <section class="slide">
         <h2>Microservices: Async. What about databases?</h2>
-        <img src="pictures/2-kafka-detailed.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <img src="pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">  
     </section>
     
     
@@ -620,7 +623,7 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
 
     <section class="slide black">
         <h2>Relational Database → Kafka</h2>
-        <img src="pictures/logos/debezium.svg" alt="" style="margin-top: 150px">
+        <img src="pictures/logos/debezium.svg" alt="" style="margin-top: 120px">
     </section>
 
     <section class="slide">
@@ -647,24 +650,24 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
 
     <section class="slide">
         <h2>Microservices: Async. What about databases?</h2>
-        <img src="pictures/2-kafka-detailed.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <img src="pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">  
     </section>
     
 
     <section class="slide">
         <h2>Microservices: Async. Debezium</h2>
-        <img src="pictures/2-kafka-debezium.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <img src="pictures/2-kafka-debezium.svg" alt="" class="cover w hotfix">  
     </section>
 
 
     <section class="slide">
         <h2>Microservices: Async. Debezium. Full</h2>
-        <img src="pictures/microservices-comm-full.svg" alt="" class="cover w" style="margin-top: 130px">  
+        <img src="pictures/microservices-comm-full.svg" alt="" class="cover w hotfix" style="margin-top: 130px">  
     </section>
 
     <section class="slide">
         <h2>AWS-Like...</h2>
-        <img src="pictures/4-ms-aws.svg" alt="" class="cover w" style="margin-top: 10px">  
+        <img src="pictures/4-ms-aws.svg" alt="" class="cover w hotfix">  
     </section>
 
 
