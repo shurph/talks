@@ -1,7 +1,11 @@
 Меня зовут [Николай Сасковец](https://github.com/shurph). Иногда я выступаю с докладами на технические и около-технические темы. Ниже список моих выступлений.
 
 ## Мои выступления
-
+- 2019-11-01
+  — PiterPy 2019
+  — **St. Petersburg, Russia**
+  — Building a microservices-based application using Kafka and Django
+  — [слайды](https://shurph.github.io/talks/kafka-piterpy/)
 - 2019-09-14
   — Minsk Python Meetup
   — Python + Kafka = ?
