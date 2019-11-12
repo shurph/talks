@@ -2,6 +2,20 @@
 
 ## Мои выступления
 
+
+### Предстоящие
+- 2019-11-14
+  — iTechMeetup **Mogilev** #5
+  — Построение микросервисных систем с использованием Kafka
+  — [слайды](https://shurph.github.io/talks/kafka-mogilev)
+
+
+### Состоявшиеся
+- 2019-11-01
+  — PiterPy 2019
+  — **St. Petersburg, Russia**
+  — Building a microservices-based application using Kafka and Django
+  — [слайды](https://shurph.github.io/talks/kafka-piterpy/)
 - 2019-09-14
   — Minsk Python Meetup
   — Python + Kafka = ?

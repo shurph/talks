@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="../vendor/shower/styles/bitnet-16x10.css">
+    <!--<link id="favicon" rel="shortcut icon" type="image/png" href="data:image/png;base64,">-->
+
+    <link rel="stylesheet" href="../vendor/shower/styles/purple-16x9.css">
     <link rel="stylesheet" href="../vendor/shower/vendors/highlight/styles/github.css">
     <style>
     
@@ -25,6 +27,15 @@
         border-radius: 15px 20px;
         margin-bottom: 15px;
     }
+    .slide-footer.author,
+    .slide-footer.notable {
+        font-size: 20px;
+        padding: 20px 40px;
+    }
+    .slide footer {
+        color: black;
+        padding: 10px;
+    }
     </style>
 </head>
 
@@ -32,7 +43,7 @@
     <header class="caption">
         <h1>Построение микросервисных систем с использованием Kafka</h1>
         <p>
-            <a href="https://twitter.com/shurph">Николай Сасковец</a>
+            <a href="https://twitter.com/shurph">Mikalai Saskavets</a>
         </p>
     </header>
 
@@ -46,91 +57,230 @@
             Построение микросервисных систем с использованием Kafka
         </h2>
         <span class="slide-footer" style="font-size: 20px; padding: 20px 40px;">
-            Николай Сасковец
+            Mikalai Saskavets
             <br><br>
         </span>
-    
-    </section>
+        
+        <footer>
+Добры день, меня зовут Николай Сасковец.
+Последние чуть более чем пол года я занимался тем, что помогал команде  перенести монолитное приложение на микросервисные рельсы.
 
+И в центр нашего решения мы поместили Кафку. А ещё я на этом мероприятии почему-то объявлен как питон-разработчик, поэтому некоторые слайды будут питон-специфичны. Уж простите.[ ... ... ... ... ]
+Кстати! Поднимите пожалуйста руки, кто уже писал что-то с Кафкой, исползует ее в проектах.
+А еще поднимите те, кто про Кафку хорошенько читал.
+
+        
+        </footer>
+    </section>
 
 
     <section class="slide clear black">
-        <img src="pictures/microservices-microservices-everywhere.jpeg" alt="" class="cover">          
+        <img src="pictures/monolith_by_reneaigner.jpg" alt="" class="cover h" style="height: 110%; max-height: 110%">
+        <span class="slide-footer" style="font-size: 12px;" >
+            art by <a href="https://www.deviantart.com/reneaigner/art/Monolith-283096035">René Aigner</a> 
+        </span>
+        
+        
+        <footer>
+
+И так, на руках у нас был монолит. Руковтворное чудо.
+Всем хорош!...
+
+
+        </footer>
     </section>
     
+    
+    
+    
+    <section class="slide clear ">
+        <img src="pictures/monolith_by_reneaigner_edited.jpg" alt="" class="cover h" style="height: 110%; max-height: 110%">
+        <h3>Monolithic MVP</h3>
+<ul>
+<li>Scalability issues</li>
+<li>Readability issues</li>
+<li>Maintainability issues</li>
+<li>Security issues</li>
+</ul>
+        <footer>
+Кроме того, что совершенно не держал нагрузку, код был  очень запутан и были  вопросы по безопасности...
 
-    <section class="slide ">
-        <img src="pictures/mono-to-micro-1-clean.jpg" alt="" class="cover">
-        <!-- image from: https://dev.to/alex_barashkov/microservices-vs-monolith-architecture-4l1m -->
-    </section>
+Настоящий MVP, одним словом...
 
-    <section class="slide ">
-        <img src="pictures/mono-to-micro-2-structured.jpg" alt="" class="cover">
-        <!-- image from: https://dzone.com/articles/a-transition-from-monolith-to-microservices -->
+
+И если для тестовых пятиста пользователей и пары видов спорта это было нормально, то для более широкой публики это уже было неприемлемо. Да и видов спорта должно было стать больше к моменту выхода в продекшен.
+
+Да, наше приложение было про спорт и нам приходилось работать с большим количеством спортивных данных, приходящих из внешних источников. В том числе и в режиме реального времени.
+
+И нужно было как-то с этим справляться.
+        </footer>
+    
     </section>
+    <!--
+    <section class="slide clear black">
+        <img src="pictures/monolith_nature.jpg" alt="" class="cover w">
+        <span class="slide-footer" style="font-size: 12px;" >
+            photo by <a href="https://www.flickr.com/photos/zest-pk/924783502">Zest-pk</a> 
+        </span>
+    </section><!---->
+    
+    
+    <section class="slide clear black">
+        <img src="pictures/microservices-microservices-everywhere.jpeg" alt="" class="cover"> 
+        
+        
+        <footer>
+И серебрянной пулей мы выбрали микросервисы.
+Конечно, все мы прекрасно знаем, что микросервисы решают все наши проблемы!
+
+        </footer>         
+    </section>
+    
     
 
     <section class="slide ">
         <img src="pictures/mono-to-micro-3-more-real.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
+        <div class="slide-footer" style="bottom: 0.5rem; font-size:10px">
+        Fig. from <a href="https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e">Steve Bussey's article</a>
+        </div>
+        
+        <footer>
+
+Но действительно ли это так?
+Вот у нас был монолит. Мы разбросали его куски по облачкам микросервисов и наладили связи между ними. Общаются у нас микросервисы, допустим, через REST API.
+        </footer>
     </section>
     
 
     <section class="slide "> <!-- EDITED 1 -->
         <img src="pictures/mono-to-micro-4-even-more-real.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
+        
+        
+        <footer>
+
+А наше приложение начало расти, микросервисов стало больше.
+
+        </footer>
     </section>
     
     <section class="slide "> <!-- EDITED 2 -->
         <img src="pictures/mono-to-micro-5-more-relations.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
+        
+        
+        <footer>
+Связей между сервисами начинает становиться больше
+
+
+        </footer>
     </section>
     
     <section class="slide "> <!-- EDITED 3 -->
         <img src="pictures/mono-to-micro-6-a-lot-of-relations.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
+        
+        
+        <footer>
+И еще больше!
+Пока у нас не начинает возникать мысль, что каждый сервис общается с каждым, и может быть не по одному разу. Но это не точно.
+
+
+        </footer>
     </section>
     
-    
+    <style>
+      .lite {
+        color: white!important;
+        border: none!important;
+      }
+      .shadowed {
+        text-shadow: #4A205A 5px 5px 5px
+      }
+      .pinky-bg {
+        background: rgb(134,113,213);
+        background: linear-gradient(
+            90deg,
+            rgba(134,113,213,1) 0%,
+            rgba(146,81,176,1) 40%,
+            rgba(232,137,232,1) 100%
+        );
+      }
+    </style>
     <section class="slide">
-        <h2>Microservices: Coupling and Cohesion</del></h2>
-        <img src="pictures/reusable-services-and-coupling.png" alt="" class="cover">
-        <span class="slide-footer">
-            by Jeppe Cramon,
+        <h2 class="lite shadowed">Microservices: Coupling and Cohesion?</h2>
+        <img src="pictures/distributed-monolith.png" alt="" class="cover h">
+        <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
+        
+        
+        <footer>
+И так, у нас рано или поздно может возникнуть понимание, что сервисы-то у нас чересчур друг от друго зависимы, высокая связность у нас в нашей микросервисной архитектуре...
 
-            <a href="https://www.tigerteam.dk/2014/microservices-its-not-only-the-size-that-matters-its-also-how-you-use-them-part-3/">
-                 tigerteam.dk</a>
-        </span>    
+        </footer>
+      
     </section>
 
 
     <section class="slide"> <!-- EDITED 4 -->
-        <h2 style="color: white; border: none">Distributed Monolith?</h2>
+        <h2 class="lite shadowed">Distributed Monolith?</h2>
         <img src="pictures/distributed-monolith.png" alt="" class="cover h">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
+        
+        
+        <footer>
+А микросервисное ли у нас вообще приложение, или какой-то, простите, распределенный монолит?!
+Ну... это все конечно слова... теория!
+
+        </footer>
     </section>
+
+    <style>
+       .cover.w.hotfix {
+           margin-top: 5%; width: 90%
+       }
+    </style>
     <section class="slide">
         <h2>Microservices: Synchronous Communication</h2>
-        <center>
-            ( REST / gRPC / HTTP )
+        <center style="margin-top: -25px">
+            ( REST API )
         </center>
-        <img src="pictures/microservices-sync-comm-few.svg" alt="" class="cover w" style="margin-top: 70px">  
+        <img src="pictures/1-few.svg" alt="" class="cover w hotfix"> 
+        
+        
+        <footer>
+Давайте рассмотрим практический случай.
+Вот у нас запрос от пользователя. Он затрагивает три микросервиса.
+Запросы  идут последовательно,... павольна! не быстро, то есть.
+
+        </footer> 
     </section>
     
     
     
     <section class="slide">
         <h2>Microservices: Synchronous Communication</h2>
-        <center>
-            ( REST / gRPC / HTTP )
+        <center style="margin-top: -25px">
+            ( REST API )
         </center>
-        <img src="pictures/microservices-sync-comm-many.svg" alt="" class="cover w" style="margin-top: 70px">  
+        <img src="pictures/1-many.svg" alt="" class="cover w hotfix">  
+        
+        
+        <footer>
+А еще у нас-то может оказаться, напомню, распределенный монолит.
+И запрос от пользователя может пройтись по нашим микросервисам 5, 6, 7 раз!
+И пользователь будет ждать.
+А не хотелось бы.
+
+К счастью, в нашем случае, удача была на нашей стороне и все вот эти опросы других четырех сервисов никак не влияли на конечный результат для пользователя. Они лишь запускали какие-то изменения в системе, нужные самой системе, а не пользователю вот прямо сейчас.
+
+        </footer>
     </section>
 
 
 
 
-    
+    <!--
     <section class="slide">
         <h2>Так ли это медленно?</h2>
 <pre class="plain"><code>0.3 ns      1 s          1 CPU cycle 
@@ -148,18 +298,63 @@
                  The Infinite Space Between Words
 </a>
         </span>    
-    </section>
+    </section><!-- -->
 
     <section class="slide">
         <h2>Microservices: Async Communication (Celery)</h2>
-        <img src="pictures/microservices-async-comm-celery-rabbit.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <img src="pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix">
+        
+        
+        <footer>
+Ну и конечно же, первое что приходит на ум питонисту, когда у него на руках джанго и намечается какое-то асинхронное поведение.
+Celery!
+Вынесем те участки кода, которые взаимодействуют с другими микросервисами, в Celery таски! Делов-то!
+
+Однако, здесь возникают моментики...
+Ранее при каких-то проблемах в цепочке запросов мы могли просто сказать пользователю «Моряк, ты слишком долго плавал! Попробуй еще раз!». Не самый элегантный подход, но простой, как грабли.
+А теперь нам нужно думать. Что делать, если запрашиваемый сервис сейчас недоступен, например? Забить на эту celery-таску? Или закинуть ее еще раз в очередь, вдруг во второй раз она выполнится успешно? Или в третий?
+Тоже вполне себе рабочий подход.
+Но почему вообще первый микросервис должен заботиться о всех этих вещах? Почему он вообще должен знать о других сервисах, если для работы с пользователем ему другие сервисы не нужны-то напрямую?
+
+        </footer>  
     </section>
 
 
     <section class="slide">
-        <h2>Microservices: Async Communication (Kafka)</h2>
-        <img src="pictures/microservices-async-comm-kafka.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <h2>Microservices: Async Communication (Celery)</h2>
+        <img src="pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix" style="opacity: 0.35"> 
+        <h3 class="shout">
+
+            <img src="pictures/emoji/thinking-face.svg">
+            <style>
+            .stroke-big-white {
+                text-shadow: white 5px 5px 0px,
+                             white -5px 5px 0px,
+                             white 5px -5px 0px,
+                             white -5px -5px 0px,
+
+                             white 8px 8px 0px,
+                             white -8px 8px 0px,
+                             white 8px -8px 0px,
+                             white -8px -8px 0px;
+            }
+            </style>
+            <span class="stroke-big-white">
+                <br>
+                shall we use
+                <br>
+                Kafka here???
+            </span>
+        </h3> 
+        
+        
+        <footer>
+И тут возникает мысль.
+А вдруг нам здесь может как-то помочь Kafka?
+
+        </footer>
     </section>
+
 
 
   
@@ -175,12 +370,15 @@
             </span>
             Kafka?
         </h2> 
-    </section>
+        
+        
+        <footer>
+Но давайте сначала чуть-чуть посмотрим, что такое кафка.
 
 
-    <section class="slide">
-        <img src="pictures/kafka-grefnevaya.jpg" alt="" class="cover w">  
+        </footer>
     </section>
+
     
     <section class="slide">
         <h2>
@@ -200,49 +398,32 @@
             <span class="label">
                 Distributed Streaming Platform 
             </span>
-            <span class="label">
-                Распределённый брокер сообщений
-            </span>
-            <span class="label">
-                Распределённая система передачи сообщений
-            </span>
         </div>
+        <span style="font-size: 32px">Initially conceived as a messaging queue... Now Apache Kafka is a full-fledged distributed event streaming platform capable of handling <mark>trillions</mark> of events a day.</span>
 
+        <sup><a href="https://www.confluent.io/what-is-apache-kafka/" style="background: none">[↪]</a></sup>
+        <!--
         Apache Kafka — это распределенная система обмена сообщениями с высокой пропускной способностью, которую можно использовать для упрощения масштабируемого сбора данных. <sup><a href="https://www.ibm.com/support/knowledgecenter/ru/SSPFMY_1.3.5/com.ibm.scala.doc/config/iwa_cnf_scldc_apche_con_c.html" style="background: none">[↪]</a></sup>
+        <!-- -->
+        
+        
+        <footer>
+Кафка изначально разрабатывалась как очередь сообщений внутри  компании линкедин.
+Но переросла уже в что-то, что называют распределенной системой потоковой передачи данных, обладащей высокой пропускной способоностью, позволяющей масштабируемо собирать данные.
+
+
+        </footer>
     </section> 
 
     
-    <section class="slide">
-        <h2>
-            Alternatives for Kafka
-        </h2>
-        <div class="tags-baloons">
-            <span class="label">
-                RabbitMQ
-            </span>
-            <span class="label">
-                ActiveMQ
-            </span>
-            
-            <br>
-            
-            <span class="label">
-                NUTS
-            </span>
-            <span class="label">
-                Pulsar
-            </span>
-            <span class="label">
-                NSQ
-            </span>
-        </div>     
-    </section> 
-         
+
+
+
          
          
     <section class="slide">
         <h2>
-            Kafka for what???
+            Kafka for what??
         </h2>
         
         <div class="tags-baloons">
@@ -273,18 +454,109 @@
         Queue
             </span>
         </div>
+        
+        
+        <footer>
+Для чего кафку используют?
+Для сбора и передачи сообщений. В том числе каких-то метрик, каких-то действий пользователя на сайте.
+Можно использовать для сбора логов приложений. 
+Да много для чего можно использовать.
+В том числе и для построения очередей.
+
+
+
+В принципе, что-то из этого можно делать и с использованием других технологий...
+        </footer>
     </section>
     
+
     
+    <section class="slide">
+        <h2>
+            Why Kafka???
+        </h2>
+        <div class="tags-baloons">
+            <span class="label">
+                up to 2,000,000 messages per sec
+            </span>
+            <br>
+            or even more...
+        <sup><a href="https://engineering.linkedin.com/kafka/benchmarking-apache-kafka-2-million-writes-second-three-cheap-machines" style="background: none">[↪]</a></sup>
+        </div>  
+        
+        
+        <footer>
+Но кафка нас зацепила вот такими цифрами.
+Конечно, это синтетические бенчмарки, но цифры-то впечатляют!
+
+        </footer>   
+    </section> 
+
+
+    <section class="slide">
+        <h2>
+            Alternatives for Kafka
+        </h2>
+        <div class="tags-baloons">
+            <span class="label">
+                RabbitMQ
+            </span>
+            <span class="label">
+                ActiveMQ
+            </span>
+            
+            <br>
+            
+            <span class="label">
+                NATS
+            </span>
+            <span class="label">
+               Apache Pulsar
+            </span>
+            <span class="label">
+                NSQ
+            </span>
+            <br>
+            <span class="label">
+                AWS Kinesis
+            </span>
+        </div>     
+        
+        
+        <footer>
+А есть ли вообще хорошие альтернативы Кафке?
+Зачастую приводят вот такие интрументы.
+
+Рэбит и Актив MQ не могут похвастаться такими цифрами в плане производителности, да и с масштабированием у них чуть похуже.
+
+А вот эта тройка, NATS, Pulsar, NSQ, вполне себе хвалится цифрами в бенчмарках. Где-то даже эти цифры поинтереснее.
+Но нужно же еще смотреть и на популярность технологии. На поддержку со стороны сообщества и различных вендоров. Сейчас Кафка выигрывает в этом плане.
+
+Ну и Kinesis. Если вы хотите привязать себя намертво к амазону, то почему бы и нет. Тем более у кинезиса есть много интересных штук...
+Но если вы хотите чувствовать себя посвободнее, то амазон с недавних пор предоставляет Кафку как сервис. Дороговато чуть-чуть, но убирает головную боль по администрированию кластера в какой-то степени.
+
+        </footer>
+    </section> 
+         
     
 
 
     <section class="slide">
         <h2>Kafka: Overview</h2>
-        <img src="pictures/kafka-architecture-overview-zookeeper.png" alt="" class="cover w" style="margin-top: 20px">  
-        <span class="slide-footer">
-        Fig. from <a href="https://dzone.com/articles/kafka-architecture">dzone.com</a>
+        <img src="pictures/kafka-architecture-topics-producers-consumers.svg" alt="" class="cover w hotfix">  
+        <span class="slide-footer" style="font-size:12px">
+        see some details on <a href="https://dzone.com/articles/kafka-architecture">dzone.com</a>
         </span>
+        
+        
+        <footer>
+
+Посмотрим, как работать с кафкой, на хайлевеле, так сказать.
+У нас есть кластер кафки и внутри этого кластера есть топики, своего рода именованные очереди.
+И есть продьюсеры с консумерами.
+Продьюсеры, производители, производят запись каких-то сообщений в выбранный топик.
+А консумеры, потребители, забирают записанные данные из тех топиков, на которые они подписаны.
+        </footer>
     </section>
     
     
@@ -296,11 +568,18 @@
         Fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
 </a>
         </span>
+        
+        
+        <footer>
+Топик внутри себя может содержать несколько партиций. Разбиение топика на партиции позволяет сильно повышать производительность записи. Т.к. партиции одного топика могут храниться как на разных дисках одной машины, так и вовсе на разных машинах.
+Размер топика, размер партиций, теоретически ничем не ограничены, разве что размером диска. И временем жизни сообщения, которое вы можете также изменить.
+
+        </footer>
     </section>
     
-
+    <!--
     <section class="slide">
-        <h2>Kafka: Partitions (P&lt;C)</h2>
+        <h2>Kafka: Partitions (m Partitions&gt; n Consumers)</h2>
         <img src="pictures/kafka-partitioning-1-few-consumers.png" alt="" class="cover h" style="margin-top: -30px">  
         <span class="slide-footer">
         Fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
@@ -308,7 +587,7 @@
         </span>
     </section>
     <section class="slide">
-        <h2>Kafka: Partitions (P=C)</h2>
+        <h2>Kafka: Partitions (m Partitions == n Consumers)</h2>
         <img src="pictures/kafka-partitioning-2-one-to-one-consumers.png" alt="" class="cover h" style="margin-top: -30px">  
         <span class="slide-footer">
         Fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
@@ -316,20 +595,30 @@
         </span>
     </section>
     <section class="slide">
-        <h2>Kafka: Partitions (P&gt;C)</h2>
+        <h2>Kafka: Partitions (m Partinios&lt; n Consumers)</h2>
         <img src="pictures/kafka-partitioning-3-too-many-consumers.png" alt="" class="cover h" style="margin-top: -30px">  
         <span class="slide-footer">
         Fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
 </a>
         </span>
-    </section>
+    </section><!-- -->
     <section class="slide">
         <h2>Kafka: Partitions: few consumer groups</h2>
         <img src="pictures/kafka-partitioning-4-few-groups-of-consumers.png" alt="" class="cover h" style="margin-top: -30px">  
         <span class="slide-footer">
-        Fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
+        derivative of fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
 </a>
         </span>
+        
+        
+        <footer>
+
+И так у нас есть топик, разбитый на четыре раздела.
+И есть две группы потребителей. Каждому консумеру в группе какфка назначает набор партиций, который он будет обрабатывать, от одного до нескольких. Зависит от количества партиций и от количества консумеров в группе. Однако, есть принципиальное ограничение, одна партиция не может обрабатываться сразу двумя консумерами из ОДНОЙ группы. Как видите, пятый консумер первой группы простаивает.
+
+Но группы потребителей работают независимо. Сообщения из топика после обработки не удаляются, поэтому вторая группа может обработать те же сообщения, но уже со своей логикой обработки.
+
+        </footer>
     </section>
     
 
@@ -337,62 +626,94 @@
 
 
     <section class="slide">
-        <h2>Kafka: Consumers Offsets</h2>
+        <h2>Kafka: Consumers Offsets Example for 1 Partition</h2>
             <pre class="plain"><code style="line-height: 1!important">
 
 
           ┌───[Consumer Group 1]
-          │<span style="color:red">
+          │<span style="color:darkred">
 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18</span>
     │
     └───[Consumer Group 2]
             </code></pre>
+        
+        
+        <footer>
+Для понимания того, какие сообщения какой группе консумеров отдавать используется концепция офсетов.
+Давайте посмотрим на примере топика, у которого только одна партиция.
+Первая группа обработала 5 сообщений и работает над шестым. Сообщения из топика не удаляются после обработки.
+Вторая группа работает помедленнее, обработала два сообщения, трудится над третьим.
+
+        </footer>
     </section>
 
 
     <section class="slide">
-        <h2>Kafka: Consumers Offsets</h2>
+        <h2>Kafka: Consumers Offsets Example for 1 Partition</h2>
             <pre class="plain"><code style="line-height: 1!important">
 
 
                   ┌───[Consumer Group 1]
-                  │<span style="color:red">
-1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20</span>
+                  │<span style="color:darkred">
+1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|<mark>19|20</mark></span>
       │
       └───[Consumer Group 2]
             </code></pre>
+        
+        
+        <footer>
+Продьюсеры накидали в ощередь пару новых сообщений.
+Группы  консумеров продолжают трудиться со своей скоростью, обрабатывая сообщения и сообщая кафке, что сообщения ими обработаны. Т.е. они "коммитают" оффсет по мере обработки сообщений.
+
+        </footer>
     </section>
 
 
     <section class="slide">
-        <h2>Kafka: Consumers Offsets</h2>
+        <h2>Kafka: Consumers Offsets Example for 1 Partition</h2>
             <pre class="plain"><code style="line-height: 1!important">
 
 
                            ┌───[Consumer Group 1]
-                           │<span style="color:red">
-1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23</span>
+                           │<span style="color:darkred">
+1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|<mark>21|22|23</mark></span>
 │           │
 │           └───[Consumer Group 2]
 │
 └───[Consumer Group 3]
             </code></pre>
+        
+        
+        <footer>
+пришла еще одна группа потребителей и начала обрабатывать топик с самого начала
+А продьюсеры подкидывают все работки.
+Все сообщения идут строго одно-за другим. Порядок гарантирован: все сообщения будут обработаны одно за другим консумерами.
+
+
+        </footer>
     </section>
 
 
     <section class="slide">
-        <h2>Kafka: Consumers Offsets</h2>
+        <h2>Kafka: Consumers Offsets Example for 1 Partition</h2>
             <pre class="plain"><code style="line-height: 1!important">
                                     [Consumer Group 4]───┐
                                                          │
                            ┌───[Consumer Group 1]        │ 
-                           │                             │<span style="color:red">
+                           │                             │<span style="color:darkred">
 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23</span>
 │           │
 │           └───[Consumer Group 2]
 │
 └───[Consumer Group 3]
             </code></pre>
+        
+        
+        <footer>
+
+А вот пришла четвертая группа и решила "да в гробу я видала эти старые сообщения, начну с актуальных". И так тоже можно.
+
+        </footer>
     </section>
     
 
@@ -410,52 +731,143 @@
   Reset from file
 
             </code></pre>
+        
+        
+        <footer>
+Есть различные способы управления оффсетом. Консьюмер может начать как с начала очереди, так и с конца. Или "отмотать" оффсет на произвольную дату, или на несколько позиций вперед\назад.
+Очень гибко все
+
+        </footer>
     </section>
+
+
+    <section class="slide">
+        <h2>Kafka: Consumers Offsets Example for <span style="color:firebrick">3</span> Partitions</h2>
+        <style>
+          .custom-sup-indexes  {
+            color: lightseagreen!important;
+          }
+          .custom-sup-indexes sup {
+            color: black!important;
+          }
+        </style>
+            <pre class="plain custom-sup-indexes"><code style="line-height: 1!important; margin-top: -1.5em">
+                        ┌───[<mark>CG</mark> 1 <span class="label">C</span> 1] 
+                        │ <span style="color:darkred">
+Partition 1 >> 1<sup>1</sup>|4<sup>2</sup>|7<sup>3</sup>|10<sup>4</sup>|13<sup>5</sup>|16<sup>6</sup>|19<sup>7</sup>|22<sup>8</sup>|25<sup>9</sup></span>
+                     │
+                     └───[<mark>CG</mark> 2 <span class="label">C</span> 1]
+
+                  ┌───[<mark>CG</mark> 1 <span class="label">C</span> 2] 
+                  │ <span style="color:darkblue">
+Partition 2 >> 2<sup>1</sup>|5<sup>2</sup>|8<sup>3</sup>|11<sup>4</sup>|14<sup>5</sup>|17<sup>6</sup>|20<sup>7</sup>|23<sup>8</sup></span>
+                  │
+                  └───[<mark>CG</mark> 2 <span class="label">C</span> 2]
+
+                            ┌───[<mark>CG</mark> 1 <span class="label">C</span> 3] 
+                            │ <span style="color:purple">
+Partition 3 >> 3<sup>1</sup>|6<sup>2</sup>|9<sup>3</sup>|12<sup>4</sup>|15<sup>5</sup>|18<sup>6</sup>|21<sup>7</sup>|24<sup>8</sup></span>
+               │
+               └───[<mark>CG</mark> 2 <span class="label">C</span> 3]
+ 
+            </code></pre>
+
+        <span class="slide-footer" style="font-size: 16px; padding: 10px 0px; text-align: left; opacity: 0.6">
+            legend:
+            <br><br>
+            <mark>CG</mark> — Consumers Group
+            <br>
+            <span class="label">C</span> — Consumer (in group)
+        </span>
+        
+        
+        <footer>
+
+С одной партицией было попроще, а если их три?
+Тогда сообщения, приходящие от продьюсеров, будут по какой-то логике распределяться по трем партициям.
+У нас уже не будет четкой гарантии того, что все сообщения в рамках топика идут один за одним, ровно в том порядке, как они пришли в кафку. И хоть эта гарантия все еще есть на уровне партиции, мы не можем гарантировать, что консумеры одной группы будут работать с одинаковой скоростью.
+Поэтому, или одна партиция на топик и строгая гарантия последовательности событий, или же скорость\производительность, но последовательность теряется.
+
+Интересно, все же, что, кроме, скорости, дают нам партиции?
+
+        </footer>
+    </section>
+
 
     <section class="slide">
         <h2>Kafka: Overview, again :-)</h2>
-        <img src="pictures/kafka-architecture-overview-zookeeper.png" alt="" class="cover w" style="margin-top: 20px">  
-        <span class="slide-footer">
-        Fig. from <a href="https://dzone.com/articles/kafka-architecture">dzone.com</a>
+        <img src="pictures/kafka-architecture-topics-producers-consumers.svg" alt="" class="cover w" style="margin-top: 20px">
+        <span class="slide-footer" style="font-size:12px">
+        see some details on <a href="https://dzone.com/articles/kafka-architecture">dzone.com</a>
         </span>
+        
+        
+        <footer>
+Давайте посмотрим еще раз.
+И так, есть кластер кафки
+
+        </footer>
     </section>
+
+    <section class="slide">
+        <h2>Kafka: Cluster</h2>
+        <img src="pictures/kafka-architecture-cluster.svg" alt="" class="cover w" style="margin-top: 30px">  
+        
+        
+        <footer>
+Внутри кластера есть три брокера.
+Это достаточно стандартная, минимальная, простейшая, конфигурация.
+Три брокера в кластере. У каждого топика фактор репликации тоже выставлен в тройку. 
+Таким образом каждый топик со всеми его партициями скопирован на каждый брокер.
+Есть разные подходы для реплицирования: кто-то использует кворум, кто-то концепцию лидеров. Какфка использует лидеров.
+Осталось понять, кто лидер.
+
+
+        </footer>
+    </section>
+
+    <section class="slide">
+        <h2>Kafka: Partition Leaders</h2>
+        <img src="pictures/kafka-architecture-partition-leader.svg" alt="" class="cover w" style="margin-top: 30px">  
+        
+        
+        <footer>
+
+В кафке для каждой реплицированной партиции выбирается свой лидер. Лидеры распределены по разным брокерам, а не сосредоточены на одном.
+        </footer>
+    </section>
+
+
+
+
 
     <section class="slide">
         <h2>Kafka: Replication</h2>
-        <img src="pictures/kafka-architecture-replication.png" alt="" class="cover w" style="margin-top: 30px">  
+        <img src="pictures/kafka-architecture-replication.svg" alt="" class="cover w" style="margin-top: 30px">  
         <span class="slide-footer">
-        Fig. from <a href="
+        some details on <a href="
 https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dzone.com</a>
         </span>
+        
+        
+        <footer>
+Когда продьюсер делает запись в топик, он точно знает, в какую партицию он записывает. И, соответственно, он точно знает, на каком брокере расположен лидер этой партиции.
+После того, как сообщение записал лидер, оно реплицируется на всех остальные реплики.
+Причем продьюсер может работать по двум разным стратегиям:
+- по синхронной: он будет ждать, пока закончится реплицирования
+- по асинхронной: он подождет только лидера
+первая стратегия надежнее, вторая - быстрее. выбирать -- вам.
+
+Если брокер номер 1 упадет, то кафка найдет, назначит лидеров для нулевой и второй партиции на других брокерах.
+Если вы использовали асинхронную стратегию, то часть данных может быть потеряна в этом случае.
+
+Очень за многое отвечает продьюсер. Не только за стратегию записи.
+Но в том числе и за решение того, в какую конкретную партицию будет помещено сообщение. Он это может решать с помощью рандома, или же основываясь на содержимом сообщения.
+
+
+        </footer>
     </section>
 
-
-
-
-
-
-    <section class="slide">
-        <h2>
-            Kafka: стратегии распределения по партициям
-        </h2>
-        <div class="tags-baloons">
-            <span class="label">
-                1. random
-            </span>
-            
-            <br>
-            
-            <span class="label">
-                2. По хэшу ключа (если он есть)
-            </span>
-            
-            <br>
-            
-            <span class="label">
-                3. «вручную» указать партицию
-            </span>
-        </div>     
-    </section> 
 
 
 
@@ -464,78 +876,54 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
     <section class="slide black">
         <h2>Kafka: Message structure</h2>
         <h3 class="shout">key, value<br>byte[], byte[]</h3>
+        
+        
+        <footer>
+В простейшем случае содержимое сообщения представляет из себя вот это.
+Ключ, значение. И то, и другое - набор байтов.
+Хоть mp3'шки туда кидайте!.
+Но зачастую это все-таки какие-то структуры данных, которые надо как-то сериализовать.
+
+        </footer>
     </section>
     
     
-    
-    <section class="slide black">
-        <h2>Kafka: Message structure and content</h2>
-        <pre class="javascript" style="background: white"><code style="line-height: 1.2">
-    key = {"foo":"bar","numer":1}
-    value = {"modelName":"DFGJHL8", "modelYear": 2019}
-        </code></pre>
-    </section>
-    
-    
-    <section class="slide black">
-        <h2>Kafka: Message structure and content...</h2>
-        <pre class="javascript" style="background: white"><code style="line-height: 1.2">
-    key = {"foo":"bar","numer":1}
-    value = {"modelName":"DFGJHL8", "modelYear": 2019}
-        </code></pre><pre class="javascript" style="background: white"><code style="line-height: 1.2">
-    key = {"foo":"bar","numer":2}
-    value = {"modelName":"LKJDF3", "modelYear": 2017}
-        </code></pre><pre class="javascript" style="background: white"><code style="line-height: 1.2">
-    key = {"foo":"bar","numer":3}
-    value = {"modelName":"XXXFFF4", "modelYear": 2009}
-        </code></pre><pre class="javascript" style="background: white"><code style="line-height: 1.2">
-    key = {"foo":"bar","numer":4}
-    value = {"modelName":"AAAEEE5", "modelYear": 1999}
-        </code></pre>
-    </section>
     
     
     
     <section class="slide">
-        <h2>Kafka: Schema</h2>
-        <h3 class="shout no-bg"><small style="font-size: 0.5em">Use Avro to define a data schema</small></span>
+        <h2>Kafka: Serializers</h2>
+        <h3 class="shout no-bg">
+            <small style="font-size: 0.5em">
+                JSON, Protobuf, Thrift, <mark>Avro</mark>
+            </small>
+        </h3>
+        
+        
+        <footer>
+Можно использовать любые сериализаторы, конечно.
+Можно хоть Pickle!
+Но лучше какие-то популярные, кросс-языковые.
+В мире кафки хорошо Avro прижился. Он бинарный. Со схемой. И валидацию поддерживает, и миграцию.
+
+        </footer>
     </section>
     
-    <section class="slide">
-        <h2>Kafka: Schema: Avro</h2>
-        <pre><code>{   "namespace":"com.example.avroSample.model",
-    "type":"record",
-    "name":"Automobile",
-    "fields":[  {  "name":"modelName",
-                   "type":"string"},
-                {  "name":"modelYear",
-                   "type":"int"}
-             ]
-}
-        </code></pre>
-    </section>
-
-
-
 
 
     <section class="slide">
-        <h2>Kafka: Schema overhead</h2>
-        <img src="pictures/confluent_schema_registry-1.png" alt="" class="cover" style="margin-top: 20px">  
-        <!-- image from https://www.confluent.io/blog/schemas-contracts-compatibility  -->
-    </section>
+        <h2 style="border: none">Kafka: Schema overhead</h2>
+        <img src="pictures/confluent_schema_registry-1.png" alt="" class="cover" style="margin-top: 30px">  
+        <span class="slide-footer">
+        Fig. from <a href="https://www.confluent.io/blog/schemas-contracts-compatibility">confluent.io</a>
+        </span>
+        
+        <footer>
+однако, есть недостаток. с каждым сообщением нужно передавать схему, чтобы можно было десериализовать. это невыгодно, даже по сравнению с json
+но есть выход: держать схемы отдельно, в доступном для десиарилизатора месте.
 
+        </footer>
 
-
-
-
-    <section class="slide">
-        <h2>Kafka: Schema: Avro: Schema Registry</h2>
-        <ul>
-            <li><b><a href="https://ondataengineering.net/technologies/confluent-open-source/">Confluent Schema Registry</a></b></li>
-            <li><a href="https://ondataengineering.net/technologies/schema-registry/">Hortonworks Schema Registry</a></li>
-            <li><a href="https://github.com/salsify/avro-schema-registry">Avro Schema Registry</a></li>
-        </ul>
     </section>
 
 
@@ -543,7 +931,14 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
 
     <section class="slide">
         <h2>Kafka: Schema Registry Concept</h2>
-        <img src="pictures/schema-registry-scheme.png" alt="" class="cover w" style="margin-top: 20px">  
+        <img src="pictures/schema-registry-scheme.svg" alt="" class="cover w" style="margin-top: 20px">  
+        
+        
+        <footer>
+Такое место - реестр схем.
+Самое популярное решение для кафки - от конфлуента.
+
+        </footer>
     </section>
 
 
@@ -552,167 +947,233 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
 
     <section class="slide black">
         <h2 class="shout">Microservices?</h2>
+        
+        
+        <footer>
+Но давайте обратно к нашим микросервисам
+
+
+        </footer>
     </section>
-
-
 
 
     <section class="slide">
-        <h2>Microservices: Async Communication (Kafka). Again</h2>
-        <img src="pictures/microservices-async-comm-kafka.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <h2>Microservices: Async Communication (Celery)</h2>
+        <img src="pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix"> 
+        
+        
+        <footer>
+Мы остановились на варианте с celery и хотим что-то изменить
+
+
+        </footer> 
     </section>
 
+    <section class="slide">
+        <h2>Microservices: Async Communication (Kafka)</h2>
+        <img src="pictures/2-kafka.svg" alt="" class="cover w hotfix"> 
+        
+        
+        <footer>
 
-
+Внедряем кафку.
+Первый сервис пишет в кафку.
+А дальше мы уже в других сервисах, местами, отказываемся от реста и назначаем их ответственными за реагирование на происходящие изменения в первом сервисе.
+У второго и третьего сервиса появились маленькие подсервисы - кафка консумеры.
+Вроде бы неплохо. 
+Но можно лучше.
+        </footer> 
+    </section>
 
     <section class="slide">
         <h2>Microservices: Async. What about databases?</h2>
-        <img src="pictures/microservices-async-comm-kafka-detailed.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <img src="pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">  
+        
+        
+        <footer>
+Как видно, первый сервис при своей работе что-то изменяет в своей базе данных. А потом сообщает о этих изменениях в кафку.
+Двойная работа.
+Может, ну ее, эту кафку? 
+Зачем одни и те же данные писать два раза в два места, и поддерживать эту логику в коде сервиса?
+Было бы хорошо, если бы данные сами в кафку ходили!
+
+        </footer>
     </section>
     
     
     
 
     <section class="slide black">
-        <h2>PostgreSQL → Kafka</h2>
-        <img src="pictures/logos/debezium.svg" alt="">
+        <h2>Relational Database → Kafka</h2>
+        <img src="pictures/logos/debezium.svg" alt="" style="margin-top: 120px">
+        
+        
+        <footer>
+И так тоже можно!
+Дебезиум нам это даст
+
+
+        </footer>
     </section>
 
     <section class="slide">
-        <h2>Stream data from PostgreSQL to Kafka</h2>
+        <h2>Stream data from RDBS to Kafka</h2>
         <img src="pictures/debezium-architecture.png" alt="" class="cover w" style="margin-top: 30px">  
         <span class="slide-footer">
         Fig. from <a href="
 https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</a>
         </span>
+        
+        
+        <footer>
+Дебезиум реализует по своей сути концепт кафка-коннектора.
+Вот схема с их сайта.
+Элементов много.
+
+
+        </footer>
     </section>
 
 
+    <section class="slide">
+        <h2>Stream data from PostgreSQL to Kafka</h2>
+        <img src="pictures/debezium-architecture-part-postgre.png" alt="" class="cover w" style="margin-top: 30px">  
+        <span class="slide-footer">
+        Fig. from <a href="
+https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</a>
+        </span>
+        
+        
+        <footer>
+Нас интересуют только вот эти
+Дебезиум читает лог постгреса  и транслирует изменения в кафку. 
+
+
+        </footer>
+    </section>
 
 
 
 
     <section class="slide">
         <h2>Microservices: Async. What about databases?</h2>
-        <img src="pictures/microservices-async-comm-kafka-detailed.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <img src="pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">  
+        
+        
+        <footer>
+и теперь вот эта прошлая схема 
+
+
+        </footer>
     </section>
     
 
     <section class="slide">
         <h2>Microservices: Async. Debezium</h2>
-        <img src="pictures/microservices-async-comm-kafka-debezium.svg" alt="" class="cover w" style="margin-top: 20px">  
+        <img src="pictures/2-kafka-debezium.svg" alt="" class="cover w hotfix">  
+        
+        
+        <footer>
+превращается вот в эту.
+кода в сервисе стало меньше
+дебезиум делает работу за нас.
+в принципе можно было бы и со вторым сервисом и его базой что-то намутить, но пока оставим как есть.
+
+        </footer>
     </section>
 
 
-    <section class="slide black">
-        <div class="tags-baloons shout">
-            <span class="label">
-                Что дальше?
-            </span>
-        </div>    
+    <section class="slide">
+        <h2>Microservices: Async. Debezium. Full</h2>
+        <img src="pictures/microservices-comm-full.svg" alt="" class="cover w hotfix" style="margin-top: 130px">  
+        
+        
+        <footer>
+
+Итого мы пришли к вот такому решению.
+Схема в виде палочек не очень понятная, да?
+        </footer>
     </section>
 
+    <section class="slide">
+        <h2>Application Diagram</h2>
+        <img src="pictures/4-ms-aws.svg" alt="" class="cover w hotfix">  
+        
+        
+        <footer>
 
-    <section class="slide black">
-        <div class="tags-baloons shout">
-            <span class="label">
-                Что дальше?
-            </span>
-            <div class="tags-baloons" style="font-size: 32px; line-height: 1.8">
-                <span class="label">
-                    Зависимые запросы
-                </span>
-                <span class="label">
-                    Рапределенные транзакции
-                </span>
-                <span class="label">
-                    SAGA
-                </span>
-            </div> 
-        </div>  
+Давайте что-то более привычное нарисуем.
+Вот на этой схеме можно заметить, что с помощью дебезиума и кафки мы полностью отвязали наше впереди-стоящее джанго приложение от остальных микросервисов.
+
+Но а что по поводу большого потока данных из внешних источников
+
+        </footer>
     </section>
-
-
-    <section class="slide black">
-        <div class="tags-baloons shout">
-            <span class="label">
-                Что дальше?
-            </span>
-            <div class="tags-baloons" style="font-size: 32px; line-height: 1.8">
-                <span class="label">
-                    Зависимые запросы
-                </span>
-                <span class="label">
-                    Рапределенные транзакции
-                </span>
-                <span class="label">
-                    SAGA
-                </span>
-            </div> 
-            <div class="tags-baloons" style="font-size:26px; line-height: 1.8">
-                <span class="label">
-                    Тонкий «тюнинг»
-                </span>
-                <span class="label">
-                    Multi Datacenter Setup
-                </span>
-            </div> 
-        </div>  
-    </section>
-
     
-    <section class="slide black">
-        <div class="tags-baloons shout">
-            <span class="label">
-                Что дальше?
-            </span>
-            <div class="tags-baloons" style="font-size: 32px; line-height: 1.8">
-                <span class="label">
-                    Зависимые запросы
-                </span>
-                <span class="label">
-                    Рапределенные транзакции
-                </span>
-                <span class="label">
-                    SAGA
-                </span>
-            </div> 
-            <div class="tags-baloons" style="font-size:26px; line-height: 1.8">
-                <span class="label">
-                    Тонкий «тюнинг»
-                </span>
-                <span class="label">
-                    Multi Datacenter Setup
-                </span>
-            </div> 
-            <div class="tags-baloons" style="font-size:22px; line-height: 1.8">
-                <span class="label">
-                    KSQL
-                </span>
-                <span class="label">
-                    Kafka Streams
-                </span>
-            </div> 
-        </div>  
+    
+    <section class="slide">
+        <h2>Application Diagram. External Data Handling</h2>
+        <img src="pictures/4-ms-aws-full.svg" alt="" class="cover w hotfix">  
+        
+        
+        <footer>
+
+Еще пара микросервисов решат эту задачу.
+Забираем данные, помещаем в кафку.
+Достаем из кафки, анализируем, преобразуем, кладем в базу данных основного сервиса.
+
+Все бы хорошо, вот только слищком много Java-технологий теперь у нас в проекте. Kafka,... Debezium...
+        </footer>
     </section>
 
 
+    <section class="slide clear">
+        <img src="pictures/art/wayfarer_1.jpg" alt="" class="cover w">
+        
+        
+        <h2 class="shout" style="margin-left:30px; color: #341d23">Conclusion?</h2>    
+        
+
+        </footer>
+    </section>
+    
+    
+    
+    
+
+
     <section class="slide black">
         <div class="tags-baloons shout">
             <span class="label">
-                Спасибо!
+                Thanks!
             </span>
         </div>    
+        
+        
+        <footer>
+Спасибо за внимание
+
+
+        </footer>
     </section>
     
     
     <section class="slide black">
         <div class="tags-baloons shout">
             <span class="label">
-                Вопросы?
+                Questions?
             </span>
         </div>    
+        
+        
+        <footer>
+Буду рад вашим вопросам.
+
+
+        </footer>
     </section>
+
+
 
     <div class="progress"></div>
 
