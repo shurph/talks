@@ -66,9 +66,8 @@
         
         <footer>
 Добры день, меня зовут Николай Сасковец.
-Последние чуть более чем пол года я занимался тем, что помогал команде  перенести монолитное приложение на микросервисные рельсы.
-
-И в центр нашего решения мы поместили Кафку. А ещё я на этом мероприятии почему-то объявлен как питон-разработчик, поэтому некоторые слайды будут питон-специфичны. Уж простите.[ ... ... ... ... ]
+И сегодня будем говорить о том, как строить микросервисы, используя Kafka: Cluster
+[ ... ... ... ... ]
 Кстати! Поднимите пожалуйста руки, кто уже писал что-то с Кафкой, исползует ее в проектах.
 А еще поднимите те, кто про Кафку хорошенько читал.
 
@@ -81,70 +80,82 @@
     <section class="slide half-black black clear">
         <div style="width: 30%; padding-right: 0">
             <h3 style="
-					font-size: 1.8rem; line-height: 1.33;   margin-bottom: 0rem;
+                    font-size: 1.8rem; line-height: 1.33;   margin-bottom: 0rem;
 
-				">Mikalai Saskavets</h3>
-							<h4 style="
-					font-size: 1.24rem; line-height: 1.33;     margin-bottom: 0rem;
+                ">Mikalai Saskavets</h3>
+                            <h4 style="
+                    font-size: 1.24rem; line-height: 1.33;     margin-bottom: 0rem;
 
-				">Full Stack Web Developer</h4>
-							<h4 style="
-					font-size: 1.24rem; line-height: 1.33;    margin-bottom: 0 rem;
+                ">Full Stack Web Developer</h4>
+                            <h4 style="
+                    font-size: 1.24rem; line-height: 1.33;    margin-bottom: 0 rem;
 
-				">DevOps Enthusiast</h4>
-			<br>
+                ">DevOps Enthusiast</h4>
+            <br>
             <img src="pictures/mikalai-photo.png" alt="" width="91%" >
         
         </div>
         <div style="width: 70%;">
-			<style>
-			.some-experience-with i {
-				background: #333;
-				border-radius: 0.25rem;
-				padding: 0 0.25rem;
-			}
-			</style>
-			• more than 12 years in web development
-			<p style="font-size: 0.5em" class="some-experience-with">
-				<span style="color:#333">some experience with:</span>
-				<i>php</i>
-				<i>javascript</i>
-				<i>python</i>
-				<i>java</i>
-				<i>perl</i>
-				<i>golang</i>
-				<i>lua</i>
-				<i>nginx</i>
-				<i>apache</i>
-				<br>
-				<i>postgres</i>
-				<i>mysql</i>
-				<i>redis</i>
-				<i>rabbitmq</i>
-				<i>cassandra</i>
-				<i>dynamodb</i>
-				<i>kafka</i>
-				<i>docker</i>
-				<i>kubernetes</i>
-				<i>ansible</i>
-				<br>
-				<i>solr</i>
-				<i>elasticsearch</i>
-				<i>jquery</i>
-				<i>react</i>
-				<i>webpack</i>
-				<i>django</i>
-				<i>celery</i>
-				<i>wordpress</i>
-				<i>linux</i>
-				<i>git</i>
-				<i>latex</i>
-			 </p>
-			<br>
-			• last 6 years is falling into Python<br>
-			• member of PyCon Belarus Program Committee<br>
-			• contributing member of Minsk Python Meetup<br>
-		</div>
+            <style>
+            .some-experience-with i {
+                background: #333;
+                border-radius: 0.25rem;
+                padding: 0 0.25rem;
+            }
+            </style>
+            • more than 12 years in web development
+            <p style="font-size: 0.5em" class="some-experience-with">
+                <span style="color:#333">some experience with:</span>
+                <i>php</i>
+                <i>javascript</i>
+                <i>python</i>
+                <i>java</i>
+                <i>perl</i>
+                <i>golang</i>
+                <i>lua</i>
+                <i>nginx</i>
+                <i>apache</i>
+                <br>
+                <i>postgres</i>
+                <i>mysql</i>
+                <i>redis</i>
+                <i>rabbitmq</i>
+                <i>cassandra</i>
+                <i>dynamodb</i>
+                <i>kafka</i>
+                <i>docker</i>
+                <i>kubernetes</i>
+                <i>ansible</i>
+                <br>
+                <i>solr</i>
+                <i>elasticsearch</i>
+                <i>jquery</i>
+                <i>react</i>
+                <i>webpack</i>
+                <i>django</i>
+                <i>celery</i>
+                <i>wordpress</i>
+                <i>linux</i>
+                <i>git</i>
+                <i>latex</i>
+             </p>
+            <br>
+            • last 6 years is falling into Python<br>
+            • member of PyCon Belarus Program Committee<br>
+            • contributing member of Minsk Python Meetup<br>
+        </div>
+        <footer>
+            Но прежде чем мы начнём... Организаторы мероприятия попросили меня вставить этот слайд и рассказать чуть-чуть о себе. Чтобы вы понимали стоит или не стоит слушать мои слова :-)
+            
+            И так, я фулстек-разработчик и энтузиаст девопс идеологии. Вот уже чуть более 12 лет занимаюсь разработкой веб-проектов различного уровня сложности. За это время пришлось попробовать, потрогать изрядное количество языков, технологий, подходов...
+            
+            Вот уже около <b>шести</b> лет одним из моих любимых языков является питон. На столько, что сейчас я состою в программном комитете PyCon Belarus, ежегодной конференции про питон, где ищу, отбираю спикеров и составляю программу конфы...
+            Так же примерно тем же занимаюсь в минском сообществе питонистов, но уже для ежемесячных митапов: ищу спикеров, составляю программу мероприятия...
+            
+            На этом, думаю, минутку саморекламы можно заканчивать.
+            
+            Так много и подробно я остановился на питоне, чтобы вы были готовы, что в слайдах местами будут проскакивать питон-специфичные вещи. Я буду стараться обьяснять такие вещи по ходу доклада. Но если останутся какие-то моменты непонятными, то не стесняйтесь задавать свои вопросы в конце доклада.
+        </footer>
     </section>
 
 
@@ -153,6 +164,12 @@
 
     <section class="slide clear ">
         <img src="pictures/app.jpg" alt="" class="cover h" style="height: 105%; max-height: 105%">
+        
+        <footer>
+            И так, чуть ближе к делу. Про приложение.
+            
+            Последние чуть более чем пол года я занимался тем, что помогал команде  перенести монолитное приложение на микросервисные рельсы.
+        </footer>
     </section>
 
 
@@ -1030,14 +1047,20 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
     <section class="slide">
         <h2>Kafka: some conclusion</h2>
         <ul>
-			<li>complicated <b>a bit</b></li>
-			<li><b>highly</b> scalable</li>
-			<li>good performance (2,000,000 msg/sec)</li>
-			<li><i>pretty good</i> availability</li>
-			<li><b>not so many</b> specialists</li>
+            <li>complicated <b>a bit</b></li>
+            <li><b>highly</b> scalable</li>
+            <li>good performance (2,000,000 msg/sec)</li>
+            <li><i>pretty good</i> availability</li>
+            <li><b>not so many</b> specialists</li>
         </ul>
         <footer>
-
+            И так, давайте подведем какой-то промежуточный вывод по кафке.
+            Кафка это несколько сложноватый инструмент, в предыдущих слайдах я старался не сильно выпячивать эту сложность. Но, похоже, у меня не получилось.
+            
+            Но при этом Кафка хорошо масштабируется, обещает хорошую производительность и при этом надежное хранение данных и доступность этих данных.
+            
+            Хотя, конечно, специалистов на нашем рынке, способных с кафкой совладать, не так уж много.
+            К счастью, в нашей команде такие люди были. И остальные бойцы были готовы учиться.
         </footer>
     </section>
 
