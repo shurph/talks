@@ -4,13 +4,13 @@
 
 
 ### Предстоящие
+
+
+### Состоявшиеся
 - 2019-11-14
   — iTechMeetup **Mogilev** #5
   — Построение микросервисных систем с использованием Kafka
   — [слайды](https://shurph.github.io/talks/kafka-mogilev)
-
-
-### Состоявшиеся
 - 2019-11-01
   — PiterPy 2019
   — **St. Petersburg, Russia**
