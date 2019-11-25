@@ -12,6 +12,7 @@
 - 2019-11-14
   — iTechMeetup **Mogilev** #5
   — Построение микросервисных систем с использованием Kafka
+  — [🎥видео](https://www.youtube.com/watch?v=Q6rAuZ2W404)
   — [слайды](https://shurph.github.io/talks/kafka-mogilev)
 - 2019-11-01
   — PiterPy 2019
