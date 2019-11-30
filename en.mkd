@@ -1,0 +1,83 @@
+My name is [Mikalai Saskavets](https://github.com/shurph). From time to time I do some tech talks. Below is a list of my performance :-)
+
+
+
+## Talk Chronology
+
+- 2019-11-14
+  — RU
+  — iTechMeetup **Mogilev** #5
+  — Building microservice-based systems using Kafka
+  — [🎥video](https://www.youtube.com/watch?v=Q6rAuZ2W404)
+  — [slides](https://shurph.github.io/talks/kafka-mogilev)
+- 2019-11-01
+  — RU
+  — PiterPy 2019
+  — **St. Petersburg, Russia**
+  — Building a microservices-based application using Kafka and Django
+  — [slides](https://shurph.github.io/talks/kafka-piterpy/)
+- 2019-09-14
+  — RU
+  — Minsk Python Meetup
+  — Python + Kafka = ?
+  — [🎥video](https://www.youtube.com/watch?v=4HFAM9u1wKk&list=PLjiAaL1HtGPaMPlrZGCDzUCTsVAyTbHJ4&index=13)
+  — [slides](https://shurph.github.io/talks/python-kafka/)
+- 2019-09-14
+  — RU
+  — Minsk Python Meetup
+  — _A few words_ about the importance of a knowledge sharing
+  — [🎥video](https://www.youtube.com/watch?v=kfVUE0QY7Jc&list=PLjiAaL1HtGPaMPlrZGCDzUCTsVAyTbHJ4&index=6&t=66)
+- 2019-04-24
+  — RU
+  — iTechArt
+  — Why and how to contribute to Opensource?
+  — [slides](https://shurph.github.io/talks/opensource-taking-part/)
+- 2019-04-23
+  — RU
+  — Minsk Python Meetup
+  — Git: 3 Unforgivable Curses
+  — [🎥video](https://www.youtube.com/watch?v=OBrN-gwz8ec&list=PLjiAaL1HtGPaMPlrZGCDzUCTsVAyTbHJ4)
+- 2019-04-05
+  — RU
+  — bitnet
+  — Why choose Python
+  — [slides](https://shurph.github.io/talks/python-choose-it/)
+- 2019-03-19
+  — RU
+  — iTechArt
+  — Git: The Hateful Eight Tricks
+- 2019-03-01
+  — RU
+  — iTechArt
+  — Python + Pipenv: Take control under dependencies!
+  — [slides](https://shurph.github.io/talks/python-dependencies-under-control/)
+- 2019-02-15
+  — RU
+  — **PyCon Belarus 2019**
+  — How to manage dependencies in your Python project in a production-ready manner
+  — [slides](https://shurph.github.io/talks/python-manage-dependencies/)
+- 2019-01-12
+  — RU
+  — Minsk Python Meetup
+  — Why we need to “pin” packages in requirements.txt
+  — [slides](https://shurph.github.io/talks/python-pin-it/)
+- 2018-11-13
+  — RU
+  — Minsk Python Meetup
+  — Take control under dependencies in 2018: Pipenv
+  — [🎥video](https://www.youtube.com/watch?v=4lW2iZz7WBc)
+  — [slides](https://shurph.github.io/talks/pipenv/)
+- 2018-05-24
+  — RU
+  — iTechArt
+  — Git: The Hateful Eight Tricks
+- 2018-05-02
+  — RU
+  — iTechArt
+  — Improve your security
+  — [slides](https://www.slideshare.net/NikolaySaskovets/improve-your-security-2018)
+- 2018-03-31
+  — RU
+  — Minsk Linux Users Group Meetup (Линуксовка)
+  — «Hugo — static site generator»
+  — [slides](https://www.slideshare.net/NikolaySaskovets/hugo-hugo-static-site-generator)
