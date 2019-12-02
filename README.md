@@ -24,12 +24,10 @@
   — Python + Kafka = ?
   — [🎥видео](https://www.youtube.com/watch?v=4HFAM9u1wKk&list=PLjiAaL1HtGPaMPlrZGCDzUCTsVAyTbHJ4&index=13)
   — [слайды](https://shurph.github.io/talks/python-kafka/)
-- <span style="color: gray">
-  2019-09-14
+- 2019-09-14
   — Minsk Python Meetup
   — _Пару слов_ о важности распространения знаний
   — [🎥видео](https://www.youtube.com/watch?v=kfVUE0QY7Jc&list=PLjiAaL1HtGPaMPlrZGCDzUCTsVAyTbHJ4&index=6&t=66)
-  </span>
 - 2019-04-24
   — iTechArt
   — Зачем и как вносить свой вклад в Opensource?
