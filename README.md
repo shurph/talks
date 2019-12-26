@@ -6,9 +6,10 @@
 
 
 ### Предстоящие
-- 2019-??-??
-  — Секретный lighting talk
-
+- 2019-12-26
+  — Minsk Python Meetup
+  — PyPA: the lack of understanding who is who
+  — [слайды](https://shurph.github.io/talks/python-pypa-joke)
 
 ### Состоявшиеся
 - 2019-11-14
