@@ -12,6 +12,30 @@
     <style>
     
     
+    .slide:before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 200px;
+        height: 30px;
+        background-size: fit;
+        background-image: url("pictures/logos/itechart-black.svg");
+        background-postion: bottom right;
+        background-repeat: no-repeat;
+    }
+    
+    .slide.black:before {
+        filter: invert(1);
+    }
+    
+    
+    .slide.no-logo:before {
+        display: none;
+    }
+    
+    
     .slide h2.no-border {
         border-bottom: none;
     }
@@ -64,6 +88,8 @@
             <a href="https://twitter.com/shurph">Mikalai Saskavets</a>
         </p>
     </header>
+
+
 
 
 
@@ -208,7 +234,7 @@
     
     
     
-    <section class="slide">
+    <section class="slide no-logo">
         <!-- Rambler -->
         <img src="https://www.uschamber.com/sites/default/files/023049_tjd_commentary_litigationmachine_atf.gif" alt="" class="cover w">
         
@@ -285,11 +311,14 @@
         
         <footer>
         </footer>
+        
+    <!--     <div class="footer-logo" style="position: absolute; right: 0px; bottom: -10px; width: 100px; "><img src=""></div><!---->
     </section>
     
-
+    
 
     <div class="progress"></div>
+    
 
     <footer class="badge">
         <a href="https://github.com/shurph/talks">Fork me on GitHub!</a>
