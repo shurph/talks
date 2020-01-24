@@ -6,12 +6,15 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!--<link id="favicon" rel="shortcut icon" type="image/png" href="data:image/png;base64,">-->
 
     <link rel="stylesheet" href="../vendor/shower/styles/purple-16x9.css">
     <link rel="stylesheet" href="../vendor/shower/vendors/highlight/styles/github.css">
     <style>
     
+    
+    .slide h2.no-border {
+        border-bottom: none;
+    }
     .cards > div {
         width: 33.33%;
         float: left;
@@ -36,6 +39,21 @@
         color: black;
         padding: 10px;
     }
+    .huge {
+        font-size: 42px;
+    }
+    .huge-huge {
+        font-size: 62px;
+    }
+    .padding {
+        padding-left: 150px;
+        padding-top: 50px;
+    }
+    .padding-big {
+        padding-left: 480px;
+        padding-top: 150px;
+    }
+    
     </style>
 </head>
 
@@ -53,40 +71,24 @@
      style="
         background: url(https://images.aif.ru/007/174/7e47848dc714ef540e8636355ed0d20e.jpg) center center;
         background-size: cover;">
-        <h2 class="shout" style="font-size: 82px; white-space: nowrap; color: white">
-            <br><br>
+        <h2 class="shout" style="font-size: 82px; white-space: nowrap; color: white;">
+            <br><br><br>
             Git: Назад, в будущее!
         </h2>
-        <span class="slide-footer" style="font-size: 20px; padding: 20px 40px;">
+        <span class="slide-footer" style="font-size: 20px; padding: 5px 10px 7px 10px; color: white; background: rgba(0,0,0,0.75);">
             Mikalai Saskavets
-            <br><br>
         </span>
-        <div  class="place top left" style="opacity: 0.75; padding: 20px 0 0 40px;font-size: 20px;">
+        <div  class="place top left" style="opacity: 0.75; padding: 20px 0 0 40px;font-size: 20px; color: white;">
             iTechMeetup Brest
         </div>
         
         <footer>
-Добры день, меня зовут Николай Сасковец.
-И сегодня будем говорить о том, как строить микросервисы, используя Kafka: Cluster
-[ ... ... ... ... ]
-Кстати! Поднимите пожалуйста руки, кто уже писал что-то с Кафкой, исползует ее в проектах.
-А еще поднимите те, кто про Кафку хорошенько читал.
-
-        
         </footer>
     </section>
     
 
 
 
-
-    <section class="slide">
-        
-        <h2 class="shout">
-            DISCLAIMER
-        </h2>
-        <footer></footer>
-    </section>
     
     
     
@@ -94,10 +96,40 @@
     <section class="slide">
         
         <h2 class="shout">
-            GIT
-            <br>
-            MESSUP
+            F*CKUPS
         </h2>
+        
+        <footer></footer>
+    </section>
+    
+    
+    
+    <!-- - ->
+    <section class="slide">
+        
+        <h2 class="no-border">
+            WHAT TO DO<br>
+            WITH<br>
+            F*CKUPS<br>?
+        </h2>
+        
+        <img src="https://i.imgur.com/96hPj.png" alt="" class="cover" style="height: 80%;">
+        
+        <footer></footer>
+    </section><!-- -->
+    
+    
+    <section class="slide">
+        
+        <h2 class="no-border">
+            WHAT TO DO<br>
+            WITH<br>
+            F*CKUPS<br>?
+        </h2>
+        <ul class="padding-big huge-huge">
+            <li>Prevent them</li>
+            <li>Fix them</li>
+        </ul>
         
         <footer></footer>
     </section>
@@ -106,38 +138,27 @@
     
     
     <section class="slide">
-        
-        <h2 class="shout">
-            GIT
-            <br>
-            MESSUP
+        <h2 class="no-border">
+            DAILY ROUTINE
         </h2>
-        
-        <img src="https://i.imgur.com/96hPj.png" alt="" class="cover">
-        
-        <footer></footer>
-    </section>
-    
-    <section class="slide">
         <!-- daily routine: Bruce -->
-        <img src="https://hackernoon.com/hn-images/1*QPSlOyQ0EeJG169-JBYOUQ.gif" alt="" class="cover w">
+        <img src="https://hackernoon.com/hn-images/1*QPSlOyQ0EeJG169-JBYOUQ.gif" alt="" class="cover h" style="height: 107%; max-height: 107%;">
         <footer></footer>
     </section>
     
-    
+    <!--
     <section class="slide">
-        <!-- SERIOUS -->
         <img src="https://media1.giphy.com/media/FPYkkpPXzUi1G/source.gif" alt="" class="cover w">
         <footer></footer>
     </section>
-    
+    -->
     
     
     
      
     <section class="slide">
         <h2 class="">GIT MESSUP, CASES</h2>
-        <ol style="font-size: 62px; padding-left: 150px; padding-top: 50px;">
+        <ol class="padding huge-huge">
             <li>Data Leaks (Privacy)</li>
             <li>Copyright Issues</li>
         </ol>
@@ -213,7 +234,7 @@
     
     <section class="slide">
         <h2 class="">2. Copyright Issues: Causes</h2>
-        <ol style="font-size: 42px; padding-left: 150px; padding-top: 50px;">
+        <ol "padding huge">
             <li>Unconfigured <code>git config user.name/user.email</code></li>
             <li>Different configs on different machines</li>
         </ol>
@@ -244,7 +265,7 @@
     
     <section class="slide">
         <h2 class="">Copyright Issues</h2>
-        <img src="pictures/copyright-agreement.jpg" alt="" class="cover w">
+        <img src="pictures/copyright-agreement.jpg" alt="" class="cover">
         <footer></footer>
     </section>
     
