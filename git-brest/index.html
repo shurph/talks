@@ -9,7 +9,23 @@
 
     <link rel="stylesheet" href="../vendor/shower/styles/purple-16x9.css">
     <link rel="stylesheet" href="../vendor/shower/vendors/highlight/styles/github.css">
+    <script>
+        let my_work_em = 'bmlrb2xheS5zYXNrb3ZldHNAaXRlY2hhcnQtZ3JvdXAuY29t';
+        let my_home_em = 'c2h1cnBoQGdtYWlsLmNvbQ==';
+        
+        let put = str => document.write(str);
+        let putsecure = str => put(atob(str));
+    </script>
     <style>
+    .slide .strike:after {
+        background-color: red;
+    }
+    .slide.red .strike:after {
+        background-color: black;
+        height: 9px;
+    }
+    
+    
     
     
     .slide:before {
@@ -26,8 +42,17 @@
         background-repeat: no-repeat;
     }
     
-    .slide.black:before {
+    .slide.black:before,
+    .slide.red-dark:before,
+    .slide.red:before {
         filter: invert(1);
+    }
+    
+    .slide.red-dark {
+        background-color: #680000
+    }
+    .slide.red-dark:after {
+        color: #680000
     }
     
     
@@ -35,8 +60,8 @@
         display: none;
     }
     
-    
-    .slide h2.no-border {
+    .slide h2, /* disable border on all slides */
+    .slide h2.no-border, .slide h2.no-line {
         border-bottom: none;
     }
     .cards > div {
@@ -63,6 +88,7 @@
         color: black;
         padding: 10px;
     }
+    
     .huge {
         font-size: 42px;
     }
@@ -162,22 +188,630 @@
     
     
     
-    
-    <section class="slide">
-        <h2 class="no-border">
-            DAILY ROUTINE
-        </h2>
-        <!-- daily routine: Bruce -->
-        <img src="https://hackernoon.com/hn-images/1*QPSlOyQ0EeJG169-JBYOUQ.gif" alt="" class="cover h" style="height: 107%; max-height: 107%;">
+      
+    <section class="slide black" style="background-color: #694994">
+        
+        <img class="place left"  src="pictures/junior.png" style="margin-left:200px; width: 180px">
+        <img class="place right" src="pictures/senior.png" style="margin-right:200px; width: 180px">
+        <div style="float: left; width: 50%; color: white; text-align:center;">
+            FIX
+            <br>
+            <span style="height: 270px; display: inline-block;">&nbsp;</span>
+            <br>
+        
+            FIX
+        </div>
+        <div style="float: left; width: 50%; color: white; text-align:center;">
+            FIX <span style="width: 60px; display: inline-block;">&nbsp;</span> FIX <span style="width: 60px; display: inline-block;">&nbsp;</span> FIX
+            <br>
+            <span style="height: 270px; display: inline-block;">&nbsp;</span>
+            <br>
+            FIX <span style="width: 40px; display: inline-block;">&nbsp;</span> FIX <span style="width: 40px; display: inline-block;">&nbsp;</span> FIX
+            </div>
         <footer></footer>
     </section>
     
+    
+    
+    
+    
+    <section class="slide">
+        
+        <h2 class="shout">
+            F*CKUPS
+        </h2>
+        
+        <footer></footer>
+    </section>
+    
+    
+    
+    
+    
+    <section class="slide">
+        
+        <h2 class="shout">
+            F*CKUPS
+        </h2>
+        <h2 class="shout" style="font-size: 50px; margin-top: 70px;">
+            and Git
+        </h2>
+        
+        <footer></footer>
+    </section>
+    
+    
+    
+    
+    
+     
+    <section class="slide">
+        <h2 class="">GIT F*CKUPS, CASES</h2>
+        <ul style="line-height: 1.2; font-size: 28px">
+            
+          <li> закоммитал не в ту ветку</li>
+          <li> закоммитал не тот набор файлов или изменений</li>
+          <li> поломал ветку при мерж-коммите</li>
+          <li> потерял коммиты с фичей во время подготовки релиза</li>
+          <li> случайно закоммитал свои изменения в master ветку (а надо - в feature)</li>
+          <li> случайно снёс половину бранчи reset'ом</li>
+          <li> в истории коммитов оказались файлы с "сенситивной" информацией</li>
+          <li> коммиты закоммитились не от того имени (без четкого имени)</li>
+          <li> случайно затёр на гит-сервере бранч своей outdated версией</li>
+          <li> случайно затёр на гит-сервере все бранчи своими outdated версиями</li>
+          
+          <li> ... и много-много других</li>
+        </ul>
+        <footer></footer>
+    </section>
+    
+    
+    <section class="slide">
+        <!-- brain exploded -->
+        <img src="https://image.shutterstock.com/z/stock-vector-boom-head-exploded-light-bulb-from-the-stress-at-work-pop-art-retro-vector-illustration-648645811.jpg" alt="" class="cover w" style="">
+        <footer></footer>
+    </section>
+
+
+    <section class="slide">
+        <h2 class="">GIT F*CKUPS, CASES</h2>
+        <ul style="line-height: 1.2; font-size: 28px">
+            
+          <li> закоммитал не в ту ветку</li>
+          <li> закоммитал не тот набор файлов или изменений</li>
+          <li> поломал ветку при мерж-коммите</li>
+          <li> потерял коммиты с фичей во время подготовки релиза</li>
+          <li> случайно закоммитал свои изменения в master ветку (а надо - в feature)</li>
+          <li> случайно снёс половину бранчи reset'ом</li>
+          <li> в истории коммитов оказались файлы с "сенситивной" информацией</li>
+          <li> коммиты закоммитились не от того имени (без четкого имени)</li>
+          <li> случайно затёр на гит-сервере бранч своей outdated версией</li>
+          <li> случайно затёр на гит-сервере все бранчи своими outdated версиями</li>
+          
+          <li> ... и много-много других</li>
+        </ul>
+        <footer></footer>
+    </section>
+    
+    
+    <section class="slide" data-note="it's very important meme">
+        <img src="https://i.giphy.com/media/24akSucLOFwwoZamdr/giphy.webp" alt="" class="cover h" style="">
+        <footer></footer>
+    </section>
+    
+    
+     
+    <section class="slide">
+        <h2 class="">IMPORTANT ONES</h2>
+        <ol style="line-height: 1.2; font-size: 42px">
+            
+          <li> случайно затёр на гит-сервере все бранчи своими outdated версиями</li>
+          <li> коммиты закоммитились не от того имени <br>(без четкого имени)</li>
+          <li> в истории коммитов оказались файлы с "сенситивной" информацией</li>
+        </ol>
+        <footer></footer>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    <section class="slide">
+        <h2 class="shout">FIX or PREVENT?</h2>
+        <footer></footer>
+    </section>
+    
+    
+    
+    
+    <section class="slide">
+        <h2 class="shout">PREVENT!</h2>
+        <footer></footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="shout">случайно затёр на гит-сервере все бранчи своими outdated версиями</h2>
+        <footer></footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="no-line">случайно затёр на гит-сервере все бранчи своими outdated версиями</h2>
+        <ol class="padding huge">
+            
+          <li>what are the causes?</li>
+          <li>why it's important?</li>
+          <li>how to prevent?</li>
+        </ol>
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2 class="">CASE 1: What are the causes?</h2>
+        <h3 class="shout"><code>git push --force</code></h3>
+        if git settings contain <code>push.default=matching</code><br>
+        for git version &lt; 2.0 it's default behaviour
+        <footer></footer>
+    </section>
+    
+    <section class="slide">
+        <h2 class="">CASE 1: Why it's important?</h2>
+        <img src="pictures/emoji/thinking-face.svg" class="place center">
+    </section>
+    
+    <section class="slide">
+        <h2 class="">CASE 1: How to prevent?</h2>
+        <h3>As a developer</h3>
+        be sure:
+        <ul>
+            <li>git v2.0 or higher</li>
+            <li><code>push.default=simple</code></li>
+            <li>you always specify branch and target:<br><code>git push --force origin feature-branch</code></li>
+        </ul>
+    </section>
+    <section class="slide">
+        <h2 class="">CASE 1: How to prevent?</h2>
+        <h3>As a master</h3>
+        be sure:
+        <ul>
+            <li>master/dev/etc are <b>protected</b> in Github/GitLab/etc</li>
+            <li>you took care of backups</li>
+        </ul>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <section class="slide">
+        <h2 class="shout">коммиты закоммитились не от того имени <br>(без четкого имени)</h2>
+        <footer></footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="no-line">коммиты закоммитились не от того имени <br>(без четкого имени)</h2>
+        <ol class="padding huge">
+            
+          <li>what are the causes?</li>
+          <li>why it's important?</li>
+          <li>how to prevent?</li>
+        </ol>
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2 class="">CASE 2: What are the causes?</h2>
+        <ol "padding huge">
+            <li>Unconfigured <code>git config user.name/user.email</code></li>
+            <li>Different configs on different machines</li>
+            <li>Commits from the not own machine</li>
+        </ol>
+        <footer></footer>
+    </section>
+    
+    <section class="slide">
+        <h2 class="">Unconfigured <code>git config</code></h2>
+        By Default:<br>
+        <code>
+            git config user.name $USER
+        </code>
+        <br>
+        <code>
+            git config user.name $USER@$(hostname)
+        </code>
+        <br><br>
+        <h3>as example:</h3>
+        <code>Mik &lt;dev@lightstar.local></code><br>
+        
+        <code>AWS &lt;ubuntu@ec2-192-168-12-42.ec2.aws.net></code><br>
+        <footer></footer>
+    </section>
+    
+    <section class="slide">
+        <h2 class="">Different configs on different machines</h2>
+        <code>Mik &lt;dev@lightstar.local></code><br>
+        <code>Nikolay Saskovets &lt;<script>putsecure(my_work_em)</script>&gt;</code><br>
+        <code>Mikalai Saskavets &lt;<script>putsecure(my_home_em)</script>&gt;</code><br>
+        <footer></footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="">Commits from the not own machine</h2>
+        <code>Aleh Kogot &lt;aleh@example.net></code><br>
+        <code>Aleh Kogot &lt;aleh@example.net></code><br>
+        <code>Alena Kogot &lt;alena@mail.ru></code><br>
+        <footer></footer>
+    </section>
+    
+    <section class="slide">
+        <h2 class="">CASE 2: Why it's important? Part 1:</h2>
+        
+        <h3 class="shout">git blame</h3>
+        <h3 class="shout" style="font-size: 50px; margin-top: 70px;">
+            (annotate)
+        </h3>
+        <img src="pictures/emoji/thinking-face.svg" class="place center bottom">
+        
+        <footer></footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class=""><br>CASE 2: Why it's important? Part 2:</h2>
+        <img src="pictures/copyright-agreement.jpg" alt="" class="cover">
+        
+        <h3 class="shout">copyright</h3>
+        
+        
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2 class="">CASE 2: How to prevent?</h2>
+        <h3>As a developer</h3>
+        ~/.gitconfig<br>
+        <pre class="plain" style="border: 2px solid black">
+            <code>
+            [user]
+                name =
+                email = 
+            </code>
+        </pre>
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2 class="">CASE 2: Result of prevention</h2>
+        
+        <pre class="plain" style="border: 2px solid black; ">
+            <code style="line-height: 1.3">git commit -m MESSAGE
+*** Please tell me who you are.
+Run
+<span style="color: red;" class="">
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+</span>  
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+<span style="color: red">
+fatal: empty ident name (for <>) not allowed</span></code>
+        </pre>
+        <footer></footer>
+    </section>
+     
+    
+    
+    <section class="slide">
+        <h2 class="">CASE 2: BE CAREFUL</h2>
+        
+        <pre class="plain" style="border: 2px solid black; ">
+            <code style="line-height: 1.3">git commit -m MESSAGE
+*** Please tell me who you are.
+Run
+<span style="color: red; display: inline-block;" class="strike">
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+</span>  
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+<span style="color: red">
+fatal: empty ident name (for <>) not allowed</span></code>
+        </pre>
+        <footer></footer>
+    </section>
+     
+     
+     
+     
+     
+    <section class="slide">
+        <h2 class="">CASE 2: How to prevent? RIGHT WAY</h2>
+        
+        <h3>As a developer</h3>
+        On each branch:<br>
+        <pre class="plain" style="border: 2px solid black; ">
+            <code style="line-height: 1.3"> git config user.email "you@example.com"
+ git config user.name "Your Name"</code>
+        </pre>
+        
+        <h3 class="shout " style="font-size: 72px; margin-top: 30px;"><span class="strike">--global</span></h3>
+        
+        
+        <br>
+        ~/.gitconfig<br>
+        <pre class="plain" style="border: 2px solid black; ">
+            <code style="line-height: 1.3">    [user]
+        name =
+        email = </code>
+        </pre>
+        <footer></footer>
+    </section>
+
+    
+    
+    <section class="slide">
+        <h2 class="">CASE 2: How to prevent?</h2>
+        <h3>As a master</h3>
+        <h4>Set Up CI/CD Pipeline with appropriate checks</h4>
+        Example:
+        <pre class="plain" style="border: 2px solid black">
+            <code>
+  if f"{author.name} <{author.email}>" not in WHITELIST:
+      exit(1)
+            </code>
+        </pre>
+        <footer></footer>
+    </section>
+    
+    
+    
+    
+    
+    
+    <section class="slide">
+        <h2 class="shout">в истории коммитов оказались файлы с "сенситивной" информацией</h2>
+        <footer></footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="no-line">в истории коммитов оказались файлы <br>с "сенситивной" информацией</h2>
+        <ol class="padding huge">
+            
+          <li>what are the causes?</li>
+          <li>why it's important?</li>
+          <li>how to prevent?</li>
+        </ol>
+        <footer></footer>
+    </section>
+    
+        
+    <section class="slide">
+        <h2 class="no-line">в истории коммитов оказались файлы <br>с "сенситивной" информацией</h2>
+        <ol class="padding huge">
+            
+          <li>what are the causes?</li>
+          <li>why it's important?</li>
+          <li>how to prevent?</li>
+        </ol>
+        <footer></footer>
+    </section>
+    
+    
+    
+    
+    <section class="slide red">
+        <h2 class="shout">TODO</h2>
+        <footer></footer>
+    </section>
+    <!--
+      ###
+      ###
+      ### TODO: add how to prevent case 3
+      ###
+      ###
+    -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <section class="slide">
+        
+        <h2 class="shout">
+            FIX IT!
+        </h2>
+        <h2 class="shout" style="font-size: 50px; margin-top: 70px;">
+            at least try
+        </h2>
+        
+        <footer></footer>
+    </section>
+    
+    
+    
+    
+    <section class="slide">
+        <h2 class="shout">случайно затёр на гит-сервере все бранчи своими outdated версиями</h2>
+        <footer></footer>
+    </section>
+    
+    <section class="slide red">
+        <h2 class="shout">TODO</h2>
+        <footer></footer>
+    </section>
+    
+    <section class="slide">
+        <h2 class="shout">коммиты закоммитились не от того имени <br>(без четкого имени)</h2>
+        <footer></footer>
+    </section>
+    
+    <section class="slide red">
+        <h2 class="shout">TODO</h2>
+        <footer></footer>
+    </section>
+    
+    <section class="slide">
+        <h2 class="shout">в истории коммитов оказались файлы с "сенситивной" информацией</h2>
+        <footer></footer>
+    </section>
+    
+    <section class="slide red">
+        <h2 class="shout">TODO</h2>
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2 class="shout">SINK UP WITH EVERYONE</h2>
+        <footer></footer>
+    </section>
+    
+    <section class="slide">
+        <h2 class="">SINK UP WITH EVERYONE</h2>
+        <h3>1. SINK UP WITH THE SERVER</h3>
+        <h3>2. SINK UP WITH THE TEAM</h3>
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2 class="">1. SINK UP WITH THE SERVER</h2>
+        
+        <h2 class="shout" style="font-size: 56px;line-height: 1.35">
+            <code>git push --force --tags<br> origin HEAD:master</code>
+        </h2>
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2 class="">1. SINK UP WITH THE SERVER</h2>
+        
+        <h2 class="shout">THE CACHE</h2>
+        <h2 class="shout" style="font-size: 50px; margin-top: 70px;">
+            do not forget about it!
+        </h2>
+        
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide red red-dark">
+        <h2 class="">2. SINK UP WITH THE TEAM : WRONG WAY</h2>
+        
+        <h2 class="shout"><span class="strike">git pull</span></h2>
+        <footer></footer>
+    </section>
+    
+    <section class="slide">
+        <h2 class="">2. SINK UP WITH THE TEAM : GOOD WAY</h2>
+        
+        <h2 class="shout" style="font-size: 56px;">git fetch; git reset --hard; git clean -x -d -f</h2>
+        <footer></footer>
+    </section>
+    
+    <section class="slide " style="background-color: #9cdc99">
+        <h2 class="">2. SINK UP WITH THE TEAM : SAFE/EASY WAY</h2>
+        
+        <h2 class="shout">git clone</h2>
+        <footer></footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="shout">TOOLS<span ></span></h2>
+        <h2 class="shout" style="font-size: 50px; margin-top: 70px;">
+            just a reminder
+        </h2>
+        
+        <footer></footer>
+    </section>
+    
+    <section class="slide">
+        <h2 class="">TOOLS<span ></span></h2>
+        <h3>Tools to prevent issues</h3>
+        <B>CI/CD:</B> Gitlab CI, Jenkins, TravisCI, CircleCI, etc<br>
+        <B>Analisys:</B> gittyleaks, git-secrets, repo-supervisor, truffleHog, git-hound
+        <br><br>
+        <h3>Tools to fix issues</h3>
+        Git<br>
+        git-rocket-filter  , BFG
+        
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide black">
+        <div class="tags-baloons shout">
+            <span class="label">
+                Conclusion
+            </span>
+        </div>    
+        
+        
+        <footer>
+        </footer>
+    </section>
+    <section class="slide black">
+        <h2 class="">Conclusion<span ></span></h2>
+        
+        <h3>1. git filter-branch - это оружие судного дня</h3>
+        <br>
+        <h3>2. косяки лучше предупреждать, чем исправлять</h3>
+        <br>
+        <h3>3. читайте книжку про гит</h3>
+        
+        <footer>
+        </footer>
+    </section>
+    
+    
+    <section class="slide clear no-logo">
+        <h2 class="no-border">
+            CODE WITH PLEASURE
+        </h2>
+        <img src="https://hackernoon.com/hn-images/1*QPSlOyQ0EeJG169-JBYOUQ.gif" alt="" class="cover h" style="height: 107%; max-height: 107%;">
+        <footer></footer>
+    </section>
+
     <!--
     <section class="slide">
         <img src="https://media1.giphy.com/media/FPYkkpPXzUi1G/source.gif" alt="" class="cover w">
         <footer></footer>
     </section>
     -->
+    
+    
+    
+    
+    <!--
     
     
     
@@ -212,7 +846,6 @@
         <h3 class="shout">
             <br><br><br><br><br>GDPR ;-)
         </h2>
-        <!-- GDPR DATA LEAKS -->
         <img src="https://www.sealpath.com/wp-content/uploads/2019/08/las-mayores-multas-gdpr-brecha-de-datos-3-1080x675.png" alt="" class="cover w">
         <footer></footer>
     </section>
@@ -234,8 +867,7 @@
     
     
     
-    <section class="slide no-logo">
-        <!-- Rambler -->
+    <section class="slide no-logo" data-note="RAMBLER">
         <img src="https://www.uschamber.com/sites/default/files/023049_tjd_commentary_litigationmachine_atf.gif" alt="" class="cover w">
         
         <img src="https://brand.rambler.ru/uploads/png/logo_ru.png" alt="" class="bottom right">
@@ -247,9 +879,8 @@
     
     
     
-    <section class="slide">
+    <section class="slide" data-note="wrong author">
         <h2 class="">2. Copyright Issues</h2>
-        <!-- wrong author -->
         <img src="https://i.stack.imgur.com/EfPhM.png" alt="" class="">
         <footer></footer>
     </section>
@@ -312,11 +943,11 @@
         <footer>
         </footer>
         
-    <!--     <div class="footer-logo" style="position: absolute; right: 0px; bottom: -10px; width: 100px; "><img src=""></div><!---->
     </section>
     
     
-
+    <!-- -->
+    
     <div class="progress"></div>
     
 
@@ -331,3 +962,4 @@
 </body>
 
 </html>
+
