@@ -6,12 +6,16 @@
 
 
 ### Предстоящие
+- 2020-01-??
+  — Git:  назад в будущее!
+- 2020-??-??
+  — Современная web-разработка и Wordpress
+
+### Состоявшиеся
 - 2019-12-26
   — Minsk Python Meetup
   — PyPA: the lack of understanding who is who
   — [слайды](https://shurph.github.io/talks/python-pypa-joke)
-
-### Состоявшиеся
 - 2019-11-14
   — iTechMeetup **Mogilev** #5
   — Построение микросервисных систем с использованием Kafka
@@ -74,3 +78,8 @@
   — Minsk Linux Users Group Meetup (Линуксовка)
   — «Hugo — генератор статичных сайтов»
   — [слайды](https://www.slideshare.net/NikolaySaskovets/hugo-hugo-static-site-generator)
+
+... all these moments were lost in time ...
+
+- 2007-09-16 — VIM. Введение. Примеры эффективной работы
+
