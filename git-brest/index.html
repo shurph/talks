@@ -333,7 +333,7 @@
     
     
     <section class="slide">
-        <h2 class="shout">случайно затёр на гит-сервере все бранчи своими outdated версиями</h2>
+        <h2 class="shout">CASE 1<br>случайно затёр на гит-сервере все бранчи своими outdated версиями</h2>
         <footer></footer>
     </section>
     
@@ -393,7 +393,7 @@
     
     
     <section class="slide">
-        <h2 class="shout">коммиты закоммитились не от того имени <br>(без четкого имени)</h2>
+        <h2 class="shout">CASE 2<br>коммиты закоммитились не от того имени <br>(без четкого имени)</h2>
         <footer></footer>
     </section>
     
@@ -586,7 +586,7 @@ fatal: empty ident name (for <>) not allowed</span></code>
     
     
     <section class="slide">
-        <h2 class="shout">в истории коммитов оказались файлы с "сенситивной" информацией</h2>
+        <h2 class="shout">CASE 3<br>в истории коммитов оказались файлы с "сенситивной" информацией</h2>
         <footer></footer>
     </section>
     
@@ -713,49 +713,222 @@ fatal: empty ident name (for <>) not allowed</span></code>
     
     
     <section class="slide">
-        <h2 class="shout">случайно затёр на гит-сервере все бранчи своими outdated версиями</h2>
-        <footer></footer>
-    </section>
-    
-    <section class="slide red">
-        <h2 class="shout">TODO</h2>
+        <h2 class="shout">CASE 1<br>случайно затёр на гит-сервере все бранчи своими outdated версиями</h2>
         <footer></footer>
     </section>
     
     <section class="slide">
-        <h2 class="shout">коммиты закоммитились не от того имени <br>(без четкого имени)</h2>
-        <footer></footer>
-    </section>
-    
-    <section class="slide red">
-        <h2 class="shout">TODO</h2>
+        <h2 class="">CASE 1: How to fix?</h2>
+        <h3>Already have backups?</h3>
+        Restore from backups
+        <h3>No backups?</h3>
+        Try to find a team member with the fost fresh branches on the local machinne and restore from it.
+        <br>
+        <i>Maybe you need more than one team member and need to combine branches...</i>
         <footer></footer>
     </section>
     
     <section class="slide">
-        <h2 class="shout">в истории коммитов оказались файлы с "сенситивной" информацией</h2>
+        <h2 class="shout">CASE 2<br>коммиты закоммитились не от того имени <br>(без четкого имени)</h2>
         <footer></footer>
     </section>
-    
-    <section class="slide red">
-        <h2 class="shout">TODO</h2>
-        <footer></footer>
-    </section>
-    
-    
     
     <section class="slide">
-        <h2 class="shout">SINK UP WITH EVERYONE</h2>
+        <h2 class="">CASE 2: How to fix?</h2>
+        <h3 class="shout">Is it only the one commit on the top of the history?</h3>
+
+        <img src="pictures/emoji/thinking-face.svg" class="place bottom center">
+        <footer></footer>
+    </section>
+
+
+    <section class="slide">
+        <h2 class="">CASE 2: How to fix? : Only 1 commit on the top</h2>
+        <img src="https://i.imgflip.com/1fg54b.jpg" class="place center">
+        <footer></footer>
+    </section>
+
+    <section class="slide">
+        <h2 class="">CASE 2: How to fix? : Only 1 commit on the top</h2>
+        <code class="huge">git commit --amend --reset-author</code>
+        <pre><code class="plain" style="line-height: 1.1; font-size: 22px; color: gray">
+
+git commit -m MESSAGE
+[master (root-commit) 29c79b6] MESSAGE
+Committer: Mik <dev@lightstar.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config <span class="strike">--global</span> user.name "Your Name"
+    git config <span class="strike">--global</span> user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author</code></pre>
+        <footer></footer>
+    </section>
+
+    
+
+    <section class="slide">
+        <h2 class="">CASE 2: How to fix? : Few commits, deeply in history</h2>
+        <img src="https://i.imgflip.com/1fg54b.jpg" class="place center">
+        <img src="https://d1hlpam123zqko.cloudfront.net/955/405/824/1280003013-1qoqqh0-68cid5f4tdf67f0/original/EnuTf9y3rjU.jpg" class="place center right" style="height:300px;">
+        <footer></footer>
+    </section>
+
+
+    <section class="slide red">
+        <h2 class="">CASE 2: How to fix?</h2>
+        TODO: скриншот со стека с двумя решениями
+        <footer></footer>
+    </section>
+
+    <section class="slide red">
+        <h2 class="">CASE 2: How to fix?</h2>
+        TODO: разбор первого решения со стека
+        <footer></footer>
+    </section>
+
+    <section class="slide red">
+        <h2 class="">CASE 2: How to fix?</h2>
+        TODO: пример коммита с разными автором и коммитером
+        <footer></footer>
+    </section>
+
+    <section class="slide red">
+        <h2 class="">CASE 2: How to fix?</h2>
+        TODO: разбор второго решения со стека
+        <footer></footer>
+    </section>
+
+
+    <section class="slide red">
+        <h2 class="">CASE 2: How to fix?</h2>
+        TODO: рассказать про rocket-filter
+        <footer></footer>
+    </section>
+
+    <section class="slide">
+        <h2 class="">WELL DONE?</h2>
+        A few more steps left ...
+        <h3>1. SINK UP WITH THE SERVER</h3>
+        <h3>2. SINK UP WITH THE TEAM</h3>
+        <footer></footer>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">CASE 3<br>в истории коммитов оказались файлы с "сенситивной" информацией</h2>
         <footer></footer>
     </section>
     
+
+    <section class="slide">
+        <h2 class="">CASE 3: Credentials</h2>
+        It's outside the current topic
+        <footer></footer>
+    </section>
+
+
+    <section class="slide">
+        <h2 class="">CASE 3: Personal Data</h2>
+        <h3>How to fix</h3>
+        <ul>
+            <li>Delete from local git</li>
+            <li>Delete from the git server</li>
+            <li>Delete from the Internet</li>
+        </ul>
+        <footer></footer>
+    </section>
+
+
+    <section class="slide">
+        <h2 class="">CASE 3: Personal Data: Fix: Naive approach</h2>
+        <code class="huge">git rm DUMP.SQL</code>
+        <footer></footer>
+    </section>
+
+    <section class="slide">
+        <h2 class="">CASE 3: Personal Data: Fix: Naive approach, step 2</h2>
+        <code class="huge">git rm DUMP.SQL</code>
+        <br><br>
+
+        <code class="huge">git rebase -i $(<mark>magick</mark> DUMP.SQL)</code>
+        <footer></footer>
+    </section>
+
+    <section class="slide">
+        <h2 class="">CASE 3: Personal Data: Fix: Naive approach, step 2</h2>
+        <code class="huge">git rm DUMP.SQL</code>
+        <br><br>
+
+        <code class="huge">git rebase -i $(<mark>magick</mark> DUMP.SQL)</code>
+
+        <pre><code>
+
+git rebase -i \
+$(git log --format="%h" --follow --diff-filter=A -- DUMP.SQL)</code></pre>
+        <footer></footer>
+    </section>
+
+
+
+
+    <section class="slide black">
+        <h2 class="shout" style="color:white; text-shadow: 2px 2px black">AUTOMATE IT?</h2>
+        <img src="https://media.giphy.com/media/8qrrHSsrK9xpknGVNF/giphy.gif" class="cover w">
+        <footer></footer>
+    </section>
+
+
+
+    <section class="slide">
+        <h2 class="">CASE 3: Personal Data: Fix: Automation</h2>
+        <pre><code class="plain" style="line-height: 1.2; font-size: 29px;">git filter-branch --force --index-filter \<br>
+    'git rm --cached --ignore-unmatch DUMP.SQL' \<br>
+    --prune-empty --tag-name-filter cat -- --all</code></pre>
+        <footer></footer>
+    </section>
+
+
+
+    <section class="slide">
+        <h2 class="">CASE 3: Personal Data: Fix: Automation: Easy</h2>
+        <pre><code class="plain" style="line-height: 1.2; font-size: 29px;">
+bfg --delete-files DUMP.SQL</code></pre>
+        <img class="place bottom center" src="https://i.gifer.com/LFpx.gif" style="width: 600px">
+        <footer></footer>
+    </section>
+
+    
+
+    <section class="slide">
+        <h2 class="">WELL DONE?</h2>
+        A few more steps left ...
+        <h3>1. SINK UP WITH THE SERVER</h3>
+        <h3>2. SINK UP WITH THE TEAM</h3>
+        <footer></footer>
+    </section>
+    
+
+
+    <section class="slide">
+        <h2 style="text-align: center;">HOW TO KEEP<br>EVERYTHING</h2>
+        <img class="place center" src="https://ic.pics.livejournal.com/familyr_style/44839023/287130/287130_600.jpg" style="height: 50%">  
+        <h3 class="place bottom" style="text-align: center;">IN SYNC<br>?<br><br></h3>
+        
+        <footer></footer>
+    </section>
+    
+    <!--
     <section class="slide">
         <h2 class="">SINK UP WITH EVERYONE</h2>
         <h3>1. SINK UP WITH THE SERVER</h3>
         <h3>2. SINK UP WITH THE TEAM</h3>
         <footer></footer>
     </section>
-    
+    <!-- -->
     
     
     <section class="slide">
@@ -839,14 +1012,22 @@ fatal: empty ident name (for <>) not allowed</span></code>
         <footer>
         </footer>
     </section>
+
+
+
+
     <section class="slide black">
         <h2 class="">Conclusion<span ></span></h2>
         
-        <h3>1. git filter-branch - это оружие судного дня</h3>
-        <br>
-        <h3>2. косяки лучше предупреждать, чем исправлять</h3>
-        <br>
-        <h3>3. читайте книжку про гит</h3>
+        <h3 class="shout" style="font-size: 56px">1<br> git filter-branch / bfg <br> это оружие судного дня</h3>
+        
+        <footer>
+        </footer>
+    </section>
+    <section class="slide black">
+        <h2 class="">Conclusion<span ></span></h2>
+        
+        <h3 class="shout" style="font-size: 56px">2<br> косяки лучше предупреждать,<br> чем исправлять</h3>
         
         <footer>
         </footer>
