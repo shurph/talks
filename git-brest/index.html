@@ -779,35 +779,125 @@ After doing this, you may fix the identity used for this commit with:
     </section>
 
 
-    <section class="slide red">
+    <section class="slide ">
         <h2 class="">CASE 2: How to fix?</h2>
-        TODO: скриншот со стека с двумя решениями
+        <!-- https://stackoverflow.com/questions/750172/how-to-change-the-author-and-committer-name-and-e-mail-of-multiple-commits-in-gi?answertab=votes#tab-top <!---->
+        <img class="cover h" src="pictures/stack-screen-author-amend.png">
         <footer></footer>
     </section>
 
-    <section class="slide red">
-        <h2 class="">CASE 2: How to fix?</h2>
-        TODO: разбор первого решения со стека
+    <section class="slide ">
+        <h2 class="">CASE 2: How to fix? *1545 votes</h2>
+        <pre><code>
+git rebase -i -p [[some HEAD before all of your bad commits]]
+# ... mark all needed commits as "edit"
+# ... then ... on each commit:
+git commit --amend --author "New Author Name <email@address.com>" --no-edit
+git rebase --continue
+        </code></pre>
+
         <footer></footer>
     </section>
 
-    <section class="slide red">
-        <h2 class="">CASE 2: How to fix?</h2>
-        TODO: пример коммита с разными автором и коммитером
+    <section class="slide">
+        <h2 class="">CASE 2: IT IS A TRAP!</h2>
+        <code>git commit --amend --author "New Author Name "</code>
+        <pre><code style="line-height: 1.5">
+[...] git log --format=fuller
+commit e7ea301 (HEAD -> master)
+Author:     NEW AUTHOR <new@example.net>
+AuthorDate: Mon Jan 13 14:25:13 2020 +0300
+Commit:     <span style="color: red">Mikalai Saskavets <shurph@gmail.com></span>
+CommitDate: Tue Jan 28 12:39:31 2020 +0300
+
+    Пример тестового коммита
+        </code></pre>
+
+        <footer></footer>
+    </section>
+    
+    
+    <section class="slide ">
+        <h2 class="">CASE 2: How to fix? *1545 votes</h2>
+        <pre><code style="line-height: 1.5">git rebase -i -p [[some HEAD before all of your bad commits]]
+# ... mark all needed commits as "edit"
+# ... then ... on each commit:
+git \
+    -c user.name="New Author Name" \
+    -c user.email=email@address.com \
+    commit --amend \
+    --reset-author --no-edit
+git rebase --continue
+        </code></pre>
+
+        <footer></footer>
+    </section>
+    
+    
+
+    <section class="slide ">
+        <h2 class="">CASE 2: How to fix? *1126 votes</h2>
+        <pre><code style="line-height: 1.2; font-size: 24px; margin-top:-20px">git filter-branch --env-filter '
+OLD_EMAIL="your-old-email@example.com"
+CORRECT_NAME="Your Correct Name"
+CORRECT_EMAIL="your-correct-email@example.com"
+if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_COMMITTER_NAME="$CORRECT_NAME"
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+fi
+if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_AUTHOR_NAME="$CORRECT_NAME"
+    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+fi
+' --tag-name-filter cat -- --branches --tags
+        </code></pre>
+        <footer></footer>
+    </section>
+    
+    
+    <section class="slide ">
+        <h2 class="">CASE 2: How to fix? *1126 votes</h2>
+        <pre><code style="line-height: 1.2; font-size: 24px; margin-top:-20px">git filter-branch --env-filter '
+        some shell magick here
+' --tag-name-filter cat -- --branches --tags
+        </code></pre>
+        <footer></footer>
+    </section>
+    
+    <section class="slide ">
+        <h2 class="">CASE 2: How to fix? *1126 votes</h2>
+        
+        <pre><code style="line-height: 1.2; font-size: 24px; margin-top:-20px"># some shell magick:
+OLD_EMAIL="your-old-email@example.com"
+CORRECT_NAME="Your Correct Name"
+CORRECT_EMAIL="your-correct-email@example.com"
+if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_COMMITTER_NAME="$CORRECT_NAME"
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+fi
+if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_AUTHOR_NAME="$CORRECT_NAME"
+    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+fi
+        </code></pre>
         <footer></footer>
     </section>
 
-    <section class="slide red">
-        <h2 class="">CASE 2: How to fix?</h2>
-        TODO: разбор второго решения со стека
-        <footer></footer>
-    </section>
 
 
-    <section class="slide red">
-        <h2 class="">CASE 2: How to fix?</h2>
-        TODO: рассказать про rocket-filter
-        <footer></footer>
+    <section class="slide ">
+        <h2 class="">CASE 2: How to fix? git-rocket-filter</h2>
+        <pre><code style="line-height: 1.2; font-size: 24px;">
+git-rocket-filter --branch master -f --commit-filter '
+    if (commit.AuthorName.Contains("Jim")) {   
+        commit.AuthorName = "Paul"; 
+        commit.AuthorEmail = "paul@company.com"; 
+    }
+'  </code></pre> <i>... but only one branch per launch</i>     <footer></footer>
     </section>
 
     <section class="slide">
