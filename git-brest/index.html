@@ -17,6 +17,9 @@
         let putsecure = str => put(atob(str));
     </script>
     <style>
+    .slide code {
+        /* background: none; */
+    }
     .slide .strike:after {
         background-color: red;
     }
@@ -253,18 +256,13 @@
     
     
     <section class="slide">
-        <!-- brain exploded -->
-        <img src="https://image.shutterstock.com/z/stock-vector-boom-head-exploded-light-bulb-from-the-stress-at-work-pop-art-retro-vector-illustration-648645811.jpg" alt="" class="cover w" style="">
+        <img class="cover nextx" src="https://reactiongifs.me/wp-content/uploads/2014/04/nobody-cares-about-my-facebook-computer-guy.gif">
         <footer></footer>
     </section>
 
-    <!--
-    <section class="slide" data-note="it's very important meme">
-        <img src="https://i.giphy.com/media/24akSucLOFwwoZamdr/giphy.webp" alt="" class="cover h" style="">
-        <footer></footer>
-    </section>
-    -->
-    
+    <section class="slide clear no-logo">
+        <h2 class="shout">3</h2>
+    </section>    
      
     <section class="slide">
         <h2 class="">IMPORTANT ONES</h2>
@@ -436,6 +434,9 @@
         Try to find a team member with the fost fresh branches on the local machinne and restore from it.
         <br>
         <i>Maybe you need more than one team member and need to combine branches...</i>
+        
+        <span class="slide-footer">that's all...</span>
+        
         <footer></footer>
     </section>
     
@@ -1032,8 +1033,9 @@ $(git log --format="%h" --follow --diff-filter=A -- DUMP.SQL)</code></pre>
 
     <section class="slide">
         <h2 class="">CASE 3: Personal Data: Fix: Automation: Easy</h2>
-        <pre><code class="plain" style="line-height: 1.2; font-size: 29px;">
-bfg --delete-files DUMP.SQL</code></pre>
+        <center style="padding-top: 24px;">
+            <code class="plain" style="font-size: 38px;">bfg --delete-files DUMP.SQL</code>
+        </center>
         <img class="place bottom center" src="https://i.gifer.com/LFpx.gif" style="width: 600px">
         <footer></footer>
     </section>
