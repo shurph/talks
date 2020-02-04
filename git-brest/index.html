@@ -17,6 +17,11 @@
         let putsecure = str => put(atob(str));
     </script>
     <style>
+    .slide {
+        /* font-size: 32px; /**/
+        
+        /* line-height: 1.6; /***/
+    }
     .slide code {
         /* background: none; */
     }
@@ -145,6 +150,9 @@
         background: url(https://i.pinimg.com/originals/b8/b8/f7/b8b8f787c454cf1ded2d9d870707ed96.png) center center;
         background-size: cover;
         filter: invert(1)">
+        
+        
+        
         <div style="filter: invert(1)">
             <h2 class="shout" style="font-size: 82px; white-space: nowrap; color: white;">
                 <br><br><br>
@@ -249,7 +257,7 @@
     <!-- -->
 
     <section class="slide">
-        <div style="width: 50%; float: left; line-height: 1.5; padding-right: 30px; margin-top: -30px">
+        <div style="width: 50%; float: left;  font-size: 25px; line-height: 1.5; padding-right: 30px; margin-top: -30px">
             <span>I committed and immediately realized I need to make one small change!</span>
             <br><br>
             <div style="padding-right: 100px;">
@@ -260,7 +268,7 @@
             <br>
             <span>I accidentally committed something to master that should have been on a brand new branch!</span>
         </div>
-        <div style="width: 50%; float: left; line-height: 1.5; padding-left: 30px; margin-top: -30px">
+        <div style="width: 50%; float: left; font-size: 25px; line-height: 1.5; padding-left: 30px; margin-top: -30px">
             <span>I accidentally committed to the wrong branch!</span>
             <br><br>
             <div style="padding-left: 120px;">
@@ -456,10 +464,27 @@
         <h3>As a master</h3>
         be sure:
         <ul>
-            <li>master/dev/etc are <b>protected</b> in Github/GitLab/etc</li>
             <li>you took care of backups</li>
+            <li>master/dev/etc are <b>protected</b> on a git server</li>
         </ul>
     </section>
+    
+    
+    <section class="slide">
+        <h2 class="">CASE 1: Protected branches: GitLab</h2>
+        <img class="cover w" style="/* width: 669px /***/" src="pictures/protected-branches-gitlab.png">
+    </section>
+    
+    <section class="slide">
+        <h2 class="">CASE 1: Protected branches: Github</h2>
+        <img class="cover w" style="/* width: 520px /***/" src="pictures/protected-branches-github.png">
+    </section>
+    
+    <section class="slide">
+        <h2 class="">CASE 1: Protected branches: Bitbucket</h2>
+        <img class="cover w" style="/* width: 506px /***/" src="pictures/protected-branches-bitbucket.png">
+    </section>
+
 
 
 
