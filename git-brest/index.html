@@ -792,11 +792,11 @@ After doing this, you may fix the identity used for this commit with:
 
     <section class="slide ">
         <h2 class="">CASE 2: How to fix? *1545 votes</h2>
-        <pre><code>
-git rebase -i -p [[some HEAD before all of your bad commits]]
+        <pre><code class="plain">
+git rebase -i -p <span style="color: green">a8d2013</span>  <span style="color: gray"># &lt;-- hash of the last good commit
 # ... mark all needed commits as "edit"
-# ... then ... on each commit:
-git commit --amend --author "New Author Name <email@address.com>" --no-edit
+# ... then ... on each commit:</span>
+git commit --amend --author "Bo &lt;bo@co.mp&gt;" --no-edit
 git rebase --continue
         </code></pre>
 
@@ -804,14 +804,14 @@ git rebase --continue
     </section>
 
     <section class="slide">
-        <h2 class="">CASE 2: IT IS A TRAP!</h2>
-        <code>git commit --amend --author "New Author Name "</code>
-        <pre><code style="line-height: 1.5">
-[...] git log --format=fuller
+        <h2 class="">CASE 2: Don't use <code style="font-size: 42px">git commit --author</code>!</h2>
+        <code>git commit --amend --author "Bo &lt;bo@co.mp&gt;"</code>
+        <pre><code style="line-height: 1.5" class="plain">
+>>> git log --format=fuller
 commit e7ea301 (HEAD -> master)
-Author:     NEW AUTHOR <new@example.net>
+Author:     Bo &lt;bo@co.mp&gt;
 AuthorDate: Mon Jan 13 14:25:13 2020 +0300
-Commit:     <span style="color: red">Mikalai Saskavets <shurph@gmail.com></span>
+Commit:     <span style="color: red">Mikalai Saskavets &lt;<script>putsecure(my_home_em)</script>&gt;</span>
 CommitDate: Tue Jan 28 12:39:31 2020 +0300
 
     Пример тестового коммита
@@ -823,12 +823,12 @@ CommitDate: Tue Jan 28 12:39:31 2020 +0300
 
     <section class="slide ">
         <h2 class="">CASE 2: How to fix? *1545 votes</h2>
-        <pre><code style="line-height: 1.5">git rebase -i -p [[some HEAD before all of your bad commits]]
+        <pre><code style="line-height: 1.5" class="plain">git rebase -i -p <span style="color: green">a8d2013</span>  <span style="color: gray"># &lt;-- hash of the last good commit
 # ... mark all needed commits as "edit"
-# ... then ... on each commit:
+# ... then ... on each commit:</span>
 git \
-    -c user.name="New Author Name" \
-    -c user.email=email@address.com \
+    -c user.name="Bo" \
+    -c user.email=&lt;bo@co.mp&gt; \
     commit --amend \
     --reset-author --no-edit
 git rebase --continue
@@ -842,9 +842,9 @@ git rebase --continue
     <section class="slide ">
         <h2 class="">CASE 2: How to fix? *1126 votes</h2>
         <pre><code style="line-height: 1.2; font-size: 24px; margin-top:-20px">git filter-branch --env-filter '
-OLD_EMAIL="your-old-email@example.com"
-CORRECT_NAME="Your Correct Name"
-CORRECT_EMAIL="your-correct-email@example.com"
+OLD_EMAIL="<script>putsecure(my_home_em)</script>"
+CORRECT_NAME="Bo"
+CORRECT_EMAIL="bo@co.mp"
 if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
 then
     export GIT_COMMITTER_NAME="$CORRECT_NAME"
@@ -874,9 +874,9 @@ fi
         <h2 class="">CASE 2: How to fix? *1126 votes</h2>
 
         <pre><code style="line-height: 1.2; font-size: 24px; margin-top:-20px"># some shell magick:
-OLD_EMAIL="your-old-email@example.com"
-CORRECT_NAME="Your Correct Name"
-CORRECT_EMAIL="your-correct-email@example.com"
+OLD_EMAIL="<script>putsecure(my_home_em)</script>"
+CORRECT_NAME="Bo"
+CORRECT_EMAIL="bo@co.mp"
 if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
 then
     export GIT_COMMITTER_NAME="$CORRECT_NAME"
@@ -897,9 +897,9 @@ fi
         <h2 class="">CASE 2: How to fix? git-rocket-filter</h2>
         <pre><code style="line-height: 1.2; font-size: 24px;">
 git-rocket-filter --branch master -f --commit-filter '
-    if (commit.AuthorName.Contains("Jim")) {
-        commit.AuthorName = "Paul";
-        commit.AuthorEmail = "paul@company.com";
+    if (commit.AuthorName.Contains("Mikalai")) {
+        commit.AuthorName = "Bo";
+        commit.AuthorEmail = "bo@co.mp";
     }
 '  </code></pre> <i>... but only one branch per launch</i>     <footer></footer>
     </section>
@@ -1053,30 +1053,27 @@ git-rocket-filter --branch master -f --commit-filter '
 
     <section class="slide">
         <h2 class="">CASE 3: Personal Data: Fix: Naive approach</h2>
-        <code class="huge">git rm DUMP.SQL</code>
+        <pre><code class="huge plain" style="line-height: 1.2">git rm DUMP.SQL</code></pre>
         <footer></footer>
     </section>
 
     <section class="slide">
         <h2 class="">CASE 3: Personal Data: Fix: Naive approach, step 2</h2>
-        <code class="huge">git rm DUMP.SQL</code>
-        <br><br>
-
-        <code class="huge">git rebase -i $(<mark>magick</mark> DUMP.SQL)</code>
+        <pre><code class="huge plain" style="line-height: 1.2">git rm DUMP.SQL
+git rebase -i $(<mark>magick</mark> DUMP.SQL)</code></pre>
         <footer></footer>
     </section>
 
     <section class="slide">
         <h2 class="">CASE 3: Personal Data: Fix: Naive approach, step 2</h2>
-        <code class="huge">git rm DUMP.SQL</code>
-        <br><br>
-
-        <code class="huge">git rebase -i $(<mark>magick</mark> DUMP.SQL)</code>
-
-        <pre><code>
-
+        <pre><code class="huge plain" style="line-height: 1.2">git rm DUMP.SQL
 git rebase -i \
-$(git log --format="%h" --follow --diff-filter=A -- DUMP.SQL)</code></pre>
+    $(
+        git log --format="%h" \
+        --follow --diff-filter=A \
+        -- DUMP.SQL
+    )</code></pre>
+        
         <footer></footer>
     </section>
 
@@ -1103,8 +1100,9 @@ $(git log --format="%h" --follow --diff-filter=A -- DUMP.SQL)</code></pre>
 
     <section class="slide">
         <h2 class="">CASE 3: Personal Data: Fix: Automation: Easy</h2>
-        <center style="padding-top: 24px;">
-            <code class="plain" style="font-size: 38px;">bfg --delete-files DUMP.SQL</code>
+        <center style="padding-top: 10px;"><h3 class="" style="font-size: 56px; color: rgb(64, 64, 64); font-family: 'PT Sans Narrow'">
+            bfg --delete-files DUMP.SQL
+        </h3>
         </center>
         <img class="place bottom center" src="https://i.gifer.com/LFpx.gif" style="width: 600px">
         <footer></footer>
@@ -1143,8 +1141,8 @@ $(git log --format="%h" --follow --diff-filter=A -- DUMP.SQL)</code></pre>
     <section class="slide">
         <h2 class="">1. SINK UP WITH THE SERVER</h2>
 
-        <h2 class="shout" style="font-size: 56px;line-height: 1.35">
-            <code>git push --force --tags<br> origin HEAD:master</code>
+        <h2 class="shout" style="font-size: 56px;">
+            git push --force --tags origin HEAD:master
         </h2>
         <footer></footer>
     </section>
@@ -1224,7 +1222,7 @@ $(git log --format="%h" --follow --diff-filter=A -- DUMP.SQL)</code></pre>
     <section class="slide ">
         <h2 class="">Conclusion<span ></span></h2>
 
-        <h3 class="shout" style="font-size: 56px">1<br> git filter-branch <br>is<br> "doomsday weapon"</h3>
+        <h3 class="shout" style="font-size: 56px">1<br> git filter-branch <br>is<br> &ldquo;doomsday weapon&rdquo;</h3>
 
         <footer>
         </footer>
