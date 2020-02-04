@@ -410,13 +410,13 @@
     
     
     <section class="slide">
-        <h2 class="shout">CASE 1<br>случайно затёр на гит-сервере все бранчи своими outdated версиями</h2>
+        <h2 class="shout">CASE 1<br>wipe branches on git-server by outdated local ones</h2>
         <footer></footer>
     </section>
     
     
     <section class="slide">
-        <h2 class="no-line">случайно затёр на гит-сервере все бранчи своими outdated версиями</h2>
+        <h2 class="no-line">Wipe branches on git-server by outdated local ones</h2>
         <ol class="padding huge">
             
           <li>what are the causes?</li>
@@ -498,13 +498,13 @@
     
     
     <section class="slide">
-        <h2 class="shout">CASE 2<br>коммиты закоммитились не от того имени <br>(без четкого имени)</h2>
+        <h2 class="shout">CASE 2<br>wrong commit author <br> sign misconfiguration</h2>
         <footer></footer>
     </section>
     
     
     <section class="slide">
-        <h2 class="no-line">коммиты закоммитились не от того имени <br>(без четкого имени)</h2>
+        <h2 class="no-line">Wrong commit author / sign misconfiguration</h2>
         <ol class="padding huge">
             
           <li>what are the causes?</li>
@@ -884,13 +884,13 @@ git-rocket-filter --branch master -f --commit-filter '
     
     
     <section class="slide">
-        <h2 class="shout">CASE 3<br>в истории коммитов оказались файлы с "сенситивной" информацией</h2>
+        <h2 class="shout">CASE 3<br>sensitive information leakage</h2>
         <footer></footer>
     </section>
     
     
     <section class="slide">
-        <h2 class="no-line">в истории коммитов оказались файлы <br>с "сенситивной" информацией</h2>
+        <h2 class="no-line">Sensitive information leakage</h2>
         <ol class="padding huge">
             
           <li>what are the causes?</li>
@@ -899,19 +899,7 @@ git-rocket-filter --branch master -f --commit-filter '
         </ol>
         <footer></footer>
     </section>
-    
-        
-    <section class="slide">
-        <h2 class="no-line">в истории коммитов оказались файлы <br>с "сенситивной" информацией</h2>
-        <ol class="padding huge">
-            
-          <li>what are the causes?</li>
-          <li>why it's important?</li>
-          <li>how to prevent?</li>
-        </ol>
-        <footer></footer>
-    </section>
-    
+       
     
     <section class="slide ">
         <h2 class="">CASE 3: What are the causes?</h2>
@@ -1004,12 +992,6 @@ git-rocket-filter --branch master -f --commit-filter '
             at least try
         </h2>
         
-        <footer></footer>
-    </section>
-    
-
-    <section class="slide">
-        <h2 class="shout">CASE 3<br>в истории коммитов оказались файлы с "сенситивной" информацией</h2>
         <footer></footer>
     </section>
     
@@ -1206,7 +1188,7 @@ $(git log --format="%h" --follow --diff-filter=A -- DUMP.SQL)</code></pre>
     <section class="slide ">
         <h2 class="">Conclusion<span ></span></h2>
         
-        <h3 class="shout" style="font-size: 56px">1<br> git filter-branch / bfg <br> это оружие судного дня</h3>
+        <h3 class="shout" style="font-size: 56px">1<br> git filter-branch <br>is<br> "doomsday weapon"</h3>
         
         <footer>
         </footer>
@@ -1214,7 +1196,7 @@ $(git log --format="%h" --follow --diff-filter=A -- DUMP.SQL)</code></pre>
     <section class="slide ">
         <h2 class="">Conclusion<span ></span></h2>
         
-        <h3 class="shout" style="font-size: 56px">2<br> косяки лучше предупреждать,<br> чем исправлять</h3>
+        <h3 class="shout" style="font-size: 56px">2<br> prevention is better than cure </h3>
         
         <footer>
         </footer>
