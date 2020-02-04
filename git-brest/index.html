@@ -555,21 +555,27 @@
         <h2 class="">Unconfigured <code>git config</code></h2>
         By Default:<br>
         <code>
-            git config user.name $USER
+            git config user.name "$(id -F)"
         </code>
         <br>
         <code>
-            git config user.name $USER@$(hostname)
+            git config user.name "$(id -un)@$(hostname)"
         </code>
         <br><br>
         <h3>as example:</h3>
         <code>Mik &lt;dev@lightstar.local></code><br>
 
+        <footer></footer>
+    </section>
+    
+    
+    <section class="slide red">
+        <h2 class="">Unconfigured <code>git config</code>: AWS</h2>
         <code>AWS &lt;ubuntu@ec2-192-168-12-42.ec2.aws.net></code><br>
         <footer></footer>
     </section>
 
-    <section class="slide">
+    <section class="slide red">
         <h2 class="">Different configs on different machines</h2>
         <code>Mik &lt;dev@lightstar.local></code><br>
         <code>Nikolay Saskovets &lt;<script>putsecure(my_work_em)</script>&gt;</code><br>
@@ -578,7 +584,7 @@
     </section>
 
 
-    <section class="slide">
+    <section class="slide red">
         <h2 class="">Commits from the not own machine</h2>
         <code>Aleh Kogot &lt;aleh@example.net></code><br>
         <code>Aleh Kogot &lt;aleh@example.net></code><br>
@@ -630,7 +636,7 @@
     <section class="slide">
         <h2 class="">CASE 2: Result of prevention</h2>
 
-        <pre class="plain" style="border: 2px solid black; ">
+        <pre class="plain" style="/* border: 2px solid black; /***/ ">
             <code style="line-height: 1.3">git commit -m MESSAGE
 *** Please tell me who you are.
 Run
@@ -651,7 +657,7 @@ fatal: empty ident name (for <>) not allowed</span></code>
     <section class="slide">
         <h2 class="">CASE 2: BE CAREFUL</h2>
 
-        <pre class="plain" style="border: 2px solid black; ">
+        <pre class="plain" style="/* border: 2px solid black; /***/ ">
             <code style="line-height: 1.3">git commit -m MESSAGE
 *** Please tell me who you are.
 Run
@@ -736,14 +742,17 @@ fatal: empty ident name (for <>) not allowed</span></code>
 
 
     <section class="slide">
-        <h2 class="">CASE 2: How to fix? : Only 1 commit on the top</h2>
+        <h2 class="">CASE 2: How to fix? : Only one commit on the top</h2>
         <img src="https://i.imgflip.com/1fg54b.jpg" class="place center">
         <footer></footer>
     </section>
 
     <section class="slide">
-        <h2 class="">CASE 2: How to fix? : Only 1 commit on the top</h2>
-        <code class="huge">git commit --amend --reset-author</code>
+        <h2 class="">CASE 2: How to fix? : Only one commit on the top</h2>
+        <code class="huge" style="background: none; font-size: 36px;">git config user.email "you@example.com"</code><br>
+        <code class="huge" style="background: none; font-size: 36px;">git config user.name "Your Name"</code><br><br>
+        <code class="huge" style="font-size: 36px;">git commit --amend --reset-author</code>
+        <!--
         <pre><code class="plain" style="line-height: 1.1; font-size: 22px; color: gray">
 
 git commit -m MESSAGE
@@ -759,13 +768,14 @@ You can suppress this message by setting them explicitly:
 After doing this, you may fix the identity used for this commit with:
 
     git commit --amend --reset-author</code></pre>
+    <!-- -->
         <footer></footer>
     </section>
 
 
 
     <section class="slide">
-        <h2 class="">CASE 2: How to fix? : Few commits, deeply in history</h2>
+        <h2 class="">CASE 2: How to fix? : Few commits, deep in history</h2>
         <img src="https://i.imgflip.com/1fg54b.jpg" class="place center">
         <img src="https://d1hlpam123zqko.cloudfront.net/955/405/824/1280003013-1qoqqh0-68cid5f4tdf67f0/original/EnuTf9y3rjU.jpg" class="place center right" style="height:300px;">
         <footer></footer>
@@ -776,6 +786,7 @@ After doing this, you may fix the identity used for this commit with:
         <h2 class="">CASE 2: How to fix?</h2>
         <!-- https://stackoverflow.com/questions/750172/how-to-change-the-author-and-committer-name-and-e-mail-of-multiple-commits-in-gi?answertab=votes#tab-top <!---->
         <img class="cover h" src="pictures/stack-screen-author-amend.png">
+        <img style="width: 300px; transform: translate(222px, -28px)" src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.png?v=9c558ec15d8a">
         <footer></footer>
     </section>
 
