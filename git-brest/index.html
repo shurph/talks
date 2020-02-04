@@ -233,7 +233,7 @@
     
     
     
-     
+    <!--
     <section class="slide">
         <h2 class="">GIT F*CKUPS, CASES</h2>
         <ul style="line-height: 1.2; font-size: 28px">
@@ -253,10 +253,40 @@
         </ul>
         <footer></footer>
     </section>
-    
+    <!-- -->
     
     <section class="slide">
-        <img class="cover nextx" src="https://reactiongifs.me/wp-content/uploads/2014/04/nobody-cares-about-my-facebook-computer-guy.gif">
+		<div style="width: 50%; float: left; line-height: 1.5; padding-right: 30px; margin-top: -30px">		
+			<span>I committed and immediately realized I need to make one small change!</span>
+			<br><br>
+			<div style="padding-right: 100px;">
+				<span>I did something terribly wrong</span>
+				<br><br>
+				<span>I need to change the message on my last commit!</span>
+			</div>
+			<br>
+			<span>I accidentally committed something to master that should have been on a brand new branch!</span>
+		</div>
+		<div style="width: 50%; float: left; line-height: 1.5; padding-left: 30px; margin-top: -30px">
+			<span>I accidentally committed to the wrong branch!</span>
+			<br><br>
+			<div style="padding-left: 120px;">
+				<span>I tried to run a diff but nothing happened?!</span>
+				<br><br>
+				<span>I need to undo a commit from like 5 commits ago!</span>
+				
+			</div>
+			<br>
+			<span>I need to undo my changes to a file!</span>
+			<br><br>
+			<span>F*ck this noise, I give up!</span>
+		</div>
+		
+		<div class="slide-footer ">
+		based on <a href="https://ohshitgit.com/" target="_blank">ohshitgit.com</a>
+		</div>
+		
+        <img class="cover nextx" style="/* border: 2px solid red /***/" src="https://reactiongifs.me/wp-content/uploads/2014/04/nobody-cares-about-my-facebook-computer-guy.gif">
         <footer></footer>
     </section>
 
@@ -266,11 +296,16 @@
      
     <section class="slide">
         <h2 class="">IMPORTANT ONES</h2>
-        <ol style="line-height: 1.2; font-size: 42px">
+        <ol style="/*line-height: 1.2; font-size: 42px/***/">
             
-          <li> случайно затёр на гит-сервере все бранчи своими outdated версиями</li>
-          <li> коммиты закоммитились не от того имени <br>(без четкого имени)</li>
-          <li> в истории коммитов оказались файлы с "сенситивной" информацией</li>
+          <li> wipe branches on git-server by outdated local ones</li>
+          <!-- <li> случайно затёр на гит-сервере все бранчи своими outdated версиями</li> <!-- -->
+          
+          <li> wrong commit author / sign misconfiguration</li>
+          <!-- <li> коммиты закоммитились не от того имени <br>(без четкого имени)</li> <!-- -->
+          
+          <li> sensitive information leakage</li>
+          <!-- <li> в истории коммитов оказались файлы с "сенситивной" информацией</li> <!-- -->
         </ol>
         <footer></footer>
     </section>
