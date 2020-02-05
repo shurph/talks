@@ -298,6 +298,7 @@
 
         <img class="cover" style="width: 205px;" src="pictures/this-is-fine-fallback.png">
         <img class="cover"                       src="https://reactiongifs.me/wp-content/uploads/2014/04/nobody-cares-about-my-facebook-computer-guy.gif">
+        <img class="cover"                       src="pictures/an_ignored_by_git_place/computer-guy.gif">
         <footer></footer>
     </section>
 
@@ -1095,6 +1096,7 @@ git rebase -i \
         <h2 class="shout" style="color:white; text-shadow: 2px 2px black">AUTOMATE IT?</h2>
         <img src="pictures/automate-it-fallback.png" class="cover w">
         <img src="https://media.giphy.com/media/8qrrHSsrK9xpknGVNF/giphy.gif" class="cover w">
+        <img src="pictures/an_ignored_by_git_place/automate-it.gif" class="cover w">
         <footer></footer>
     </section>
 
@@ -1117,6 +1119,7 @@ git rebase -i \
         </h3>
         </center>
         <img class="place bottom center" src="https://i.gifer.com/LFpx.gif" style="width: 600px">
+        <img class="place bottom center" src="pictures/an_ignored_by_git_place/easy--peasy.gif" style="width: 600px">
         <footer></footer>
     </section>
 
@@ -1174,9 +1177,14 @@ git rebase -i \
     </section>
 
     <section class="slide">
-        <h2 class="">2. SINK UP WITH THE TEAM : GOOD WAY</h2>
+        <h2 class="">2. SINK UP WITH THE TEAM : PRETTY GOOD WAY</h2>
 
-        <h2 class="shout" style="font-size: 56px;">git fetch; git reset --hard; git clean -x -d -f</h2>
+        <pre><code style="line-height: 1.5; font-size: 36px">
+git fetch --all --tags;
+git reset origin --hard;
+git branch -D $(git branch|grep -v '*');
+git clean -x -d -f;
+        </code></pre>
         <footer></footer>
     </section>
 
@@ -1242,7 +1250,8 @@ git rebase -i \
 
 
     <section class="slide clear no-logo black">
-        <img src="https://hackernoon.com/hn-images/1*QPSlOyQ0EeJG169-JBYOUQ.gif" alt="" class="cover h" style="height: 107%; max-height: 107%;">
+        <img src="https://hackernoon.com/hn-images/1*QPSlOyQ0EeJG169-JBYOUQ.gif" class="cover h" style="height: 107%; max-height: 107%;">
+        <img src="pictures/an_ignored_by_git_place/bruce-god-code.gif" class="cover h" style="height: 107%; max-height: 107%;">
         <footer></footer>
     </section>
 
