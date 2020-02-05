@@ -17,6 +17,9 @@
         let putsecure = str => put(atob(str));
     </script>
     <style>
+    h1,h2,h3,h4,h5,h6,h7 {
+         font-family: PT Sans Narrow;
+    }
     .slide {
         /* font-size: 32px; /**/
         
@@ -103,6 +106,10 @@
     .padding {
         padding-left: 150px;
         padding-top: 50px;
+    }
+    .padding-sm {
+        padding-left: 150px;
+        padding-top: 25px;
     }
     .small {
         font-size: 0.65em;
@@ -425,11 +432,12 @@
 
     <section class="slide">
         <h2 class="no-line">Wipe branches on git-server by outdated local ones</h2>
-        <ol class="padding huge">
+        <ol class="padding-sm  huge">
 
           <li>what are the causes?</li>
           <li>why it's important?</li>
           <li>how to prevent?</li>
+          <li>how to fix?</li>
         </ol>
         <footer></footer>
     </section>
@@ -438,7 +446,7 @@
 
     <section class="slide">
         <h2 class="">CASE 1: What are the causes?</h2>
-        <h3 class="shout"><code>git push --force</code></h3>
+        <pre><code class="huge plain">git push --force</code></pre>
         if git settings contain <code>push.default=matching</code><br>
         for git version &lt; 2.0 it's default behaviour
         <footer></footer>
@@ -530,11 +538,12 @@
 
     <section class="slide">
         <h2 class="no-line">Wrong commit author / sign misconfiguration</h2>
-        <ol class="padding huge">
+        <ol class="padding-sm  huge">
 
           <li>what are the causes?</li>
           <li>why it's important?</li>
           <li>how to prevent?</li>
+          <li>how to fix?</li>
         </ol>
         <footer></footer>
     </section>
@@ -927,11 +936,12 @@ git-rocket-filter --branch master -f --commit-filter '
 
     <section class="slide">
         <h2 class="no-line">Sensitive information leakage</h2>
-        <ol class="padding huge">
+        <ol class="padding-sm  huge">
 
           <li>what are the causes?</li>
           <li>why it's important?</li>
           <li>how to prevent?</li>
+          <li>how to fix?</li>
         </ol>
         <footer></footer>
     </section>
@@ -969,18 +979,22 @@ git-rocket-filter --branch master -f --commit-filter '
 
     <section class="slide">
         <h2 class="">CASE 3: why it's important? : Personal Data</h2>
-        <img  class="cover w" src="pictures/your-competitors-happy-with-your-data.png" alt="">
-        <h3 class="place middle right" style="margin-right: 30px; margin-top: -120px"><sup>↖</sup>Your competitor</h3>
+        <img  class="cover h" src="pictures/your-competitors-happy-with-your-data.png" alt="">
+        <h3 class="place middle right" style="transform: translate(-115px,-135px);"><sup>↖</sup>your competitor</h3>
+        <h3 class="place middle right" style="transform: translate(-368px,-62px); font-size: 32px;">
+            your
+            <br>
+            <span style=" display: inline-block; transform: translate(-28px,-7px);">data</span>
+        </h3>
         <footer></footer>
     </section>
 
 
-    <section class="slide">
+    <section class="slide" style="background-color: #f2bed1">
         <h2 class="">CASE 3: why it's important? : Personal Data</h2>
-        <h3 class="shout">
-            <br><br><br><br>GDPR
-        </h2>
-        <img  class="cover" style="width:600px" src="pictures/gdpr.png" alt="">
+        <!-- <h3 class="shout">GDPR</h2>
+        <!-- <img  class="cover" style="width:600px" src="pictures/gdpr.png" alt=""> <!-- -->
+        <img  class="cover"style="width:800px" src="pictures/gdpr-punishment.png" alt="">
         <footer></footer>
     </section>
 
@@ -1100,7 +1114,7 @@ git rebase -i \
 
     <section class="slide">
         <h2 class="">CASE 3: Personal Data: Fix: Automation: Easy</h2>
-        <center style="padding-top: 10px;"><h3 class="" style="font-size: 56px; color: rgb(64, 64, 64); font-family: 'PT Sans Narrow'">
+        <center style="padding-top: 10px;"><h3 class="" style="font-size: 56px; color: rgb(64, 64, 64);">
             bfg --delete-files DUMP.SQL
         </h3>
         </center>
