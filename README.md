@@ -6,6 +6,8 @@
 
 
 ### Предстоящие
+- 2020-02-??
+  — Bring Django to the microservices world using Kafka
 - 2020-02-06
   — iTechMeetup **Brest** #6
   — Git:  назад в будущее!
