@@ -578,26 +578,53 @@
     </section>
     
     
-    <section class="slide red">
+    <section class="slide ">
         <h2 class="">Unconfigured <code>git config</code>: AWS</h2>
-        <code>AWS &lt;ubuntu@ec2-192-168-12-42.ec2.aws.net></code><br>
+        <pre><code class="plain" style="margin-top: -2em;">
+<span style="color:darkblue">git log --format="%h %an &lt;%ae>" -n 5</span>
+f14246a <span style="color:red">Ubuntu &lt;ubuntu@ip-192-168-1-13.ec2.internal></span>
+fa2b394 Ubuntu &lt;ubuntu@ip-192-168-1-17.ec2.internal>
+da23946 Ubuntu &lt;ubuntu@ip-192-168-1-18.ec2.internal>
+4098403 Ubuntu &lt;ubuntu@ip-192-168-1-21.ec2.internal>
+e3f335d Ubuntu &lt;ubuntu@ip-192-168-1-22.ec2.internal><!--
+b323ba4 Ubuntu &lt;ubuntu@ip-192-168-1-29.ec2.internal>
+174605c Ubuntu &lt;ubuntu@ip-192-168-1-34.ec2.internal>
+0825853 Ubuntu &lt;ubuntu@ip-192-168-1-36.ec2.internal>
+71f46e3 Ubuntu &lt;ubuntu@ip-192-168-1-43.ec2.internal>
+340cd7e Ubuntu &lt;ubuntu@ip-192-168-1-63.ec2.internal>
+b323833 Ubuntu &lt;ubuntu@ip-192-168-1-77.ec2.internal><!-- -->
+</code></pre>
+
+
         <footer></footer>
     </section>
 
-    <section class="slide red">
+    <section class="slide">
         <h2 class="">Different configs on different machines</h2>
-        <code>Mik &lt;dev@lightstar.local></code><br>
-        <code>Nikolay Saskovets &lt;<script>putsecure(my_work_em)</script>&gt;</code><br>
-        <code>Mikalai Saskavets &lt;<script>putsecure(my_home_em)</script>&gt;</code><br>
+        <pre><code class="plain" style="margin-top: -2em;">
+<span style="color:darkblue">git log --format="%h %an &lt;%ae>" -n 5 --abbrev=4</span>
+b323 <span style="color:red">Mik &lt;dev@lightstar.local&gt;</span>
+1746 <span style="color:red">Nikolay Saskovets &lt;<script>putsecure(my_work_em)</script>&gt;</span>
+0825 Mikalai Saskavets &lt;<script>putsecure(my_home_em)</script>&gt;
+71f4 Mikalai Saskavets &lt;<script>putsecure(my_home_em)</script>&gt;
+340c Mikalai Saskavets &lt;<script>putsecure(my_home_em)</script>&gt;
+</code></pre>
         <footer></footer>
     </section>
 
 
-    <section class="slide red">
+    <section class="slide ">
         <h2 class="">Commits from the not own machine</h2>
-        <code>Aleh Kogot &lt;aleh@example.net></code><br>
-        <code>Aleh Kogot &lt;aleh@example.net></code><br>
-        <code>Alena Kogot &lt;alena@mail.ru></code><br>
+        
+        <pre><code class="plain" style="margin-top: -2em;">
+<span style="color:darkblue">git log --format="%h %an &lt;%ae>" -n 5</span>
+3ba40cd Aleh Kogot &lt;aleh@example.com&gt;
+323ba44 Aleh Kogot &lt;aleh@example.com&gt;
+8258534 <span style="color:red">Alena Kogot &lt;alena@mail.ru&gt;</span>
+b323833 Aleh Kogot &lt;aleh@example.com&gt;
+40cd7e2 Aleh Kogot &lt;aleh@example.com&gt;
+</code></pre>
+
         <footer></footer>
     </section>
 
