@@ -6,8 +6,10 @@
 
 
 ### Предстоящие
-- 2020-01-??
+- 2020-02-06
+  — iTechMeetup **Brest** #6
   — Git:  назад в будущее!
+  — [слайды](https://shurph.github.io/talks/git-brest)
 - 2020-??-??
   — Современная web-разработка и Wordpress
 
