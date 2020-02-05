@@ -36,9 +36,6 @@
         height: 9px;
     }
 
-
-
-
     .slide:before {
         content: "";
         display: block;
@@ -65,7 +62,6 @@
     .slide.red-dark:after {
         color: #680000
     }
-
 
     .slide.no-logo:before {
         display: none;
@@ -100,6 +96,19 @@
         padding: 10px;
     }
 
+    .slide-footer small {
+        font-size: 12px;
+    }
+
+    .lighty {
+            color: rgba(0,0,0, 0.45);
+    }
+
+    .slide.black  .lighty,
+    .slide.red .lighty {
+        color: rgba(255,255,255, 0.45);
+    }
+
     .huge {
         font-size: 42px;
     }
@@ -110,9 +119,6 @@
     .padding-sm {
         padding-left: 150px;
         padding-top: 25px;
-    }
-    .small {
-        font-size: 0.65em;
     }
 
     </style>
@@ -140,7 +146,7 @@
         </h2>
         <span class="slide-footer" style="font-size: 20px; padding: 5px 10px 7px 10px; color: white; background: rgba(0,0,0,0.75);">
             Mikalai Saskavets<br>
-                <small class="small">@ iTechArt-Group</small>
+                <small>@ iTechArt-Group</small>
         </span>
         <div  class="place top left" style="opacity: 0.75; padding: 20px 0 0 40px;font-size: 20px; color: white;">
             iTechMeetup Brest
@@ -183,9 +189,9 @@
                     Mikalai Saskavets
                 </span>
                 <br>
-                <span class="small" style="display: inline-block;transform: translate(-5px, 40px) rotate(35deg) ;">
+                <small style="display: inline-block;transform: translate(-5px, 40px) rotate(35deg) ;">
                     @ iTechArt-Group
-                </span>
+                </small>
             </span>
             <div  class="place top left" style="opacity: 0.75; padding: 20px 0 0 40px;font-size: 25px; color: white;">
                 <span class="" style="display: inline-block;transform: translate(-5px, 0px) rotate(-155deg) ;">
@@ -290,7 +296,7 @@
             <span>F*ck this noise, I give up!</span>
         </div>
 
-        <div class="slide-footer ">
+        <div class="slide-footer lighty">
         based on <a href="https://ohshitgit.com/" target="_blank">ohshitgit.com</a>
         </div>
 
@@ -516,7 +522,7 @@
         <h3>Already have backups?</h3>
         Restore from backups
         <h3>No backups?</h3>
-        Try to find a team member with the fost fresh branches on the local machinne and restore from it.
+        Try to find a team member with the fost fresh branches on the local machine and restore from it.
         <br>
         <i>Maybe you need more than one team member and need to combine branches...</i>
 
@@ -568,7 +574,7 @@
         </code>
         <br>
         <code>
-            git config user.name "$(id -un)@$(hostname)"
+            git config user.email "$(id -un)@$(hostname)"
         </code>
         <br><br>
         <h3>as example:</h3>
@@ -978,12 +984,21 @@ git-rocket-filter --branch master -f --commit-filter '
         <h2 class="">CASE 3: What are the causes?</h2>
         <img class="place right center" style="width: 500px" src="pictures/chik-chirik-i-v-prodakhen.png">
 
+        <h3>&ldquo;Human reliability&rdquo;</h3>
         <ul>
         <li>inattentiveness</li>
         <li>rush</li>
         <li>insufficient training</li>
         <li>carelessness</li>
         </ul>
+
+        <footer></footer>
+    </section>
+
+    <section class="slide ">
+        <h2 class="">CASE 3: What are the causes?</h2>
+        <img class="place right center" style="width: 500px" src="pictures/chik-chirik-i-v-prodakhen.png">
+        <br>
         <h3>Tech causes (or results?)</h3>
         <ul>
         <li>PRODUCTION.SQL in the repo</li>
@@ -1022,6 +1037,7 @@ git-rocket-filter --branch master -f --commit-filter '
         <!-- <h3 class="shout">GDPR</h2>
         <!-- <img  class="cover" style="width:600px" src="pictures/gdpr.png" alt=""> <!-- -->
         <img  class="cover"style="width:800px" src="pictures/gdpr-punishment.png" alt="">
+        <div class="slide-footer lighty"><small>img from <a href="https://www.coredna.com/blogs/gdpr-fines">coredna.com</a></small></div>
         <footer></footer>
     </section>
 
