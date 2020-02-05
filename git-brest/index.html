@@ -55,6 +55,26 @@
     .slide.red:before {
         filter: invert(1);
     }
+    
+    .slide:after {
+        background: transparent url('pictures/system/slide-number-bg.svg') center center no-repeat;
+        background-size: 70px;
+        border-radius: 0;
+        width: 70px;
+        font-size: 0.95em;
+    }
+    .slide.black:after {
+        background-color: transparent;
+        color: darkgray;
+        filter: invert(1) sepia(1); 
+    }
+    .slide.red-dark:after,
+    .slide.red:after {
+        background-color: transparent;
+        color:darkgoldenrod;
+        filter: grayscale(1) invert(1) contrast(3);
+    }
+    
 
     .slide.red-dark {
         background-color: #680000
@@ -242,33 +262,6 @@
 
 
 
-
-
-
-
-
-    <!--
-    <section class="slide">
-        <h2 class="">GIT F*CKUPS, CASES</h2>
-        <ul style="line-height: 1.2; font-size: 28px">
-
-          <li> закоммитал не в ту ветку</li>
-          <li> закоммитал не тот набор файлов или изменений</li>
-          <li> поломал ветку при мерж-коммите</li>
-          <li> потерял коммиты с фичей во время подготовки релиза</li>
-          <li> случайно закоммитал свои изменения в master ветку (а надо - в feature)</li>
-          <li> случайно снёс половину бранчи reset'ом</li>
-          <li> в истории коммитов оказались файлы с "сенситивной" информацией</li>
-          <li> коммиты закоммитились не от того имени (без четкого имени)</li>
-          <li> случайно затёр на гит-сервере бранч своей outdated версией</li>
-          <li> случайно затёр на гит-сервере все бранчи своими outdated версиями</li>
-
-          <li> ... и много-много других</li>
-        </ul>
-        <footer></footer>
-    </section>
-    <!-- -->
-
     <section class="slide">
         <div style="width: 50%; float: left;  font-size: 25px; line-height: 1.5; padding-right: 30px; margin-top: -30px">
             <span>I committed and immediately realized I need to make one small change!</span>
@@ -313,36 +306,18 @@
         <ol style="/*line-height: 1.2; font-size: 42px/***/">
 
           <li> wipe branches on git-server by outdated local ones</li>
-          <!-- <li> случайно затёр на гит-сервере все бранчи своими outdated версиями</li> <!-- -->
 
           <li> wrong commit author / sign misconfiguration</li>
-          <!-- <li> коммиты закоммитились не от того имени <br>(без четкого имени)</li> <!-- -->
 
           <li> sensitive information leakage</li>
-          <!-- <li> в истории коммитов оказались файлы с "сенситивной" информацией</li> <!-- -->
         </ol>
-        <footer></footer>
+        <footer>
+            в истории коммитов оказались файлы с "сенситивной" информацией
+            <br> коммиты закоммитились не от того имени (без четкого имени)
+            <br> случайно затёр на гит-сервере все бранчи своими outdated версиями
+        </footer>
     </section>
-
-
-
-
-
-
-
-    <!-- - ->
-    <section class="slide">
-
-        <h2 class="no-border">
-            WHAT TO DO<br>
-            WITH<br>
-            F*CKUPS<br>?
-        </h2>
-
-        <img src="https://i.imgur.com/96hPj.png" alt="" class="cover" style="height: 80%;">
-
-        <footer></footer>
-    </section><!-- -->
+    
 
 
     <section class="slide">
@@ -355,10 +330,8 @@
         <div style="padding-left: 400px; padding-top: 100px; font-size: 62px; line-height: 0.5">
             <p>1. Prevent them</p>
             <p>2. Fix them</p>
-            <!-- -->
             <p><span style="font-size: 32px; color: gray;">3. Minimize damage from them</span></p>
             <p style="font-size: 22px; color: lightgray;">4. Hide them</p>
-            <!-- -->
         </div>
 
         <footer></footer>
@@ -422,12 +395,6 @@
     </section>
 
 
-
-    <!--
-    <section class="slide">
-        <h2 class="shout">PREVENT!</h2>
-        <footer></footer>
-    </section><!-- -->
 
 
     <section class="slide">
@@ -592,13 +559,7 @@ f14246a <span style="color:red">Ubuntu &lt;ubuntu@ip-192-168-1-13.ec2.internal><
 fa2b394 Ubuntu &lt;ubuntu@ip-192-168-1-17.ec2.internal>
 da23946 Ubuntu &lt;ubuntu@ip-192-168-1-18.ec2.internal>
 4098403 Ubuntu &lt;ubuntu@ip-192-168-1-21.ec2.internal>
-e3f335d Ubuntu &lt;ubuntu@ip-192-168-1-22.ec2.internal><!--
-b323ba4 Ubuntu &lt;ubuntu@ip-192-168-1-29.ec2.internal>
-174605c Ubuntu &lt;ubuntu@ip-192-168-1-34.ec2.internal>
-0825853 Ubuntu &lt;ubuntu@ip-192-168-1-36.ec2.internal>
-71f46e3 Ubuntu &lt;ubuntu@ip-192-168-1-43.ec2.internal>
-340cd7e Ubuntu &lt;ubuntu@ip-192-168-1-63.ec2.internal>
-b323833 Ubuntu &lt;ubuntu@ip-192-168-1-77.ec2.internal><!-- -->
+e3f335d Ubuntu &lt;ubuntu@ip-192-168-1-22.ec2.internal>
 </code></pre>
 
 
@@ -652,6 +613,15 @@ b323833 Aleh Kogot &lt;aleh@example.com&gt;
         <img src="pictures/copyright-agreement.jpg" alt="" class="cover">
 
         <h3 class="shout">copyright</h3>
+
+
+        <footer></footer>
+    </section>
+    
+    <section class="slide no-logo" data-note="RAMBLER">
+        <img src="https://www.uschamber.com/sites/default/files/023049_tjd_commentary_litigationmachine_atf.gif" alt="" class="cover w">
+
+        <img src="https://brand.rambler.ru/uploads/png/logo_ru.png" alt="" class="bottom right">
 
 
         <footer></footer>
@@ -794,23 +764,6 @@ fatal: empty ident name (for <>) not allowed</span></code>
         <code class="huge" style="background: none; font-size: 36px;">git config user.email "you@example.com"</code><br>
         <code class="huge" style="background: none; font-size: 36px;">git config user.name "Your Name"</code><br><br>
         <code class="huge" style="font-size: 36px;">git commit --amend --reset-author</code>
-        <!--
-        <pre><code class="plain" style="line-height: 1.1; font-size: 22px; color: gray">
-
-git commit -m MESSAGE
-[master (root-commit) 29c79b6] MESSAGE
-Committer: Mik <dev@lightstar.local>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly:
-
-    git config <span class="strike">--global</span> user.name "Your Name"
-    git config <span class="strike">--global</span> user.email you@example.com
-
-After doing this, you may fix the identity used for this commit with:
-
-    git commit --amend --reset-author</code></pre>
-    <!-- -->
         <footer></footer>
     </section>
 
@@ -826,7 +779,6 @@ After doing this, you may fix the identity used for this commit with:
 
     <section class="slide ">
         <h2 class="">CASE 2: How to fix?</h2>
-        <!-- https://stackoverflow.com/questions/750172/how-to-change-the-author-and-committer-name-and-e-mail-of-multiple-commits-in-gi?answertab=votes#tab-top <!---->
         <img class="cover h" src="pictures/stack-screen-author-amend.png">
         <img style="width: 300px; transform: translate(222px, -28px)" src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.png?v=9c558ec15d8a">
         <footer></footer>
@@ -1034,8 +986,6 @@ git-rocket-filter --branch master -f --commit-filter '
 
     <section class="slide" style="background-color: #f2bed1">
         <h2 class="">CASE 3: why it's important? : Personal Data</h2>
-        <!-- <h3 class="shout">GDPR</h2>
-        <!-- <img  class="cover" style="width:600px" src="pictures/gdpr.png" alt=""> <!-- -->
         <img  class="cover"style="width:800px" src="pictures/gdpr-punishment.png" alt="">
         <div class="slide-footer lighty"><small>img from <a href="https://www.coredna.com/blogs/gdpr-fines">coredna.com</a></small></div>
         <footer></footer>
@@ -1185,14 +1135,6 @@ git rebase -i \
         <footer></footer>
     </section>
 
-    <!--
-    <section class="slide">
-        <h2 class="">SINK UP WITH EVERYONE</h2>
-        <h3>1. SINK UP WITH THE SERVER</h3>
-        <h3>2. SINK UP WITH THE TEAM</h3>
-        <footer></footer>
-    </section>
-    <!-- -->
 
 
     <section class="slide">
@@ -1302,130 +1244,6 @@ git rebase -i \
         <footer></footer>
     </section>
 
-    <!--
-    <section class="slide">
-        <img src="https://media1.giphy.com/media/FPYkkpPXzUi1G/source.gif" alt="" class="cover w">
-        <footer></footer>
-    </section>
-    -->
-
-
-
-
-    <!--
-
-
-
-
-    <section class="slide">
-        <h2 class="">GIT MESSUP, CASES</h2>
-        <ol class="padding huge-huge">
-            <li>Data Leaks (Privacy)</li>
-            <li>Copyright Issues</li>
-        </ol>
-        <footer></footer>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout">1. Data Leaks (Privacy)</h2>
-        <footer></footer>
-    </section>
-
-
-    <section class="slide">
-        <h2 class="">1. Data Leaks (Privacy)</h2>
-        <img src="https://zdnet4.cbsistatic.com/hub/i/2020/01/17/8555ea94-5762-487b-b975-50183c416b5a/iot-list-files.png" alt="" class="">
-
-
-
-        <footer></footer>
-    </section>
-
-
-    <section class="slide">
-        <h2 class="">1. Data Leaks</h2>
-        <h3 class="shout">
-            <br><br><br><br><br>GDPR ;-)
-        </h2>
-        <img src="https://www.sealpath.com/wp-content/uploads/2019/08/las-mayores-multas-gdpr-brecha-de-datos-3-1080x675.png" alt="" class="cover w">
-        <footer></footer>
-    </section>
-
-
-
-    <section class="slide">
-        <img src="https://raw.githubusercontent.com/FriendsOfREDAXO/community/assets/howto-github/howto-github_02.png" alt="" class="cover">
-        <footer></footer>
-    </section>
-
-
-
-    <section class="slide">
-        <h2 class="shout">2. Copyright Issues</h2>
-        <footer></footer>
-    </section>
-
-
-
-
-    <section class="slide no-logo" data-note="RAMBLER">
-        <img src="https://www.uschamber.com/sites/default/files/023049_tjd_commentary_litigationmachine_atf.gif" alt="" class="cover w">
-
-        <img src="https://brand.rambler.ru/uploads/png/logo_ru.png" alt="" class="bottom right">
-
-
-        <footer></footer>
-    </section>
-
-
-
-
-    <section class="slide" data-note="wrong author">
-        <h2 class="">2. Copyright Issues</h2>
-        <img src="https://i.stack.imgur.com/EfPhM.png" alt="" class="">
-        <footer></footer>
-    </section>
-
-
-
-
-
-    <section class="slide">
-        <h2 class="">2. Copyright Issues: Causes</h2>
-        <ol "padding huge">
-            <li>Unconfigured <code>git config user.name/user.email</code></li>
-            <li>Different configs on different machines</li>
-        </ol>
-        <footer></footer>
-    </section>
-
-    <section class="slide">
-        <h2 class="">Unconfigured <code>git config</code></h2>
-        By Default:<br>
-        <code>
-            git config user.name $USER<br>
-            git config user.name $USER@$(hostname)
-        </code>
-        <footer></footer>
-    </section>
-
-
-
-    <section class="slide black">
-        <h2 class="">Different configs on different machines</h2>
-        <img src="https://i.ytimg.com/vi/rvEEu1jUZcs/maxresdefault.jpg" alt="" class="cover w">
-        <footer></footer>
-    </section>
-
-
-
-
-
-    <section class="slide">
-        <h2 class="">Copyright Issues</h2>
-        <img src="pictures/copyright-agreement.jpg" alt="" class="cover">
-        <footer></footer>
-    </section>
 
 
 
@@ -1433,31 +1251,22 @@ git rebase -i \
 
 
 
-    <section class="slide black">
-        <div class="tags-baloons shout">
-            <span class="label">
-                DEMO
-            </span>
-        </div>
 
 
-        <footer>
-        </footer>
-
-    </section>
 
 
-    <!-- -->
 
+
+
+
+
+
+
+
+    <!-- ###################### NO SLIDES BELOW !!! ###################### <!-- -->
     <div class="progress"></div>
-
-
-    <footer class="badge">
-        <a href="https://github.com/shurph/talks">Fork me on GitHub!</a>
-    </footer>
-
+    <footer class="badge"><a href="https://github.com/shurph/talks">Fork me on GitHub!</a></footer>
     <script src="../vendor/shower/scripts/shower.min.js"></script>
-
     <script src="../vendor/shower/vendors/highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 </body>
