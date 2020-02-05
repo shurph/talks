@@ -83,7 +83,12 @@
   — «Hugo — генератор статичных сайтов»
   — [слайды](https://www.slideshare.net/NikolaySaskovets/hugo-hugo-static-site-generator)
 
-... all these moments were lost in time ...
 
-- 2007-09-16 — VIM. Введение. Примеры эффективной работы
+... 
+
+- 2012-03-28 — iTechArt — Linux CLI and Bash
+
+... 
+
+- 2007-09-16 — Orsha Linux Users Group Meetup (Линуксовка) — Orsha — VIM. Введение. Примеры эффективной работы
 
