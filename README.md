@@ -8,6 +8,7 @@
 ### Предстоящие
 - 2020-02-??
   — Bring Django to the microservices world using Kafka
+  — [слайды](https://shurph.github.io/talks/kafka-grodno)
 - 2020-??-??
   — Деревья и таблицы 
 - 2020-??-??
