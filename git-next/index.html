@@ -154,84 +154,33 @@
 
 
     <section class="slide clear no-logo">
-        <img class="cover" src="../git-brest/pictures/an_ignored_by_git_place/itechart-splash-screen.gif">
+        <img class="cover" src="... itechart-splash-screen.gif">
     </section>
 
 
 
-    <section class="slide black clear"
-     style="
-        background: url('../git-brest/pictures/doc-and-marty.jpg') center center;
-        background-size: cover;">
+    <section class="slide black clear">
         <h2 class="shout" style="font-size: 82px; white-space: nowrap; color: white;">
             <br><br><br>
-            Git: Назад, в будущее!
+            Git: Oops... I did it again!
         </h2>
+
+
+        <img class="cover w" src="https://image.cnbcfm.com/api/v1/image/104891321-RTX3OCDD.jpg"">
+
+
         <span class="slide-footer" style="font-size: 20px; padding: 5px 10px 7px 10px; color: white; background: rgba(0,0,0,0.75);">
             Mikalai Saskavets<br>
                 <small>@ iTechArt-Group</small>
         </span>
         <div  class="place top left" style="opacity: 0.75; padding: 20px 0 0 40px;font-size: 20px; color: white;">
-            iTechMeetup Brest
+            iTechMeetup NEXT
         </div>
 
         <footer>
         </footer>
     </section>
 
-
-
-    <section class="slide clear"
-     style="
-        background: url(../git-brest/pictures/something-went-wrong.png) center center;
-        background-size: cover;
-        filter: invert(1)">
-        
-        
-        
-        <div style="filter: invert(1)">
-            <h2 class="shout" style="font-size: 82px; white-space: nowrap; color: white;">
-                <br><br><br>
-                <span style="display: inline-block;transform: translate(-175px, 155px) rotate(-45deg) ;">
-                    Git:
-                </span>
-                <br>
-                <span style="display: inline-block;transform: translate(290px, -10px) rotate(47deg) ; ">
-                    Назад,
-
-                    <span style="display: inline-block;transform: translate(11px, 23px)   rotate(-75deg) ; ">
-                    в
-                    </span>
-                    <span style="display: inline-block;transform: translate(-60px, -20px) rotate(27deg) ; ">
-                    будущее!
-                    </span>
-                </span>
-            </h2>
-            <span class="slide-footer" style="font-size: 20px; padding: 5px 10px 7px 10px; color: white; background: rgba(0,0,0,0.75);">
-                <span style="display: inline-block;transform: translate(-15px, 15px) rotate(-40deg) ;">
-                    Mikalai Saskavets
-                </span>
-                <br>
-                <small style="display: inline-block;transform: translate(-5px, 40px) rotate(35deg) ;">
-                    @ iTechArt-Group
-                </small>
-            </span>
-            <div  class="place top left" style="opacity: 0.75; padding: 20px 0 0 40px;font-size: 25px; color: white;">
-                <span class="" style="display: inline-block;transform: translate(-5px, 0px) rotate(-155deg) ;">
-                    iTechMeetup
-                </span>
-                <span class="" style="display: inline-block;transform: translate(-130px, -50px) rotate(25deg) ;">
-                    Brest
-                </span>
-            </div>
-
-        </div>
-            <div class="slide-footer" style="disblay: block; width: 80%; height: 13%; background: rgba(255,255,255,1);">
-
-            </div>
-        <footer>
-        </footer>
-    </section>
 
 
 
@@ -891,17 +840,33 @@ fi
     </section>
 
 
+    <section class="slide ">
+        <h2 class="">Git env variables</h2>
+        <pre><code class="plain" style="line-height: 1.2; font-size: 24px; margin-top:-20px">
+    # just a reminder:
+
+    GIT_COMMITTER_NAME
+    GIT_COMMITTER_EMAIL
+    GIT_COMMITTER_DATE
+
+    GIT_AUTHOR_NAME
+    GIT_AUTHOR_EMAIL
+    GIT_AUTHOR_DATE
+
+    EMAIL
+        </code></pre>
+        <footer></footer>
+    </section>
+
+
 
     <section class="slide ">
-        <h2 class="">CASE 2: How to fix? git-rocket-filter</h2>
-        <pre><code style="line-height: 1.2; font-size: 24px;">
-git-rocket-filter --branch master -f --commit-filter '
-    if (commit.AuthorName.Contains("Mikalai")) {
-        commit.AuthorName = "Bo";
-        commit.AuthorEmail = "bo@co.mp";
-    }
-'  </code></pre> <i>... but only one branch per launch</i>     <footer></footer>
+        <h2 class="">gitfiti</h2>
+        <img class="cover" src="https://camo.githubusercontent.com/6b5b18688665bf2b757bda3ac559ac700185ebb0/68747470733a2f2f7261772e6769746875622e636f6d2f67656c73747564696f732f676974666974692f6d61737465722f676974666974692d73637265656e73686f742e706e67">
+        <footer></footer>
     </section>
+
+
 
     <section class="slide">
         <h2 class="">WELL DONE?</h2>
@@ -1001,7 +966,19 @@ git-rocket-filter --branch master -f --commit-filter '
     <section class="slide">
         <h2 class="">CASE 3: how to prevent?</h2>
         <h3>As a developer</h3>
-        <h4 class="shout">Be carefull and mindfulness</h4>
+
+        For passwords/key leaks:
+        <ul>
+            <li>Set Up Your git <mark>pre-commit hooks</mark></li>
+            <ul>
+              <li>gittyleaks, git-secrets, repo-supervisor, truffleHog, git-hound</li>
+            </ul>
+        </ul>
+        For data leaks:
+        <ul>
+            <li><mark>be carefull and mindfulness</mark></li>
+        </ul>
+
         <footer></footer>
     </section>
 
@@ -1111,6 +1088,10 @@ git rebase -i \
     </section>
 
 
+    <section class="slide">
+        <!-- <h2 class="shout">BFG</h2> -->
+        <img class="cover w" src="https://lh3.googleusercontent.com/proxy/_91Jn9d_Ro8ZFyAJyRpZQr8pcPiYpcpo7UxV-hPlQmoQQjhkk77v1Ly6GS-kxc7N9-KaZga4somD_V-5e8GIBsMyJ6ifoMEKU4AVWEDh_TwrVL_TP0LS8cQTNPv-uDSnV8sR7R0kj4G437kDrStVyw">
+    </section>
 
     <section class="slide">
         <h2 class="">CASE 3: Personal Data: Fix: Automation: Easy</h2>
@@ -1218,7 +1199,7 @@ git clean -x -d -f;
         <br><br>
         <h3>Tools to fix issues</h3>
         Git<br>
-        git-rocket-filter  , BFG
+        BFG
 
         <footer></footer>
     </section>
