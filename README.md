@@ -9,6 +9,8 @@
 - 2020-02-??
   — Bring Django to the microservices world using Kafka
 - 2020-??-??
+  — Деревья и таблицы 
+- 2020-??-??
   — Современная web-разработка и Wordpress
 
 ### Состоявшиеся
