@@ -7,7 +7,15 @@ some technical moments...
 ## Как сконвертить html слайды в PDF
 ```
 npm install decktape
-`npm bin`/decktape --size=1024x576 https://shurph.github.io/talks/kafka-piterpy/ kafka-piterpy.pdf
+mkdir pdf-out/
+`npm bin`/decktape --size=1024x576 https://shurph.github.io/talks/kafka-piterpy/ pdf-out/kafka-piterpy-1080p.pdf
 ```
 
 The `--size` is important. Decktape can't detect slides ratuo correctly sometimes.
+
+sizes table:
+```
+16x9  --- 1024x576 --- 1920x1080
+16x10 --- 1024x640 --- 1920x1200
+ 4x3  --- 1024x768 --- 1920x1440
+```
