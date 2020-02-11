@@ -22,6 +22,7 @@
 - 2019-12-26
   — Minsk Python Meetup
   — PyPA: the lack of understanding who is who
+  — [🎥видео](https://www.youtube.com/watch?v=EKUUX_6rvx4&list=PLjiAaL1HtGPaMPlrZGCDzUCTsVAyTbHJ4&index=21)
   — [слайды](https://shurph.github.io/talks/python-pypa-joke)
 - 2019-11-14
   — iTechMeetup **Mogilev** #5
