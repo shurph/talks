@@ -397,6 +397,16 @@
 
         </footer>
     </section>
+    
+    
+    
+    
+
+    <section class="slide red"> 
+        <h2 class="shout">// TBD: AWS Scheme</h2>
+    </section>
+    
+    
 
     <style>
        .cover.w.hotfix {
@@ -419,6 +429,10 @@
         </footer> 
     </section>
     
+
+    <section class="slide red"> 
+        <h2 class="shout">// TBD: AWS Scheme</h2>
+    </section>
     
     
     <section class="slide">
@@ -440,6 +454,18 @@
         </footer>
     </section>
 
+
+    <section class="slide red"> 
+        <h2 class="shout">// TBD: Async?</h2>
+    </section>
+
+    <section class="slide red"> 
+        <h2 class="shout">// TBD: Celery</h2>
+    </section>
+
+    <section class="slide red"> 
+        <h2 class="shout">// TBD: AWS Scheme</h2>
+    </section>
 
 
 
@@ -767,7 +793,7 @@ Celery!
     </section><!-- -->
     <section class="slide">
         <h2>Kafka: Partitions: few consumer groups</h2>
-        <img src="../kafka-mogilev/pictures/kafka-partitioning-4-few-groups-of-consumers.png" alt="" class="cover h" style="margin-top: -30px">  
+        <img src="../kafka-mogilev/pictures/kafka-partitioning-4-few-groups-of-consumers.png" alt="" class="cover h" style="margin-top: -30px; height: 80%;">  
         <span class="slide-footer">
         derivative of the fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
 </a>
@@ -785,6 +811,16 @@ Celery!
     </section>
     
 
+    <section class="slide">
+        <h2>Imagine the case</h2>
+        <h3 class="shout" style="font-size: 42px">
+            <span>1 partition per topic</span>
+            <br>
+            <span>2 consumers groups</span>
+            <br>
+            <span>1 consumer per group</span>
+        </h3>
+    </section>
 
 
 
@@ -915,30 +951,30 @@ Celery!
           }
         </style>
             <pre class="plain custom-sup-indexes"><code style="line-height: 1!important; margin-top: -1.5em">
-                        ┌───[<mark>CG</mark> 1 <span class="label">C</span> 1] 
+                        ┌───[<mark>G 1</mark> <span class="label">C 1</span>] 
                         │ <span style="color:darkred">
 Partition 1 >> 1<sup>1</sup>|4<sup>2</sup>|7<sup>3</sup>|10<sup>4</sup>|13<sup>5</sup>|16<sup>6</sup>|19<sup>7</sup>|22<sup>8</sup>|25<sup>9</sup></span>
                      │
-                     └───[<mark>CG</mark> 2 <span class="label">C</span> 1]
+                     └───[<mark>G 2</mark> <span class="label">C 1</span>]
 
-                  ┌───[<mark>CG</mark> 1 <span class="label">C</span> 2] 
+                  ┌───[<mark>G 1</mark> <span class="label">C 2</span>] 
                   │ <span style="color:darkblue">
 Partition 2 >> 2<sup>1</sup>|5<sup>2</sup>|8<sup>3</sup>|11<sup>4</sup>|14<sup>5</sup>|17<sup>6</sup>|20<sup>7</sup>|23<sup>8</sup></span>
                   │
-                  └───[<mark>CG</mark> 2 <span class="label">C</span> 2]
+                  └───[<mark>G 2</mark><span class="label">C 2</span>]
 
-                            ┌───[<mark>CG</mark> 1 <span class="label">C</span> 3] 
+                            ┌───[<mark>G 1</mark> <span class="label">C 3</span>] 
                             │ <span style="color:purple">
 Partition 3 >> 3<sup>1</sup>|6<sup>2</sup>|9<sup>3</sup>|12<sup>4</sup>|15<sup>5</sup>|18<sup>6</sup>|21<sup>7</sup>|24<sup>8</sup></span>
                │
-               └───[<mark>CG</mark> 2 <span class="label">C</span> 3]
+               └───[<mark>G 2</mark> <span class="label">C 3</span>]
  
             </code></pre>
 
         <span class="slide-footer" style="font-size: 16px; padding: 10px 0px; text-align: left; opacity: 0.6">
             legend:
             <br><br>
-            <mark>CG</mark> — Consumers Group
+            <mark>&nbsp;G&nbsp;</mark> — Consumers Group
             <br>
             <span class="label">C</span> — Consumer (in group)
         </span>
@@ -955,6 +991,18 @@ Partition 3 >> 3<sup>1</sup>|6<sup>2</sup>|9<sup>3</sup>|12<sup>4</sup>|15<sup>5
 
         </footer>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <section class="slide">
@@ -1032,6 +1080,10 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
     </section>
 
 
+    <section class="slide red">
+        <h2>Strategies to put a message to a specific partiton</h2>
+        <h3  class="shout">// TBD</h3>
+    </section>
 
 
 
@@ -1242,6 +1294,39 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
     </section>
 
 
+
+
+
+    <section class="slide">
+        <h2 style="border: none">Kafka: Schema overhead</h2>
+        <table>
+            <tr>
+                <td>Approach</td>
+                <td>Schema</td>
+                <td>Payload</td>
+                <td>Total</td>
+            </tr>
+            <tr>
+                <td>JSON (Schemaless)</td>
+                <td>0</td>
+                <td>74</td>
+                <td>74</td>
+            </tr>
+            <tr>
+                <td>Schema + Avro Payload</td>
+                <td>204</td>
+                <td>34</td>
+                <td>238</td>
+            </tr>
+            <tr>
+                <td>Schema ID + Avro Payload</td>
+                <td>4</td>
+                <td>34</td>
+                <td>38</td>
+            </tr>
+        </table>
+    </section>
+        
 
 
     <section class="slide">
