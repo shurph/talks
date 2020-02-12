@@ -2,3 +2,12 @@
 
 - https://vk.com/wall-167969562_57
 - https://vk.com/wall-167969562_68
+
+
+также неплохо бы рассмотреть WP-Kit (см. видео по ссылкам выше)
+
+Sage от Roots не поддерживает Gutenberg сейчас. См:
+ - https://roots.io/sage/docs/gutenberg/
+ - https://github.com/roots/sage/pull/2144
+ - https://discourse.roots.io/t/sage-gutenberg-and-acf-blocks/13945
+ 
