@@ -1079,7 +1079,159 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
         <img src="../kafka-mogilev/pictures/confluent_schema_registry-1.png" alt="" class="cover" style="margin-top: 30px">  
         <span class="slide-footer">
         Fig. from <a href="https://www.confluent.io/blog/schemas-contracts-compatibility">confluent.io</a>
-        </span>
+        </span> <!-- -->
+        
+        
+        <!--
+        <table id="serializators-schemas-payloads">
+            <style>
+                #serializators-schemas-payloads {
+                    font-size: 12px;
+                    line-height: 1;
+                    margin: 0;
+                    width: 100%;
+                }
+                #serializators-schemas-payloads td {
+                    margin: 0;
+                    padding: 0;
+                }
+                #serializators-schemas-payloads td code {
+                    line-height: 1.35;
+                }
+                #serializators-schemas-payloads  tr > td tr > td {
+                    border: 1px solid black;
+                }
+                
+                #serializators-schemas-payloads > tbody > tr > td {
+                    padding: 5px 0;
+                }
+                #serializators-schemas-payloads > tbody > tr > td:first-child,
+                #serializators-schemas-payloads > tbody > tr > td:nth-child(2) {
+                    border-right: 1px solid green;
+                }
+                #serializators-schemas-payloads > tbody > tr > td {
+                    padding: 5px 0;
+                }
+                #serializators-schemas-payloads tbody > tr td {
+                    background: none;
+                }
+                #serializators-schemas-payloads > tbody > tr:first-child > td:nth-child(2),
+                #serializators-schemas-payloads > tbody > tr:first-child > td:last-child,
+                #serializators-schemas-payloads > tbody > tr:nth-child(3) > td:nth-child(2),
+                #serializators-schemas-payloads > tbody > tr:nth-child(3) > td:last-child,
+                #serializators-schemas-payloads > tbody > tr:nth-child(5) > td:nth-child(2),
+                #serializators-schemas-payloads > tbody > tr:nth-child(5) > td:last-child,
+                #serializators-schemas-payloads > tbody > tr:nth-child(7) > td:nth-child(2),
+                #serializators-schemas-payloads > tbody > tr:nth-child(7) > td:last-child
+                {
+                    border-bottom: 1px solid red;
+                }
+            </style>
+        
+        <tr>
+            <td></td>
+            <td>SCHEMA</td>
+            <td>PAYLOAD</td>
+        </tr>
+        <tr>
+            <td>JSON (Schemaless)</td>
+            <td></td>
+            <td><pre>
+<code class="plain">{   user_id:53,
+    timestamp: 1497842472,
+    address: "2 Elm St. Chattanooga, TN" }</code></pre></td>
+            
+        </tr>
+        
+        
+        <tr>
+            <td></td>
+            <td></td>
+            <td>74 bytes</td>
+        </tr>
+        
+        
+        <tr>
+            <td>Schema + Avro Payload</td>
+            <td><pre><code>{"type":"record", "name": "Person", "fields": [
+     {"name": "user_id",   "type": "long"},
+     {"name": "timestamp", "type": "long"},
+     {"name": "address",   "type": "string"}]}</code></pre>
+                 </td>
+            <td>
+                
+                <table class="_custom_table__avro_payload">
+                    <style>
+                    .slide table._custom_table__avro_payload {
+                        width: 10em;
+                        padding: 0;
+                        margin: 0;
+                        margin-left: -1px;
+                        
+                    }
+                    .slide table._custom_table__avro_payload td { 
+                        margin: 0;
+                        padding: 0;
+                        text-align: center;
+                        font-family: "PT Mono"
+                    }
+                    </style>
+                    <tr>
+                        <td colspan=1 >35</td>
+                        <td  colspan=4>59474328</td>
+                        <td  >19</td>
+                    </tr>
+                    <tr>
+                        <td  colspan=6>
+                            3220456c6d2053<br>
+                            742e2043686174<br>
+                            74616e6f6f6761<br>
+                            2c20544e
+                        </td>
+                    </tr>
+                </table>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td>204 bytes</td>
+            <td>34 bytes</td>
+        </tr>
+        
+        <tr>
+            <td>Schema ID + Avro Payload</td>
+            <td>32</td>
+            <td>
+                <table class="_custom_table__avro_payload">
+                    <tr>
+                        <td >35</td>
+                        <td colspan=4>59474328</td>
+                        <td >19</td>
+                    </tr>
+                    <tr>
+                        <td colspan=6>
+                            3220456c6d2053<br>
+                            742e2043686174<br>
+                            74616e6f6f6761<br>
+                            2c20544e
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td>4 bytes</td>
+            <td>34 bytes</td>
+        </tr>
+        
+        
+        </table>
+        <!-- -->
+        
         
         <footer>
 однако, есть недостаток. с каждым сообщением нужно передавать схему, чтобы можно было десериализовать. это невыгодно, даже по сравнению с json
