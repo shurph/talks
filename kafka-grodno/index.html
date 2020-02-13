@@ -41,7 +41,7 @@
     }
     .slide {
         /* font-size: 32px; /**/
-   
+
         /* line-height: 1.6; /***/
     }
     .slide code {
@@ -198,12 +198,12 @@
             Mikalai Saskavets
             <br>
             <small>@ iTechArt-Group</small>
-       
+
         </span>
         <div  class="place top left" style="margin: 20px 0 0 40px; padding: 0 20px; font-size: 20px; color: black; background: rgba(255,255,255,0.75)">
             iTechMeetup Grodno #5
         </div>
-   
+
         <footer>
         </footer>
     </section>
@@ -225,7 +225,7 @@
                 </span>
             <br>
             <img src="../kafka-mogilev/pictures/mikalai-photo.png" alt="" width="75%" >
-   
+
         </div>
         <div>
             I'm with:<br>
@@ -243,12 +243,12 @@
     <section class="slide">
         <h2 class="shout">the App</h2>
     </section>
-    
-    
+
+
     <section class="slide">
         <h2 class="shout smaller">Django is Awesome for Rapid Development</h2>
     </section>
-    
+
 
 
 
@@ -257,8 +257,8 @@
         <span class="slide-footer" style="font-size: 12px;" >
             art by <a href="https://www.deviantart.com/reneaigner/art/Monolith-283096035">René Aigner</a>
         </span>
-   
-   
+
+
         <footer>
 
 И так, на руках у нас был монолит. Руковтворное чудо.
@@ -305,13 +305,13 @@
 
     <section class="slide  bg-gradient-pink">
         <img src="../kafka-mogilev/pictures/microservices-microservices-everywhere.jpeg" alt="" class="cover">
-   
-   
+
+
         <footer>
 И серебрянной пулей мы выбрали микросервисы.
 Конечно, все мы прекрасно знаем, что микросервисы решают все наши проблемы!
 
-        </footer>    
+        </footer>
     </section>
 
 
@@ -321,7 +321,7 @@
         <div class="slide-footer" style="bottom: 0.5rem; font-size:10px">
         Fig. from <a href="https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e">Steve Bussey's article</a>
         </div>
-   
+
         <footer>
 
 Но действительно ли это так?
@@ -333,8 +333,8 @@
     <section class="slide bg-gradient-pink"> <!-- EDITED 1 -->
         <img src="../kafka-mogilev/pictures/mono-to-micro-4-even-more-real.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
-   
-   
+
+
         <footer>
 
 А наше приложение начало расти, микросервисов стало больше.
@@ -345,8 +345,8 @@
     <section class="slide bg-gradient-pink"> <!-- EDITED 2 -->
         <img src="../kafka-mogilev/pictures/mono-to-micro-5-more-relations.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
-   
-   
+
+
         <footer>
 Связей между сервисами начинает становиться больше
 
@@ -357,8 +357,8 @@
     <section class="slide bg-gradient-pink"> <!-- EDITED 3 -->
         <img src="../kafka-mogilev/pictures/mono-to-micro-6-a-lot-of-relations.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
-   
-   
+
+
         <footer>
 И еще больше!
 Пока у нас не начинает возникать мысль, что каждый сервис общается с каждым, и может быть не по одному разу. Но это не точно.
@@ -389,13 +389,13 @@
         <h2 class="lite shadowed">Microservices: Coupling and Cohesion?</h2>
         <img src="../kafka-mogilev/pictures/distributed-monolith.png" alt="" class="cover h">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
-   
-   
+
+
         <footer>
 И так, у нас рано или поздно может возникнуть понимание, что сервисы-то у нас чересчур друг от друго зависимы, высокая связность у нас в нашей микросервисной архитектуре...
 
         </footer>
- 
+
     </section>
 
 
@@ -403,8 +403,8 @@
         <h2 class="lite shadowed">Distributed Monolith?</h2>
         <img src="../kafka-mogilev/pictures/distributed-monolith.png" alt="" class="cover h">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
-   
-   
+
+
         <footer>
 А микросервисное ли у нас вообще приложение, или какой-то, простите, распределенный монолит?!
 Ну... это все конечно слова... теория!
@@ -414,7 +414,7 @@
 
 
 
-    
+
     <section class="slide">
         <h2>Here we are</h2>
         <img src="pictures/4-ms-aws-only-5-services.svg" alt="" class="cover">
@@ -434,8 +434,8 @@
             ( REST API )
         </center>
         <img src="../kafka-mogilev/pictures/1-few.svg" alt="" class="cover w hotfix">
-   
-   
+
+
         <footer>
 Давайте рассмотрим практический случай.
 Вот у нас запрос от пользователя. Он затрагивает три микросервиса.
@@ -451,8 +451,8 @@
             ( REST API )
         </center>
         <img src="../kafka-mogilev/pictures/1-many.svg" alt="" class="cover w hotfix">
-   
-   
+
+
         <footer>
 А еще у нас-то может оказаться, напомню, распределенный монолит.
 И запрос от пользователя может пройтись по нашим микросервисам 5, 6, 7 раз!
@@ -472,7 +472,7 @@
     <section class="slide red">
         <h2 class="shout">// TBD: Celery</h2>
     </section>
-    
+
     <section class="slide">
         <h2>Here we are</h2>
         <img src="pictures/4-ms-aws-only-5-services.svg" alt="" class="cover">
@@ -482,13 +482,13 @@
         <h2>Here we are</h2>
         <img src="pictures/4-ms-aws-only-5-services-and-celery.svg" alt="" class="cover">
     </section>
-    
-    
+
+
     <section class="slide">
         <h2>Here we are</h2>
         <img src="pictures/4-ms-aws-only-5-services-and-kafka.svg" alt="" class="cover">
     </section>
-    
+
     <section class="slide">
         <h2>Here we are</h2>
         <img src="pictures/services-kafka-dbs.svg" alt="" class="cover" style="width: 85%">
@@ -522,8 +522,8 @@
     <section class="slide">
         <h2>Microservices: Async Communication (Celery)</h2>
         <img src="../kafka-mogilev/pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix">
-   
-   
+
+
         <footer>
 Ну и конечно же, первое что приходит на ум питонисту, когда у него на руках джанго и намечается какое-то асинхронное поведение.
 Celery!
@@ -565,8 +565,8 @@ Celery!
                 Kafka here???
             </span>
         </h3>
-   
-   
+
+
         <footer>
 И тут возникает мысль.
 А вдруг нам здесь может как-то помочь Kafka?
@@ -589,8 +589,8 @@ Celery!
             </span>
             Kafka?
         </h2>
-   
-   
+
+
         <footer>
 Но давайте сначала чуть-чуть посмотрим, что такое кафка.
 
@@ -600,11 +600,11 @@ Celery!
 
 
     <section class="slide">
-    
+
         <h2 class="shout" style="font-size: 64px">
             Distributed Streaming Platform
         </h2>
-   
+
     </section>
 
 
@@ -614,13 +614,13 @@ Celery!
             Kafka for what??
         </h2>
     </section>
-    
-    
+
+
     <section class="slide">
         <h2>
             Kafka for what??
         </h2>
-   
+
         <ul class="huge" style="float:left">
             <li>
         Messaging
@@ -638,10 +638,10 @@ Celery!
         Event Sourcing
             <li>
         Queue
-       
+
         </ul>
-   
-   
+
+
         <footer>
 Для чего кафку используют?
 Для сбора и передачи сообщений. В том числе каких-то метрик, каких-то действий пользователя на сайте.
@@ -656,13 +656,13 @@ Celery!
     </section>
 
 
-    
+
     <!--
     <section class="slide">
         <h2>
             Kafka for what??
         </h2>
-   
+
         <div class="tags-baloons">
             <span class="label">
         Messaging
@@ -696,8 +696,8 @@ Celery!
             Why Kafka???
         </h2>
     </section>
-    
-    
+
+
 
     <section class="slide">
         <h2>
@@ -711,8 +711,8 @@ Celery!
             or even more...
         <sup><a href="https://engineering.linkedin.com/kafka/benchmarking-apache-kafka-2-million-writes-second-three-cheap-machines" style="background: none">[↪]</a></sup>
         </div>
-   
-   
+
+
         <footer>
 Но кафка нас зацепила вот такими цифрами.
 Конечно, это синтетические бенчмарки, но цифры-то впечатляют!
@@ -791,9 +791,9 @@ Celery!
             <span class="label">
                 ActiveMQ
             </span>
-       
+
             <br>
-       
+
             <span class="label">
                 NATS
             </span>
@@ -809,7 +809,7 @@ Celery!
             </span>
         </div>
     </section> <!-- -- -->
-    
+
 
     <section class="slide">
         <h2 class="shout">
@@ -824,8 +824,8 @@ Celery!
         <span class="slide-footer" style="font-size:12px">
         see some details on <a href="https://dzone.com/articles/kafka-architecture">dzone.com</a>
         </span>
-   
-   
+
+
         <footer>
 
 Посмотрим, как работать с кафкой, на хайлевеле, так сказать.
@@ -845,8 +845,8 @@ Celery!
         Fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
 </a>
         </span>
-   
-   
+
+
         <footer>
 Топик внутри себя может содержать несколько партиций. Разбиение топика на партиции позволяет сильно повышать производительность записи. Т.к. партиции одного топика могут храниться как на разных дисках одной машины, так и вовсе на разных машинах.
 Размер топика, размер партиций, теоретически ничем не ограничены, разве что размером диска. И временем жизни сообщения, которое вы можете также изменить.
@@ -886,8 +886,8 @@ Celery!
         derivative of the fig. from <a href="https://stackoverflow.com/questions/38024514/understanding-kafka-topics-and-partitions">mrsrinivas
 </a>
         </span>
-   
-   
+
+
         <footer>
 
 И так у нас есть топик, разбитый на четыре раздела.
@@ -923,8 +923,8 @@ Celery!
     │
     └───[Consumer Group 2]
             </code></pre>
-   
-   
+
+
         <footer>
 Для понимания того, какие сообщения какой группе консумеров отдавать используется концепция офсетов.
 Давайте посмотрим на примере топика, у которого только одна партиция.
@@ -946,8 +946,8 @@ Celery!
       │
       └───[Consumer Group 2]
             </code></pre>
-   
-   
+
+
         <footer>
 Продьюсеры накидали в ощередь пару новых сообщений.
 Группы  консумеров продолжают трудиться со своей скоростью, обрабатывая сообщения и сообщая кафке, что сообщения ими обработаны. Т.е. они "коммитают" оффсет по мере обработки сообщений.
@@ -969,8 +969,8 @@ Celery!
 │
 └───[Consumer Group 3]
             </code></pre>
-   
-   
+
+
         <footer>
 пришла еще одна группа потребителей и начала обрабатывать топик с самого начала
 А продьюсеры подкидывают все работки.
@@ -994,8 +994,8 @@ Celery!
 │
 └───[Consumer Group 3]
             </code></pre>
-   
-   
+
+
         <footer>
 
 А вот пришла четвертая группа и решила "да в гробу я видала эти старые сообщения, начну с актуальных". И так тоже можно.
@@ -1018,8 +1018,8 @@ Celery!
   Reset from file
 
             </code></pre>
-   
-   
+
+
         <footer>
 Есть различные способы управления оффсетом. Консьюмер может начать как с начала очереди, так и с конца. Или "отмотать" оффсет на произвольную дату, или на несколько позиций вперед\назад.
 Очень гибко все
@@ -1066,8 +1066,8 @@ Partition 3 >> 3<sup>1</sup>|6<sup>2</sup>|9<sup>3</sup>|12<sup>4</sup>|15<sup>5
             <br>
             <span class="label">C</span> — Consumer (in group)
         </span>
-   
-   
+
+
         <footer>
 
 С одной партицией было попроще, а если их три?
@@ -1099,8 +1099,8 @@ Partition 3 >> 3<sup>1</sup>|6<sup>2</sup>|9<sup>3</sup>|12<sup>4</sup>|15<sup>5
         <span class="slide-footer" style="font-size:12px">
         see some details on <a href="https://dzone.com/articles/kafka-architecture">dzone.com</a>
         </span>
-   
-   
+
+
         <footer>
 Давайте посмотрим еще раз.
 И так, есть кластер кафки
@@ -1111,8 +1111,8 @@ Partition 3 >> 3<sup>1</sup>|6<sup>2</sup>|9<sup>3</sup>|12<sup>4</sup>|15<sup>5
     <section class="slide">
         <h2>Kafka: Cluster</h2>
         <img src="../kafka-mogilev/pictures/kafka-architecture-cluster.svg" alt="" class="cover w" style="margin-top: 30px">
-   
-   
+
+
         <footer>
 Внутри кластера есть три брокера.
 Это достаточно стандартная, минимальная, простейшая, конфигурация.
@@ -1128,8 +1128,8 @@ Partition 3 >> 3<sup>1</sup>|6<sup>2</sup>|9<sup>3</sup>|12<sup>4</sup>|15<sup>5
     <section class="slide">
         <h2>Kafka: Partition Leaders</h2>
         <img src="../kafka-mogilev/pictures/kafka-architecture-partition-leader.svg" alt="" class="cover w" style="margin-top: 30px">
-   
-   
+
+
         <footer>
 
 В кафке для каждой реплицированной партиции выбирается свой лидер. Лидеры распределены по разным брокерам, а не сосредоточены на одном.
@@ -1147,8 +1147,8 @@ Partition 3 >> 3<sup>1</sup>|6<sup>2</sup>|9<sup>3</sup>|12<sup>4</sup>|15<sup>5
         some details on <a href="
 https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dzone.com</a>
         </span>
-   
-   
+
+
         <footer>
 Когда продьюсер делает запись в топик, он точно знает, в какую партицию он записывает. И, соответственно, он точно знает, на каком брокере расположен лидер этой партиции.
 После того, как сообщение записал лидер, оно реплицируется на всех остальные реплики.
@@ -1179,8 +1179,8 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
     <section class="slide">
         <h2>Kafka: Message structure</h2>
         <h3 class="shout">key, value<br>byte[], byte[]</h3>
-   
-   
+
+
         <footer>
 В простейшем случае содержимое сообщения представляет из себя вот это.
 Ключ, значение. И то, и другое - набор байтов.
@@ -1201,8 +1201,8 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
                 JSON, Protobuf, Thrift, <mark>Avro</mark>
             </small>
         </h3>
-   
-   
+
+
         <footer>
 Можно использовать любые сериализаторы, конечно.
 Можно хоть Pickle!
@@ -1220,8 +1220,8 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
         <span class="slide-footer">
         Fig. from <a href="https://www.confluent.io/blog/schemas-contracts-compatibility">confluent.io</a>
         </span> <!-- -->
-   
-   
+
+
         <!--
         <table id="serializators-schemas-payloads">
             <style>
@@ -1241,7 +1241,7 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
                 #serializators-schemas-payloads  tr > td tr > td {
                     border: 1px solid black;
                 }
-           
+
                 #serializators-schemas-payloads > tbody > tr > td {
                     padding: 5px 0;
                 }
@@ -1267,7 +1267,7 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
                     border-bottom: 1px solid red;
                 }
             </style>
-   
+
         <tr>
             <td></td>
             <td>SCHEMA</td>
@@ -1280,17 +1280,17 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
 <code class="plain">{   user_id:53,
     timestamp: 1497842472,
     address: "2 Elm St. Chattanooga, TN" }</code></pre></td>
-       
+
         </tr>
-   
-   
+
+
         <tr>
             <td></td>
             <td></td>
             <td>74 bytes</td>
         </tr>
-   
-   
+
+
         <tr>
             <td>Schema + Avro Payload</td>
             <td><pre><code>{"type":"record", "name": "Person", "fields": [
@@ -1299,7 +1299,7 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
      {"name": "address",   "type": "string"}]}</code></pre>
                  </td>
             <td>
-           
+
                 <table class="_custom_table__avro_payload">
                     <style>
                     .slide table._custom_table__avro_payload {
@@ -1307,7 +1307,7 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
                         padding: 0;
                         margin: 0;
                         margin-left: -1px;
-                   
+
                     }
                     .slide table._custom_table__avro_payload td {
                         margin: 0;
@@ -1330,16 +1330,16 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
                         </td>
                     </tr>
                 </table>
-       
+
             </td>
         </tr>
-   
+
         <tr>
             <td></td>
             <td>204 bytes</td>
             <td>34 bytes</td>
         </tr>
-   
+
         <tr>
             <td>Schema ID + Avro Payload</td>
             <td>32</td>
@@ -1361,18 +1361,18 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
                 </table>
             </td>
         </tr>
-   
+
         <tr>
             <td></td>
             <td>4 bytes</td>
             <td>34 bytes</td>
         </tr>
-   
-   
+
+
         </table>
         <!-- -->
-   
-   
+
+
         <footer>
 однако, есть недостаток. с каждым сообщением нужно передавать схему, чтобы можно было десериализовать. это невыгодно, даже по сравнению с json
 но есть выход: держать схемы отдельно, в доступном для десиарилизатора месте.
@@ -1419,14 +1419,14 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
             </tr>
         </table>
     </section>
-   
+
 
 
     <section class="slide">
         <h2>Kafka: Schema Registry Concept</h2>
         <img src="../kafka-mogilev/pictures/schema-registry-scheme.svg" alt="" class="cover w" style="margin-top: 20px">
-   
-   
+
+
         <footer>
 Такое место - реестр схем.
 Самое популярное решение для кафки - от конфлуента.
@@ -1449,9 +1449,9 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
         <footer>
             И так, давайте подведем какой-то промежуточный вывод по кафке.
             Кафка это несколько сложноватый инструмент, в предыдущих слайдах я старался не сильно выпячивать эту сложность. Но, похоже, у меня не получилось.
-       
+
             Но при этом Кафка хорошо масштабируется, обещает хорошую производительность и при этом надежное хранение данных и доступность этих данных.
-       
+
             Хотя, конечно, специалистов на нашем рынке, способных с кафкой совладать, не так уж много.
             К счастью, в нашей команде такие люди были. И остальные бойцы были готовы учиться.
         </footer>
@@ -1461,8 +1461,8 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
 
     <section class="slide ">
         <h2 class="shout">Microservices?</h2>
-   
-   
+
+
         <footer>
 Но давайте обратно к нашим микросервисам
 
@@ -1474,8 +1474,8 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
     <section class="slide">
         <h2>Microservices: Async Communication (Celery)</h2>
         <img src="../kafka-mogilev/pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix">
-   
-   
+
+
         <footer>
 Мы остановились на варианте с celery и хотим что-то изменить
 
@@ -1486,8 +1486,8 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
     <section class="slide">
         <h2>Microservices: Async Communication (Kafka)</h2>
         <img src="../kafka-mogilev/pictures/2-kafka.svg" alt="" class="cover w hotfix">
-   
-   
+
+
         <footer>
 
 Внедряем кафку.
@@ -1502,8 +1502,8 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
     <section class="slide">
         <h2>Microservices: Async. What about databases?</h2>
         <img src="../kafka-mogilev/pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">
-   
-   
+
+
         <footer>
 Как видно, первый сервис при своей работе что-то изменяет в своей базе данных. А потом сообщает о этих изменениях в кафку.
 Двойная работа.
@@ -1520,8 +1520,8 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
     <section class="slide ">
         <h2>Relational Database → Kafka</h2>
         <img src="../kafka-mogilev/pictures/logos/debezium.svg" class="cover" style="background: black; padding: 50px; width: 70%;">
-   
-   
+
+
         <footer>
 И так тоже можно!
 Дебезиум нам это даст
@@ -1537,8 +1537,8 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
         Fig. from <a href="
 https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</a>
         </span>
-   
-   
+
+
         <footer>
 Дебезиум реализует по своей сути концепт кафка-коннектора.
 Вот схема с их сайта.
@@ -1556,8 +1556,8 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
         Fig. from <a href="
 https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</a>
         </span>
-   
-   
+
+
         <footer>
 Нас интересуют только вот эти
 Дебезиум читает лог постгреса  и транслирует изменения в кафку.
@@ -1572,8 +1572,8 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
     <section class="slide">
         <h2>Microservices: Async. What about databases?</h2>
         <img src="../kafka-mogilev/pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">
-   
-   
+
+
         <footer>
 и теперь вот эта прошлая схема
 
@@ -1585,8 +1585,8 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
     <section class="slide">
         <h2>Microservices: Async. Debezium</h2>
         <img src="../kafka-mogilev/pictures/2-kafka-debezium.svg" alt="" class="cover w hotfix">
-   
-   
+
+
         <footer>
 превращается вот в эту.
 кода в сервисе стало меньше
@@ -1600,8 +1600,8 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
     <section class="slide">
         <h2>Microservices: Async. Debezium. Full</h2>
         <img src="../kafka-mogilev/pictures/microservices-comm-full.svg" alt="" class="cover w hotfix" style="margin-top: 130px">
-   
-   
+
+
         <footer>
 
 Итого мы пришли к вот такому решению.
@@ -1619,10 +1619,10 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
 Но а что по поводу большого потока данных из внешних источников
         </footer>
     </section>
-    
-    
-    
-    
+
+
+
+
     <section class="slide">
         <h2>Application Diagram + External Data Handling</h2>
         <img src="pictures/4-ms-aws-without-wordpress.svg" alt="" class="cover w">
@@ -1686,11 +1686,11 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
             <span class="label">
                 confluent-kafka-python
             </span>
-       
+
             <span class="label">
                 aiokafka
             </span>
-       
+
         </div>
     </section> <!-- -- -->
 
@@ -1753,7 +1753,7 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
         <h2>What about Throughput?</h2>
         <!-- PRODUCER -->
         <style>
-   
+
         .slide table.striped tr:nth-child(even) { background: rgba(64, 64, 64, .35) }
         .special-throughput tr td:last-child, .special-throughput td {
              text-align: right ;
@@ -1834,7 +1834,7 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
               </tbody>
             </table>
         </table>
-   
+
         <div class="slide-footer">
             benchmarking by <a href="http://matthewrocklin.com/blog/work/2017/10/10/kafka-python">Matthew Rocklin</a>
         </div>
@@ -1871,7 +1871,7 @@ for something in range(1000):
     # Wait until all messages have been delivered
     producer.flush()
     </code></pre>
-   
+
     </section>
 
 
@@ -1898,13 +1898,13 @@ try:
                   msg.key(), msg.value())
 finally:
     consumer.close() # ... to commit final offsets.
-       
-       
-       
+
+
+
             x
-       
+
         </code></pre>
-   
+
     </section>
 
 
@@ -1934,8 +1934,8 @@ finally:
     <section class="slide ">
         <h2 class="shout">Thanks!</h2>
         </div>
-   
-   
+
+
         <footer>
 Спасибо за внимание
 
@@ -1947,8 +1947,8 @@ finally:
     <section class="slide ">
         <h2 class="shout">Questions?</h2>
         </div>
-   
-   
+
+
         <footer>
 Буду рад вашим вопросам.
 
