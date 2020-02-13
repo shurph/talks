@@ -158,6 +158,9 @@
         padding-left: 150px;
         padding-top: 25px;
     }
+    .bg-gradient-pink {
+        background: rgb(240,111,170); background: linear-gradient(100deg, rgba(240,111,170,1) 0%, rgba(157,122,184,1) 100%);
+    }
     </style>
 </head>
 
@@ -200,7 +203,7 @@
     
     
     
-    <section class="slide half-red  clear">
+    <section class="slide half-red  no-logo">
         <div style="width: 40%; padding-right: 0">
             <h3 style="
                     font-size: 1.8rem; line-height: 1.33;   margin-bottom: 0rem; ;
@@ -236,7 +239,7 @@
 
 
 
-    <section class="slide clear black">
+    <section class="slide  black">
         <img src="../kafka-mogilev/pictures/monolith_by_reneaigner.jpg" alt="" class="cover h" style="height: 110%; max-height: 110%">
         <span class="slide-footer" style="font-size: 12px;" >
             art by <a href="https://www.deviantart.com/reneaigner/art/Monolith-283096035">René Aigner</a> 
@@ -255,7 +258,7 @@
     
     
     
-    <section class="slide clear ">
+    <section class="slide  ">
         <img src="../kafka-mogilev/pictures/monolith_by_reneaigner_edited.jpg" alt="" class="cover h" style="height: 110%; max-height: 110%">
         <h3>Monolithic MVP</h3>
 <ul>
@@ -287,7 +290,7 @@
     </section><!---->
     
     
-    <section class="slide clear black">
+    <section class="slide  bg-gradient-pink">
         <img src="../kafka-mogilev/pictures/microservices-microservices-everywhere.jpeg" alt="" class="cover"> 
         
         
@@ -298,9 +301,8 @@
         </footer>         
     </section>
     
-    
 
-    <section class="slide ">
+    <section class="slide bg-gradient-pink">
         <img src="../kafka-mogilev/pictures/mono-to-micro-3-more-real.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
         <div class="slide-footer" style="bottom: 0.5rem; font-size:10px">
@@ -315,7 +317,7 @@
     </section>
     
 
-    <section class="slide "> <!-- EDITED 1 -->
+    <section class="slide bg-gradient-pink"> <!-- EDITED 1 -->
         <img src="../kafka-mogilev/pictures/mono-to-micro-4-even-more-real.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
         
@@ -327,7 +329,7 @@
         </footer>
     </section>
     
-    <section class="slide "> <!-- EDITED 2 -->
+    <section class="slide bg-gradient-pink"> <!-- EDITED 2 -->
         <img src="../kafka-mogilev/pictures/mono-to-micro-5-more-relations.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
         
@@ -339,7 +341,7 @@
         </footer>
     </section>
     
-    <section class="slide "> <!-- EDITED 3 -->
+    <section class="slide bg-gradient-pink"> <!-- EDITED 3 -->
         <img src="../kafka-mogilev/pictures/mono-to-micro-6-a-lot-of-relations.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
         
@@ -370,7 +372,7 @@
         );
       }
     </style>
-    <section class="slide">
+    <section class="slide bg-gradient-pink">
         <h2 class="lite shadowed">Microservices: Coupling and Cohesion?</h2>
         <img src="../kafka-mogilev/pictures/distributed-monolith.png" alt="" class="cover h">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
@@ -578,8 +580,6 @@ Celery!
 
     
 
-
-
     <section class="slide">
         <h2 class="shout">
             Kafka for what??
@@ -587,6 +587,48 @@ Celery!
     </section>
          
          
+    <section class="slide">
+        <h2>
+            Kafka for what??
+        </h2>
+        
+        <ul class="huge" style="float:left">
+            <li>
+        Messaging
+            <li>
+        Metrics
+            <li>
+        Log Aggregation
+            <li>
+        Website Activity Tracking
+        </ul>
+        <ul class="huge" style="float:left">
+            <li>
+        Stream Processing
+            <li>
+        Event Sourcing
+            <li>
+        Queue
+            
+        </ul>
+        
+        
+        <footer>
+Для чего кафку используют?
+Для сбора и передачи сообщений. В том числе каких-то метрик, каких-то действий пользователя на сайте.
+Можно использовать для сбора логов приложений. 
+Да много для чего можно использовать.
+В том числе и для построения очередей.
+
+
+
+В принципе, что-то из этого можно делать и с использованием других технологий...
+        </footer>
+    </section>
+    
+    
+         
+    <!-- 
     <section class="slide">
         <h2>
             Kafka for what??
@@ -611,29 +653,12 @@ Celery!
             <span class="label">
         Event Sourcing
             </span>
-            <span class="label">
-        Commit Log
-            </span>
-        </div>
-        <div class="tags-baloons">
+        <br>
             <span class="label">
         Queue
             </span>
         </div>
-        
-        
-        <footer>
-Для чего кафку используют?
-Для сбора и передачи сообщений. В том числе каких-то метрик, каких-то действий пользователя на сайте.
-Можно использовать для сбора логов приложений. 
-Да много для чего можно использовать.
-В том числе и для построения очередей.
-
-
-
-В принципе, что-то из этого можно делать и с использованием других технологий...
-        </footer>
-    </section>
+    </section> <!-- -- -->
     
 
 
@@ -671,6 +696,44 @@ Celery!
         <h2>
             Alternatives for Kafka
         </h2>
+        <ul class="huge" style="float:left; width: 50%;">
+            <li>
+                RabbitMQ
+            <li>
+                ActiveMQ
+            <li>
+                NATS
+        </ul>   
+        <ul class="huge" style="float:right; width: 50%;">
+            <li>
+               Apache Pulsar
+            <li>
+                NSQ
+            <li>
+                AWS Kinesis
+        </ul>   
+        <footer>
+А есть ли вообще хорошие альтернативы Кафке?
+Зачастую приводят вот такие интрументы.
+
+Рэбит и Актив MQ не могут похвастаться такими цифрами в плане производителности, да и с масштабированием у них чуть похуже.
+
+А вот эта тройка, NATS, Pulsar, NSQ, вполне себе хвалится цифрами в бенчмарках. Где-то даже эти цифры поинтереснее.
+Но нужно же еще смотреть и на популярность технологии. На поддержку со стороны сообщества и различных вендоров. Сейчас Кафка выигрывает в этом плане.
+
+Ну и Kinesis. Если вы хотите привязать себя намертво к амазону, то почему бы и нет. Тем более у кинезиса есть много интересных штук...
+Но если вы хотите чувствовать себя посвободнее, то амазон с недавних пор предоставляет Кафку как сервис. Дороговато чуть-чуть, но убирает головную боль по администрированию кластера в какой-то степени.
+
+        </footer>
+    </section> 
+    
+    
+    
+    <!--
+    <section class="slide">
+        <h2>
+            Alternatives for Kafka
+        </h2>
         <div class="tags-baloons">
             <span class="label">
                 RabbitMQ
@@ -695,22 +758,7 @@ Celery!
                 AWS Kinesis
             </span>
         </div>     
-        
-        
-        <footer>
-А есть ли вообще хорошие альтернативы Кафке?
-Зачастую приводят вот такие интрументы.
-
-Рэбит и Актив MQ не могут похвастаться такими цифрами в плане производителности, да и с масштабированием у них чуть похуже.
-
-А вот эта тройка, NATS, Pulsar, NSQ, вполне себе хвалится цифрами в бенчмарках. Где-то даже эти цифры поинтереснее.
-Но нужно же еще смотреть и на популярность технологии. На поддержку со стороны сообщества и различных вендоров. Сейчас Кафка выигрывает в этом плане.
-
-Ну и Kinesis. Если вы хотите привязать себя намертво к амазону, то почему бы и нет. Тем более у кинезиса есть много интересных штук...
-Но если вы хотите чувствовать себя посвободнее, то амазон с недавних пор предоставляет Кафку как сервис. Дороговато чуть-чуть, но убирает головную боль по администрированию кластера в какой-то степени.
-
-        </footer>
-    </section> 
+    </section> <!-- -- -->
          
     
     <section class="slide">
@@ -1118,7 +1166,7 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
 
     <section class="slide">
         <h2 style="border: none">Kafka: Schema overhead</h2>
-        <img src="../kafka-mogilev/pictures/confluent_schema_registry-1.png" alt="" class="cover" style="margin-top: 30px">  
+        <img src="pictures/confluent_schema_registry-1-0.png" alt="" class="cover" style="margin-top: 30px">  
         <span class="slide-footer">
         Fig. from <a href="https://www.confluent.io/blog/schemas-contracts-compatibility">confluent.io</a>
         </span> <!-- -->
@@ -1289,30 +1337,35 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
 
     <section class="slide">
         <h2 style="border: none">Kafka: Schema overhead</h2>
-        <table>
+        <table id="table-schema-overhead">
+            <style>#table-schema-overhead td:last-child { color: red } </style>
             <tr>
                 <td>Approach</td>
                 <td>Schema</td>
                 <td>Payload</td>
                 <td>Total</td>
+                <td>Overhead</td>
             </tr>
             <tr>
                 <td>JSON (Schemaless)</td>
                 <td>0</td>
                 <td>74</td>
                 <td>74</td>
+                <td>~ 2x</td>
             </tr>
             <tr>
                 <td>Schema + Avro Payload</td>
                 <td>204</td>
                 <td>34</td>
                 <td>238</td>
+                <td>~ 6x</td>
             </tr>
             <tr>
                 <td>Schema ID + Avro Payload</td>
                 <td>4</td>
                 <td>34</td>
                 <td>38</td>
+                <td>&nbsp;&nbsp; 1x</td>
             </tr>
         </table>
     </section>
@@ -1539,7 +1592,7 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
 
 
 
-    <section class="slide ">
+    <section class="slide red">
         <h2>some conclusions about kafka+microservices</h2>
         <h2 class="shout">?</h2>
     </section>
@@ -1554,6 +1607,21 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
     </section>
     
     
+    <section class="slide ">
+        <h2>Python libraries to work with Kafka</h2>
+        <ul class="huge">
+            <li>
+                kafka-python
+            <li>
+                pykafka
+            <li>
+                confluent-kafka-python
+            <li>
+                aiokafka
+        </ul>  
+    </section>
+    
+    <!-- 
     <section class="slide ">
         <div class="tags-baloons ">
             <span class="label">
@@ -1571,12 +1639,15 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
             </span>
             
         </div>  
+    </section> <!-- -- -->
+    
+    
+    
         <!-- сравнение (2016 год) http://activisiongamescience.github.io/2016/06/15/Kafka-Client-Benchmarking/ -->
         <!-- сравнение (2017 год) http://matthewrocklin.com/blog/work/2017/10/10/kafka-python -->
         <!-- еще одно сравнение, без таблиц (2017 год) https://blog.datasyndrome.com/a-tale-of-two-kafka-clients-c613efab49df -->
         <!-- код для бенчмаркинга: https://github.com/sucitw/benchmark-python-client-for-kafka -->
         <!-- ^ доклад по этому бенчмарку и общий рассказ про Кафку https://speakerdeck.com/sucitw/connect-k-of-smack-pykafka-kafka-python-or?slide=25 -->  
-    </section>
     
     <section class="slide ">
         <h2>What to choose?</h2>
@@ -1718,29 +1789,34 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
     </section>
     
     
-    
+    <style>
+    .slide pre code.normal-in-center {
+        margin: 0; padding:0; margin-top: -2.5em; line-height: 1; font-size:22px; width: 100%; overflow: hidden;
+    }
+    .underlined-block {
+        display: inline-block; border-bottom: 5px solid purple; padding-bottom: 0.25rem; width: 100%
+    }
+    </style>
     <section class="slide">
         <h2>Kafka Producer on Python</h2>
-        <pre><code style="margin-top: -2rem; line-height: 1; font-size:20px">
-from confluent_kafka import Producer
-import sys
-if __name__ == '__main__':
-    broker = sys.argv[1]
-    topic = sys.argv[2]
-        
-    producer = Producer(**{'bootstrap.servers': broker})
-    delivery_callback = lambda err, msg: print(err or msg)
+        <pre><code class="normal-in-center"><span class="underlined-block">
+import sys; from confluent_kafka import Producer
+broker = sys.argv[1]
+topic = sys.argv[2]
+delivery_callback = lambda err, msg: print(err or msg)</span>
 
-    for something in range(1000):
-        try:
-            producer.produce(topic, str(something),
-                      callback=delivery_callback)
-        except BufferError:
-            print("Local producer queue is full, try again")
-        # Serve delivery callback queue.
-        producer.poll(0)
-        # Wait until all messages have been delivered
-        producer.flush()
+producer = Producer(**{'bootstrap.servers': broker})
+
+for something in range(1000):
+    try:
+        producer.produce(topic, str(something),
+                  callback=delivery_callback)
+    except BufferError:
+        print("Local producer queue is full, try again")
+    # Serve delivery callback queue.
+    producer.poll(0)
+    # Wait until all messages have been delivered
+    producer.flush()
     </code></pre>
         
     </section>
@@ -1749,29 +1825,30 @@ if __name__ == '__main__':
 
     <section class="slide">
         <h2>Kafka Consumer on Python</h2>
-        <pre><code style="margin-top: -2rem; line-height: 1; font-size:20px">
-from confluent_kafka import Consumer, KafkaException
-import sys
-if __name__ == '__main__':
-    broker, group, topics = sys.argv[1], sys.argv[2], sys.argv[3:]
-    conf = {'bootstrap.servers': broker, 'group.id': group,
-            'auto.offset.reset': 'earliest'}
-    clb = lambda consumer, p: print('Assigned partition:', p)
-
-    consumer = Consumer(conf)
-    consumer.subscribe(topics, on_assign=clb)
-    try:
-        while True:
-            msg = c.poll(timeout=1.0)
-            if msg is None:
-                continue
-            if msg.error():
-                raise KafkaException(msg.error())
-            else:
-                print(msg.topic(), msg.partition(), msg.offset(),
-                      msg.key(), msg.value())
-    finally:
-        consumer.close() # ... to commit final offsets.
+        <pre><code class="normal-in-center"><span class="underlined-block">
+import sys; from confluent_kafka import Consumer, KafkaException
+broker, group, topics = sys.argv[1], sys.argv[2], sys.argv[3:]
+conf = {'bootstrap.servers': broker, 'group.id': group,
+        'auto.offset.reset': 'earliest'}
+clb = lambda consumer, p: print('Assigned partition:', p)</span>
+consumer = Consumer(conf)
+consumer.subscribe(topics, on_assign=clb)
+try:
+    while True:
+        msg = c.poll(timeout=1.0)
+        if msg is None:
+            continue
+        if msg.error():
+            raise KafkaException(msg.error())
+        else:
+            print(msg.topic(), msg.partition(), msg.offset(),
+                  msg.key(), msg.value())
+finally:
+    consumer.close() # ... to commit final offsets.
+            
+            
+            
+            x
             
         </code></pre>
         
