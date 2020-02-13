@@ -147,6 +147,13 @@
         color: rgba(255,255,255, 0.45);
     }
 
+
+    .slide .shout.smaller {
+        font-size: 58px;
+    }
+    .slide .shout.smaller-more {
+        font-size: 42px;
+    }
     .huge {
         font-size: 42px;
     }
@@ -236,6 +243,12 @@
     <section class="slide">
         <h2 class="shout">the App</h2>
     </section>
+    
+    
+    <section class="slide">
+        <h2 class="shout smaller">Django is Awesome for Rapid Development</h2>
+    </section>
+    
 
 
 
@@ -401,11 +414,12 @@
 
 
 
-
-
-    <section class="slide red">
-        <h2 class="shout">// TBD: AWS Scheme</h2>
+    
+    <section class="slide">
+        <h2>Here we are</h2>
+        <img src="pictures/4-ms-aws-only-5-services.svg" alt="" class="cover">
     </section>
+
 
 
 
@@ -414,7 +428,7 @@
            margin-top: 5%; width: 90%
        }
     </style>
-    <section class="slide">
+    <section class="slide red">
         <h2>Microservices: Synchronous Communication</h2>
         <center style="margin-top: -25px">
             ( REST API )
@@ -432,11 +446,6 @@
 
 
     <section class="slide red">
-        <h2 class="shout">// TBD: AWS Scheme</h2>
-    </section>
-
-
-    <section class="slide">
         <h2>Microservices: Synchronous Communication</h2>
         <center style="margin-top: -25px">
             ( REST API )
@@ -463,11 +472,31 @@
     <section class="slide red">
         <h2 class="shout">// TBD: Celery</h2>
     </section>
-
-    <section class="slide red">
-        <h2 class="shout">// TBD: AWS Scheme</h2>
+    
+    <section class="slide">
+        <h2>Here we are</h2>
+        <img src="pictures/4-ms-aws-only-5-services.svg" alt="" class="cover">
     </section>
 
+    <section class="slide">
+        <h2>Here we are</h2>
+        <img src="pictures/4-ms-aws-only-5-services-and-celery.svg" alt="" class="cover">
+    </section>
+    
+    
+    <section class="slide">
+        <h2>Here we are</h2>
+        <img src="pictures/4-ms-aws-only-5-services-and-kafka.svg" alt="" class="cover">
+    </section>
+    
+    <section class="slide">
+        <h2>Here we are</h2>
+        <img src="pictures/services-kafka-dbs.svg" alt="" class="cover" style="width: 85%">
+    </section>
+    <section class="slide">
+        <h2>Here we are</h2>
+        <img src="pictures/services-kafka-dbs-debezium.svg" alt="" class="cover" style="width: 90%">
+    </section>
 
 
     <!--
@@ -1503,7 +1532,7 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
 
     <section class="slide">
         <h2>Stream data from RDBS to Kafka</h2>
-        <img src="../kafka-mogilev/pictures/debezium-architecture.png" alt="" class="cover w" style="margin-top: 30px">
+        <img src="../kafka-mogilev/pictures/debezium-architecture.png" alt="" class="cover w" style="width: 90%">
         <span class="slide-footer">
         Fig. from <a href="
 https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</a>
@@ -1582,27 +1611,30 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
 
     <section class="slide">
         <h2>Application Diagram</h2>
-        <img src="../kafka-mogilev/pictures/4-ms-aws.svg" alt="" class="cover w hotfix">
-   
-   
+        <img src="pictures/4-ms-aws-without-wordpress-and-crawlers.svg" alt="" class="cover w">
         <footer>
-
 Давайте что-то более привычное нарисуем.
 Вот на этой схеме можно заметить, что с помощью дебезиума и кафки мы полностью отвязали наше впереди-стоящее джанго приложение от остальных микросервисов.
 
 Но а что по поводу большого потока данных из внешних источников
-
         </footer>
+    </section>
+    
+    
+    
+    
+    <section class="slide">
+        <h2>Application Diagram + External Data Handling</h2>
+        <img src="pictures/4-ms-aws-without-wordpress.svg" alt="" class="cover w">
     </section>
 
 
-    <section class="slide">
-        <h2>Application Diagram. External Data Handling</h2>
-        <img src="../kafka-mogilev/pictures/4-ms-aws-full.svg" alt="" class="cover w hotfix">
-   
-   
-        <footer>
 
+
+    <section class="slide">
+        <h2>Application Diagram + Marketing Website</h2>
+        <img src="pictures/4-ms-aws-full.svg" alt="" class="cover w">
+        <footer>
 Еще пара микросервисов решат эту задачу.
 Забираем данные, помещаем в кафку.
 Достаем из кафки, анализируем, преобразуем, кладем в базу данных основного сервиса.
@@ -1815,7 +1847,7 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
         margin: 0; padding:0; margin-top: -2.5em; line-height: 1; font-size:22px; width: 100%; overflow: hidden;
     }
     .underlined-block {
-        display: inline-block; border-bottom: 5px solid purple; padding-bottom: 0.25rem; width: 100%
+        display: inline-block; border-bottom: 5px solid red; padding-bottom: 0.25rem; width: 100%
     }
     </style>
     <section class="slide">
