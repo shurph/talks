@@ -428,40 +428,15 @@
            margin-top: 5%; width: 90%
        }
     </style>
-    <section class="slide red">
+    <section class="slide">
         <h2>Microservices: Synchronous Communication</h2>
-        <center style="margin-top: -25px">
-            ( REST API )
-        </center>
-        <img src="../kafka-mogilev/pictures/1-few.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-Давайте рассмотрим практический случай.
-Вот у нас запрос от пользователя. Он затрагивает три микросервиса.
-Запросы  идут последовательно,... павольна! не быстро, то есть.
-
-        </footer>
+        <img src="pictures/stolp-5-easy-1.svg" alt="" class="cover">
     </section>
 
 
-    <section class="slide red">
+    <section class="slide">
         <h2>Microservices: Synchronous Communication</h2>
-        <center style="margin-top: -25px">
-            ( REST API )
-        </center>
-        <img src="../kafka-mogilev/pictures/1-many.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-А еще у нас-то может оказаться, напомню, распределенный монолит.
-И запрос от пользователя может пройтись по нашим микросервисам 5, 6, 7 раз!
-И пользователь будет ждать.
-А не хотелось бы.
-
-К счастью, в нашем случае, удача была на нашей стороне и все вот эти опросы других четырех сервисов никак не влияли на конечный результат для пользователя. Они лишь запускали какие-то изменения в системе, нужные самой системе, а не пользователю вот прямо сейчас.
-
-        </footer>
+        <img src="pictures/stolp-5-hard-many.svg" alt="" class="cover">
     </section>
 
 
@@ -507,29 +482,19 @@
         </span>
     </section><!-- -->
 
-    <section class="slide red">
+    <section class="slide">
+        <h2>Microservices: Synchronous Communication</h2>
+        <img src="pictures/stolp-5-hard-many.svg" alt="" class="cover">
+    </section>
+    <section class="slide">
         <h2>Microservices: Async Communication (Celery)</h2>
-        <img src="../kafka-mogilev/pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-Ну и конечно же, первое что приходит на ум питонисту, когда у него на руках джанго и намечается какое-то асинхронное поведение.
-Celery!
-Вынесем те участки кода, которые взаимодействуют с другими микросервисами, в Celery таски! Делов-то!
-
-Однако, здесь возникают моментики...
-Ранее при каких-то проблемах в цепочке запросов мы могли просто сказать пользователю «Моряк, ты слишком долго плавал! Попробуй еще раз!». Не самый элегантный подход, но простой, как грабли.
-А теперь нам нужно думать. Что делать, если запрашиваемый сервис сейчас недоступен, например? Забить на эту celery-таску? Или закинуть ее еще раз в очередь, вдруг во второй раз она выполнится успешно? Или в третий?
-Тоже вполне себе рабочий подход.
-Но почему вообще первый микросервис должен заботиться о всех этих вещах? Почему он вообще должен знать о других сервисах, если для работы с пользователем ему другие сервисы не нужны-то напрямую?
-
-        </footer>
+        <img src="pictures/stolp-5-and-celery.svg" alt="" class="cover">
     </section>
 
 
     <section class="slide">
         <h2>Microservices: Async Communication (Celery)</h2>
-        <img src="../kafka-mogilev/pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix" style="opacity: 0.35">
+        <img src="pictures/stolp-5-and-celery.svg" alt="" class="cover" style="opacity: 0.3">
         <h3 class="shout">
 
             <img src="../kafka-mogilev/pictures/emoji/thinking-face.svg">
@@ -1833,11 +1798,11 @@ finally:
     
     <section class="slide">
         <h2>Microservices: Async Communication (Celery)</h2>
-        <img src="../kafka-mogilev/pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix">
+        <img src="pictures/stolp-5-and-celery.svg" alt="" class="cover">
     </section>
-    <section class="slide red">
+    <section class="slide">
         <h2>Microservices: Async Communication (Kafka)</h2>
-        <img src="../kafka-mogilev/pictures/2-kafka.svg" alt="" class="cover w hotfix">
+        <img src="pictures/stolp-5-kafka.svg" alt="" class="cover">
     </section>
 
 
@@ -1852,9 +1817,13 @@ finally:
         <h2>Here we are</h2>
         <img src="pictures/services-kafka-dbs.svg" alt="" class="cover" style="width: 85%">
     </section>
-    <section class="slide red">
-        <h2>Microservices: Async. What about databases?</h2>
-        <img src="../kafka-mogilev/pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">
+    <section class="slide">
+        <h2>Microservices: Async Communication (Kafka)</h2>
+        <img src="pictures/stolp-5-kafka.svg" alt="" class="cover">
+    </section>
+    <section class="slide">
+        <h2>Microservices: Async. Debezium. Full</h2>
+        <img src="pictures/stolp-5-kafka-dbs.svg" alt="" class="cover">
     </section>
     
     
@@ -1899,17 +1868,19 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
     </section>
     
 
-    <section class="slide red">
-        <h2>Microservices: Async. What about databases?</h2>
-        <img src="../kafka-mogilev/pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">
+
+    <section class="slide">
+        <h2>Microservices</h2>
+        <img src="pictures/stolp-5-kafka-dbs.svg" alt="" class="cover">
     </section>
-    
+
 
 
     <section class="slide red">
         <h2>Microservices: Async. Debezium. Full</h2>
-        <img src="../kafka-mogilev/pictures/microservices-comm-full.svg" alt="" class="cover w hotfix" style="margin-top: 130px">
+        debezium here
     </section>
+
 
     <section class="slide">
         <h2>Here we are</h2>
