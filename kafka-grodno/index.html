@@ -521,7 +521,7 @@
         </span>
     </section><!-- -->
 
-    <section class="slide">
+    <section class="slide red">
         <h2>Microservices: Async Communication (Celery)</h2>
         <img src="../kafka-mogilev/pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix">
 
@@ -744,26 +744,61 @@ Celery!
 
 
 
-    <section class="slide">
+    <section class="slide" id="alter-cust">
         <h2>
             Alternatives for Kafka
         </h2>
-        <ul class="huge" style="float:left; width: 50%;">
+        
+        
+        <style>
+        #alter-cust .slighty-centerized
+        {   
+            display: inline-block;
+            margin-left: -1em;
+            color: #4f2fbe;
+            font-weight: bold;/*
+            border: 1px solid #4f2fbe;
+            border-radius: 100%;
+            padding: 0.1em;
+            line-height: 1;
+            text-align: center;
+            vertical-align: center;
+            width: 1.3em;
+            height: 1.3em; /**/
+        }
+        </style>
+        
+        
+        <div class="huge" style="float:left; width: 33%;">
+        <span class="slighty-centerized">1</span>
+        <ul>
             <li>
                 RabbitMQ
             <li>
                 ActiveMQ
-            <li>
-                Artemis
         </ul>
-        <ul class="huge" style="float:right; width: 50%;">
+        </div>
+        
+        <div class="huge" style="float:left; width: 33%;">
+        <span class="slighty-centerized">2</span>
+        <ul>
             <li>
                 NATS
             <li>
                Apache Pulsar
             <li>
+                Artemis
+        </ul>
+        </div>
+        
+        <div class="huge" style="float:left; width: 33%;">
+        <span class="slighty-centerized">3</span>
+        <ul>
+            <li>
                 AWS Kinesis
         </ul>
+        </div>
+        
         <footer>
 А есть ли вообще хорошие альтернативы Кафке?
 Зачастую приводят вот такие интрументы.
@@ -820,12 +855,17 @@ Celery!
     </section>
 
 
-    <section class="slide">
+    <section class="slide red">
         <h2>Kafka: Overview</h2>
         <img src="../kafka-mogilev/pictures/kafka-architecture-topics-producers-consumers.svg" alt="" class="cover w hotfix">
         <span class="slide-footer" style="font-size:12px">
         see some details on <a href="https://dzone.com/articles/kafka-architecture">dzone.com</a>
         </span>
+<!-- TODO: -->
+здесь -- схема из draw.io:<br>
+- фиолетовый квадрат кафки<br>
+- оранжевые инстансы продьюсеров<br>
+- фиолетовые инстансы косюмеров,<br> обьединенные в консюмер-группы красным контуром
 
 
         <footer>
@@ -839,7 +879,17 @@ Celery!
     </section>
 
 
+    <section class="slide red">
+<!-- TODO: -->
+здесь -- схема из draw.io, показывающая, что внутри кафка-кластера:<br>
+- несколько (3) брокеров<br>
+- несколько (2-3) топика на каждом брокере<br>
+- несколько (1-2-3) партиции в каждом топике<br>
+    </section>
 
+
+
+<!-- эти слайды - не нужны
     <section class="slide">
         <h2>Kafka: Partitions for Topics</h2>
         <img src="../kafka-mogilev/pictures/kafka-partitioning-0.png" alt="" class="cover h" style="margin-top: -30px">
@@ -855,7 +905,7 @@ Celery!
 
         </footer>
     </section>
-
+-->
     <!--
     <section class="slide">
         <h2>Kafka: Partitions (m Partitions&gt; n Consumers)</h2>
@@ -881,6 +931,8 @@ Celery!
 </a>
         </span>
     </section><!-- -->
+    
+<!-- эти слайды - не нужны
     <section class="slide">
         <h2>Kafka: Partitions: few consumer groups</h2>
         <img src="../kafka-mogilev/pictures/kafka-partitioning-4-few-groups-of-consumers.png" alt="" class="cover h" style="margin-top: -30px; height: 80%;">
@@ -898,7 +950,7 @@ Celery!
 Но группы потребителей работают независимо. Сообщения из топика после обработки не удаляются, поэтому вторая группа может обработать те же сообщения, но уже со своей логикой обработки.
 
         </footer>
-    </section>
+    </section><!-- -->
 
 
     <section class="slide">
@@ -906,24 +958,26 @@ Celery!
         <h3 class="shout" style="font-size: 42px">
             <span>1 partition per topic</span>
             <br>
-            <span>2 consumers groups</span>
+            <span>1 consumers group</span>
             <br>
-            <span>1 consumer per group</span>
+            <span>1 consumer in group</span>
         </h3>
     </section>
 
 
 
-    <section class="slide">
+    <section class="slide red">
         <h2>Kafka: Consumers Offsets Example for 1 Partition</h2>
             <pre class="plain"><code style="line-height: 1!important">
 
 
-          ┌───[Consumer Group 1]
-          │<span style="color:darkred">
+            ┌───[Consumer Group 1]
+            │<span style="color:darkred">
 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18</span>
-    │
-    └───[Consumer Group 2]
+│         │
+└ cmmited ─
+
+<h2 class="shout">перерисовать в draw.io</h2> 
             </code></pre>
 
 
@@ -936,6 +990,21 @@ Celery!
         </footer>
     </section>
 
+
+
+    <section class="slide red">
+        следующая стадия предыдущего сладйа, 2
+    </section>
+
+    <section class="slide red">
+        следующая стадия предыдущего сладйа, 3
+    </section>
+
+    <section class="slide red">
+        следующая стадия предыдущего сладйа, 4
+    </section>
+
+<!-- эти слайды - не нужны
 
     <section class="slide">
         <h2>Kafka: Consumers Offsets Example for 1 Partition</h2>
@@ -1005,7 +1074,7 @@ Celery!
         </footer>
     </section>
 
-
+-->
 
     <section class="slide">
         <h2>Kafka: Reset Consumer Group Offsets tooling</h2>
@@ -1028,6 +1097,8 @@ Celery!
 
         </footer>
     </section>
+
+<!-- эти слайды - не нужны
 
 
     <section class="slide">
@@ -1084,17 +1155,31 @@ Partition 3 >> 3<sup>1</sup>|6<sup>2</sup>|9<sup>3</sup>|12<sup>4</sup>|15<sup>5
 
 
 
+-->
 
 
 
 
 
 
+    <section class="slide red">
+<!-- TODO: -->
+здесь -- (ОПЯТЬ) -- схема из draw.io, показывающая, что внутри кафка-кластера:<br>
+- несколько (3) брокеров<br>
+- несколько (2-3) топика на каждом брокере<br>
+- несколько (1-2-3) партиции в каждом топике<br>
+    </section>
 
 
 
+    <section class="slide red">
+<!-- TODO: -->
+здесь --  схема из draw.io, показывающая, как работает репликация на базе лидеров
+    </section>
 
 
+
+<!-- эти слайды - не нужны
     <section class="slide">
         <h2>Kafka: Overview, again :-)</h2>
         <img src="../kafka-mogilev/pictures/kafka-architecture-topics-producers-consumers.svg" alt="" class="cover w" style="margin-top: 20px">
@@ -1140,7 +1225,7 @@ Partition 3 >> 3<sup>1</sup>|6<sup>2</sup>|9<sup>3</sup>|12<sup>4</sup>|15<sup>5
 
 
 
-
+-->
 
     <section class="slide">
         <h2>Kafka: Replication</h2>
@@ -1438,227 +1523,14 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
 
 
 
-
     <section class="slide">
-        <h2>Kafka: some conclusion</h2>
-        <ul>
-            <li>complicated <b>a bit</b></li>
-            <li><b>highly</b> scalable</li>
-            <li>good performance (2,000,000 msg/sec)</li>
-            <li><i>pretty good</i> availability</li>
-            <li><b>not so many</b> specialists</li>
-        </ul>
-        <footer>
-            И так, давайте подведем какой-то промежуточный вывод по кафке.
-            Кафка это несколько сложноватый инструмент, в предыдущих слайдах я старался не сильно выпячивать эту сложность. Но, похоже, у меня не получилось.
-
-            Но при этом Кафка хорошо масштабируется, обещает хорошую производительность и при этом надежное хранение данных и доступность этих данных.
-
-            Хотя, конечно, специалистов на нашем рынке, способных с кафкой совладать, не так уж много.
-            К счастью, в нашей команде такие люди были. И остальные бойцы были готовы учиться.
-        </footer>
+        <h2 class="shout">Let's see some code</h2>
     </section>
-
-
-
-    <section class="slide ">
-        <h2 class="shout">Microservices?</h2>
-
-
-        <footer>
-Но давайте обратно к нашим микросервисам
-
-
-        </footer>
-    </section>
-
-
-    <section class="slide">
-        <h2>Microservices: Async Communication (Celery)</h2>
-        <img src="../kafka-mogilev/pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-Мы остановились на варианте с celery и хотим что-то изменить
-
-
-        </footer>
-    </section>
-
-    <section class="slide">
-        <h2>Microservices: Async Communication (Kafka)</h2>
-        <img src="../kafka-mogilev/pictures/2-kafka.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-
-Внедряем кафку.
-Первый сервис пишет в кафку.
-А дальше мы уже в других сервисах, местами, отказываемся от реста и назначаем их ответственными за реагирование на происходящие изменения в первом сервисе.
-У второго и третьего сервиса появились маленькие подсервисы - кафка консумеры.
-Вроде бы неплохо.
-Но можно лучше.
-        </footer>
-    </section>
-
-    <section class="slide">
-        <h2>Microservices: Async. What about databases?</h2>
-        <img src="../kafka-mogilev/pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-Как видно, первый сервис при своей работе что-то изменяет в своей базе данных. А потом сообщает о этих изменениях в кафку.
-Двойная работа.
-Может, ну ее, эту кафку?
-Зачем одни и те же данные писать два раза в два места, и поддерживать эту логику в коде сервиса?
-Было бы хорошо, если бы данные сами в кафку ходили!
-
-        </footer>
-    </section>
-
-
-
-
-    <section class="slide ">
-        <h2>Relational Database → Kafka</h2>
-        <img src="../kafka-mogilev/pictures/logos/debezium.svg" class="cover" style="background: black; padding: 50px; width: 70%;">
-
-
-        <footer>
-И так тоже можно!
-Дебезиум нам это даст
-
-
-        </footer>
-    </section>
-
-    <section class="slide">
-        <h2>Stream data from RDBS to Kafka</h2>
-        <img src="../kafka-mogilev/pictures/debezium-architecture.png" alt="" class="cover w" style="width: 90%">
-        <span class="slide-footer">
-        Fig. from <a href="
-https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</a>
-        </span>
-
-
-        <footer>
-Дебезиум реализует по своей сути концепт кафка-коннектора.
-Вот схема с их сайта.
-Элементов много.
-
-
-        </footer>
-    </section>
-
-
-    <section class="slide">
-        <h2>Stream data from PostgreSQL to Kafka</h2>
-        <img src="../kafka-mogilev/pictures/debezium-architecture-part-postgre.png" alt="" class="cover w" style="margin-top: 30px">
-        <span class="slide-footer">
-        Fig. from <a href="
-https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</a>
-        </span>
-
-
-        <footer>
-Нас интересуют только вот эти
-Дебезиум читает лог постгреса  и транслирует изменения в кафку.
-
-
-        </footer>
-    </section>
-
-
-
-
-    <section class="slide">
-        <h2>Microservices: Async. What about databases?</h2>
-        <img src="../kafka-mogilev/pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-и теперь вот эта прошлая схема
-
-
-        </footer>
-    </section>
-
-
-    <section class="slide">
-        <h2>Microservices: Async. Debezium</h2>
-        <img src="../kafka-mogilev/pictures/2-kafka-debezium.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-превращается вот в эту.
-кода в сервисе стало меньше
-дебезиум делает работу за нас.
-в принципе можно было бы и со вторым сервисом и его базой что-то намутить, но пока оставим как есть.
-
-        </footer>
-    </section>
-
-
-    <section class="slide">
-        <h2>Microservices: Async. Debezium. Full</h2>
-        <img src="../kafka-mogilev/pictures/microservices-comm-full.svg" alt="" class="cover w hotfix" style="margin-top: 130px">
-
-
-        <footer>
-
-Итого мы пришли к вот такому решению.
-Схема в виде палочек не очень понятная, да?
-        </footer>
-    </section>
-
-    <section class="slide">
-        <h2>Application Diagram</h2>
-        <img src="pictures/4-ms-aws-without-wordpress-and-crawlers.svg" alt="" class="cover w">
-        <footer>
-Давайте что-то более привычное нарисуем.
-Вот на этой схеме можно заметить, что с помощью дебезиума и кафки мы полностью отвязали наше впереди-стоящее джанго приложение от остальных микросервисов.
-
-Но а что по поводу большого потока данных из внешних источников
-        </footer>
-    </section>
-
-
-
-
-    <section class="slide">
-        <h2>Application Diagram + External Data Handling</h2>
-        <img src="pictures/4-ms-aws-without-wordpress.svg" alt="" class="cover w">
-    </section>
-
-
-
-
-    <section class="slide">
-        <h2>Application Diagram + Marketing Website</h2>
-        <img src="pictures/4-ms-aws-full.svg" alt="" class="cover w">
-        <footer>
-Еще пара микросервисов решат эту задачу.
-Забираем данные, помещаем в кафку.
-Достаем из кафки, анализируем, преобразуем, кладем в базу данных основного сервиса.
-
-Все бы хорошо, вот только слищком много Java-технологий теперь у нас в проекте. Kafka,... Debezium...
-        </footer>
-    </section>
-
-
-
-    <section class="slide red">
-        <h2>some conclusions about kafka+microservices</h2>
-        <h2 class="shout">?</h2>
-    </section>
-
-
-
 
 
 
     <section class="slide black">
-        <h2 class="shout">What about Python?</h2>
+        <h2 class="shout">Do it with Python!</h2>
     </section>
 
 
@@ -1778,28 +1650,28 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
               <tbody>
                 <tr class="very-good">
                   <th>producer</th>
-                  <th>confluent_kafka_producer</th>
+                  <th>confluent-kafka-python</th>
                   <td>5.4</td>
                   <td>17</td>
                   <td>183 000</td>
-                </tr>
+                </tr><!--
                 <tr>
                   <th>producer</th>
-                  <th>pykafka_producer_rdkafka</th>
+                  <th>pykafka (rdkafka)</th>
                   <td>16</td>
                   <td>6.1</td>
                   <td>64 000</td>
                 </tr>
                 <tr>
                   <th>producer</th>
-                  <th>pykafka_producer</th>
+                  <th>pykafka</th>
                   <td>57</td>
                   <td>1.7</td>
                   <td>17 000</td>
-                </tr>
+                </tr>-->
                 <tr>
                   <th>producer</th>
-                  <th>python_kafka_producer</th>
+                  <th>kafka-python </th>
                   <td>68</td>
                   <td>1.4</td>
                   <td>15 000</td>
@@ -1807,28 +1679,28 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
                 <!-- CONSUMER -->
                 <tr class="very-good">
                   <th>consumer</th>
-                  <th>confluent_kafka_producer</th>
+                  <th>confluent-kafka-python</th>
                   <td>5.4</td>
                   <td>17</td>
                   <td>183 000</td>
-                </tr>
+                </tr><!--
                 <tr>
                   <th>consumer</th>
-                  <th>pykafka_producer_rdkafka</th>
+                  <th>pykafka</th>
                   <td>16</td>
                   <td>6.1</td>
                   <td>64 000</td>
                 </tr>
                 <tr>
                   <th>consumer</th>
-                  <th>pykafka_producer</th>
+                  <th>pykafka</th>
                   <td>57</td>
                   <td>1.7</td>
                   <td>17 000</td>
-                </tr>
+                </tr>-->
                 <tr>
                   <th>consumer</th>
-                  <th>python_kafka_producer</th>
+                  <th>kafka-python</th>
                   <td>68</td>
                   <td>1.4</td>
                   <td>15 000</td>
@@ -1844,6 +1716,13 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
     </section>
 
 
+
+    <section class="slide">
+        <h2 class="shout smaller">confluent-kafka-python</h2>
+    </section>
+
+
+
     <style>
     .slide pre code.normal-in-center {
         margin: 0; padding:0; margin-top: -2.5em; line-height: 1; font-size:22px; width: 100%; overflow: hidden;
@@ -1856,11 +1735,11 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
         <h2>Kafka Producer on Python</h2>
         <pre><code class="normal-in-center"><span class="underlined-block">
 import sys; from confluent_kafka import Producer
-broker = sys.argv[1]
+server = sys.argv[1]
 topic = sys.argv[2]
 delivery_callback = lambda err, msg: print(err or msg)</span>
 
-producer = Producer(**{'bootstrap.servers': broker})
+producer = Producer(**{'bootstrap.servers': server})
 
 for something in range(1000):
     try:
@@ -1882,8 +1761,8 @@ for something in range(1000):
         <h2>Kafka Consumer on Python</h2>
         <pre><code class="normal-in-center"><span class="underlined-block">
 import sys; from confluent_kafka import Consumer, KafkaException
-broker, group, topics = sys.argv[1], sys.argv[2], sys.argv[3:]
-conf = {'bootstrap.servers': broker, 'group.id': group,
+server, group, topics = sys.argv[1], sys.argv[2], sys.argv[3:]
+conf = {'bootstrap.servers': server, 'group.id': group,
         'auto.offset.reset': 'earliest'}
 clb = lambda consumer, p: print('Assigned partition:', p)</span>
 consumer = Consumer(conf)
@@ -1900,15 +1779,239 @@ try:
                   msg.key(), msg.value())
 finally:
     consumer.close() # ... to commit final offsets.
-
-
-
-            x
-
         </code></pre>
 
     </section>
 
+
+
+
+<!-- 
+    <section class="slide">
+        <h2>Kafka: some conclusion</h2>
+        <ul>
+            <li>complicated <b>a bit</b></li>
+            <li><b>highly</b> scalable</li>
+            <li>good performance (2,000,000 msg/sec)</li>
+            <li><i>pretty good</i> availability</li>
+            <li><b>not so many</b> specialists</li>
+        </ul>
+        <footer>
+            И так, давайте подведем какой-то промежуточный вывод по кафке.
+            Кафка это несколько сложноватый инструмент, в предыдущих слайдах я старался не сильно выпячивать эту сложность. Но, похоже, у меня не получилось.
+
+            Но при этом Кафка хорошо масштабируется, обещает хорошую производительность и при этом надежное хранение данных и доступность этих данных.
+
+            Хотя, конечно, специалистов на нашем рынке, способных с кафкой совладать, не так уж много.
+            К счастью, в нашей команде такие люди были. И остальные бойцы были готовы учиться.
+        </footer>
+    </section>
+
+-->
+
+    <section class="slide red">
+        <h2 class="shout">Какой-то код для Schema Registry?</h2>
+    </section>
+    
+    
+    
+    <section class="slide red">
+        <h2 class="shout">Как запустить консумер на Django?</h2>
+    </section>
+    
+    
+    <section class="slide ">
+        <h2 class="shout">Microservices?</h2>
+
+
+        <footer>
+Но давайте обратно к нашим микросервисам
+
+
+        </footer>
+    </section>
+
+
+    <section class="slide">
+        <h2>Microservices: Async Communication (Celery)</h2>
+        <img src="../kafka-mogilev/pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix">
+
+
+        <footer>
+Мы остановились на варианте с celery и хотим что-то изменить
+
+
+        </footer>
+    </section>
+
+    <section class="slide red">
+        <h2>Microservices: Async Communication (Kafka)</h2>
+        <img src="../kafka-mogilev/pictures/2-kafka.svg" alt="" class="cover w hotfix">
+
+
+        <footer>
+
+Внедряем кафку.
+Первый сервис пишет в кафку.
+А дальше мы уже в других сервисах, местами, отказываемся от реста и назначаем их ответственными за реагирование на происходящие изменения в первом сервисе.
+У второго и третьего сервиса появились маленькие подсервисы - кафка консумеры.
+Вроде бы неплохо.
+Но можно лучше.
+        </footer>
+    </section>
+
+
+
+    <section class="slide red">
+        <h2>Microservices: Async. What about databases?</h2>
+        <img src="../kafka-mogilev/pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">
+
+
+        <footer>
+Как видно, первый сервис при своей работе что-то изменяет в своей базе данных. А потом сообщает о этих изменениях в кафку.
+Двойная работа.
+Может, ну ее, эту кафку?
+Зачем одни и те же данные писать два раза в два места, и поддерживать эту логику в коде сервиса?
+Было бы хорошо, если бы данные сами в кафку ходили!
+
+        </footer>
+    </section>
+
+
+
+
+    <section class="slide ">
+        <h2>Relational Database → Kafka</h2>
+        <img src="../kafka-mogilev/pictures/logos/debezium.svg" class="cover" style="background: black; padding: 50px; width: 70%;">
+
+
+        <footer>
+И так тоже можно!
+Дебезиум нам это даст
+
+
+        </footer>
+    </section>
+
+    <section class="slide">
+        <h2>Stream data from RDBS to Kafka</h2>
+        <img src="../kafka-mogilev/pictures/debezium-architecture.png" alt="" class="cover w" style="width: 90%">
+        <span class="slide-footer">
+        Fig. from <a href="
+https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</a>
+        </span>
+
+
+        <footer>
+Дебезиум реализует по своей сути концепт кафка-коннектора.
+Вот схема с их сайта.
+Элементов много.
+
+
+        </footer>
+    </section>
+
+
+    <section class="slide">
+        <h2>Stream data from PostgreSQL to Kafka</h2>
+        <img src="../kafka-mogilev/pictures/debezium-architecture-part-postgre.png" alt="" class="cover w" style="margin-top: 30px">
+        <span class="slide-footer">
+        Fig. from <a href="
+https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</a>
+        </span>
+
+
+        <footer>
+Нас интересуют только вот эти
+Дебезиум читает лог постгреса  и транслирует изменения в кафку.
+
+
+        </footer>
+    </section>
+
+
+
+
+    <section class="slide">
+        <h2>Microservices: Async. What about databases?</h2>
+        <img src="../kafka-mogilev/pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">
+
+
+        <footer>
+и теперь вот эта прошлая схема
+
+
+        </footer>
+    </section>
+
+
+    <section class="slide red">
+        <h2>Microservices: Async. Debezium</h2>
+        <img src="../kafka-mogilev/pictures/2-kafka-debezium.svg" alt="" class="cover w hotfix">
+
+
+        <footer>
+превращается вот в эту.
+кода в сервисе стало меньше
+дебезиум делает работу за нас.
+в принципе можно было бы и со вторым сервисом и его базой что-то намутить, но пока оставим как есть.
+
+        </footer>
+    </section>
+
+
+    <section class="slide red">
+        <h2>Microservices: Async. Debezium. Full</h2>
+        <img src="../kafka-mogilev/pictures/microservices-comm-full.svg" alt="" class="cover w hotfix" style="margin-top: 130px">
+
+
+        <footer>
+
+Итого мы пришли к вот такому решению.
+Схема в виде палочек не очень понятная, да?
+        </footer>
+    </section>
+
+    <section class="slide">
+        <h2>Application Diagram</h2>
+        <img src="pictures/4-ms-aws-without-wordpress-and-crawlers.svg" alt="" class="cover w">
+        <footer>
+Давайте что-то более привычное нарисуем.
+Вот на этой схеме можно заметить, что с помощью дебезиума и кафки мы полностью отвязали наше впереди-стоящее джанго приложение от остальных микросервисов.
+
+Но а что по поводу большого потока данных из внешних источников
+        </footer>
+    </section>
+
+
+
+
+    <section class="slide">
+        <h2>Application Diagram + External Data Handling</h2>
+        <img src="pictures/4-ms-aws-without-wordpress.svg" alt="" class="cover w">
+    </section>
+
+
+
+
+    <section class="slide">
+        <h2>Application Diagram + Marketing Website</h2>
+        <img src="pictures/4-ms-aws-full.svg" alt="" class="cover w">
+        <footer>
+Еще пара микросервисов решат эту задачу.
+Забираем данные, помещаем в кафку.
+Достаем из кафки, анализируем, преобразуем, кладем в базу данных основного сервиса.
+
+Все бы хорошо, вот только слищком много Java-технологий теперь у нас в проекте. Kafka,... Debezium...
+        </footer>
+    </section>
+
+
+
+    <section class="slide red">
+        <h2>some conclusions about kafka+microservices</h2>
+        <h2 class="shout">?</h2>
+    </section>
 
 
 
@@ -1925,10 +2028,21 @@ finally:
 
 
     <section class="slide ">
-        <h2 class="shout">Conclusion?</h2>
+        <h2 class="shout">Summary?</h2>
     </section>
 
 
+    <section class="slide red">
+        <h2>Summary</h2>
+        <ul>
+            <li>На каком-то этапе вам придётся переписать ваш монолитный MVP</li>
+            <li>Используйте микросервисы, если вы готовы ломать свои устои</li>
+            <li>Если вы прогнозируете высоку. нагрузку на сервис, готовьтесь погрузиться в мир Highload, где много Java-технологий</li>
+            <li>Не используйте Кафку, если не ожидаете действительно большой нагрузки</li>
+            <li>Кафка - это технология, очень сложная в понимании, использовании, настройке, поддержке</li>
+            <li>В микросервисном мире язык программирования перестаёт быть во главе угла</li>
+        </ul>
+    </section>
 
 
 
