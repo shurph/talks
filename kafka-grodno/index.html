@@ -486,20 +486,6 @@
     </section>
 
 
-    <section class="slide">
-        <h2>Here we are</h2>
-        <img src="pictures/4-ms-aws-only-5-services-and-kafka.svg" alt="" class="cover">
-    </section>
-
-    <section class="slide">
-        <h2>Here we are</h2>
-        <img src="pictures/services-kafka-dbs.svg" alt="" class="cover" style="width: 85%">
-    </section>
-    <section class="slide">
-        <h2>Here we are</h2>
-        <img src="pictures/services-kafka-dbs-debezium.svg" alt="" class="cover" style="width: 90%">
-    </section>
-
 
     <!--
     <section class="slide">
@@ -1255,6 +1241,11 @@ https://dzone.com/articles/kafka-topic-architecture-replication-failover-and">dz
     </section>
 
 
+    <section class="slide " style="background-color: #d3ccb8">
+        <img src="pictures/sorting-factory.png" class="cover">
+        <img src="pictures/an_ignored_by_git_place/sorting-factory.gif" class="cover">
+    </section>
+
     <section class="slide red">
         <h2>Strategies to put a message to a specific partiton</h2>
         <h3  class="shout">// TBD</h3>
@@ -1809,6 +1800,11 @@ finally:
 
 -->
 
+
+    <section class="slide red">
+        <h2 class="shout">Какой-то код для Avro?</h2>
+    </section>
+
     <section class="slide red">
         <h2 class="shout">Какой-то код для Schema Registry?</h2>
     </section>
@@ -1821,77 +1817,55 @@ finally:
     
     
     <section class="slide ">
-        <h2 class="shout">Microservices?</h2>
-
-
-        <footer>
-Но давайте обратно к нашим микросервисам
-
-
-        </footer>
+        <h2 class="shout">Microservices!<br>Go Ahead!</h2>
     </section>
 
 
     <section class="slide">
+        <h2>Here we are</h2>
+        <img src="pictures/4-ms-aws-only-5-services-and-celery.svg" alt="" class="cover">
+    </section>
+    <section class="slide">
+        <h2>Here we are</h2>
+        <img src="pictures/4-ms-aws-only-5-services-and-kafka.svg" alt="" class="cover">
+    </section>
+    
+    
+    <section class="slide">
         <h2>Microservices: Async Communication (Celery)</h2>
         <img src="../kafka-mogilev/pictures/2-celery-rabbit.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-Мы остановились на варианте с celery и хотим что-то изменить
-
-
-        </footer>
     </section>
-
     <section class="slide red">
         <h2>Microservices: Async Communication (Kafka)</h2>
         <img src="../kafka-mogilev/pictures/2-kafka.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-
-Внедряем кафку.
-Первый сервис пишет в кафку.
-А дальше мы уже в других сервисах, местами, отказываемся от реста и назначаем их ответственными за реагирование на происходящие изменения в первом сервисе.
-У второго и третьего сервиса появились маленькие подсервисы - кафка консумеры.
-Вроде бы неплохо.
-Но можно лучше.
-        </footer>
     </section>
 
 
-
+    
+    
+    <section class="slide">
+        <h2>Here we are</h2>
+        <img src="pictures/4-ms-aws-only-5-services-and-kafka.svg" alt="" class="cover">
+    </section>
+    
+    <section class="slide">
+        <h2>Here we are</h2>
+        <img src="pictures/services-kafka-dbs.svg" alt="" class="cover" style="width: 85%">
+    </section>
     <section class="slide red">
         <h2>Microservices: Async. What about databases?</h2>
         <img src="../kafka-mogilev/pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-Как видно, первый сервис при своей работе что-то изменяет в своей базе данных. А потом сообщает о этих изменениях в кафку.
-Двойная работа.
-Может, ну ее, эту кафку?
-Зачем одни и те же данные писать два раза в два места, и поддерживать эту логику в коде сервиса?
-Было бы хорошо, если бы данные сами в кафку ходили!
-
-        </footer>
     </section>
-
-
-
+    
+    
 
     <section class="slide ">
         <h2>Relational Database → Kafka</h2>
         <img src="../kafka-mogilev/pictures/logos/debezium.svg" class="cover" style="background: black; padding: 50px; width: 70%;">
-
-
-        <footer>
-И так тоже можно!
-Дебезиум нам это даст
-
-
-        </footer>
     </section>
+    
+    
+
 
     <section class="slide">
         <h2>Stream data from RDBS to Kafka</h2>
@@ -1900,15 +1874,6 @@ finally:
         Fig. from <a href="
 https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</a>
         </span>
-
-
-        <footer>
-Дебезиум реализует по своей сути концепт кафка-коннектора.
-Вот схема с их сайта.
-Элементов много.
-
-
-        </footer>
     </section>
 
 
@@ -1919,71 +1884,43 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
         Fig. from <a href="
 https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</a>
         </span>
-
-
-        <footer>
-Нас интересуют только вот эти
-Дебезиум читает лог постгреса  и транслирует изменения в кафку.
-
-
-        </footer>
     </section>
 
 
-
-
+    
     <section class="slide">
-        <h2>Microservices: Async. What about databases?</h2>
-        <img src="../kafka-mogilev/pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-и теперь вот эта прошлая схема
-
-
-        </footer>
+        <h2>Here we are</h2>
+        <img src="pictures/services-kafka-dbs.svg" alt="" class="cover" style="width: 85%">
     </section>
-
+    
+    <section class="slide">
+        <h2>Here we are</h2>
+        <img src="pictures/services-kafka-dbs-debezium.svg" alt="" class="cover" style="width: 90%">
+    </section>
+    
 
     <section class="slide red">
-        <h2>Microservices: Async. Debezium</h2>
-        <img src="../kafka-mogilev/pictures/2-kafka-debezium.svg" alt="" class="cover w hotfix">
-
-
-        <footer>
-превращается вот в эту.
-кода в сервисе стало меньше
-дебезиум делает работу за нас.
-в принципе можно было бы и со вторым сервисом и его базой что-то намутить, но пока оставим как есть.
-
-        </footer>
+        <h2>Microservices: Async. What about databases?</h2>
+        <img src="../kafka-mogilev/pictures/2-kafka-detailed.svg" alt="" class="cover w hotfix">
     </section>
+    
 
 
     <section class="slide red">
         <h2>Microservices: Async. Debezium. Full</h2>
         <img src="../kafka-mogilev/pictures/microservices-comm-full.svg" alt="" class="cover w hotfix" style="margin-top: 130px">
-
-
-        <footer>
-
-Итого мы пришли к вот такому решению.
-Схема в виде палочек не очень понятная, да?
-        </footer>
     </section>
 
     <section class="slide">
+        <h2>Here we are</h2>
+        <img src="pictures/services-kafka-dbs-debezium.svg" alt="" class="cover" style="width: 90%">
+    </section>
+    
+    
+    <section class="slide">
         <h2>Application Diagram</h2>
         <img src="pictures/4-ms-aws-without-wordpress-and-crawlers.svg" alt="" class="cover w">
-        <footer>
-Давайте что-то более привычное нарисуем.
-Вот на этой схеме можно заметить, что с помощью дебезиума и кафки мы полностью отвязали наше впереди-стоящее джанго приложение от остальных микросервисов.
-
-Но а что по поводу большого потока данных из внешних источников
-        </footer>
     </section>
-
-
 
 
     <section class="slide">
@@ -2005,17 +1942,6 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
 Все бы хорошо, вот только слищком много Java-технологий теперь у нас в проекте. Kafka,... Debezium...
         </footer>
     </section>
-
-
-
-    <section class="slide red">
-        <h2>some conclusions about kafka+microservices</h2>
-        <h2 class="shout">?</h2>
-    </section>
-
-
-
-
 
 
 
