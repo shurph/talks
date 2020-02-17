@@ -1094,22 +1094,20 @@ Headers => [Header]
     <section class="slide">
         <h2>Kafka Producer on Python</h2>
         <pre><code class="normal-in-center"><span class="underlined-block">
-import vars; from confluent_kafka import Producer
+import vars;
+from confluent_kafka import Producer
 conf = {'bootstrap.servers': vars.server}
 
 
 
 </span>
 
+
+
 producer = Producer(**conf)
 
 for num in range(1000):
-    try:
-        producer.produce(vars.topic, <mark>str(num)</mark>)
-    except BufferError:
-        print("Local producer queue is full, try again")
-    # Serve delivery callback queue.
-    producer.poll(0)
+    producer.produce(vars.topic, <mark>str(num)</mark>)
 
 # Wait until all messages have been delivered
 producer.flush()
@@ -1127,21 +1125,20 @@ producer.flush()
     <section class="slide">
         <h2>Kafka Consumer on Python</h2>
         <pre><code class="normal-in-center"><span class="underlined-block">
-import vars; from confluent_kafka import Consumer, KafkaException
+import vars;
+from confluent_kafka import Consumer
 conf = {'bootstrap.servers': vars.server,
         'group.id': vars.group,
         'enable.auto.commit': 'true',
         'auto.offset.reset': 'earliest'}</span>
+
 consumer = Consumer(conf)
 consumer.subscribe(vars.topics)
 try:
     while True:
         message = c.poll(timeout=1.0)
         if message is None: continue
-        if message.error(): raise KafkaException(message.error())
-        else:<!--
-            print(message.topic(), message.partition(), message.offset(),
-                  message.key(), message.value()) -->
+        else:
             print(message)
 finally:
     consumer.close() # ... to commit final offsets.
@@ -1184,7 +1181,8 @@ record_schema = avro.loads("""
     <section class="slide">
         <h2>Kafka Producer with Avro</h2>
         <pre><code class="normal-in-center"><span class="underlined-block">
-import vars; from confluent_kafka.avro import AvroProducer
+import vars;
+from confluent_kafka.avro import AvroProducer
 from <mark>avro_schemas</mark> import record_schema
 
 conf = {'bootstrap.servers': vars.server,
@@ -1193,12 +1191,7 @@ conf = {'bootstrap.servers': vars.server,
 producer = AvroProducer(conf, default_value_schema=record_schema)
 
 for num in range(1000):
-    try:
-        producer.produce(vars.topic, <mark>{"foo": str(num), "bar": num}</mark>)
-    except BufferError:
-        print("Local producer queue is full, try again")
-    # Serve delivery callback queue.
-    producer.poll(0)
+    producer.produce(vars.topic, <mark>{"foo": str(num), "bar": num}</mark>)
 
 # Wait until all messages have been delivered
 producer.flush()
@@ -1217,13 +1210,11 @@ producer.flush()
         <h2>Kafka Consumer with Avro</h2>
         <pre><code class="normal-in-center language-python"><span class="underlined-block">
 import vars;
-from confluent_kafka import KafkaException
 from confluent_kafka.avro import AvroConsumer
-from confluent_kafka.avro.serializer import SerializerError
 from <mark>avro_schemas</mark> import record_schema
+
 conf = {'bootstrap.servers': vars.server, 'group.id': vars.group,
-    'enable.auto.commit': 'true', 'auto.offset.reset': 'earliest',
-    'schema.registry.url': vars.registry}</span>
+        'schema.registry.url': vars.registry}</span>
 
 consumer = AvroConsumer(conf, reader_value_schema=record_schema)
 consumer.subscribe(vars.topics)
@@ -1231,7 +1222,6 @@ try:
     while True:
         message = c.poll(timeout=1.0)
         if message is None: continue
-        if message.error(): raise KafkaException(message.error())
         else:
             print(<mark>message.value()['bar']</mark>)
 finally:
