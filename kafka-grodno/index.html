@@ -222,9 +222,6 @@
         <div  class="place top left" style="margin: 20px 0 0 40px; padding: 0 20px; font-size: 20px; color: black; background: rgba(255,255,255,0.75)">
             iTechMeetup Grodno #5
         </div>
-
-        <footer>
-        </footer>
     </section>
 
 
@@ -252,7 +249,6 @@
             • PyCon Belarus Program Committee<br>
             • Minsk Python Meetup Program Committee<br>
         </div>
-        <footer></footer>
     </section>
 
 
@@ -276,15 +272,6 @@
         <span class="slide-footer" style="font-size: 12px;" >
             art by <a href="https://www.deviantart.com/reneaigner/art/Monolith-283096035">René Aigner</a>
         </span>
-
-
-        <footer>
-
-И так, на руках у нас был монолит. Руковтворное чудо.
-Всем хорош!...
-
-
-        </footer>
     </section>
 
 
@@ -299,19 +286,6 @@
 <li>Maintainability issues</li>
 <li>Security issues</li>
 </ul>
-        <footer>
-Кроме того, что совершенно не держал нагрузку, код был  очень запутан и были  вопросы по безопасности...
-
-Настоящий MVP, одним словом...
-
-
-И если для тестовых пятиста пользователей и пары видов спорта это было нормально, то для более широкой публики это уже было неприемлемо. Да и видов спорта должно было стать больше к моменту выхода в продекшен.
-
-Да, наше приложение было про спорт и нам приходилось работать с большим количеством спортивных данных, приходящих из внешних источников. В том числе и в режиме реального времени.
-
-И нужно было как-то с этим справляться.
-        </footer>
-
     </section>
     
     
@@ -320,13 +294,6 @@
 
     <section class="slide  bg-gradient-pink">
         <img src="../kafka-mogilev/pictures/microservices-microservices-everywhere.jpeg" alt="" class="cover">
-
-
-        <footer>
-И серебрянной пулей мы выбрали микросервисы.
-Конечно, все мы прекрасно знаем, что микросервисы решают все наши проблемы!
-
-        </footer>
     </section>
 
 
@@ -337,50 +304,22 @@
         <div class="slide-footer" style="bottom: 0.5rem; font-size:10px">
         Fig. from <a href="https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e">Steve Bussey's article</a>
         </div>
-
-        <footer>
-
-Но действительно ли это так?
-Вот у нас был монолит. Мы разбросали его куски по облачкам микросервисов и наладили связи между ними. Общаются у нас микросервисы, допустим, через REST API.
-        </footer>
     </section>
 
 
     <section class="slide bg-gradient-pink"> <!-- EDITED 1 -->
         <img src="../kafka-mogilev/pictures/mono-to-micro-4-even-more-real.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
-
-
-        <footer>
-
-А наше приложение начало расти, микросервисов стало больше.
-
-        </footer>
     </section>
 
     <section class="slide bg-gradient-pink"> <!-- EDITED 2 -->
         <img src="../kafka-mogilev/pictures/mono-to-micro-5-more-relations.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
-
-
-        <footer>
-Связей между сервисами начинает становиться больше
-
-
-        </footer>
     </section>
 
     <section class="slide bg-gradient-pink"> <!-- EDITED 3 -->
         <img src="../kafka-mogilev/pictures/mono-to-micro-6-a-lot-of-relations.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
-
-
-        <footer>
-И еще больше!
-Пока у нас не начинает возникать мысль, что каждый сервис общается с каждым, и может быть не по одному разу. Но это не точно.
-
-
-        </footer>
     </section>
 
     <style>
@@ -405,13 +344,6 @@
         <h2 class="lite shadowed">Microservices: Coupling and Cohesion?</h2>
         <img src="../kafka-mogilev/pictures/distributed-monolith.png" alt="" class="cover h">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
-
-
-        <footer>
-И так, у нас рано или поздно может возникнуть понимание, что сервисы-то у нас чересчур друг от друго зависимы, высокая связность у нас в нашей микросервисной архитектуре...
-
-        </footer>
-
     </section>
 
 
@@ -419,13 +351,6 @@
         <h2 class="lite shadowed">Distributed Monolith?</h2>
         <img src="../kafka-mogilev/pictures/distributed-monolith.png" alt="" class="cover h">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
-
-
-        <footer>
-А микросервисное ли у нас вообще приложение, или какой-то, простите, распределенный монолит?!
-Ну... это все конечно слова... теория!
-
-        </footer>
     </section>
 
 
@@ -514,13 +439,6 @@
                 Kafka here???
             </span>
         </h3>
-
-
-        <footer>
-И тут возникает мысль.
-А вдруг нам здесь может как-то помочь Kafka?
-
-        </footer>
     </section>
 
 
@@ -538,13 +456,6 @@
             </span>
             Kafka?
         </h2>
-
-
-        <footer>
-Но давайте сначала чуть-чуть посмотрим, что такое кафка.
-
-
-        </footer>
     </section>
 
 
@@ -602,13 +513,6 @@
             or even more...
         <sup><a href="https://engineering.linkedin.com/kafka/benchmarking-apache-kafka-2-million-writes-second-three-cheap-machines" style="background: none">[↪]</a></sup>
         </div>
-
-
-        <footer>
-Но кафка нас зацепила вот такими цифрами.
-Конечно, это синтетические бенчмарки, но цифры-то впечатляют!
-
-        </footer>
     </section>
 
 
@@ -687,20 +591,6 @@
                 AWS Kinesis
         </ul>
         </div>
-        
-        <footer>
-А есть ли вообще хорошие альтернативы Кафке?
-Зачастую приводят вот такие интрументы.
-
-Рэбит и Актив MQ не могут похвастаться такими цифрами в плане производителности, да и с масштабированием у них чуть похуже.
-
-А вот эта тройка, NATS, Pulsar, NSQ, вполне себе хвалится цифрами в бенчмарках. Где-то даже эти цифры поинтереснее.
-Но нужно же еще смотреть и на популярность технологии. На поддержку со стороны сообщества и различных вендоров. Сейчас Кафка выигрывает в этом плане.
-
-Ну и Kinesis. Если вы хотите привязать себя намертво к амазону, то почему бы и нет. Тем более у кинезиса есть много интересных штук...
-Но если вы хотите чувствовать себя посвободнее, то амазон с недавних пор предоставляет Кафку как сервис. Дороговато чуть-чуть, но убирает головную боль по администрированию кластера в какой-то степени.
-
-        </footer>
     </section>
 
 
@@ -919,7 +809,7 @@ Headers => [Header]
 
 
 
-    <section class="slide black">
+    <section class="slide">
         <h2 class="shout">Do it with Python!</h2>
     </section>
 
@@ -1231,34 +1121,6 @@ finally:
     </section>
 
 
-
-
-
-
-<!-- 
-    <section class="slide">
-        <h2>Kafka: some conclusion</h2>
-        <ul>
-            <li>complicated <b>a bit</b></li>
-            <li><b>highly</b> scalable</li>
-            <li>good performance (2,000,000 msg/sec)</li>
-            <li><i>pretty good</i> availability</li>
-            <li><b>not so many</b> specialists</li>
-        </ul>
-        <footer>
-            И так, давайте подведем какой-то промежуточный вывод по кафке.
-            Кафка это несколько сложноватый инструмент, в предыдущих слайдах я старался не сильно выпячивать эту сложность. Но, похоже, у меня не получилось.
-
-            Но при этом Кафка хорошо масштабируется, обещает хорошую производительность и при этом надежное хранение данных и доступность этих данных.
-
-            Хотя, конечно, специалистов на нашем рынке, способных с кафкой совладать, не так уж много.
-            К счастью, в нашей команде такие люди были. И остальные бойцы были готовы учиться.
-        </footer>
-    </section>
-
--->
-
-
     
     <section class="slide ">
         <h2>Launch Kafka Consumer with Django</h2>
@@ -1397,13 +1259,6 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
     <section class="slide">
         <h2>Application Diagram + Marketing Website</h2>
         <img src="pictures/4-ms-aws-full.svg" alt="" class="cover w">
-        <footer>
-Еще пара микросервисов решат эту задачу.
-Забираем данные, помещаем в кафку.
-Достаем из кафки, анализируем, преобразуем, кладем в базу данных основного сервиса.
-
-Все бы хорошо, вот только слищком много Java-технологий теперь у нас в проекте. Kafka,... Debezium...
-        </footer>
     </section>
 
 
@@ -1446,8 +1301,9 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
     </section>
     
     
-    <section class="slide clear red">
-    </section>
+    <section class="slide clear black"></section>
+    <section class="slide clear black"></section>
+    <section class="slide clear black"></section>
     
     <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     
