@@ -279,7 +279,7 @@
 
     <section class="slide  ">
         <img src="../kafka-mogilev/pictures/monolith_by_reneaigner_edited.jpg" alt="" class="cover h" style="height: 110%; max-height: 110%">
-        <h3>Monolithic Rapid Developed MVP</h3>
+        <h3>Monolithic <mark>Rapid Developed</mark> MVP</h3>
 <ul>
 <li>Scalability issues</li>
 <li>Readability issues</li>
@@ -358,13 +358,13 @@
        }
     </style>
     <section class="slide">
-        <h2>Microservices: Synchronous Communication</h2>
+        <h2>Synchronous Communication</h2>
         <img src="pictures/stolp-5-easy-1.svg" alt="" class="cover">
     </section>
 
 
     <section class="slide">
-        <h2>Microservices: Synchronous Communication</h2>
+        <h2>Synchronous Communication</h2>
         <img src="pictures/stolp-5-hard-many.svg" alt="" class="cover">
     </section>
 
@@ -380,29 +380,29 @@
     </section>
 
     <section class="slide">
-        <h2>Here we are</h2>
+        <h2>Microservices</h2>
         <img src="pictures/4-ms-aws-only-5-services.svg" alt="" class="cover">
     </section>
 
     <section class="slide">
-        <h2>Here we are</h2>
+        <h2>Introduce Celery</h2>
         <img src="pictures/4-ms-aws-only-5-services-and-celery.svg" alt="" class="cover">
     </section>
 
 
 
     <section class="slide">
-        <h2>Microservices: Synchronous Communication</h2>
+        <h2>Synchronous Communication</h2>
         <img src="pictures/stolp-5-hard-many.svg" alt="" class="cover">
     </section>
     <section class="slide">
-        <h2>Microservices: Async Communication (Celery)</h2>
+        <h2>~Async Communication (Celery)</h2>
         <img src="pictures/stolp-5-and-celery.svg" alt="" class="cover">
     </section>
 
 
     <section class="slide">
-        <h2>Microservices: Async Communication (Celery)</h2>
+        <h2>~Async Communication (Celery)</h2>
         <img src="pictures/stolp-5-and-celery.svg" alt="" class="cover" style="opacity: 0.3">
         <h3 class="shout">
 
@@ -692,7 +692,10 @@ Headers => [Header]
 
     <section class="slide">
         <h2>Kafka: Message</h2>
-        <h3 class="shout">key, value<br>byte[], byte[]</h3>
+            <pre><code class="plain" style="line-height: 1; font-size: 72px; font-weight: bold; transform: translateX(10%)">
+  key: byte[ ]
+value: byte[ ]
+</code></pre>
     </section>
 
 
@@ -708,6 +711,18 @@ Headers => [Header]
         </h3>
     </section>
 
+
+    <section class="slide">
+        <h2>Avro: Pros</h2>
+        <ol class="semi-huge">
+            <li>platform independent</li>
+            <li>binary compressed data</li>
+            <li>schema <span style="color:#aaa">(in JSON format)</span></li>
+            <li>schema migration flow</li>
+            <li>schema is in the message or somewhere outside</li>
+            <li>...</li>
+        </ol>
+    </section>
 
 
     <section class="slide">
@@ -767,13 +782,17 @@ Headers => [Header]
 
 
 
-
     <section class="slide ">
         <h2>Messages flow</h2>
         <img src="pictures/kafka-messages-flow.svg" alt="" class="cover" style="height: 80%">
     </section>
 
 
+
+    <section class="slide ">
+        <h2>Messages flow (with Schema Registry)</h2>
+        <img src="pictures/kafka-messages-flow-registry.svg" alt="" class="cover" style="height: 80%">
+    </section>
 
 
 
@@ -851,7 +870,7 @@ Headers => [Header]
                 <td>confluent-kafka</td>
             </tr>
             <tr>
-                <td>Stars</td>
+                <td>Stars on GitHub</td>
                 <td>~ 3 400</td>
                 <td>~ 1 000</td>
                 <td>~ 1 500</td>
@@ -876,13 +895,13 @@ Headers => [Header]
             </tr>
         </table>
 
-        <span class="slide-footer" style="font-size: 16px; padding: 10px 0px; text-align: left; opacity: 0.6">
-            <code>*<br>
-            a / b / c / d<br>
-            a — more 1k commits<br>
-            100 ≤ b &lt; 1000<br>
-             10 ≤ c &lt; 100<br>
-            d — all commits</code>
+        <span class="slide-footer" style="font-size: 16px; padding: 0px 0px; text-align: left; opacity: 0.4">
+            <pre><code class="plain" style="line-height: 1.15em">*
+  a / b / c / d
+  a — with more 1k commits
+  100 ≤ b &lt; 1000
+   10 ≤ c &lt; 100
+  d — all contributors</code></pre>
         </span>
 
     </section>
@@ -900,46 +919,31 @@ Headers => [Header]
          .special-throughput .a-right { text-align: right; }
          .special-throughput .very-good { background: rgba(32, 64, 96, .15) }
         </style>
-        <table class=" special-throughput" style="margin-top: -10px; font-size: 22px">
+        <table class="special-throughput" style="font-size: 32px">
               <thead>
                 <tr style="text-align: right;">
                   <th></th>
-                  <th></th>
-                  <th class="a-right">time (seconds)</th>
+                  <th class="a-right">time (s)</th>
                   <th class="a-right">MBs/s</th>
                   <th class="a-right">Msgs/s</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
-                <!-- PRODUCER -->
-                <tr class="very-good">
-                  <th>producer</th>
-                  <th>confluent-kafka-python</th>
-                  <td>5.4</td>
-                  <td>17</td>
-                  <td>183 000</td>
-                </tr>
-                <tr>
-                  <th>producer</th>
-                  <th>kafka-python </th>
-                  <td>68</td>
-                  <td>1.4</td>
-                  <td>15 000</td>
-                </tr>
                 <!-- CONSUMER -->
                 <tr class="very-good">
-                  <th>consumer</th>
                   <th>confluent-kafka-python</th>
                   <td>5.4</td>
                   <td>17</td>
                   <td>183 000</td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <th>consumer</th>
                   <th>kafka-python</th>
                   <td>68</td>
                   <td>1.4</td>
                   <td>15 000</td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
@@ -965,12 +969,15 @@ Headers => [Header]
 
         # vars.py            
         import sys;
+        
+        
+        server = sys.argv[1]    # &lt;-- kafka server url
+        registry = sys.argv[2]  # &lt;-- schema registry url
 
-        group = sys.argv[0]
-        server = sys.argv[1]
-        registry = sys.argv[2]
-        topic = sys.argv[3]
-        topics = sys.argv[3:]
+        
+        topic = sys.argv[3]     # &lt;-- topic name
+        
+        group = sys.argv[0]     # &lt;-- consumer group id
         </code></pre>
 
     </section>
@@ -1002,13 +1009,14 @@ producer = Producer(**conf)
 for num in range(1000):
     producer.produce(vars.topic, <mark>value=str(num)</mark>)
 
+
 # Wait until all messages have been delivered
 producer.flush()
     </code></pre>
 
     </section>
-    
-    
+
+
 
     <section class="slide">
         <h2>Kafka Producer on Python</h2>
@@ -1049,11 +1057,11 @@ import vars;
 from confluent_kafka import Consumer
 conf = {'bootstrap.servers': vars.server,
         'group.id': vars.group,
-        'enable.auto.commit': 'true',
-        'auto.offset.reset': 'earliest'}</span>
+        'enable.auto.commit': 'true'}
+        </span>
 
 consumer = Consumer(conf)
-consumer.subscribe(vars.topics)
+consumer.subscribe([vars.topic])
 try:
     while True:
         message = c.poll(timeout=1.0)
@@ -1132,13 +1140,13 @@ producer.flush()
         <pre><code class="normal-in-center language-python"><span class="underlined-block">
 import vars;
 from confluent_kafka.avro import AvroConsumer
-from <mark>avro_schemas</mark> import record_schema
+
 
 conf = {'bootstrap.servers': vars.server, 'group.id': vars.group,
         'schema.registry.url': vars.registry}</span>
 
-consumer = AvroConsumer(conf, reader_value_schema=record_schema)
-consumer.subscribe(vars.topics)
+consumer = AvroConsumer(conf)
+consumer.subscribe([vars.topic])
 try:
     while True:
         message = c.poll(timeout=1.0)
@@ -1180,11 +1188,11 @@ finally:
     
     
     <section class="slide">
-        <h2>Microservices: Async Communication (Celery)</h2>
+        <h2>~Async Communication (Celery)</h2>
         <img src="pictures/stolp-5-and-celery.svg" alt="" class="cover">
     </section>
     <section class="slide">
-        <h2>Microservices: Async Communication (Kafka)</h2>
+        <h2>~Async Communication (Kafka)</h2>
         <img src="pictures/stolp-5-kafka.svg" alt="" class="cover">
     </section>
 
@@ -1201,7 +1209,7 @@ finally:
         <img src="pictures/services-kafka-dbs.svg" alt="" class="cover" style="width: 85%">
     </section>
     <section class="slide">
-        <h2>Microservices: Async Communication (Kafka)</h2>
+        <h2>~Async Communication (Kafka)</h2>
         <img src="pictures/stolp-5-kafka.svg" alt="" class="cover">
     </section>
     <section class="slide">
