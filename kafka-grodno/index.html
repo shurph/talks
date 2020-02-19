@@ -296,17 +296,6 @@
         <img src="../kafka-mogilev/pictures/microservices-microservices-everywhere.jpeg" alt="" class="cover">
     </section>
 
-
-
-    <section class="slide bg-gradient-pink">
-        <img src="../kafka-mogilev/pictures/mono-to-micro-3-more-real.png" alt="" class="cover w">
-        <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
-        <div class="slide-footer" style="bottom: 0.5rem; font-size:10px">
-        Fig. from <a href="https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e">Steve Bussey's article</a>
-        </div>
-    </section>
-
-
     <section class="slide bg-gradient-pink"> <!-- EDITED 1 -->
         <img src="../kafka-mogilev/pictures/mono-to-micro-4-even-more-real.png" alt="" class="cover w">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
@@ -342,14 +331,14 @@
     </style>
     <section class="slide bg-gradient-pink">
         <h2 class="lite shadowed">Microservices: Coupling and Cohesion?</h2>
-        <img src="../kafka-mogilev/pictures/distributed-monolith.png" alt="" class="cover h">
+        <img src="../kafka-mogilev/pictures/distributed-monolith.png" class="cover h">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
     </section>
 
 
-    <section class="slide"> <!-- EDITED 4 -->
+    <section class="slide bg-gradient-pink"> <!-- EDITED 4 -->
         <h2 class="lite shadowed">Distributed Monolith?</h2>
-        <img src="../kafka-mogilev/pictures/distributed-monolith.png" alt="" class="cover h">
+        <img src="../kafka-mogilev/pictures/distributed-monolith.png" class="cover h">
         <!-- image from: https://medium.com/salesloft-engineering/monolith-to-microservice-without-downtime-a-production-story-652c9b82f03e -->
     </section>
 
@@ -457,6 +446,13 @@
             Kafka?
         </h2>
     </section>
+    
+    
+    <section class="slide">
+        <h2 class="shout" style="font-size: 64px">
+            Released in 2011 by LinkedIn
+        </h2>
+    </section>
 
 
     <section class="slide">
@@ -493,49 +489,8 @@
 
 
 
-    <section class="slide">
-        <h2 class="shout">
-            Why Kafka???
-        </h2>
-    </section>
-
-
-
-    <section class="slide">
-        <h2>
-            Why Kafka???
-        </h2>
-        <div class="tags-baloons">
-            <span class="label">
-                up to 2,000,000 messages per sec
-            </span>
-            <br>
-            or even more...
-        <sup><a href="https://engineering.linkedin.com/kafka/benchmarking-apache-kafka-2-million-writes-second-three-cheap-machines" style="background: none">[↪]</a></sup>
-        </div>
-    </section>
-
-
-
-    <section class="slide">
-        <h2>Some throughput comparsion</h2>
-        <img src="pictures/kafka-performance-comp-2.png" class="cover" style="height: 440px; margin-top: 20px;">
-        <div class="slide-footer" style="bottom: 0.5rem; font-size:10px">
-            Data from <a href="https://softwaremill.com/mqperf/">SoftwareMill</a>
-        </div>
-    </section>
-
-
-
-    <section class="slide">
-        <h2>Some throughput comparsion</h2>
-        <img src="pictures/kafka-performance-comp-1.png" class="cover" style="height: 440px; margin-top: 20px;">
-        <div class="slide-footer" style="bottom: 0.5rem; font-size:10px">
-            Data from <a href="https://bravenewgeek.com/dissecting-message-queues/">Brave New Geek</a>
-        </div>
-    </section>
-
-
+    
+    
 
     <section class="slide" id="alter-cust">
         <h2>
@@ -595,6 +550,62 @@
 
 
 
+    <section class="slide">
+        <h2>Some throughput comparsion</h2>
+        <img src="pictures/kafka-performance-comp-2.png" class="cover" style="height: 440px; margin-top: 20px;">
+        <div class="slide-footer" style="bottom: 0.5rem; font-size:10px">
+            Data from <a href="https://softwaremill.com/mqperf/">SoftwareMill</a>
+        </div>
+    </section>
+
+
+
+    <section class="slide">
+        <h2>Some throughput comparsion</h2>
+        <img src="pictures/kafka-performance-comp-1.png" class="cover" style="height: 440px; margin-top: 20px;">
+        <div class="slide-footer" style="bottom: 0.5rem; font-size:10px">
+            Data from <a href="https://bravenewgeek.com/dissecting-message-queues/">Brave New Geek</a>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2 class="shout">
+            Why Kafka???
+        </h2>
+    </section>
+
+
+
+    <section class="slide">
+        <h2>
+            Why Kafka???
+        </h2>
+        <div class="tags-baloons">
+            <span class="label">
+                up to 2,000,000 messages per sec
+            </span>
+            <br>
+            or even more...
+            
+            <sup><a href="https://engineering.linkedin.com/kafka/benchmarking-apache-kafka-2-million-writes-second-three-cheap-machines" style="background: none">[↪]</a></sup>
+        </div>
+    </section>
+
+
+
+    <section class="slide">
+        <h2>
+            Why Kafka???
+        </h2>
+        <div class="tags-baloons">
+            <span class="label">
+                highly distributed and scalable
+            </span>
+        </div>
+    </section>
+
+
 
     <section class="slide">
         <h2 class="shout">
@@ -644,13 +655,6 @@
     <section class="slide ">
         <h2>Messages flow</h2>
         <img src="pictures/kafka-messages-flow.svg" alt="" class="cover" style="height: 80%">
-    </section>
-
-
-
-    <section class="slide " style="background-color: #d3ccb8">
-        <img src="pictures/sorting-factory.png" class="cover">
-        <img src="pictures/an_ignored_by_git_place/sorting-factory.gif" class="cover">
     </section>
 
 
