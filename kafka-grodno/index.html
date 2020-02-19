@@ -234,8 +234,8 @@
                 ">Mikalai Saskavets</h3>
                 <span style="line-height: 1.2; font-size: 0.85em;">
                     I'm a:
-                    <br>&mdash; Full Stack Web Developer
-                    <br>&mdash; DevOps Enthusiast
+                    <br>— Full Stack Web Developer
+                    <br>— DevOps Enthusiast
                     <br>
                     <br>
                 </span>
@@ -279,12 +279,11 @@
 
     <section class="slide  ">
         <img src="../kafka-mogilev/pictures/monolith_by_reneaigner_edited.jpg" alt="" class="cover h" style="height: 110%; max-height: 110%">
-        <h3>Monolithic MVP</h3>
+        <h3>Monolithic Rapid Developed MVP</h3>
 <ul>
 <li>Scalability issues</li>
 <li>Readability issues</li>
 <li>Maintainability issues</li>
-<li>Security issues</li>
 </ul>
     </section>
     
@@ -1001,7 +1000,34 @@ conf = {'bootstrap.servers': vars.server}
 producer = Producer(**conf)
 
 for num in range(1000):
-    producer.produce(vars.topic, <mark>str(num)</mark>)
+    producer.produce(vars.topic, <mark>value=str(num)</mark>)
+
+# Wait until all messages have been delivered
+producer.flush()
+    </code></pre>
+
+    </section>
+    
+    
+
+    <section class="slide">
+        <h2>Kafka Producer on Python</h2>
+        <pre><code class="normal-in-center"><span class="underlined-block">
+import vars;
+from confluent_kafka import Producer
+conf = {'bootstrap.servers': vars.server}
+
+
+
+</span>
+
+
+
+producer = Producer(**conf)
+
+for num in range(1000):
+    producer.produce(vars.topic, <mark>value=str(num)</mark>,
+                                   <mark>key=str(num)</mark>)
 
 # Wait until all messages have been delivered
 producer.flush()
@@ -1085,7 +1111,8 @@ conf = {'bootstrap.servers': vars.server,
 producer = AvroProducer(conf, default_value_schema=record_schema)
 
 for num in range(1000):
-    producer.produce(vars.topic, <mark>{"foo": str(num), "bar": num}</mark>)
+    producer.produce(vars.topic, 
+                     value=<mark>{"foo": str(num), "bar": num}</mark>)
 
 # Wait until all messages have been delivered
 producer.flush()
@@ -1117,7 +1144,7 @@ try:
         message = c.poll(timeout=1.0)
         if message is None: continue
         else:
-            print(<mark>message.value()['bar']</mark>)
+            print(message.<mark>value()['bar']</mark>)
 finally:
     consumer.close() # ... to commit final offsets.
         </code></pre>
@@ -1178,7 +1205,7 @@ finally:
         <img src="pictures/stolp-5-kafka.svg" alt="" class="cover">
     </section>
     <section class="slide">
-        <h2>M</h2>
+        <h2>What if we have few databases?</h2>
         <img src="pictures/stolp-5-kafka-dbs.svg" alt="" class="cover">
     </section>
     
