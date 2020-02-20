@@ -519,30 +519,24 @@
         <div class="huge" style="float:left; width: 33%;">
         <span class="slighty-centerized">1</span>
         <ul>
-            <li>
-                RabbitMQ
-            <li>
-                ActiveMQ
+            <li> RabbitMQ</li>
+            <li> ActiveMQ</li>
         </ul>
         </div>
         
         <div class="huge" style="float:left; width: 33%;">
         <span class="slighty-centerized">2</span>
         <ul>
-            <li>
-                NATS
-            <li>
-               Apache Pulsar
-            <li>
-                Artemis
+            <li> NATS</li>
+            <li> Apache Pulsar
+            <li> Artemis</li>
         </ul>
         </div>
         
         <div class="huge" style="float:left; width: 33%;">
         <span class="slighty-centerized">3</span>
         <ul>
-            <li>
-                AWS Kinesis
+            <li> AWS Kinesis</li>
         </ul>
         </div>
     </section>
@@ -689,6 +683,17 @@ value: byte[ ]
     </section>
 
 
+    <section class="slide">
+        <h2>Kafka: Message: Serialization</h2>
+        <pre><code class="normal-in-center huge no-skip-first-line ">            
+msg = Message()
+msg['key'] = custom.serialize("some key value")
+msg['value'] = custom.serialize( {
+                                    "foo": "1",
+                                    "bar": 1
+                                 } )
+        </code></pre>
+    </section>
 
 
 
@@ -763,6 +768,10 @@ value: byte[ ]
     </section>
 
 
+    <section class="slide">
+        <h2 class="shout">Where to store Schema?</h2>
+    </section>
+
 
     <section class="slide">
         <h2>Kafka: Schema Registry Concept</h2>
@@ -829,14 +838,10 @@ value: byte[ ]
     <section class="slide ">
         <h2>Python libraries to work with Kafka</h2>
         <ul class="huge">
-            <li>
-                kafka-python
-            <li>
-                pykafka
-            <li>
-                confluent-kafka-python
-            <li>
-                aiokafka
+            <li> kafka-python</li>
+            <li> pykafka</li>
+            <li> confluent-kafka</li>
+            <li> aiokafka</li>
         </ul>
         
         <!-- сравнение (2016 год) http://activisiongamescience.github.io/2016/06/15/Kafka-Client-Benchmarking/ -->
@@ -922,7 +927,7 @@ value: byte[ ]
               <tbody>
                 <!-- CONSUMER -->
                 <tr class="very-good">
-                  <th>confluent-kafka-python</th>
+                  <th>confluent-kafka</th>
                   <td>5.4</td>
                   <td>17</td>
                   <td>183 000</td>
@@ -948,7 +953,9 @@ value: byte[ ]
 
 
     <section class="slide">
-        <h2 class="shout smaller">confluent-kafka-python</h2>
+        <h2 class="shout smaller">
+            confluent-kafka<span style="color:lightgray">-python</span>
+        </h2>
     </section>
 
 
