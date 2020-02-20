@@ -580,28 +580,18 @@
         <h2>
             Why Kafka???
         </h2>
-        <div class="tags-baloons">
-            <span class="label">
-                up to 2,000,000 messages per sec
-            </span>
-            <br>
-            or even more...
-            
-            <sup><a href="https://engineering.linkedin.com/kafka/benchmarking-apache-kafka-2-million-writes-second-three-cheap-machines" style="background: none">[↪]</a></sup>
-        </div>
-    </section>
-
-
-
-    <section class="slide">
-        <h2>
-            Why Kafka???
-        </h2>
-        <div class="tags-baloons">
-            <span class="label">
-                highly distributed and scalable
-            </span>
-        </div>
+        <ul class="huge">
+            <li>impressive performance
+                <ul class="huge">
+                <li>up to 2,000,000 messages per sec </span>
+                    <a  href="https://engineering.linkedin.com/kafka/benchmarking-apache-kafka-2-million-writes-second-three-cheap-machines"
+                        style="font-size: 0.5em;background: none;transform: translate(98px,-5px);display: inline-block;"
+                        >or even more [↪]</a></li>
+                </ul>
+            </li>
+            <li>highly scalable</li>
+            <li>pretty mature</li>
+        </ul>
     </section>
 
 
@@ -797,27 +787,27 @@ value: byte[ ]
 
 
     <section class="slide ">
-        <h2>Messages flow.</h2>
+        <h2>Messages flow. Consumer Side<span style="color:lightgray">. Part 1</span></h2>
         <img src="pictures/kafka-consumer-flow-s1.svg" alt="" class="cover" style="height: 80%">
     </section>
     <section class="slide ">
-        <h2>Messages flow..</h2>
+        <h2>Messages flow. Consumer Side<span style="color:lightgray">. Part 2</span></h2>
         <img src="pictures/kafka-consumer-flow-s2.svg" alt="" class="cover" style="height: 80%">
     </section>
     <section class="slide ">
-        <h2>Messages flow...</h2>
+        <h2>Messages flow. Consumer Side<span style="color:lightgray">. Part 3</span></h2>
         <img src="pictures/kafka-consumer-flow-s3.svg" alt="" class="cover" style="height: 80%">
     </section>
     <section class="slide ">
-        <h2>Messages flow....</h2>
+        <h2>Messages flow. Consumer Side<span style="color:lightgray">. Part 4</span></h2>
         <img src="pictures/kafka-consumer-flow-s4.svg" alt="" class="cover" style="height: 80%">
     </section>
     <section class="slide ">
-        <h2>Messages flow.....</h2>
+        <h2>Messages flow. Consumer Side<span style="color:lightgray">. Part 5</span></h2>
         <img src="pictures/kafka-consumer-flow-s5.svg" alt="" class="cover" style="height: 80%">
     </section>
     <section class="slide ">
-        <h2>Messages flow......</h2>
+        <h2>Messages flow. Consumer Side<span style="color:lightgray">. Part 6</span></h2>
         <img src="pictures/kafka-consumer-flow-s6.svg" alt="" class="cover" style="height: 80%">
     </section>
     
@@ -872,7 +862,7 @@ value: byte[ ]
             <tr>
                 <td>Stars on GitHub</td>
                 <td>~ 3 400</td>
-                <td>~ 1 000</td>
+                <td style="color: red">~ 1 000</td>
                 <td>~ 1 500</td>
             </tr>
             <tr>
@@ -884,7 +874,7 @@ value: byte[ ]
             <tr>
                 <td>Releases track</td>
                 <td>fine</td>
-                <td>hm… <sup>(2018???)</sup></td>
+                <td>hm… <sup style="color: red">(2018???)</sup></td>
                 <td>fine</td>
             </tr>
             <tr>
@@ -908,7 +898,7 @@ value: byte[ ]
 
 
     <section class="slide ">
-        <h2>What about Throughput?</h2>
+        <h2>What about Throughput?<span style="color:lightgray"> Some benchmarks</span></h2>
         <style>
         .slide table.striped tr:nth-child(even) { background: rgba(64, 64, 64, .35) }
         .special-throughput tr td:last-child, .special-throughput td {
@@ -968,7 +958,7 @@ value: byte[ ]
         <pre><code class="normal-in-center language-python">
 
         # vars.py            
-        import sys;
+        import sys
         
         
         server = sys.argv[1]    # &lt;-- kafka server url
@@ -994,7 +984,7 @@ value: byte[ ]
     <section class="slide">
         <h2>Kafka Producer on Python</h2>
         <pre><code class="normal-in-center"><span class="underlined-block">
-import vars;
+import vars
 from confluent_kafka import Producer
 conf = {'bootstrap.servers': vars.server}
 
@@ -1021,7 +1011,7 @@ producer.flush()
     <section class="slide">
         <h2>Kafka Producer on Python</h2>
         <pre><code class="normal-in-center"><span class="underlined-block">
-import vars;
+import vars
 from confluent_kafka import Producer
 conf = {'bootstrap.servers': vars.server}
 
@@ -1053,7 +1043,7 @@ producer.flush()
     <section class="slide">
         <h2>Kafka Consumer on Python</h2>
         <pre><code class="normal-in-center"><span class="underlined-block">
-import vars;
+import vars
 from confluent_kafka import Consumer
 conf = {'bootstrap.servers': vars.server,
         'group.id': vars.group,
@@ -1109,7 +1099,7 @@ record_schema = avro.loads("""
     <section class="slide">
         <h2>Kafka Producer with Avro</h2>
         <pre><code class="normal-in-center"><span class="underlined-block">
-import vars;
+import vars
 from confluent_kafka.avro import AvroProducer
 from <mark>avro_schemas</mark> import record_schema
 
@@ -1122,6 +1112,32 @@ for num in range(1000):
     producer.produce(vars.topic, 
                      value=<mark>{"foo": str(num), "bar": num}</mark>)
 
+
+# Wait until all messages have been delivered
+producer.flush()
+    </code></pre>
+
+    </section>
+
+
+
+    <section class="slide">
+        <h2>Kafka Producer with Avro</h2>
+        <pre><code class="normal-in-center"><span class="underlined-block">
+import vars
+from confluent_kafka.avro import AvroProducer
+from <mark>avro_schemas</mark> import record_schema
+
+conf = {'bootstrap.servers': vars.server,
+        'schema.registry.url': vars.registry}</span>
+
+producer = AvroProducer(conf, default_value_schema=record_schema)
+
+for num in range(1000):
+    producer.produce(vars.topic, 
+                     value={"foo": str(num), "bar": num},
+                     <mark>value_schema</mark>=record_schema)
+
 # Wait until all messages have been delivered
 producer.flush()
     </code></pre>
@@ -1132,13 +1148,10 @@ producer.flush()
 
 
 
-
-
-
     <section class="slide">
         <h2>Kafka Consumer with Avro</h2>
         <pre><code class="normal-in-center language-python"><span class="underlined-block">
-import vars;
+import vars
 from confluent_kafka.avro import AvroConsumer
 
 
@@ -1178,11 +1191,11 @@ finally:
 
 
     <section class="slide">
-        <h2>Here we are</h2>
+        <h2>With Celery</h2>
         <img src="pictures/4-ms-aws-only-5-services-and-celery.svg" alt="" class="cover">
     </section>
     <section class="slide">
-        <h2>Here we are</h2>
+        <h2>With Kafka</h2>
         <img src="pictures/4-ms-aws-only-5-services-and-kafka.svg" alt="" class="cover">
     </section>
     
@@ -1200,12 +1213,12 @@ finally:
     
     
     <section class="slide">
-        <h2>Here we are</h2>
+        <h2>With Kafka</h2>
         <img src="pictures/4-ms-aws-only-5-services-and-kafka.svg" alt="" class="cover">
     </section>
     
     <section class="slide">
-        <h2>Here we are</h2>
+        <h2>With Kafka<span style="color:lightgray">. Don't forget about databases</span></h2>
         <img src="pictures/services-kafka-dbs.svg" alt="" class="cover" style="width: 85%">
     </section>
     <section class="slide">
@@ -1249,38 +1262,38 @@ https://debezium.io/documentation/reference/0.9/architecture.html">debezium.io</
 
     
     <section class="slide">
-        <h2>Here we are</h2>
+        <h2>With Kafka and databases</h2>
         <img src="pictures/services-kafka-dbs.svg" alt="" class="cover" style="width: 85%">
     </section>
     
     <section class="slide">
-        <h2>Here we are</h2>
+        <h2>Introduce Debezium</h2>
         <img src="pictures/services-kafka-dbs-debezium.svg" alt="" class="cover" style="width: 90%">
     </section>
     
 
 
     <section class="slide">
-        <h2>Microservices</h2>
+        <h2>What if we have few databases?</h2>
         <img src="pictures/stolp-5-kafka-dbs.svg" alt="" class="cover">
     </section>
 
 
 
     <section class="slide">
-        <h2>Microservices: Async. Debezium. Full</h2>
+        <h2>How Debezium helps us</h2>
         <img src="pictures/stolp-5-kafka-dbs-debezium.svg" alt="" class="cover">
     </section>
 
 
     <section class="slide">
-        <h2>Here we are</h2>
+        <h2>Application Diagram</h2>
         <img src="pictures/services-kafka-dbs-debezium.svg" alt="" class="cover" style="width: 90%">
     </section>
     
     
     <section class="slide">
-        <h2>Application Diagram</h2>
+        <h2>Application Diagram<span style="color:lightgray">. Rearrange a bit</span></h2>
         <img src="pictures/4-ms-aws-without-wordpress-and-crawlers.svg" alt="" class="cover w">
     </section>
 
