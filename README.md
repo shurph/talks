@@ -7,7 +7,7 @@
 
 ### Предстоящие
 - 2020-02-??
-  — Bring Django to the microservices world using Kafka
+  — Django в мире микросервисов и Kafka
   — [слайды](https://shurph.github.io/talks/kafka-grodno)
 - 2020-??-??
   — Деревья и таблицы 
@@ -17,7 +17,7 @@
 ### Состоявшиеся
 - 2020-02-06
   — iTechMeetup **Brest** #6
-  — Git:  назад в будущее!
+  — Git:  назад в будущее! Исправляем ошибки в истории репозитория
   — [слайды](https://shurph.github.io/talks/git-brest)
 - 2019-12-26
   — Minsk Python Meetup
@@ -94,5 +94,5 @@
 
 ... 
 
-- 2007-09-16 — Orsha Linux Users Group Meetup (Линуксовка) — Orsha — VIM. Введение. Примеры эффективной работы
+- 2007-09-16 — Orsha Linux Users Group Meetup (Линуксовка) — Orsha — Vim: примеры эффективной работы
 
