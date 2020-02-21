@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Python 2: что мертво, умереть не может</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="../vendor/shower/styles/purple-16x9.css">
+    <link rel="stylesheet" href="../vendor/shower/vendors/highlight/styles/github.css">
+    <style>
+
+    .cards > div {
+        width: 33.33%;
+        float: left;
+        line-height: 1.6;
+    }
+
+    .tags-baloons {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 40px;
+    }
+    .tags-baloons .label {
+        border-radius: 15px 20px;
+        margin-bottom: 15px;
+    }
+    .slide-footer.author,
+    .slide-footer.notable {
+        font-size: 20px;
+        padding: 20px 40px;
+    }
+    .slide footer {
+        color: black;
+        padding: 10px;
+    }
+    h1,h2,h3,h4,h5,h6,h7 {
+         font-family: PT Sans Narrow;
+    }
+    .slide {
+        /* font-size: 32px; /**/
+
+        /* line-height: 1.6; /***/
+    }
+    .slide code {
+        /* background: none; */
+    }
+    .slide .strike:after {
+        background-color: red;
+    }
+    .slide.red .strike:after {
+        background-color: black;
+        height: 9px;
+    }
+
+    .slide:before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 200px;
+        height: 30px;
+        background-size: fit;
+        background-image: url("../kafka-grodno/pictures/logos/itechart-black.svg");
+        background-postion: bottom right;
+        background-repeat: no-repeat;
+    }
+
+    .slide.black:before,
+    .slide.red-dark:before,
+    .slide.red:before {
+        filter: invert(1);
+    }
+
+    .slide:after {
+        background: transparent url('../kafka-grodno/pictures/system/slide-number-bg.svg') center center no-repeat;
+        background-size: 70px;
+        border-radius: 0;
+        width: 70px;
+        font-size: 0.95em;
+    }
+    .slide.black:after {
+        background-color: transparent;
+        color: darkgray;
+        filter: invert(1) sepia(1);
+    }
+    .slide.red-dark:after,
+    .slide.red:after {
+        background: transparent url('../kafka-grodno/pictures/system/slide-number-bg-white.svg') center center no-repeat;
+        color:red;
+    }
+
+
+    .slide.red-dark {
+        background-color: #680000
+    }
+    .slide.red-dark:after {
+        color: #680000
+    }
+
+    .slide.no-logo:before {
+        display: none;
+    }
+
+    .slide h2, /* disable border on all slides */
+    .slide h2.no-border, .slide h2.no-line {
+        border-bottom: none;
+    }
+    .cards > div {
+        width: 33.33%;
+        float: left;
+        line-height: 1.6;
+    }
+
+    .tags-baloons {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 40px;
+    }
+    .tags-baloons .label {
+        border-radius: 15px 20px;
+        margin-bottom: 15px;
+    }
+    .slide-footer.author,
+    .slide-footer.notable {
+        font-size: 20px;
+        padding: 20px 40px;
+    }
+    .slide footer {
+        color: black;
+        padding: 10px;
+    }
+
+    .slide-footer small {
+        font-size: 12px;
+    }
+
+    .lighty {
+            color: rgba(0,0,0, 0.45);
+    }
+
+    .slide.black  .lighty,
+    .slide.red .lighty {
+        color: rgba(255,255,255, 0.45);
+    }
+
+
+    .slide .shout.smaller {
+        font-size: 58px;
+    }
+    .slide .shout.smaller-more {
+        font-size: 42px;
+    }
+    .huge {
+        font-size: 42px;
+    }
+    .semi-huge {
+        font-size: 32px;
+    }
+    .padding {
+        padding-left: 150px;
+        padding-top: 50px;
+    }
+    .padding-sm {
+        padding-left: 150px;
+        padding-top: 25px;
+    }
+    .bg-gradient-pink {
+        background: rgb(240,111,170); background: linear-gradient(100deg, rgba(240,111,170,1) 0%, rgba(157,122,184,1) 100%);
+    }
+
+
+    .slide pre code.normal-in-center {
+        margin: 0; padding:0; margin-top: -2.5em; line-height: 1; font-size:22px; width: 100%; overflow: hidden;
+    }
+
+    .slide pre code.normal-in-center.huge {
+        line-height: 1.3; font-size:28px;
+    }
+
+    .slide pre code.normal-in-center.no-skip-first-line {
+        margin-top: -1.3em; 
+    }
+    .underlined-block {
+        display: inline-block; border-bottom: 5px solid red; padding-bottom: 0.25rem; width: 100%
+    }
+    h2 small {
+        font-size: 0.7em;
+    }
+    </style>
+</head>
+
+<body class="shower list">
+    <header class="caption">
+        <h1>Python 2: что мертво, умереть не может</h1>
+
+        <p>
+            <a href="https://github.com/shurph/talks">Mikalai Saskavets</a>
+        </p>
+    </header>
+
+
+
+    <section class="slide clear no-logo">
+        <img src="pictures/logos/pyconby-2020.svg" alt="" class="place top left" style="width: 200px; padding: 15px;">
+        <h2 class="shout smaller">
+            Python 2: What Is Dead May Never Die
+        </h2>
+        <span class="slide-footer">
+            Mikalai Saskavets
+            <br>@ iTechArt-Group
+        </span>
+    </section>
+
+
+    <!--
+    <section class="slide clear half-red no-logo">
+        <div>
+            <h3>Mikalai Saskavets</h3>
+            <br>
+            <img src="../kafka-mogilev/pictures/mikalai-photo.png" alt="" width="97%" >
+
+        </div>
+        <div>
+            I'm with:<br>
+            • iTechArt<br>
+            • PyCon Belarus Program Committee<br>
+            • Minsk Python Meetup Program Committee<br>
+            • Python Software Foundation<br>
+                <span style="color:gray; margin: -15px 0 0 20px; display: inline-block">(as Contributing Member)</span><br>
+        </div>
+    </section>
+    -->
+
+
+
+    <!--
+    <section class="slide">
+        <h2 class="shout smaller">Python 3 is alive more than 11 years</h2>
+        <span class="slide-footer">Python 3.0 release date: December 3, 2008</span>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout smaller">Last few years some Python Core developers have been preaching the switching to 3</h2>
+    </section>
+    -->
+
+    <section class="slide">
+        <h2 class="shout">So...</h2>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="shout">Python 2 EOL: Jan 2020</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Python 2 EOL: Jan 2020*</h2>
+        <span class="slide-footer">The last Python 2 release is scheduled to <b>April</b> 2020</span>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Python 2 EOL: 2020</h2>
+    </section>
+
+
+    <section class="slide">
+        <h2 class="shout">But...</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout smaller">Red Hat will support Python 2 till 2024</h2>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="shout smaller">Red Hat: «but only <span style="color:red">interpreter</span>!»</h2>
+    </section>
+
+
+<!--
+    <section class="slide">
+        <h2>
+            Daily Download Proportions<span style="color:gray">: last 120 days</span>
+        </h2>
+        <img src="pictures/python-2-3-download-stats.svg" alt="" class="cover">
+        <img src="pictures/python-2-3-download-stats-legend.svg" alt="" class="place center bottom">
+        <span class="slide-footer">see more at <a href="https://pypistats.org/packhttps://www.infoworld.com/article/3511961/no-python-2-did-not-get-a-reprieve.htmlhttps://www.infoworld.com/article/3511961/no-python-2-did-not-get-a-reprieve.hNo, Python 2 did not get a reprievtmlages/__all__" style="background:none">pypistats.org/packages/__all__</a></span>
+    </section>
+-->
+
+
+    <section class="slide">
+        <h2 class="shout smaller">
+            What about packages?
+        </h2>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="shout smaller">
+            how long third-party packages will support 2?
+            <br>
+            <a href="https://python3statement.org/" style="background:none">
+                <small>python3statement.org</small>
+            </a>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout smaller">commercial support for third-party packages?</h2>
+    </section>
+
+    <!--
+    <section class="slide">
+        <h2 class="shout">what's the price?</h2>
+    </section>
+    -->
+    
+    
+    <section class="slide">
+        <h2 class="shout">But...</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout smaller">
+            pip maintainers
+            will support Python 2<br>
+            till they can handle this
+        </h2>
+        <span class="slide-footer">
+        see links: <a href="https://pip.pypa.io/en/stable/development/release-process/#python-2-support">[1]</a>, <a href="https://github.com/pypa/pip/issues/6148">[2]</a>
+        </span>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">So...</h2>
+    </section>
+    
+    <section class="slide">
+        <h2 class="shout">2024?</h2>
+    </section>
+
+    <!--
+    <section class="slide">
+        <h2 class="shout" style="font-size: 80px">
+            Decide to migrate NOW<span style="color:lightgray">, please</span>
+        </h2>
+    </section> -->
+    <section class="slide">
+        <h2 class="shout" style="font-size: 80px">
+            Migrate or Die<span style="color:lightgray">, please</span>
+        </h2>
+    </section>
+
+
+
+    <section class="slide">
+        <h2 class="shout">that's all</h2>
+    </section>
+
+
+
+
+    <div class="progress"></div>
+
+    <footer class="badge">
+        <a href="https://github.com/shurph/talks">Fork me on GitHub!</a>
+    </footer>
+
+    <script src="../vendor/shower/scripts/shower.min.js"></script>
+
+    <script src="../vendor/shower/vendors/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
