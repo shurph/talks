@@ -6,6 +6,9 @@
 
 
 ### Предстоящие
+- 2020-02-22
+  — Python 2: что мёртво, умереть не может
+  — [слайды](https://shurph.github.io/talks/python-2-is-dead)
 - 2020-02-??
   — Django в мире микросервисов и Kafka
   — [слайды](https://shurph.github.io/talks/kafka-grodno)
