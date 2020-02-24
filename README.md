@@ -21,6 +21,7 @@
 - 2020-02-06
   — iTechMeetup **Brest** #6
   — Git:  назад в будущее! Исправляем ошибки в истории репозитория
+  — [🎥видео](https://www.youtube.com/watch?v=5goiwYdmDnU)
   — [слайды](https://shurph.github.io/talks/git-brest)
 - 2019-12-26
   — Minsk Python Meetup
