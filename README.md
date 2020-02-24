@@ -64,6 +64,7 @@
 - 2019-03-01
   — iTechArt
   — Python + Pipenv: Берём зависимости под контроль!
+  — [🎥видео](https://www.youtube.com/watch?v=aX9GuAC3_aU)
   — [слайды](https://shurph.github.io/talks/python-dependencies-under-control/)
 - 2019-02-15
   — **PyCon Belarus 2019**
