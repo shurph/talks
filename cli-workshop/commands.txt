@@ -1,0 +1,71 @@
+
+jq '.title' *json
+jq '.title' *json | wc
+jq '.' $(ls -1 | head -1)
+jq '.related_urls|.[]|.url?' *json|sort | uniq -c | sort -h
+
+jq 'keys' 
+
+FOO=$(jq 'keys' 2018-04-25-lightning-talks-aleksei-shrub.json | sort|tail -n 11 | sed 's/"//g') 
+
+jq '{copyright_text, description, duration, language, recorded, related_urls, speakers, tags, thumbnail_url, title, videos, tags:[]'} 2018-04-25-lightning-talks-aleksei-shrub.json
+
+
+
+moreutils -> sponge
+
+
+vidir
+vipe
+
+
+
+:set nobackup
+
+
+renameutils -> qmv
+
+
+
+sudo aptitude install apt-file dlocate
+
+
+dpkg -S `which qmv`
+apt-file qmv
+dlocate qmv
+
+
+%s/\t.\/\([^0-9]\+\)-\([0-9]\{2\}-[0-9]\{2\}-[0-9]\{2,4\}\)/\t.\/\2-\1/g
+
+%s/\t.\/\([^0-9]\+\)-\([0-9]\{2,4\}\)\(.json\)/\t.\/\2-\1\3/g
+
+%s/\.\/\([0-9]\{2\}\)-\([0-9]\{2\}\)-\([0-9]\{2,4\}\)/\.\/\3-\2-\1/g
+
+
+nikolay:$ a=2 cat lines.txt | head -$a | tail -1
+
+
+
+Магия Консоли
+
+rename 's/-python-meetup//' *json
+
+jq '. + {speakers:[.title], recorded: .title}' $FN
+
+FN=2105-09-25-ispolzovanie-bdd-v-razrabotke-na-python-vladimir-shebuniaev.json
+
+sed -e 's#\("title": "\)\([^/]\+\)/[^"]\+#\1\2#g'
+
+
+cat $FN | sed 's#"recorded": "[^\[]\+#"recorded": "#g' | sed '#"recorded": "\[Python Meetup ([0-9\.]\+)\]#"recorded": "\1#g' | sponge $FN
+
+
+cat *json | grep recorded | sed 's=\("recorded": "\)[^[]\+=\1=g' | sed 's/]//g' | sed 's=\("recorded": "\)[^0-9]\+=\1=g'  | sed 's=\([0-9]\+\)\.\([0-9]\+\)\.\([0-9]\+\)=\3-\2-\1=g'
+
+
+cat *json | grep recorded | sed 's=\("recorded": "\)[^[]\+=\1=g' 
+
+
+sed -i 's/"recorded": ".* Meetup *\([0-9\.]*\)\]"/"recorded": "\1"/' *.json
+
+
