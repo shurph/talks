@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Магия консоли</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="../vendor/shower/styles/purple-16x9.css">
+    <link rel="stylesheet" href="../vendor/shower/vendors/highlight/styles/github.css">
+    <script>
+        let my_work_em = 'bmlrb2xheS5zYXNrb3ZldHNAaXRlY2hhcnQtZ3JvdXAuY29t';
+        let my_home_em = 'c2h1cnBoQGdtYWlsLmNvbQ==';
+
+        let put = str => document.write(str);
+        let putsecure = str => put(atob(str));
+    </script>
+    <style>
+    h1,h2,h3,h4,h5,h6,h7 {
+         font-family: PT Sans Narrow;
+    }
+    .slide {
+        /* font-size: 32px; /**/
+        
+        /* line-height: 1.6; /***/
+    }
+    .slide code {
+        /* background: none; */
+    }
+    .slide .strike:after {
+        background-color: red;
+    }
+    .slide.red .strike:after {
+        background-color: black;
+        height: 9px;
+    }
+
+    .slide:before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 200px;
+        height: 30px;
+        background-size: fit;
+        background-image: url("../git-brest/pictures/logos/itechart-black.svg");
+        background-postion: bottom right;
+        background-repeat: no-repeat;
+    }
+
+    .slide.black:before,
+    .slide.red-dark:before,
+    .slide.red:before {
+        filter: invert(1);
+    }
+    
+    .slide:after {
+        background: transparent url('../git-brest/pictures/system/slide-number-bg.svg') center center no-repeat;
+        background-size: 70px;
+        border-radius: 0;
+        width: 70px;
+        font-size: 0.95em;
+    }
+    .slide.black:after {
+        background-color: transparent;
+        color: darkgray;
+        filter: hue-rotate(300deg) saturate(50%);
+    }
+    .slide.red-dark:after,
+    .slide.red:after {
+        background-color: transparent;
+        color:darkgoldenrod;
+        filter: grayscale(1) invert(1) contrast(3);
+    }
+    
+
+    .slide.red-dark {
+        background-color: #680000
+    }
+    .slide.red-dark:after {
+        color: #680000
+    }
+
+    .slide.no-logo:before {
+        display: none;
+    }
+
+    .slide h2, /* disable border on all slides */
+    .slide h2.no-border, .slide h2.no-line {
+        border-bottom: none;
+    }
+    .cards > div {
+        width: 33.33%;
+        float: left;
+        line-height: 1.6;
+    }
+
+    .tags-baloons {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 40px;
+    }
+    .tags-baloons .label {
+        border-radius: 15px 20px;
+        margin-bottom: 15px;
+    }
+    .slide-footer.author,
+    .slide-footer.notable {
+        font-size: 20px;
+        padding: 20px 40px;
+    }
+    .slide footer {
+        color: black;
+        padding: 10px;
+    }
+
+    .slide-footer small {
+        font-size: 12px;
+    }
+
+    .lighty {
+            color: rgba(0,0,0, 0.45);
+    }
+
+    .slide.black  .lighty,
+    .slide.red .lighty {
+        color: rgba(255,255,255, 0.45);
+    }
+
+    .huge {
+        font-size: 42px;
+    }
+    .padding {
+        padding-left: 150px;
+        padding-top: 50px;
+    }
+    .padding-sm {
+        padding-left: 150px;
+        padding-top: 25px;
+    }
+    
+    .go-to-terminal {
+        display: inline-block;
+        width: 256px;
+        height: 256px;
+        background: url(https://cdn4.iconfinder.com/data/icons/small-n-flat/24/terminal-256.png) center center no-repeat;
+        border: none;
+    }
+    </style>
+</head>
+
+<body class="shower list">
+    <header class="caption">
+        <h1>Магия консоли</h1>
+        <p>
+            <a href="https://shurph.github.io/talks/">Mikalai Saskavets</a>
+        </p>
+    </header>
+
+
+<style>
+.slide {
+    background: url(pictures/matrix-purple-dark.jpg) center center no-repeat;
+    background-size: cover;
+    
+}
+.first-slide {
+    background-image: url(pictures/matrix-green-dark.jpg);
+}
+</style>
+
+    <section class="slide black clear first-slide"
+    
+    
+    style="">
+        <h2 class="shout" style="font-size: 82px; white-space: nowrap; color: white; text-transform: uppercase">
+            Магия консоли
+        </h2>
+        <h2 class="shout" style="font-size: 50.5px; white-space: nowrap; color: white;">
+            <br><br><br><br>
+            автоматизируем рутину
+        </h2>
+
+
+        <span class="slide-footer" style="font-size: 20px; padding: 5px 10px 7px 10px; color: white; background: rgba(0,0,0,0.75);">
+            Mikalai Saskavets
+        </span>
+        <div  class="place top left" style="opacity: 0.75; padding: 20px 0 0 40px;font-size: 20px; color: white;">
+            iTechMeetup Online #3
+        </div>
+
+        <footer>
+        </footer>
+    </section>
+
+
+
+<!--
+    <section class="slide black">
+        <h2>Что же такое «Консоль»?</h2>
+        <footer></footer>
+    </section>
+
+
+    <section class="slide black">
+        <h2 class=shout>
+            <span class=strike>ТЕОРИЯ</span>
+            <span style="padding:0 1em"></span>
+            ПРАКТИКА
+            <br>
+            <br>
+            <br>
+        </h2>
+        <footer></footer>
+        
+        
+        <h2 class=shout style="font-size:48px">Но… </h2>
+        <iframe
+            class="place center bottom"
+            width="336" height="189"
+            style="margin-bottom:40px"
+            src="https://www.youtube.com/embed/UFCpxzTCN94" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <footer></footer>
+    </section>
+-->
+
+
+    <section class="slide black">
+        <h2>Практическая задача</h2>
+        Есть 130 файлов со стандартизированным содержимым.
+        <br>
+        Нужно:
+        <ul style="font-size: 36px">
+            <li>Переименовать файлы должным образом</li>
+            <li>Удалить лишние данные из JSON файлов</li>
+            <li>Массово отредактировать содержимое</li>
+        </ul>
+        <footer></footer>
+    </section>
+    
+    
+    
+    
+    <section class="slide black">
+        <h2>«Концепции»</h2>
+        <ul style="font-size: 42px">
+            <li>Регулярные выражения</li>
+            <li>Конвейеры (пайпы, piplines)</li>
+            <li>Циклы и переменные</li>
+        </ul>
+        <footer></footer>
+    </section>
+    
+    
+
+    <section class="slide black clear">
+        <hr class="go-to-terminal place center">
+    </section>
+
+
+
+    <section class="slide black">
+        <pre class="plain">
+            <code style="margin: 4em 0 0 -12em; font-size:18px">
+                Исходное имя одного из файлой:
+                <span style="color:green">ocheredi-v-aws</span>-<span style="color:blue">aleksei-firsov</span>-<span style="color:orange">exness</span>-<span style="color:red">python-meetup</span>-<span style="color:yellow">12-12-2018</span>.json
+                
+                Прослеживаемый паттерн:
+                <span style="color:green">talk-title</span>-<span style="color:blue">person-name</span>-<span style="color:orange">somethinge-else</span>-<span style="color:red">some-garbage</span>-<span style="color:yellow">DD-MM-YYYY</span>.json
+                
+                Желаемый результат:
+                <span style="color:yellow">YYYY-MM-DD</span>-<span style="color:green">talk-title</span>-<span style="color:blue">person-name</span>-<span style="color:orange">something-else</span>.json
+            </code>
+        </pre>
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide black clear">
+        <hr class="go-to-terminal place center">
+    </section>
+
+    <section class="slide black">
+        <pre class="plain">
+            <code style="margin: 4em 0 0 -12em; font-size:18px">
+                Прослеживаемый паттерн:
+                1 ./<span style="color:lightblue">ocheredi-v-aws-aleksei-firsov-exness-python-meetup-</span><span style="color:yellow">12-12-2018</span>.json
+                
+                Регулярка:                
+                s#<span style="color:green">\t./</span><span style="color:lightblue">(.+)-</span><span style="color:orange">([0-9]{2})-([0-9]{2})-([0-9]{2,4})</span>#<span style="color:green">\t./</span><span style="color:red">\4-\3-\2-\1</span>#g
+                
+            </code>
+        </pre>
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide black clear">
+        <hr class="go-to-terminal place center">
+    </section>
+    
+    
+    <section class="slide black">
+        <pre class="plain">
+            <style>
+                #special-272 > span {
+                    padding: 4px;
+                    border: 1px solid green
+                }
+            </style>
+            <code id="special-272" style="margin: 4em 0 0 -12em; font-size:22px">
+                <span style="color:green">cat FILE.TXT</span> <span style="color:yellow">|</span> <span style="color:lightblue">другая команда</span> <span style="color:yellow">|</span> <span style="color:lightblue">ещё команда</span> <span style="color:orange">&gt;</span> <span style="color:green">FILE_2.txt</span>                
+            </code>
+        </pre>
+        <footer></footer>
+    </section>
+    
+    <section class="slide black clear">
+        <hr class="go-to-terminal place center">
+    </section>
+    
+
+    <section class="slide black">
+        <pre class="plain">
+            <style>
+                #special-272 > span {
+                    padding: 4px;
+                    border: 1px solid green
+                }
+            </style>
+            <code id="special-272" style="margin: 4em 0 0 -12em; font-size:22px">
+                <span style="color:green">cat FILE.TXT</span> <span style="color:yellow">|</span> <span style="color:lightblue">tr [:upper:] [:lower:]</span> <span style="border-color: red"><span style="color:orange">&gt; </span><span style="color:red">FILE.txt</span></span>                
+            </code>
+        </pre>
+        <footer></footer>
+    </section>
+    
+    
+    
+
+
+    <section class="slide black">
+        <pre class="plain">
+            <style>
+                #special-272 > span {
+                    padding: 4px;
+                    border: 1px solid green
+                }
+            </style>
+            <code id="special-272" style="margin: 4em 0 0 -12em; font-size:22px">
+                <span style="color:green">cat FILE.TXT</span> <span style="color:yellow">|</span> <span style="color:lightblue">tr [:upper:] [:lower:]</span> <span style="border-color: red"><span style="color:orange">&gt; </span><span style="color:red">FILE.txt</span></span>
+                
+                
+                <span style="color:green">cat FILE.TXT</span> <span style="color:yellow">|</span> <span style="color:lightblue">tr [:upper:] [:lower:]</span> <span><span style="color:orange">| sponge</span> <span style="color:green">FILE.txt</span></span>
+            </code>
+        </pre>
+        <footer></footer>
+    </section>
+    
+    
+    
+    
+    <section class="slide black clear">
+        <hr class="go-to-terminal place center">
+    </section>
+    
+    
+
+    <section class="slide black">
+        <pre class="plain">
+            <code style="margin: -1em 0 0 -12em; font-size:22px">
+                for <span style="color:lightblue">VAR</span> in <span style="color:lightgreen">*</span>
+                do
+                    cmd1 <span style="color:orange">$</span><span style="color:lightblue">VAR</span>
+                    cmd2 | cmd3 <span style="color:orange">$</span><span style="color:lightblue">VAR</span>
+                done
+                <span style="color:blue"># ---------------------------------------------------------</span>
+                for <span style="color:lightblue">VAR</span> in <span style="color:lightgreen">$( ls -1 )</span><span style="color:#cc66cc">;</span> do cmd1 <span style="color:orange">$</span><span style="color:lightblue">VAR</span><span style="color:#cc66cc">;</span> cmd2 | cmd3 <span style="color:orange">$</span><span style="color:lightblue">VAR</span><span style="color:#cc66cc">;</span> done
+                
+            </code>
+        </pre>
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide black clear">
+        <hr class="go-to-terminal place center">
+    </section>
+    
+    <!--
+    <section class="slide black">
+    <img class="place center" style="width:400px" src="pictures/spongebob.png">
+    
+
+        <footer></footer>
+    </section>
+    -->
+    
+
+
+    <section class="slide black">
+        <pre class="plain">
+            <code style="margin-top: -6em; font-size:18px">
+
+sed - потоковый текстовый редактор с регулярками
+grep - поиск строк в файле (файлах)
+tr - трансформация текста
+wc - подсчёт символов, слов, строк
+rename - переименование файлов, с регулярками
+
+jq - манипуляция контентом JSON-файлов
+
+vidir - переименование и перемещение файлов текстовым редактором
+sponge - «губка» для пайпов
+</code>
+        </pre>
+            <span class="place bottom left">
+                <span style="padding:0 35px"></span>
+                регулярки: <a href="https://regex101.com/">regex101.com</a>
+                <br>
+                <br>
+            </span>
+        <footer></footer>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ###################### NO SLIDES BELOW !!! ###################### <!-- -->
+    <div class="progress"></div>
+    <footer class="badge"><a href="https://github.com/shurph/talks">Fork me on GitHub!</a></footer>
+    <script src="../vendor/shower/scripts/shower.min.js"></script>
+    <script src="../vendor/shower/vendors/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
+
