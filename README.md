@@ -12,6 +12,10 @@
   — Современная web-разработка и Wordpress
 
 ### Состоявшиеся
+- 2020-06-11
+  — iTechMeetup Online #3
+  — Магия консоли: автоматизируем рутину
+  — [слайды](https://shurph.github.io/talks/cli-tricks/)
 - 2020-02-27
   — iTechMeetup **Grodno** #5
   — Django в мире микросервисов и Kafka
