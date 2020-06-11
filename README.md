@@ -22,6 +22,7 @@
   — [слайды](https://shurph.github.io/talks/kafka-grodno)
 - 2020-02-22
   — Python 2: что мёртво, умереть не может
+  — [🎥видео](https://www.youtube.com/watch?v=riLf7nECQL0&list=PLpVeA1tdgfCDdciEIzfItkMXhXEUyFewL)
   — [слайды](https://shurph.github.io/talks/python-2-is-dead)
 - 2020-02-06
   — iTechMeetup **Brest** #6
@@ -42,6 +43,7 @@
   — PiterPy 2019
   — **St. Petersburg, Russia**
   — Building a microservices-based application using Kafka and Django
+  — [🎥видео](https://www.youtube.com/watch?v=CeOJlLVy6fw&list=PLQTGSfnaYlCtP2vTORCcXgF38Ky6_pgLp)
   — [слайды](https://shurph.github.io/talks/kafka-piterpy/)
 - 2019-09-14
   — Minsk Python Meetup
