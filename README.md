@@ -21,6 +21,7 @@
   — Django в мире микросервисов и Kafka
   — [слайды](https://shurph.github.io/talks/kafka-grodno)
 - 2020-02-22
+  — **PyCon Belarus 2020**
   — Python 2: что мёртво, умереть не может
   — [🎥видео](https://www.youtube.com/watch?v=riLf7nECQL0&list=PLpVeA1tdgfCDdciEIzfItkMXhXEUyFewL)
   — [слайды](https://shurph.github.io/talks/python-2-is-dead)
