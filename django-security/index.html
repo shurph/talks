@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Django Security</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="../vendor/shower/styles/purple-16x9.css">
+    <link rel="stylesheet" href="../vendor/shower/vendors/highlight/styles/github.css">
+    <script>
+        let my_work_em = 'bmlrb2xheS5zYXNrb3ZldHNAaXRlY2hhcnQtZ3JvdXAuY29t';
+        let my_home_em = 'c2h1cnBoQGdtYWlsLmNvbQ==';
+
+        let put = str => document.write(str);
+        let putsecure = str => put(atob(str));
+    </script>
+    <style>
+    h1,h2,h3,h4,h5,h6,h7 {
+         font-family: PT Sans Narrow;
+    }
+    .slide {
+        /* font-size: 32px; /**/
+        
+        /* line-height: 1.6; /***/
+    }
+    .slide code {
+        /* background: none; */
+    }
+    .slide .strike:after {
+        background-color: red;
+    }
+
+    .slide:before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 200px;
+        height: 30px;
+        background-size: fit;
+        background-image: url("../git-brest/pictures/logos/itechart-black.svg");
+        background-postion: bottom right;
+        background-repeat: no-repeat;
+    }
+
+    .slide.black:before {
+        filter: invert(1);
+    }
+    
+    .slide:after {
+        background: transparent url('./pictures/new-slide-number-bg.svg') center center no-repeat;
+        background-size: 70px;
+        border-radius: 0;
+        width: 70px;
+        font-size: 0.95em;
+        background-color: transparent;
+    }
+    .slide.black:after {
+        color: darkgray;
+    }
+
+
+    .slide.no-logo:before {
+        display: none;
+    }
+
+    .slide h2, /* disable border on all slides */
+    .slide h2.no-border, .slide h2.no-line {
+        border-bottom: none;
+    }
+    .cards > div {
+        width: 33.33%;
+        float: left;
+        line-height: 1.6;
+    }
+
+    .tags-baloons {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 40px;
+    }
+    .tags-baloons .label {
+        border-radius: 15px 20px;
+        margin-bottom: 15px;
+    }
+    .slide-footer.author,
+    .slide-footer.notable {
+        font-size: 20px;
+        padding: 20px 40px;
+    }
+    .slide footer {
+        color: black;
+        padding: 10px;
+    }
+
+    .slide-footer small {
+        font-size: 12px;
+    }
+
+    .lighty {
+            color: rgba(0,0,0, 0.45);
+    }
+
+    .slide.black  .lighty {
+        color: rgba(255,255,255, 0.45);
+    }
+
+    .huge {
+        font-size: 42px;
+    }
+    .padding {
+        padding-left: 150px;
+        padding-top: 50px;
+    }
+    .padding-sm {
+        padding-left: 150px;
+        padding-top: 25px;
+    }
+    
+    .go-to-terminal {
+        display: inline-block;
+        width: 256px;
+        height: 256px;
+        background: url(https://cdn4.iconfinder.com/data/icons/small-n-flat/24/terminal-256.png) center center no-repeat;
+        border: none;
+    }
+    
+    .progress {
+        border-color: #333344;
+    }
+    
+    .slide .small {
+        font-size: 0.8em !important;
+    }
+    .slide .smaller {
+        font-size: 0.7em !important;
+    }
+    </style>
+</head>
+
+<body class="shower list">
+    <header class="caption">
+        <h1>Django Security</h1>
+        <p>
+            <a href="https://shurph.github.io/talks/">Mikalai Saskavets</a>
+        </p>
+    </header>
+
+
+<style>
+.slide {
+    background: url(pictures/matrix-purple-dark.jpg) center center no-repeat;
+    background-size: cover;
+    background-color: white;
+    background-image: none;
+    
+}
+.first-slide {
+    background-image: url(pictures/matrix-green-dark.jpg);
+}
+.up {
+    text-transform: uppercase;
+}
+.slide-footer {
+    font-size: 20px;
+    padding: 5px 10px 7px 10px;
+    /*/ 
+    color: white;
+    background: rgba(0,0,0,0.75);
+    /**/
+    line-height: 24px;
+}
+.event-name {
+    opacity: 0.75;
+    padding: 20px 0 0 20px;
+    font-size: 20px; 
+    /*/
+    color: white;
+    /**/
+}
+</style>
+
+    <section class="slide clear first-slide"
+    
+    
+    style="">
+        <h2 class="shout up">
+            Django Security
+        </h2>
+        <h2 class="shout">
+            <br>
+            <br>
+            <span class="smaller">
+                Защита от темных искусств
+            </span>
+        </h2>
+
+
+        <span class="slide-footer">
+            Mikalai Saskavets
+            <br>
+            Group Manager
+        </span>
+        <div  class="event-name   place top left">
+            2021
+        </div>
+
+        <footer>
+        </footer>
+    </section>
+
+
+
+
+    <section class="slide half-black ">
+        <div style="width: 30%; padding-right: 0; line-height:1.33;font-size: 1.24rem">
+            <h3>Mikalai Saskavets</h3>
+            <h4>Group Manager</h4>
+            <!--<h4>
+                <span style="display: inline-block; width: 100px"></span>
+                (ex. D2.G6)
+                </h4>-->
+                <br>
+            <h4>ex. Python Developer</h4>
+            <h4>ex. Full Stack Web Developer</h4>
+            <br>
+            <img src="../slides/reusable-slides/pictures/mikalai-photo.png" alt="" width="91%" >
+        
+        </div>
+        <div style="width: 70%;">
+            • профессионально разрабоатываю под web с 2006<br>
+            • пишу на Python c 2013<br>
+            • 3 года делаю PyCon Belarus<br>
+            • 2 года делаю Minsk Python Meetup<br>
+        </div>
+        <footer>
+        </footer>
+    </section>
+
+
+
+    
+    
+    
+    
+    <section class="slide">
+        <h2>С какими атаками мы можем столкнуться в вебе?</h2>
+        <ul>
+            <li>Cross site scripting (XSS)</li>
+            <li>Cross site request forgery (CSRF)</li>
+            <li>SQL injection</li>
+            <li>Clickjacking</li>
+            <li>Man in the Middle attacks (MitM)</li>
+            <li>Denial of Service attacks (DoS)</li>
+            <li>Distributed Denial of Service attacks (DDos)</li>
+            <li>… тысячи их …</li>
+        </ul>
+        <footer></footer>
+    </section>
+    
+    
+    
+    
+    
+    
+    <section class="slide">
+        <h2>От чего нас Django может защитить?</h2>
+        <ul>
+            <li>Cross site scripting (XSS)</li>
+            <li>Cross site request forgery (CSRF)</li>
+            <li>SQL injection</li>
+            <li>Clickjacking</li>
+            <li>Man in the Middle attacks (MitM)</li>
+        </ul>
+        <footer></footer>
+    </section>
+    
+    
+    
+    
+
+    
+    
+    <section class="slide">
+        <h2>Важно</h2>
+        <ul class="huge">
+            <li>Понимать, <strong>как</strong> Django защищает нас от распространённых угроз в вебе</li>
+            <li>Уметь ставить защиту от тех угроз, с которыми не справляется Django «из коробки»</li>
+        </ul>
+        </section>
+
+
+
+
+<!---
+Идеи:
+github pages ранее были вида username.github.com
+https://github.blog/2013-04-05-new-github-pages-domain-github-io/
+
+--->    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+    <!-- ###################### NO SLIDES BELOW !!! ###################### <!-- -->
+    <div class="progress"></div>
+    <footer class="badge"><a href="https://github.com/shurph/talks">Fork me on GitHub!</a></footer>
+    <script src="../vendor/shower/scripts/shower.min.js"></script>
+    <script src="../vendor/shower/vendors/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
+
