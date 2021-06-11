@@ -103,3 +103,34 @@
 
 - 2007-09-16 — Orsha Linux Users Group Meetup (Линуксовка) — Orsha — Vim: примеры эффективной работы
 
+
+
+
+### Just For Fun
+Некоторые мероприятия в причудливом формате
+
+- 2021-03-03
+  — Clubhouse
+  — IT-собеседования: как ходить? Как готовиться? Личный опыт.
+- 2021-02-28
+  — Clubhouse
+  — Войти в IT через 🐍 Python
+  — [Комната в Clubhouse](https://www.joinclubhouse.com/event/PDjL51vb).
+- 2020-10-31
+  — Hacktoberfest in Belarus by Minsk Python Meetup : Final Night
+  — [страница мероприятия](https://organize.mlh.io/participants/events/6005-hacktoberfest-in-belarus-by-minsk-python-meetup-final-night).
+- 2020-10-31
+  — Hacktoberfest for iTechArt : Final Night
+  — [страница мероприятия](https://organize.mlh.io/events/6006-hacktoberfest-for-itechart-final-night).
+- 2020-10-15
+  — Hacktoberfest in Belarus by Minsk Python Meetup : Intermediate Sync
+  — [страница мероприятия](https://organize.mlh.io/participants/events/5768-hacktoberfest-in-belarus-by-minsk-python-meetup-intermediate-sync).
+- 2020-10-14
+  — Hacktoberfest for iTechArt : Intermediate Sync
+  — [страница мероприятия](https://organize.mlh.io/participants/events/5769-hacktoberfest-for-itechart-intermediate-sync).
+- 2020-10-02
+  — Hacktoberfest in Belarus by Minsk Python Meetup
+  — [страница мероприятия](https://organize.mlh.io/participants/events/5071-hacktoberfest-in-belarus-by-minsk-python-meetup).
+- 2020-10-02
+  — Hacktoberfest Kick-off for iTechArt
+  — [страница мероприятия](https://organize.mlh.io/participants/events/5070-hacktoberfest-kick-off-for-itechart).
