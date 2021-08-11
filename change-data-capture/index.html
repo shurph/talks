@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>Change Data Capture</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="../vendor/shower/styles/purple-16x9.css">
+    <link rel="stylesheet" href="../vendor/shower/vendors/highlight/styles/github.css">
+    <script>
+        let my_work_em = 'bmlrb2xheS5zYXNrb3ZldHNAaXRlY2hhcnQtZ3JvdXAuY29t';
+        let my_home_em = 'c2h1cnBoQGdtYWlsLmNvbQ==';
+
+        let put = str => document.write(str);
+        let putsecure = str => put(atob(str));
+    </script>
+    <style>
+    h1,h2,h3,h4,h5,h6,h7 {
+         font-family: PT Sans Narrow;
+    }
+    .slide {
+        /* font-size: 32px; /**/
+        
+        /* line-height: 1.6; /***/
+    }
+    .slide code {
+        /* background: none; */
+    }
+    .slide .strike:after {
+        background-color: red;
+    }
+
+    .slide:before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 200px;
+        height: 30px;
+        background-size: fit;
+        background-image: url("../git-brest/pictures/logos/itechart-black.svg");
+        background-postion: bottom right;
+        background-repeat: no-repeat;
+    }
+
+    .slide.black:before {
+        filter: invert(1);
+    }
+    
+    .slide:after {
+        background: transparent url('./pictures/new-slide-number-bg.svg') center center no-repeat;
+        background-size: 70px;
+        border-radius: 0;
+        width: 70px;
+        font-size: 0.95em;
+        background-color: transparent;
+    }
+    .slide.black:after {
+        color: darkgray;
+    }
+
+
+    .slide.no-logo:before {
+        display: none;
+    }
+
+    .slide h2, /* disable border on all slides */
+    .slide h2.no-border, .slide h2.no-line {
+        border-bottom: none;
+    }
+    .cards > div {
+        width: 33.33%;
+        float: left;
+        line-height: 1.6;
+    }
+
+    .tags-baloons {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 40px;
+    }
+    .tags-baloons .label {
+        border-radius: 15px 20px;
+        margin-bottom: 15px;
+    }
+    .slide-footer.author,
+    .slide-footer.notable {
+        font-size: 20px;
+        padding: 20px 40px;
+    }
+    .slide footer {
+        color: black;
+        padding: 10px;
+    }
+
+    .slide-footer small {
+        font-size: 12px;
+    }
+
+    .lighty {
+            color: rgba(0,0,0, 0.45);
+    }
+
+    .slide.black  .lighty {
+        color: rgba(255,255,255, 0.45);
+    }
+
+    .huge {
+        font-size: 42px;
+    }
+    .padding {
+        padding-left: 150px;
+        padding-top: 50px;
+    }
+    .padding-sm {
+        padding-left: 150px;
+        padding-top: 25px;
+    }
+    
+    .go-to-terminal {
+        display: inline-block;
+        width: 256px;
+        height: 256px;
+        background: url(https://cdn4.iconfinder.com/data/icons/small-n-flat/24/terminal-256.png) center center no-repeat;
+        border: none;
+    }
+    
+    .progress {
+        border-color: #333344;
+    }
+    
+    .slide .small {
+        font-size: 0.8em !important;
+    }
+    .slide .smaller {
+        font-size: 0.7em !important;
+    }
+    
+    
+    .slide pre code.normal-in-center {
+        margin: 0; padding:0; margin-top: -2.5em; line-height: 1; font-size:22px; width: 100%; overflow: hidden;
+    }
+    
+    .slide pre code.normal-in-center.huge {
+        line-height: 1.3; font-size:28px;
+    }
+    
+    .slide pre code.normal-in-center.no-skip-first-line {
+        margin-top: -1.3em; 
+    }
+    </style>
+</head>
+
+<body class="shower list">
+    <header class="caption">
+        <h1>Change Data Capture</h1>
+        <p>
+            <a href="https://shurph.github.io/talks/">Mikalai Saskavets</a>
+        </p>
+    </header>
+
+
+<style>
+.slide {
+    background: url(pictures/matrix-purple-dark.jpg) center center no-repeat;
+    background-size: cover;
+    background-color: white;
+    background-image: none;
+    
+}
+.first-slide {
+    background-image: url(pictures/matrix-green-dark.jpg);
+}
+.up {
+    text-transform: uppercase;
+}
+.slide-footer {
+    font-size: 20px;
+    padding: 5px 10px 7px 10px;
+    /*/ 
+    color: white;
+    background: rgba(0,0,0,0.75);
+    /**/
+    line-height: 24px;
+}
+.event-name {
+    opacity: 0.75;
+    padding: 20px 0 0 20px;
+    font-size: 20px; 
+    /*/
+    color: white;
+    /**/
+}
+</style>
+
+    <section class="slide clear first-slide"
+    
+    
+    style="">
+        <h2 class="shout up">
+            Change Data Capture
+        </h2>
+        <h2 class="shout">
+            <br>
+            <br>
+            <span class="smaller" style="font-size:32px!important">
+                снимаем нагрузку с базы данных, упрощаем код основного приложения
+            </span>
+        </h2>
+
+
+        <span class="slide-footer">
+            Mikalai Saskavets
+            <br>
+            Group Manager
+        </span>
+        <div  class="event-name   place top left">
+            2021
+        </div>
+
+        <footer>
+        </footer>
+    </section>
+
+
+
+
+    <section class="slide half-black ">
+        <div style="width: 30%; padding-right: 0; line-height:1.33;font-size: 1.24rem">
+            <h3>Mikalai Saskavets</h3>
+            <h4>Group Manager</h4>
+            <!--<h4>
+                <span style="display: inline-block; width: 100px"></span>
+                (ex. D2.G6)
+                </h4>-->
+                <br>
+            <!--
+            <h4>ex. Python Developer</h4>
+            <!---->
+            <h4>ex. Full Stack Web Developer</h4>
+            <br>
+            <img src="../slides/reusable-slides/pictures/mikalai-photo.png" alt="" width="91%" >
+        
+        </div>
+        <div style="width: 70%;">
+            • профессионально разрабоатываю под web с 2006<br>
+            • пишу на Python c 2013<br>
+            • рассказываю про подходы к разработке с 2018<br>
+            <!--
+            • внедряю инфрастуктурные и архитектурные практики во все проекты, до которых могу дотянуться<br>
+            • 3 года делаю PyCon Belarus<br>
+            • 2 года делаю Minsk Python Meetup<br>
+            <!---->
+        </div>
+        <footer>
+        </footer>
+    </section>
+
+    <section class="slide black">
+        <h2 class="shout up">
+            Change Data Capture
+        </h2>
+        <img class="cover h" alt="" src="
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF91INLm_vfnmcVau9ZwRjnbL5fUQ7Ih3hMij7RO6ugTe3vSfUhJiU5kSe2hQ0XDeBCA4&usqp=CAU" style="width: 101%; max-width: 101%; filter: brightness(0.5) contrast(1.2)">
+        <footer>
+            И так, Change Data Capture...
+            Что это такое?
+            Если говорить сухо, строго по теории, это набор шаблонов проектирования программного обеспечения, используя которые мы можем определить, какие данные были изменены и, уже зная, что и как было изменено, мы можем совершить какие-то действия над этими данными.....
+            Вроде бы всё просто, но ничего не понятно...
+            Хотелось бы на каких-то более приближенных к реалиям вещах это разобрать, а не выслушивать пересказ википедии, не правда ли?
+        </footer>
+    </section>
+    
+    
+    
+    
+    <section class="slide">
+        <h2 class="shout">App</h2>
+        <footer>
+            Давайте попробуем...
+            Представим, что у нас есть приложение,... крупное такое....
+        </footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="shout">A lot of Users → App</h2>
+        <footer>
+            Приложение обрабатывает довольно большое количество запросов от пользователей, с одной стороны, 
+        </footer>
+    </section>
+    
+    <section class="slide">
+        <h2 class="shout "><span class="smaller">A lot of Users → App ←→ Super Huge DB</span></h2>
+        <footer>
+             работает с довольно большим обьёмом данных, с другой стороны,
+        </footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="shout smaller">A lot of Users→App with complex logic←→Super Huge Database</h2>
+        <footer>
+            И, конечно, приложение выполняет довольно сложную логику, с третьей стороны.
+            Всё, как мы любим ))
+        </footer>
+    </section>
+    
+    
+    <section class="slide">
+        <pre><code>
+1 user request --> App |
+                       |-> 1 sub request to Database
+                       |-> 1 sub request to external API
+                       |-> 1 sub request to search index update
+                       |-> тысячи их
+        </code>
+        </pre> 
+        <footer>
+            Под сложной логикой я имею в виду не только сложную последовательность каких-то локальных преобразований над данными, не только какие-то математические операции...
+            Но, зачастую, чем больше, старше и матёрее приложение у нас, тем чаще под капотом одного пользовательского запроса к приложению скрывается довольно сложная машинерия, когда где-то летят запросы на другие сервисы, к другим приложениям, в базы данных, обновляется какой-то поисковой индекс нашего веб сервиса...
+        </footer>
+    </section>
+    
+    <section class="slide">
+        <h2 class="shout">Так ли плохо?</h2>
+        <footer>
+            Вроде как пока что это не звучит ужасно, большинство веб программистов так или иначе сталкивается с этим в своей работе...
+            Но давайте я побуду Капитаном Очевидностью и всё же озвучу несколько проблем
+        </footer>
+    </section>
+    
+    <section class="slide">
+        <h2>Проблемы</h2>
+        TODO: нужна картинка-саммари, отобразить текущее положение
+        
+        <ul>
+            <li>Подзапросы затягиваю время ответа пользователю -> пользователь ждёт -> пользователь грустит</li>
+            <li>Подзапросы засоряют код -> программисту дольше и тяжелее читать код -> программист грустит </li>
+        </ul>
+        <footer>
+            И так, когда у нас много подзапросов прячется за одним запросом, то с какими трудностями мы сталкиваемся?
+            Первое -- из-за подзапросов очень долгий ответ пользователю на его запрос, от этого пользователь страдает... и ещё больше пользователь страдает, когда у нас эти запросы выполняются синхронно...
+            Первую проблему мы можем решить тем, что перепишем наш код асинхронно, добавим очереди, добавим кое-какую обвязку в код, чтобы менеджить эти очереди...
+            
+            Но здесь на слайде у меня указана ещё и вторая проблема...
+            Вторая проблема -- код обработчика запроса разрастается за счёт кучи обвязочного кода, который  зашумляет читаемость, у нас основная бизнес-логика приложения начинает перемежаться второстепенными и третьестепенными кусками так называемого сервисного кода...
+        </footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <pre><code class="normal-in-center huge language-python">@api_view(["POST"])
+def mark_as_featured(request, id):
+    article = Articles.objects.get(id=id)
+    article.featured_start_date=now()
+    article.featured_end_date=__caclulate(article)
+    article.save()
+    return JsonResponse(article.as_json()) 
+        </code>
+        </pre> 
+        <footer>
+            Давайте перейдём к примерам кода, чтобы понять, что я называю здесь сервисным кодом...
+            Примеры будут очень вырожденными и условными, для наглядности...
+            Вот здесь эндпоинт а-ля джанго... Естественно, если бы это был реальный код в реальном джанго проекте, это бы выглядело сильно по-другому... Я к тому, что не пишите код так, как я пишу его для слайдов... Для слайдов ок, для прода -- не ок.... Так, ближе к делу... Джанго эндпоинт, призван зафьючерить какую-то статью, т.е. добавить её в группу особо рекламируемых статей....
+            
+            Здесь сервисного кода так-то и нет, только чистая бизнес логика: достали обьект статьи через Django ORM из базы по айдишнику, указали с какой даты по какую мы будем особым образом рекламировать эту статью, сохранили в базу обьект статьи, вернули фронтенду статью в джейсоне...
+            Всё, мы на коне!...
+        </footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="shout">А что там с поиском?</h2>
+        <footer>
+            Но есть нюанс...
+            Если у нас есть статьи в приложении... на сайте...
+            То пользователи, скорее всего, захотят по этим статьям искать...
+            На большинстве современных сайтов для полнотекстового поиска используются специализированные движки, сервисы для этого...
+        </footer>
+    </section>
+    <section class="slide">
+        <h2 class="shout">А что там с поиском?</h2>
+        <h2 class="shout"><br><br><span class=" smaller">ElasticSearch, Solr, Sphinx, ...?</span></h2>
+        
+        <footer>
+            ElasticSearch, Solr, Sphinx, что-то ещё... хотя кто-то может использовать и встроенные возможности базы данных для поиска...
+            Но пусть у нас для примера будет ElasticSearch... Хотя это и не принципиально для нашего случая.........
+            И так, если мы как-то особым образом рекламируем статью, то, скорее всего, мы хотим чтобы и в поиске наша статья показывалась повыше остальных.... А значит нам надо как-то обновить базу нашего поискового движка...
+        </footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <pre><code class="normal-in-center huge language-python">@api_view(["POST"])
+def mark_as_featured(request, id):
+    article = Articles.objects.get(id=id)
+    article.featured_start_date=now()
+    article.featured_end_date=__caclulate(article)
+    article.save()
+    return JsonResponse(article.as_json()) 
+        </code>
+        </pre> 
+        <footer>
+            И теперь вот такой минимальный код, отвечающий фактически, только за бизнес логику, начинает разрастаться тем самым сервисным кодом...
+        </footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <pre><code class="normal-in-center huge language-python">@api_view(["POST"])
+def mark_as_featured(request, id):
+    article = Articles.objects.get(id=id)
+    article.featured_start_date=now()
+    article.featured_end_date=__caclulate(article)
+    article.save()
+    <mark>search_engine.update(article)</mark>
+    return JsonResponse(article.as_json()) 
+        </code>
+        </pre> 
+        <footer>
+            Например вот так....
+            Казалось бы, одна строчка....
+            Но со временем этих строчек начнёт становится всё больше и больше...
+
+        </footer>
+    </section>
+    
+    <section class="slide">
+        <pre><code class="normal-in-center huge language-python">@api_view(["POST"])
+def mark_as_featured(request, id):
+    article = Articles.objects.get(id=id)
+    article.featured_start_date=now()
+    article.featured_end_date=__caclulate(article)
+    article.save()
+    <mark>search_engine.update(article)</mark>
+    <mark>mail_sender.send(to=article.author,</mark>
+    <mark>                 message=__congrats(article))</mark>
+    return JsonResponse(article.as_json()) 
+        </code>
+        </pre> 
+        <footer>
+            Например, мы захотим отправлять автору статьи емейл о том, что мы запустили рекламную кампанию для его статьи
+        </footer>
+    </section>
+    
+    
+    <section class="slide">
+        <pre><code class="normal-in-center huge language-python">@api_view(["POST"])
+def mark_as_featured(request, id):
+    article = Articles.objects.get(id=id)
+    article.featured_start_date=now()
+    article.featured_end_date=__caclulate(article)
+    article.save()
+    <mark>search_engine.update(article)</mark>
+    <mark>mail_sender.send(to=article.author,</mark>
+    <mark>                 message=__congrats(article))</mark>
+    <mark>push_notifications.send(to=Users.object.all(),</mark>
+    <mark>                 message=__promote(article))</mark>
+    return JsonResponse(article.as_json()) 
+        </code>
+        </pre> 
+        <footer>
+            А после этого мы решили, что если рекламить статью, так по полной, и надо бы всем пользователям выслать пуш-уведомлени о том, какая замечательная статья у нас есть на сайте!
+            Вот как-то так!
+            И ведь это мы ещё пока никак не затрагиваем денежный вопрос...
+            А ведь могли бы!
+        </footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <pre><code class="normal-in-center huge language-python">@api_view(["POST"])
+def mark_as_featured(request, id):
+    article = Articles.objects.get(id=id)
+    article.featured_start_date=now()
+    article.featured_end_date=__caclulate(article)
+    article.save()
+    <mark>search_engine.update(article)</mark>
+    <mark>mail_sender.send(to=article.author,</mark>
+    <mark>                 message=__congrats(article))</mark>
+    <mark>push_notifications.send(to=Users.object.all(),</mark>
+    <mark>                 message=__promote(article))</mark>
+    <mark style="background:pink">payment_gateway.charge(article.author,</mark>
+    <mark style="background:pink">                       __details(article))</mark>
+    return JsonResponse(article.as_json()) 
+        </code>
+        </pre> 
+        <footer>
+            Надо сказать, что благодаря лакончиности питона, этот код на слайде смотрится всё ещё более-менее читабельно и более менее понятно, с другими языками было бы похуже.....
+            Но даже с питоном, вот такой код вы не будете запускать в продакшене,... во первых у меня здесь какие-то магические функции-шорткаты с двумя нижними подчёркиваниями, это чтобы код вместился в слайд без сильной потери смысла.... во вторых у меня здесь никак не обрабатываются исключения, ошибки, пограничные случаи.... добавить этих обработок сюда и всё станет сильно грустнее....
+        </footer>
+    </section>
+    
+    
+    <section class="slide">
+        <pre><code class="normal-in-center huge language-python">@api_view(["POST"])
+def mark_as_featured(request, id):
+    article = Articles.objects.get(id=id)
+    article.featured_start_date=now()
+    article.featured_end_date=__caclulate(article)
+    article.save()
+    return JsonResponse(article.as_json()) 
+        </code>
+        </pre> 
+        <footer>
+            Всё-таки хотелось бы, чтобы код в основном обработчике был настолько прост, на сколько это возможно.....
+            Но куда и как нам поместить вот эту всю машинерию с обновлением поисковых индексов, с отсылкой нотификаций по почте и через пуш уведомления... 
+            
+            Можем ли мы оставить код вот таким, или нам придётся добавлять всякие магические функции-хелперы прямо здесь?
+        </footer>
+    </section>
+    
+    
+    
+    
+    <section class="slide">
+        <pre><code class="normal-in-center huge language-python">@api_view(["POST"])
+def mark_as_featured(request, id):
+    article = Articles.objects.get(id=id)
+    article.featured_start_date=now()
+    article.featured_end_date=__caclulate(article)
+    article.save()
+    <mark>__do_some_ancient_magick()</mark>
+    return JsonResponse(article.as_json()) 
+        </code>
+        </pre> 
+        <footer>
+            Но как эта магическая функция поймё, что ей делать?... Похоже, нужно передать в неё какую-то дополнительную информацию....
+        </footer>
+    </section>
+    
+    
+    
+    
+    
+    <section class="slide">
+        <pre><code class="normal-in-center huge language-python">@api_view(["POST"])
+def mark_as_featured(request, id):
+    article = Articles.objects.get(id=id)
+    article.featured_start_date=now()
+    article.featured_end_date=__caclulate(article)
+    article.save()
+    <mark>__do_some_ancient_magick(</mark>
+    <mark>    object=article,</mark>
+    <mark>    update_index=YES,</mark>
+    <mark>    send_email_notification=YES,</mark>
+    <mark>    send_push_notification=YES,</mark>
+    <mark>    charge_money=YES,</mark>
+    <mark>)</mark>
+    return JsonResponse(article.as_json()) 
+        </code>
+        </pre> 
+        <footer>
+            Не сильно-то далеко мы ушли от первоначального засорённого кода... И теперь у нас есть какая-то божественная функция, которая делает всё, имеет вариации запуска для всех возможных и невозможных случаев..... Совсем не хочется в такую функцию заглядывать....
+        </footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <pre><code class="normal-in-center huge language-python">@api_view(["POST"])
+def mark_as_featured(request, id):
+    article = Articles.objects.get(id=id)
+    article.featured_start_date=now()
+    article.featured_end_date=__caclulate(article)
+    article.save()
+    # the magick is happening somewhere under the hood
+    return JsonResponse(article.as_json()) 
+        </code>
+        </pre> 
+        <footer>
+            В общем, хотелось бы не загромождать наш основной код всем этим, хотелось бы, что бы эта магия происходила как-то сама.....
+            
+            И так..... зачем я вас на протяжении этих девяти слайдов мучаю не самым лучши кодом:...
+            Хочу подвести вас к мысли, что если довольно много вспомогательных действий нужно делать только из-за того, что  у нас изменилась пара полей в базе данных, то, почему бы здесь не попробовать использовать подход с захватом изменения данных? CDC?
+        </footer>
+    </section>
+    
+    
+    
+    
+    
+    <section class="slide">
+        <pre><code class="normal-in-center huge">
+            
+App⋄Db←|
+       |→ Change Detector for search index updates
+       |→ Change Detector for email notifications
+       |→ Change Detector for push notifications
+        </code>
+        </pre> 
+        <footer>
+            Давайте рассмотрим схематически, как мы могли бы решить наши задачи по обновлению индекса поиска и нотификации пользователей...
+            У нас здесь есть основное приложение, изменяющее что-то в нашей базе данных...
+            И есть несколько миниатюрных приложений, детектирующих изменения в основной базе и проихводящих какие-то специфические для них операции...
+            Здесь на схеме изображен очень наивный подход, который не лишен недостатков...
+            
+            Главный недостаток станет хорошо понятен, когда мы разберём те варианты механизмов, который могут быть использованы для определения изменений в базе....
+            
+            Но, забегая вперёд, рассуждая чисто на житейском уровне, можно сказать, что, скорее всего, не очень хорошо, когда каждое миниатюрное приложение, желающее узнать о произошедших изменениях, будет ломиться в основную базу за такой информацией, распихивая остальных желающих... Основная база может и подзахлебнуться от такого ажиотажа....
+        </footer>
+    </section>
+    
+    <section class="slide">
+        <pre><code class="normal-in-center huge">
+            
+App⋄Db→General Change Detector→Changes Queue→|
+                                             |
+      _______________________________________|
+      |→ Changes Observer for search index updates
+      |→ Changes Observer for email notifications
+      |→ Changes Observer for push notifications
+        </code>
+        </pre> 
+        <footer>
+            Чтобы решить эту проблему, давайте перерисуем наши схему....
+            
+            Теперь как-то получше,... и что-то мне это напоминает....
+            
+            Но, давайте, как и обещал, рассмотрим варианты механизмов, которые могут использоваться в CDC подходе для детектирования изменений в базе
+        </footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2>Способы детектировани изменений в базе</h2>
+        <ul>
+            <li>Колонки с метками времени изменения строки</li>
+            <li>Триггеры на базе</li>
+            <li>Транзакционный лог/Журнал изменений/WAL (Write Ahead Log)</li>
+        </ul>
+        <footer>Когда только появлялись идеи CDC подходов, использовали таймстампы в специально созданных колонках, это довольно ресурсоемкий подход, много селектов в базу летело...., довольно быстро от него отказались....
+        Начали пробовать подход с триггерами, когда на изменение в искомой таблице триггер генерировал лог изменений в другой, рядом лежащей таблице.... этот подход тоже ресурсоемкий... каждое изменение в базе порождало ещё несколько запросов на изменения, пусть и в соседней таблице, таблице-журнале....</footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2 class="shout"><span class="smaller">Транзакционный лог<br>Журнал изменений<br>WAL (Write Ahead Log)</span></h2>
+        <footer>На сегодняшний день для целей CDC наиболее используемым является механизм Write Ahead Log, в некоторых случаях он может называться иначе, таранзакционным логом, журналом изменений или как-то ещё... WAL предоставляется большинством современных транзакционных баз данных, WAL есть в постгрессей, майсиквеле, в монге и много где ещё...
+        
+        WAL изначально создавался для обеспечения отказоустойчивости и непрерывной доступности баз данных, чтобы предоставлять механизмы восстановления данных из этого журнала при сбоях, чтобы предоставить механизмы для реализации репликации баз
+        </footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        TODO: рассказать подробнее как работает WAL (или не надо?)
+        <footer>
+
+        </footer>
+    </section>
+    
+    <section class="slide">
+        <h2><span class="smaller">Схема использования WAL для репликации Postgre</span></h2>
+        <img src="https://scalegrid.io/blog/wp-content/uploads/2018/09/postgres_streaming.jpg" class=" cover" style=" height: 80%">
+
+        <footer>Так, на схеме изображена довольно стандартная схема использования базы данных постгрес с двумя рид-онли репликами.... Одним из квадратиков справа могла быть не вторая реплика постгреса, а какой-то набор инструментов для реализации CDC: что-то для сбора данных из WAL и для последующего передачи информации о изменениях, допустим, в какое-то хранилище, или в какою-то очередь...</footer>
+    </section>
+    
+    <section class="slide">
+        <h2><span class="smaller">Debezium как вариант реализации CDC для Postgre</span></h2>
+        <img src="../kafka-mogilev/pictures/debezium-architecture-part-postgre.png" alt="" class="cover w" style="margin-top: 30px">
+
+        <footer>
+
+        </footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2><span class="smaller">Debezium как вариант реализации CDC</span></h2>
+        <img src="../kafka-mogilev/pictures/debezium-architecture.png" alt="" class="cover w" style="width: 90%">
+
+        <footer>
+
+        </footer>
+    </section>
+    
+    
+    <section class="slide">
+        TODO: рассказать подробнее как Debezium помещает изменения из WAL в Kafka, как можно настроить в какие топики кафке какие изменения из каких таблиц будут лететь
+        <footer>
+
+        </footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2><span class="smaller">Debezium без Kafka (экспериментальная возможность!)</span></h2>
+        <img src="https://debezium.io/documentation/reference/_images/debezium-server-architecture.png" alt="" class="cover w" style="width: 90%">
+
+        <footer>
+
+        </footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2><span class="smaller">Встраивание Debezium в ваше Java приложение</span></h2>
+        TODO: рассказать, как Debezium может работать без кафки (Embedding Debezium Connectors, Debezium Engine API)
+        <footer>
+            Если же вы не хотите иметь дело не только с кафкой, но и с такими вендор-специфичными вещами как Amazon Kinesis или Google Pub/Sub, но хотите использовать инструментарий Debezium для работы с WAL базы данных, и при этом вы пишете на Java, то у вас есть возможность встроить дебезиум в своё мини-приложение, которое, допустим, будет читать WAL базы и на основе полученных изменений обновлять индекс ElasticSearch...
+        </footer>
+    </section>
+    
+    
+    <section class="slide">
+        <h2><span class="smaller">PgSync: синхронизация PostgreSQL и Elasticsearch</span></h2>
+        <ul>
+            <li>https://pgsync.com/</li>
+            <li>https://github.com/toluaina/pgsync</li>
+        </ul>
+        <footer>
+            Хотя для таких задач уже есть готовые инструменты.... Тот же PgSync, написанный на питоне...
+        </footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2><span class="smaller">Supabase Realtime: изменения из PostgreSQL в вебсокеты</span></h2>
+        <img src="https://raw.githubusercontent.com/supabase/realtime/master/examples/next-js/demo.gif" alt="" class="place " style="height: 70%;">
+
+        <footer>
+        </footer>
+    </section>
+    
+    <section class="slide">
+        <h2 class="shout">
+            <span class="smaller">
+            <span class="smaller">
+                https://github.com/topics/change-data-capture
+            </span>
+            </span>
+        </h2>
+        <footer>
+        </footer>
+    </section>
+    
+    <section class="slide">
+        <h2>Минусы реализации CDC через WAL механизмы</h2>
+        <ul>
+            <li>WAL не бесплатен</li>
+            <li>Под CDC резервируются replication slots</li>
+            <li>Потенциальное переполнение диска базы (-> падение базы)</li>
+        </ul>
+        <footer></footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2><span class="smaller">Debezium как вариант реализации CDC</span></h2>
+        <img src="../kafka-mogilev/pictures/debezium-architecture.png" alt="" class="cover w" style="width: 90%">
+
+        <footer>
+
+        </footer>
+    </section>
+    
+
+    
+
+    <!-- ###################### NO SLIDES BELOW !!! ###################### <!-- -->
+    <div class="progress"></div>
+    <footer class="badge"><a href="https://github.com/shurph/talks">Fork me on GitHub!</a></footer>
+    <script src="../vendor/shower/scripts/shower.min.js"></script>
+    <script src="../vendor/shower/vendors/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
+
