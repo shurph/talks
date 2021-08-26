@@ -260,12 +260,12 @@
         </footer>
     </section>
 
-    <section class="slide black">
+    <section class="slide ">
         <h2 class="shout up">
             Change Data Capture
         </h2>
-        <img class="cover h" alt="" src="
-https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF91INLm_vfnmcVau9ZwRjnbL5fUQ7Ih3hMij7RO6ugTe3vSfUhJiU5kSe2hQ0XDeBCA4&usqp=CAU" style="width: 101%; max-width: 101%; filter: brightness(0.5) contrast(1.2)">
+        <!--<img class="cover h" alt="" src="
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF91INLm_vfnmcVau9ZwRjnbL5fUQ7Ih3hMij7RO6ugTe3vSfUhJiU5kSe2hQ0XDeBCA4&usqp=CAU" style="width: 101%; max-width: 101%; filter: brightness(0.5) contrast(1.2)">-->
         <footer>
             И так, Change Data Capture...
             Что это такое?
@@ -279,7 +279,9 @@ https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF91INLm_vfnmcVau9ZwRjnbL5
     
     
     <section class="slide">
-        <h2 class="shout">App</h2>
+        <img style="width:100px;height:100px" class="place center" src="./pictures/application.png">
+        <h2 class="shout"><br><br>Приложение</h2>
+
         <footer>
             Давайте попробуем...
             Представим, что у нас есть приложение,... крупное такое....
@@ -288,36 +290,76 @@ https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF91INLm_vfnmcVau9ZwRjnbL5
     
     
     <section class="slide">
-        <h2 class="shout">A lot of Users → App</h2>
+        <img class="cover w" src="./pictures/users.png">
+        <img style="width:100px;height:100px" class="place center" src="./pictures/application.png">
+        <h2 class="shout"><br><br>Приложение</h2>
+        <h2 class="shout">
+            <br><br><br><br>
+            <div style="font-size:32px">и много пользователей</div>
+        </h2>
+        
         <footer>
             Приложение обрабатывает довольно большое количество запросов от пользователей, с одной стороны, 
         </footer>
     </section>
     
     <section class="slide">
-        <h2 class="shout "><span class="smaller">A lot of Users → App ←→ Super Huge DB</span></h2>
+        <img class="cover w" src="./pictures/users-and-database.png">
+        <img style="width:100px;height:100px" class="place center" src="./pictures/application.png">
+        <h2 class="shout"><br><br>Приложение</h2>
+        <h2 class="shout">
+            <br><br><br><br>
+            <div style="font-size:32px;line-height:1">
+                и много пользователей<br>
+                и много данных в большой БД
+            </div>
+        </h2>
         <footer>
              работает с довольно большим обьёмом данных, с другой стороны,
         </footer>
     </section>
     
-    
     <section class="slide">
-        <h2 class="shout smaller">A lot of Users→App with complex logic←→Super Huge Database</h2>
+        <img class="cover w" src="./pictures/users-and-database.png">
+        <img style="width:320px;" class="place center" src="./pictures/application-monster.png">
+        <h2 class="shout"><br><br>Приложение</h2>
+        <h2 class="shout">
+            <br><br><br><br>
+            <div style="font-size:32px;line-height:1">
+                и много пользователей<br>
+                и много данных в большой БД<br>
+                и сложная, запутанная бизнес логика
+            </div>
+        </h2>
         <footer>
-            И, конечно, приложение выполняет довольно сложную логику, с третьей стороны.
+            И, конечно, приложение выполняет довольно сложную логику......
             Всё, как мы любим ))
         </footer>
     </section>
     
     
     <section class="slide">
+        <!--
         <pre><code>
-1 user request --> App |
+1 user request ~~> App |
                        |-> 1 sub request to Database
                        |-> 1 sub request to external API
                        |-> 1 sub request to search index update
                        |-> тысячи их
+        </code>
+        </pre> -->
+        <pre class="plain"><code style="font-size: 0.9em;line-height:1">
+            один
+       пользовательский
+           запрос
+             |
+             ▼
+         Приложение 
+             |
+             |-> 1-10 подзапросов к БД
+             |-> 2-3-5 подзапросов к внешнему API
+             |-> 1-2 подзапроса на обновление поискового индекса
+             |-> тысячи их
         </code>
         </pre> 
         <footer>
@@ -336,10 +378,9 @@ https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF91INLm_vfnmcVau9ZwRjnbL5
     
     <section class="slide">
         <h2>Проблемы</h2>
-        TODO: нужна картинка-саммари, отобразить текущее положение
         
         <ul>
-            <li>Подзапросы затягиваю время ответа пользователю -> пользователь ждёт -> пользователь грустит</li>
+            <li>Подзапросы затягивают время ответа пользователю -> пользователь ждёт -> пользователь грустит</li>
             <li>Подзапросы засоряют код -> программисту дольше и тяжелее читать код -> программист грустит </li>
         </ul>
         <footer>
@@ -534,7 +575,7 @@ def mark_as_featured(request, id):
         </code>
         </pre> 
         <footer>
-            Но как эта магическая функция поймё, что ей делать?... Похоже, нужно передать в неё какую-то дополнительную информацию....
+            Но как эта магическая функция поймёт, что ей делать?... Похоже, нужно передать в неё какую-то дополнительную информацию....
         </footer>
     </section>
     
@@ -553,8 +594,8 @@ def mark_as_featured(request, id):
     <mark>    object=article,</mark>
     <mark>    update_index=YES,</mark>
     <mark>    send_email_notification=YES,</mark>
-    <mark>    send_push_notification=YES,</mark>
-    <mark>    charge_money=YES,</mark>
+    <mark>    send_push_notification=YES,</mark><!--
+    <mark>    charge_money=YES,</mark>-->
     <mark>)</mark>
     return JsonResponse(article.as_json()) 
         </code>
@@ -590,18 +631,22 @@ def mark_as_featured(request, id):
     
     
     <section class="slide">
-        <pre><code class="normal-in-center huge">
+        <img class="cover w" src="./pictures/app-db-detectors.png">
+        <pre><code class="normal-in-center huge" style="overflow: visible">
             
-App⋄Db←|
-       |→ Change Detector for search index updates
-       |→ Change Detector for email notifications
-       |→ Change Detector for push notifications
+            
+            
+            
+
+         ⇄  Захватчик изменений для поискового индекса
+         ⇄  Захватчик изменений для пушей
+         ⇄  Захватчик изменений для рассылки писем
         </code>
         </pre> 
         <footer>
             Давайте рассмотрим схематически, как мы могли бы решить наши задачи по обновлению индекса поиска и нотификации пользователей...
             У нас здесь есть основное приложение, изменяющее что-то в нашей базе данных...
-            И есть несколько миниатюрных приложений, детектирующих изменения в основной базе и проихводящих какие-то специфические для них операции...
+            И есть несколько миниатюрных приложений, детектирующих изменения в основной базе и производящих какие-то специфические для них операции...
             Здесь на схеме изображен очень наивный подход, который не лишен недостатков...
             
             Главный недостаток станет хорошо понятен, когда мы разберём те варианты механизмов, который могут быть использованы для определения изменений в базе....
@@ -611,65 +656,304 @@ App⋄Db←|
     </section>
     
     <section class="slide">
-        <pre><code class="normal-in-center huge">
-            
-App⋄Db→General Change Detector→Changes Queue→|
-                                             |
-      _______________________________________|
-      |→ Changes Observer for search index updates
-      |→ Changes Observer for email notifications
-      |→ Changes Observer for push notifications
-        </code>
-        </pre> 
+        <img class="cover w" src="./pictures/app-db-detectors-queue.png">
+
         <footer>
             Чтобы решить эту проблему, давайте перерисуем наши схему....
             
-            Теперь как-то получше,... и что-то мне это напоминает....
-            
-            Но, давайте, как и обещал, рассмотрим варианты механизмов, которые могут использоваться в CDC подходе для детектирования изменений в базе
+            Теперь как-то получше,... 
+             давайте рассмотрим варианты механизмов, которые могут использоваться в CDC подходе для детектирования изменений в базе
         </footer>
     </section>
     
     
     <section class="slide">
-        <h2>Способы детектировани изменений в базе</h2>
+        <h2>Способы детектирования изменений в базе</h2>
         <ul>
-            <li>Колонки с метками времени изменения строки</li>
+            <li>Метаданные (поля last_update/change_date)</li>
             <li>Триггеры на базе</li>
-            <li>Транзакционный лог/Журнал изменений/WAL (Write Ahead Log)</li>
+            <li>Транзакционный лог/Журнал изменений</li>
         </ul>
         <footer>Когда только появлялись идеи CDC подходов, использовали таймстампы в специально созданных колонках, это довольно ресурсоемкий подход, много селектов в базу летело...., довольно быстро от него отказались....
         Начали пробовать подход с триггерами, когда на изменение в искомой таблице триггер генерировал лог изменений в другой, рядом лежащей таблице.... этот подход тоже ресурсоемкий... каждое изменение в базе порождало ещё несколько запросов на изменения, пусть и в соседней таблице, таблице-журнале....</footer>
     </section>
     
     
+    <style>
+    .highlight-red { background: rgba(222, 12, 12, .5) }
+    .second-child-centered td:nth-child(2) {text-align: center}
+    </style>
+    <section class="slide">
+        <h2>Детектирование изменений через метаданные</h2>
+        <table class=" special-throughput second-child-centered">
+              <thead>
+                <tr style="text-align: right;">
+                  <th>id</th>
+                  <th><span style="display:inline-block;width:400px; padding-left:85pt;text-align: center">...</span></th>
+                  <th>last_modified</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>1</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:01</td>
+                </tr>
+                <tr>
+                  <th>2</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:23</td>
+                </tr>
+                <tr>
+                  <th>3</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:43</td>
+                </tr>
+                <tr>
+                  <th>4</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:54</td>
+                </tr>
+                <tr>
+                  <th>5</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:26</td>
+                </tr>
+                <tr>
+                  <th>6</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:41</td>
+                </tr>
+              </tbody>
+            </table>
+        </table>
+        <footer>
+        </footer>
+    </section>
     
     <section class="slide">
-        <h2 class="shout"><span class="smaller">Транзакционный лог<br>Журнал изменений<br>WAL (Write Ahead Log)</span></h2>
+        <h2>Детектирование изменений через метаданные</h2>
+        <table class=" special-throughput second-child-centered">
+              <thead>
+                <tr style="text-align: right;">
+                  <th>id</th>
+                  <th><span style="display:inline-block;width:400px; padding-left:85pt;text-align: center">...</span></th>
+                  <th>last_modified</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>1</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:01</td>
+                </tr>
+                <tr>
+                  <th>2</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:23</td>
+                </tr>
+                <tr class="highlight-red">
+                  <th>3</th>
+                  <td>...</td>
+                  <td>2021-08-26 19:12:43</td>
+                </tr>
+                <tr>
+                  <th>4</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:54</td>
+                </tr>
+                <tr>
+                  <th>5</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:26</td>
+                </tr>
+                <tr>
+                  <th>6</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:41</td>
+                </tr>
+                <tr class="highlight-red">
+                  <th>7</th>
+                  <td>...</td>
+                  <td>2021-08-26 19:12:55</td>
+                </tr>
+              </tbody>
+            </table>
+        </table>
+        <footer>
+        </footer>
+    </section>
+    
+    <section class="slide">
+        <h2>Детектирование изменений через метаданные</h2>
+        <table class=" special-throughput second-child-centered">
+              <thead>
+                <tr style="text-align: right;">
+                  <th>id</th>
+                  <th><span style="display:inline-block;width:400px; padding-left:85pt;text-align: center">...</span></th>
+                  <th>last_modified</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>1</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:01</td>
+                </tr>
+                <tr>
+                  <th>2</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:23</td>
+                </tr>
+                <tr>
+                  <th>3</th>
+                  <td>...</td>
+                  <td>2021-08-26 19:12:43</td>
+                </tr>
+                <tr>
+                  <th>4</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:54</td>
+                </tr>
+                <tr class="highlight-red">
+                  <th>&nbsp;</th>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>6</th>
+                  <td>...</td>
+                  <td>2021-08-25 11:12:41</td>
+                </tr>
+                <tr>
+                  <th>7</th>
+                  <td>...</td>
+                  <td>2021-08-26 19:12:55</td>
+                </tr>
+              </tbody>
+            </table>
+        </table>
+        <footer>
+        </footer>
+    </section>
+    
+    
+    
+    
+    <section class="slide">
+        <h2>Захват изменений через триггеры</h2>
+        Вешаем триггеры на операции изменения:
+        <ul>
+            <li>BEFORE UPDATE</li>
+            <li>BEFORE INSERT</li>
+            <li>BEFORE DELETE</li>
+            <li>AFTER UPDATE</li>
+            <li>AFTER INSERT</li>
+            <li>AFTER DELETE</li>
+        </ul> 
+        
+        <footer>
+        </footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2>Захват изменений через триггеры</h2>
+        <pre><code class="normal-in-center huge language-sql">
+            
+CREATE TRIGGER log_article_changes_trigger
+    BEFORE UPDATE OR INSERT OR DELETE
+    ON articles
+    FOR EACH ROW
+    EXECUTE PROCEDURE log_article_changes();
+        </code></pre>
+        <footer>
+        </footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2>Захват изменений через триггеры</h2>
+        <pre><code class="normal-in-center language-sql">
+            
+CREATE OR REPLACE FUNCTION log_article_changes()
+  RETURNS TRIGGER 
+  LANGUAGE PLPGSQL
+  AS
+$$
+BEGIN
+    <mark>IF NEW.featured_start_date <> OLD.featured_start_date THEN</mark>
+        INSERT INTO articles_featured_log
+        (
+            article_id, featured_start_date, changed_on
+        )
+        VALUES
+        (
+            OLD.id, NEW.featured_start_date, now()
+            /* TODO: fix for "AFTER INSERT" cases */
+        );
+	END IF;
+	RETURN NEW;
+END;
+$$
+        </code></pre>
+        <footer>
+        </footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2 class="shout"><span class="smaller">Транзакционный лог<br>Журнал изменений</span></h2>
         <footer>На сегодняшний день для целей CDC наиболее используемым является механизм Write Ahead Log, в некоторых случаях он может называться иначе, таранзакционным логом, журналом изменений или как-то ещё... WAL предоставляется большинством современных транзакционных баз данных, WAL есть в постгрессей, майсиквеле, в монге и много где ещё...
         
         WAL изначально создавался для обеспечения отказоустойчивости и непрерывной доступности баз данных, чтобы предоставлять механизмы восстановления данных из этого журнала при сбоях, чтобы предоставить механизмы для реализации репликации баз
         </footer>
     </section>
     
-    
-    
     <section class="slide">
-        TODO: рассказать подробнее как работает WAL (или не надо?)
+        <h2>Транзакционный лог в случае PostgreSQL</h2>
+        <h2 class="shout"><span class="smaller">WAL (Write Ahead Log)</span></h2>
         <footer>
 
         </footer>
     </section>
     
     <section class="slide">
-        <h2><span class="smaller">Схема использования WAL для репликации Postgre</span></h2>
-        <img src="https://scalegrid.io/blog/wp-content/uploads/2018/09/postgres_streaming.jpg" class=" cover" style=" height: 80%">
+        <h2><span class="smaller">WAL PostgreSQL как механизм репликации</span></h2>
+        <img src="./pictures/replication.png" class="cover h" style=" height: 80%">
+
+        <footer></footer>
+    </section>
+    
+    <section class="slide">
+        <h2><span class="smaller">Схема использования WAL для репликации PostgreSQL</span></h2>
+        <img src="./pictures/postgres_streaming.png" class="cover h" style=" height: 80%">
 
         <footer>Так, на схеме изображена довольно стандартная схема использования базы данных постгрес с двумя рид-онли репликами.... Одним из квадратиков справа могла быть не вторая реплика постгреса, а какой-то набор инструментов для реализации CDC: что-то для сбора данных из WAL и для последующего передачи информации о изменениях, допустим, в какое-то хранилище, или в какою-то очередь...</footer>
     </section>
     
+    
     <section class="slide">
-        <h2><span class="smaller">Debezium как вариант реализации CDC для Postgre</span></h2>
+        <h2><span class="smaller">Схема использования WAL для репликации PostgreSQL</span></h2>
+        <img src="./pictures/postgres_streaming_cdc.png" class="cover h" style=" height: 80%">
+
+        <footer></footer>
+    </section>
+    
+    <section class="slide">
+        <img src="./pictures/cdc-wal-reader.png" class="cover h" style=" height: 80%">
+
+        <footer></footer>
+    </section>
+    
+    
+    
+    
+    <section class="slide">
+        <h2><span class="smaller">Debezium как вариант реализации CDC для PostgreSQL</span></h2>
         <img src="../kafka-mogilev/pictures/debezium-architecture-part-postgre.png" alt="" class="cover w" style="margin-top: 30px">
 
         <footer>
@@ -687,17 +971,17 @@ App⋄Db→General Change Detector→Changes Queue→|
         </footer>
     </section>
     
-    
+    <!--
     <section class="slide">
         TODO: рассказать подробнее как Debezium помещает изменения из WAL в Kafka, как можно настроить в какие топики кафке какие изменения из каких таблиц будут лететь
         <footer>
 
         </footer>
     </section>
-    
+    -->
     
     <section class="slide">
-        <h2><span class="smaller">Debezium без Kafka (экспериментальная возможность!)</span></h2>
+        <h2><span class="smaller">Debezium без Kafka (экспериментальный режим!)</span></h2>
         <img src="https://debezium.io/documentation/reference/_images/debezium-server-architecture.png" alt="" class="cover w" style="width: 90%">
 
         <footer>
@@ -709,9 +993,20 @@ App⋄Db→General Change Detector→Changes Queue→|
     
     <section class="slide">
         <h2><span class="smaller">Встраивание Debezium в ваше Java приложение</span></h2>
-        TODO: рассказать, как Debezium может работать без кафки (Embedding Debezium Connectors, Debezium Engine API)
+        Используя Embedding Debezium Connectors / Debezium Engine API можно отказаться от слоя с очередью
+        <img src="./pictures/embedded-debezium.png" alt="" class="cover w" style="width: 90%">
+
         <footer>
             Если же вы не хотите иметь дело не только с кафкой, но и с такими вендор-специфичными вещами как Amazon Kinesis или Google Pub/Sub, но хотите использовать инструментарий Debezium для работы с WAL базы данных, и при этом вы пишете на Java, то у вас есть возможность встроить дебезиум в своё мини-приложение, которое, допустим, будет читать WAL базы и на основе полученных изменений обновлять индекс ElasticSearch...
+        </footer>
+    </section>
+    
+    <section class="slide">
+        <h2><span class="smaller">Встраивание Debezium в ваше Java приложение</span></h2>
+        Используя Embedding Debezium Connectors / Debezium Engine API можно отказаться от слоя с очередью
+        <img src="./pictures/embedded-debezium-elastic.png" alt="" class="cover w" style="width: 90%">
+
+        <footer>
         </footer>
     </section>
     
@@ -723,19 +1018,10 @@ App⋄Db→General Change Detector→Changes Queue→|
             <li>https://github.com/toluaina/pgsync</li>
         </ul>
         <footer>
-            Хотя для таких задач уже есть готовые инструменты.... Тот же PgSync, написанный на питоне...
+            Хотя, если мы говорим об обновлении индекса в эластике, для таких задач уже есть готовые инструменты.... Тот же PgSync, написанный на питоне...
         </footer>
     </section>
     
-    
-    
-    <section class="slide">
-        <h2><span class="smaller">Supabase Realtime: изменения из PostgreSQL в вебсокеты</span></h2>
-        <img src="https://raw.githubusercontent.com/supabase/realtime/master/examples/next-js/demo.gif" alt="" class="place " style="height: 70%;">
-
-        <footer>
-        </footer>
-    </section>
     
     <section class="slide">
         <h2 class="shout">
@@ -748,6 +1034,29 @@ App⋄Db→General Change Detector→Changes Queue→|
         <footer>
         </footer>
     </section>
+    
+    
+    <section class="slide">
+        <h2><span class="smaller">Supabase Realtime: изменения из PostgreSQL в вебсокеты</span></h2>
+        <img src="https://raw.githubusercontent.com/supabase/realtime/master/examples/next-js/demo.gif" alt="" class="place " style="height: 70%;">
+
+        <footer>
+        </footer>
+    </section>
+    
+    
+    
+    <section class="slide">
+        <h2>Огромное количество возможностей</h2>
+        <img src="./pictures/wal-zerg-rush.png" alt="" class="cover w" style="width: 90%">
+
+        <footer>
+        </footer>
+    </section>
+    
+    
+    
+    
     
     <section class="slide">
         <h2>Минусы реализации CDC через WAL механизмы</h2>
@@ -770,8 +1079,104 @@ App⋄Db→General Change Detector→Changes Queue→|
         </footer>
     </section>
     
-
     
+    <section class="slide ">
+        <h2>Плюсы и минусы CDC</h2>
+        <div style="display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;">
+            <div>
+                Минусы:
+                <ul>
+                    <li>Инфраструктура и архитектура усложняются</li>
+                    <li>Тяжело дебажить</li>
+                    <li>Непросто "перенакатить" действия в случае выявленных ошибок</li>
+                    <li>Нужен мониторинг</li>
+                </ul>
+            </div>
+            <div>
+            Плюсы:
+                <ul>
+                    <li>Упрощается кодовая база основного приложения</li>
+                    <li>Легко добавлять новые обработчики</li>
+                    <li>Большая свобода выбора подходящий инструментов под задачу</li>
+                    <li>Снижается нагрузка на основную БД</li>
+                </ul>
+            </div>
+        </div>
+        <footer></footer>
+    </section>
+    
+    <section class="slide">
+        <h2>В каких случаях выбирать CDC подход</h2>
+        <ul>
+            <li>Проект Data-центричен</li>
+            <li>Приложение уже сильно завязано на базу данных</li>
+            <li>Выполняемые задачи можно сделать идемпотентными</li>
+            <li>В проекте уже есть ETL/ELT пайплайны и есть нужда ускорить их</li>
+            <li>В проект внедряется Event-Driven архитектура 
+                <!-- и важна атомарность / транзакционная целостность  -->
+                (см. паттерн <a href="https://microservices.io/patterns/data/transactional-outbox.html">Transactional outbox</a>)
+            </li>
+        </ul>
+        <footer></footer>
+    </section>
+
+
+    <!--
+    <section class="slide">
+        <h2>Для любопытных</h2>
+        <ul>
+            <li>Архитектура Debezium
+                <br>
+                <a href="https://debezium.io/documentation/reference/architecture.html">https://debezium.io/documentation/reference/architecture.html</a>
+            </li>
+            <li>Паттерны построения микросервисных приложений
+                <br>
+                <a href="https://microservices.io/patterns/"> https://microservices.io/patterns/</a>
+            </li>
+        </ul>
+        <footer></footer>
+    </section>
+    -->
+    
+    <section class="slide">
+        <h2 class="shout">Итого</h2>
+    </section>
+    
+    
+    <section class="slide">
+        <h2 class="shout">Вопросы?</h2>
+    </section>
+    
+    <!--
+    <section class="slide">
+        <h2 class="shout">Attributions</h2>
+        <div class="slide-footer">
+            This slides have been designed using resources from Flaticon.com
+            <div>
+                Icons made by:
+                
+                <ul>
+                    <li>
+                        <a href="https://www.flaticon.com/authors/monkik" title="monkik">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                    </li>
+                    <li>
+                        <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                    </li>
+                    <li>
+                        <a href="" title="Kiranshastry">Kiranshastry</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+    --->
+
 
     <!-- ###################### NO SLIDES BELOW !!! ###################### <!-- -->
     <div class="progress"></div>
