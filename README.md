@@ -7,6 +7,11 @@
 
 ### Состоявшиеся
 
+- 2021-08-26
+  — iTechArt
+  — Change Data Capture
+  — [🎥видео](https://www.youtube.com/watch?v=a8PFN2lz2WM&t=2110s)
+  — [слайды](https://shurph.github.io/talks/change-data-capture/)
 - 2021-03-13
   — **PyCon Belarus 2021** Online
   — Дискуссионная панель «How IT teams operate» (Как работают ИТ-команды)
