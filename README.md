@@ -7,6 +7,11 @@
 ### Состоявшиеся
 
 - 2021-08-26
+  — iTechMeetup **Gomel**
+  — Теоретические аспекты Change Data Capture
+  — [🎥видео](https://www.youtube.com/watch?v=RoOKx8MNhRM)
+  — [слайды](https://shurph.github.io/talks/change-data-capture-gomel/)
+- 2021-08-26
   — iTechMeetup **Brest**
   — Change Data Capture
   — [🎥видео](https://www.youtube.com/watch?v=a8PFN2lz2WM&t=2110s)
