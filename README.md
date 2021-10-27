@@ -7,7 +7,7 @@
 ### Состоявшиеся
 
 - 2021-08-26
-  — iTechArt
+  — iTechMeetup **Brest**
   — Change Data Capture
   — [🎥видео](https://www.youtube.com/watch?v=a8PFN2lz2WM&t=2110s)
   — [слайды](https://shurph.github.io/talks/change-data-capture/)
