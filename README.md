@@ -14,7 +14,7 @@
 - 2021-08-26
   — iTechMeetup **Brest**
   — Change Data Capture
-  — [🎥видео](https://www.youtube.com/watch?v=a8PFN2lz2WM&t=2110s)
+  — [🎥видео](https://www.youtube.com/watch?v=a8PFN2lz2WM)
   — [слайды](https://shurph.github.io/talks/change-data-capture/)
 - 2021-03-13
   — **PyCon Belarus 2021** Online
