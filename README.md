@@ -6,7 +6,7 @@
 
 ### Состоявшиеся
 
-- 2021-08-26
+- 2021-10-21
   — iTechMeetup **Gomel**
   — Теоретические аспекты Change Data Capture
   — [🎥видео](https://www.youtube.com/watch?v=RoOKx8MNhRM)
