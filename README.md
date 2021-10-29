@@ -119,7 +119,7 @@
 
 ... 
 
-- 2012-03-28 — iTechArt — Linux CLI and Bash
+- 2012-03-12 — iTechArt — Linux CLI and Bash
 
 ... 
 
