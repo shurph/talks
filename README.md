@@ -131,6 +131,9 @@
 ### Just For Fun
 Некоторые мероприятия в причудливом формате
 
+- 2021-10-01
+  — Hacktoberfest in Belarus by Minsk Python Meetup, Kick-off on Discord
+  — [страница мероприятия](https://t.me/MinskPythonMeetup/26).
 - 2021-03-03
   — Clubhouse
   — IT-собеседования: как ходить? Как готовиться? Личный опыт.
