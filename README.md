@@ -31,6 +31,7 @@
 - 2020-06-11
   — iTechMeetup Online #3
   — Магия консоли: автоматизируем рутину
+  — [🎥видео](https://www.youtube.com/watch?v=PW9J1bKP4LM)
   — [слайды](https://shurph.github.io/talks/cli-tricks/)
 - 2020-02-27
   — iTechMeetup **Grodno** #5
