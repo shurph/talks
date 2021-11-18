@@ -160,3 +160,10 @@
 - 2020-10-02
   — Hacktoberfest Kick-off for iTechArt
   — [страница мероприятия](https://organize.mlh.io/participants/events/5070-hacktoberfest-kick-off-for-itechart).
+
+
+
+
+На этой странице перечислены все мои выступления, о которых я смог вспонить, и про которые я смог привести какие-то детали.
+
+Также у меня есть список избранных докладов, который может быть вам интересен: [https://shurph.github.io/talks/featured.html](https://shurph.github.io/talks/featured.html). В «списке избранных» перечислены те доклады и темы выступление, с которыми я готов выступить ещё раз по вашему запросу. Обращайтесь ;-)
