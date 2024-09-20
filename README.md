@@ -1,7 +1,7 @@
 
-Меня зовут [Николай Сасковец](https://github.com/shurph). Иногда я выступаю с докладами на технические и около-технические темы. Ниже список моих выступлений.
+Меня зовут [Николай Сасковец](https://www.linkedin.com/in/MikalaiSaskavets/). Иногда я выступаю с докладами на технические и около-технические темы. Ниже список моих выступлений и других публичных активностей.
 
-## Real talks, think about it
+## Выступления на конференциях и митапах
 
 - 2022-02-10
   — БГУИР ФИТУ АСОИ
@@ -119,21 +119,13 @@
   — Minsk Linux Users Group Meetup (Линуксовка)
   — «Hugo — генератор статичных сайтов»
   — [слайды](https://www.slideshare.net/NikolaySaskovets/hugo-hugo-static-site-generator)
-
-
-... 
-
+- ... 
 - 2012-03-12 — iTechArt — Linux CLI and Bash
-
-... 
-
+- ... 
 - 2007-09-16 — Orsha Linux Users Group Meetup (Линуксовка) — Orsha — Vim: примеры эффективной работы
 
 
-
-
-### Just For Fun
-Некоторые мероприятия в причудливом формате
+## Другие публичные активности
 
 - 2021-10-01
   — Hacktoberfest in Belarus by Minsk Python Meetup, Kick-off on Discord
